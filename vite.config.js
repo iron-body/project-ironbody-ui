@@ -5,8 +5,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      src: '/project-ironbody-ui/src',
-      components: '/project-ironbody-ui/src/components',
+      src: '/src',
+      components: '/src/components',
     },
   },
   base: '/project-ironbody-ui/',
