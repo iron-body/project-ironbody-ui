@@ -17,7 +17,7 @@ export const CaloriesBlock = () => {
         <Cal>cal</Cal>
       </Block2>
       <EllipseDiv />
-      <RunningStickFigureSvgrepoCIcon alt="" src="src/assets/runningstickfiguresvgrepocom-1.svg" />
+      <RunningStickFigureSvgrepoCIcon alt="" src="public/runningstickfiguresvgrepocom-1.svg" />
     </CaloriesBlockStyled>
   );
 };
