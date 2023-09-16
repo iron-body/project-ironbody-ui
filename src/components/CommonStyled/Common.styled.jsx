@@ -17,7 +17,7 @@ export const Root = styled.div`
   color: var(--white);
   font-family: var(--headline-style-mobile-h1);
 
-  background-image: url('/src/assets/sideviewpeopletraininggym-1@2x.png');
+  background-image: url('public/sideviewpeopletraininggym-1@2x.png');
   background-repeat: no-repeat;
   background-position: 77px 241px;
   background-size: 446px;
@@ -27,7 +27,7 @@ export const Root = styled.div`
     overflow: hidden;
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);
-    background-image: url('/src/assets/sideviewpeopletraininggym-1@2x.png');
+    background-image: url('public/sideviewpeopletraininggym-1@2x.png');
     background-repeat: no-repeat;
     background-position: 331px 130px;
     background-size: 670px;
@@ -38,7 +38,7 @@ export const Root = styled.div`
     overflow: hidden;
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);
-    background-image: url('/src/assets/sideviewpeopletraininggym-1@2x.png');
+    background-image: url('public/sideviewpeopletraininggym-1@2x.png');
     background-repeat: no-repeat;
     background-position: 770px -151px;
     background-size: 670px;

@@ -14,7 +14,7 @@ export const TutorialBlock = () => {
       <QuantityTutorial>350+</QuantityTutorial>
       <VideoTutorial>Video tutorial</VideoTutorial>
       <BlockItem />
-      <BlockInner alt="" src="src/assets/polygon-1.svg" />
+      <BlockInner alt="" src="public/polygon-1.svg" />
     </Block>
   );
 };
