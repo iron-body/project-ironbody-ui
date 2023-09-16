@@ -12,6 +12,7 @@ import {
 
 import { TutorialBlock } from './../../components/TutorialBlock/TutorialBlock';
 import { CaloriesBlock } from '../../components/CaloriesBlock/CaloriesBlock';
+import StepBar from './../../components/StepBar/StepBar';
 
 const ParamsPage = () => {
   return (
@@ -43,10 +44,12 @@ const ParamsPage = () => {
           <FloatingLabel>Birthday</FloatingLabel>
         </InputContainer>
       </Form>
-          <NextBtn>Next</NextBtn>
-          
+      <NextBtn>Next</NextBtn>
+
       <TutorialBlock />
       <CaloriesBlock />
+
+      <StepBar />
     </Wrapper>
   );
 };

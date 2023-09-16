@@ -51,6 +51,8 @@ export const RectangleDiv = styled.div`
   }
 `;
 export const QuantityCal = styled.b`
+  color: var(--white);
+  font-family: var(--headline-style-mobile-h1);
   position: relative;
   letter-spacing: -1px;
   line-height: 24px;
@@ -69,6 +71,7 @@ export const QuantityCal = styled.b`
   }
 `;
 export const Cal = styled.b`
+  font-family: var(--headline-style-mobile-h1);
   position: relative;
   font-size: var(--font-size-xs);
   line-height: 16px;

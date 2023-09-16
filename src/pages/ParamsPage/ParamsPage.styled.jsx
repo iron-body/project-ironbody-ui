@@ -92,4 +92,5 @@ export const NextBtn = styled.button`
   color: var(--white);
   font-size: var(--font-size-xm);
   line-height: 1.3;
+  margin-bottom: 56vh;
 `;

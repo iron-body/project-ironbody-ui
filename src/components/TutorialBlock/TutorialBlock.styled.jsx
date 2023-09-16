@@ -51,6 +51,8 @@ export const BlockChild = styled.div`
   }
 `;
 export const QuantityTutorial = styled.b`
+  font-family: var(--headline-style-mobile-h1);
+  color: var(--white);
   position: absolute;
   top: 14px;
   left: 56px;
@@ -75,6 +77,7 @@ export const VideoTutorial = styled.div`
   font-size: var(--font-size-xs);
   line-height: 16px;
   color: var(--color-whitesmoke-100);
+  font-family: var(--headline-style-mobile-h1);
   @media ${device.tablet} {
     position: absolute;
     top: 52px;
