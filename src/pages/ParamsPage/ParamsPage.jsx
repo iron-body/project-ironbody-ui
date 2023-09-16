@@ -10,6 +10,9 @@ import {
   NextBtn,
 } from './ParamsPage.styled';
 
+import { TutorialBlock } from './../../components/TutorialBlock/TutorialBlock';
+import { CaloriesBlock } from '../../components/CaloriesBlock/CaloriesBlock';
+
 const ParamsPage = () => {
   return (
     <Wrapper>
@@ -19,7 +22,6 @@ const ParamsPage = () => {
         our platform, we ask you to provide the following information about your
         weight, height and other relevant data:
       </Decription>
-
       <Form>
         <InputContainer>
           <InputText type="text" />
@@ -41,8 +43,10 @@ const ParamsPage = () => {
           <FloatingLabel>Birthday</FloatingLabel>
         </InputContainer>
       </Form>
-
           <NextBtn>Next</NextBtn>
+          
+      <TutorialBlock />
+      <CaloriesBlock />
     </Wrapper>
   );
 };
