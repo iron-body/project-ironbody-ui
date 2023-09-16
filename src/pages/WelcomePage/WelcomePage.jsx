@@ -9,7 +9,7 @@ export const WelcomePage = () => {
   return (
     <>
       <Root>
-        <LineIcon alt="" src="/src/assets/line.svg" />
+        <LineIcon alt="" src="public/line.svg" />
         <TransformingYourBody>Transforming your body shape with Power Pulse</TransformingYourBody>
         <Btns>
           <BtnSignUp />
