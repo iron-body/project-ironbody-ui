@@ -3,9 +3,17 @@ import { device } from '../../Constants';
 export const Block = styled.div`
   position: absolute;
   top: 560px;
-  left: 121px;
+  right: 108px;
   width: 146px;
   height: 66px;
+
+  @media ${device.mobile} {
+    position: absolute;
+    top: 560px;
+    left: 121px;
+    width: 146px;
+    height: 66px;
+  }
   @media ${device.tablet} {
     position: absolute;
     top: 714px;
