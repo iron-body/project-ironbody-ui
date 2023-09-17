@@ -1,15 +1,16 @@
-// import { WelcomePage } from '../../pages/WelcomePage/WelcomePage';
+import { HeaderContainer, NavContainer } from './Header.styled';
 import { Logo } from '../Logo/Logo';
-import { HeaderContainer, Navigation } from './Header.styled';
-// import { HeaderContainer, Navigation, StyledLink } from './Header.styled';
+import Nav from '../Nav/Nav';
+import NavAuth from '../NavAuth/NavAuth';
 
 export const Header = () => {
   return (
     <HeaderContainer>
-      <Navigation>
-        <Logo />
-        {/* <StyledLink to="/">cdd</StyledLink> */}
-      </Navigation>
+      <Logo />
+      <NavContainer>
+        <Nav />
+        <NavAuth />
+      </NavContainer>
     </HeaderContainer>
   );
 };
