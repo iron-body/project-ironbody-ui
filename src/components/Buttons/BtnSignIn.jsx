@@ -2,7 +2,7 @@ import { BtnSignInStyled, SignInStyled } from './BtnSignIn.styled';
 
 export const BtnSignIn = () => {
   return (
-    <BtnSignInStyled>
+    <BtnSignInStyled to="/signin">
       <SignInStyled>Sign In</SignInStyled>
     </BtnSignInStyled>
   );
