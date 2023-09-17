@@ -8,7 +8,6 @@ export const Header = () => {
     <HeaderContainer>
       <Navigation>
         <Logo />
-        {/* <StyledLink to="/">cdd</StyledLink> */}
       </Navigation>
     </HeaderContainer>
   );
