@@ -11,7 +11,6 @@ export const HeaderContainer = styled.div`
   justify-content: center;
   max-width: ${375 - 20 * 2}px;
   padding: 0 20px;
-
   @media ${device.tablet} {
     top: 32px;
     max-width: ${768 - 32 * 2}px;

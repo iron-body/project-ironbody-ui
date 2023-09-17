@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './components/SharedLayout/SharedLayout';
-import DiaryPage from './pages/DiaryPage/DiaryPage';
+
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { WelcomePage } from './pages/WelcomePage/WelcomePage';
 
@@ -11,7 +11,6 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route path="/diary" element={<DiaryPage />} />
         <Route index element={<WelcomePage />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
