@@ -1,7 +1,7 @@
-// import { WelcomePage } from '../../pages/WelcomePage/WelcomePage';
+import { HeaderContainer, Navigation, StyledLink } from './Header.styled';
+import { NavLink } from 'react-router-dom';
+import { WelcomePage } from '../../pages/WelcomePage/WelcomePage';
 import { Logo } from '../Logo/Logo';
-import { HeaderContainer, Navigation } from './Header.styled';
-// import { HeaderContainer, Navigation, StyledLink } from './Header.styled';
 
 export const Header = () => {
   return (
