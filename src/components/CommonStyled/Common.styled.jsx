@@ -19,8 +19,10 @@ export const Root = styled.div`
 
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);
+    background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+      linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
+      url('/project-ironbody-ui/sideviewpeopletraininggym-1@2x.png');
 
-    background-image: url('/project-ironbody-ui/sideviewpeopletraininggym-1@2x.png');
     background-repeat: no-repeat;
     background-position: 77px 241px;
     background-size: 446px;
@@ -32,7 +34,9 @@ export const Root = styled.div`
     overflow: hidden;
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);
-    background-image: url('/project-ironbody-ui/sideviewpeopletraininggym-1@2x.png');
+    background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+      linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
+      url('/project-ironbody-ui/sideviewpeopletraininggym-1@2x.png');
     background-repeat: no-repeat;
     background-position: 331px 130px;
     background-size: 670px;
@@ -44,7 +48,9 @@ export const Root = styled.div`
     overflow: hidden;
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);
-    background-image: url('/project-ironbody-ui/sideviewpeopletraininggym-1@2x.png');
+    background-image: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%),
+      url('/project-ironbody-ui/sideviewpeopletraininggym-1@2x.png');
+
     background-repeat: no-repeat;
     background-position: 770px -151px;
     background-size: 670px;
