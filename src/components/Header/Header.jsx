@@ -7,7 +7,6 @@ export const Header = () => {
   return (
     <HeaderContainer>
       <Navigation>
-        <StyledLink to="/diary">Diary</StyledLink>
         <Logo />
         {/* <StyledLink to="/">cdd</StyledLink> */}
       </Navigation>
