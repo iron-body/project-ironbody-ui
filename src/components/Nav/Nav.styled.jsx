@@ -9,7 +9,7 @@ export const Link = styled(NavLink)`
   position: relative;
   z-index: 1;
   padding: 10px 27px;
-  margin-right: 16px;
+  margin-left: 16px;
   border-radius: 6px;
   border: 1px solid;
   border-color: gray;

@@ -26,6 +26,7 @@ export default createGlobalStyle`
 --white: #efede8;
 --color-whitesmoke-200: rgba(239, 237, 232, 0.3);
 --color-whitesmoke-100: rgba(239, 237, 232, 0.65);
+--color-whitesmoke-50: rgba(239, 237, 232, 0.60);
 --color-lightsalmon: #ef8964;
 --color-darkslategray: #303030;
 --orange: #e6533c;
