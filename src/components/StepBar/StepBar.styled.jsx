@@ -33,7 +33,7 @@ export const StepItemPassed = styled.li`
     margin-right: 7px;
   }
 
-  background: #efa082;
+  background: #efa082;  
   width: 50px;
   height: 4px;
   border-radius: 2px;

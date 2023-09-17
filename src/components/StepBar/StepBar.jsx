@@ -1,12 +1,12 @@
-import React from 'react';
 import {
   StepList,
   StepItemActive,
   StepItemNotPassed,
-  StepItemPassed,
+  // StepItemPassed,
 } from './StepBar.styled';
 
-const StepBar = step => {
+// (step)
+const StepBar = () => {
   return (
     <StepList>
       <StepItemActive></StepItemActive>
