@@ -45,8 +45,8 @@ const optionsRecomended = [
 export default function ProductsFilters() {
   const initialValues = {
     searchInput: '',
-    categories: null, // Устанавливаем первый элемент как значение по умолчанию
-    recomended: null, // Устанавливаем первый элемент как значение по умолчанию
+    categories: null,
+    recomended: null, 
   };
 
   const handleSubmit = values => {
