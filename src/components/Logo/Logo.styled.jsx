@@ -12,7 +12,10 @@ export const LogoStyled = styled(Link)`
     gap: var(--gap-8px);
   }
 `;
-export const VectorIcon = styled.img`
+
+export const VectorIconSvg = styled.svg`
+  position: relative;
+  fill: var(--orange);
   display: block;
 
   border-radius: var(--br-1px);
@@ -29,16 +32,20 @@ export const VectorIcon = styled.img`
     height: 17px;
   }
 `;
-export const PowerpulseIcon = styled.img`
+
+export const PowerpulseIconSvg = styled.svg`
+  fill: var(--white);
   display: block;
   width: 82px;
   height: 12px;
   @media ${device.tablet} {
     width: 99.53px;
-    height: 15.26px;
+    display: inline-block;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
   }
   @media ${device.desktop} {
     width: 99.53px;
-    height: 15.26px;
   }
 `;
