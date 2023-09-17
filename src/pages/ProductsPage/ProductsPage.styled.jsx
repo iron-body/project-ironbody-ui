@@ -1,8 +1,33 @@
+import { device } from '../../Constants';
 import styled from '@emotion/styled';
 
 export const Overlay = styled.div`
-  background: #040404;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  position: relative;
+  width: var(--width-mobile);
+  height: 812px;
+  overflow: hidden;
+
+  color: var(--white);
+  font-family: var(--headline-style-mobile-h1);
+
+  @media ${device.tablet} {
+    width: var(--width-tablet);
+    height: 1024px;
+    overflow: hidden;
+    color: var(--white);
+    font-family: var(--headline-style-mobile-h1);
+  }
+  @media ${device.desktop} {
+    width: var(--width-desktop);
+    height: 800px;
+    overflow: hidden;
+    color: var(--white);
+    font-family: var(--headline-style-mobile-h1);
+    background-image: url('public/side-view-people-training-gym-2x.png');
+    background-repeat: no-repeat;
+    background-position: 981px 67px;
+    background-size: 438px;
+  }
 `;
 
 export const FilterTitle = styled.h1`
@@ -18,13 +43,10 @@ export const FilterTitle = styled.h1`
 `;
 
 export const Container = styled.div`
-  max-width: 1248px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 42px;
+  max-width: 1440px;
   padding-left: 96px;
   padding-right: 96px;
-  padding-bottom: 81px;
+  margin: 0 auto;
 `;
 
 export const Title = styled.h1`
@@ -36,4 +58,6 @@ export const HeaderProducts = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 28px;
+  margin-top: 126px;
+  align-items: center;
 `;

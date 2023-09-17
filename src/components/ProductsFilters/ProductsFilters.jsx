@@ -1,9 +1,11 @@
 // import React from 'react';
 import {
   FilterContainer,
-  customStyles,
+  categoriesStyles,
+  recomendedStyles,
   SearchField,
   FormGroup,
+  FormTitle,
 } from './ProductsFilters.styled';
 
 import { Formik, Form, Field } from 'formik';
@@ -56,6 +58,7 @@ export default function ProductsFilters() {
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form>
+        <FormTitle>Filter</FormTitle>
         <FilterContainer>
           <FormGroup>
             <SearchField
@@ -74,7 +77,7 @@ export default function ProductsFilters() {
                   {...field}
                   options={optionsCategories}
                   isSearchable={false}
-                  styles={customStyles}
+                  styles={categoriesStyles}
                   placeholder="Categories"
                 />
               )}
@@ -88,7 +91,7 @@ export default function ProductsFilters() {
                   {...field}
                   options={optionsRecomended}
                   isSearchable={false}
-                  styles={customStyles}
+                  styles={recomendedStyles}
                 />
               )}
             />

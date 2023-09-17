@@ -1,7 +1,6 @@
 import {
   Container,
   Title,
-  FilterTitle,
   HeaderProducts,
   Overlay,
 } from './ProductsPage.styled';
@@ -12,7 +11,6 @@ export default function ProductsPage() {
   return (
     <Overlay>
       <Container>
-        <FilterTitle>Filter</FilterTitle>
         <HeaderProducts>
           <Title>Products</Title>
           <ProductsFilters />

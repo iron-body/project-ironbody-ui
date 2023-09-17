@@ -3,6 +3,7 @@ import SharedLayout from './components/SharedLayout/SharedLayout';
 import DiaryPage from './pages/DiaryPage/DiaryPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { WelcomePage } from './pages/WelcomePage/WelcomePage';
+import ProductsPage from './pages/ProductsPage/ProductsPage';
 
 const test = import.meta.env.VITE_API_TEST;
 
@@ -12,6 +13,8 @@ function App() {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route path="/diary" element={<DiaryPage />} />
+        <Route path="/products" element={<ProductsPage />} />
+
         <Route index element={<WelcomePage />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
