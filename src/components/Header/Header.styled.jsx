@@ -8,7 +8,7 @@ export const HeaderContainer = styled.div`
   top: 24px;
   z-index: 888;
   display: flex;
-  /* justify-content: space-between; */
+  justify-content: stretch;
   max-width: ${375 - 20 * 2}px;
   padding: 0 20px;
 
@@ -25,9 +25,10 @@ export const HeaderContainer = styled.div`
 `;
 
 export const NavContainer = styled.div`
+  padding-left: 300px;
   display: flex;
   width: 100vw;
-  justify-content: space-between;
+  justify-content: flex-end;
   ${'' /* align-items: center; */}
 `;
 
