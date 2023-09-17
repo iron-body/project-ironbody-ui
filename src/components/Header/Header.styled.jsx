@@ -8,7 +8,7 @@ export const HeaderContainer = styled.div`
   top: 24px;
   z-index: 888;
   display: flex;
-  justify-content: center;
+  /* justify-content: space-between; */
   max-width: ${375 - 20 * 2}px;
   padding: 0 20px;
 
@@ -24,7 +24,7 @@ export const HeaderContainer = styled.div`
   }
 `;
 
-export const Navigation = styled.nav`
+export const NavContainer = styled.div`
   display: flex;
   width: 100vw;
   justify-content: space-between;
