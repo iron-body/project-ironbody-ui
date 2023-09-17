@@ -21,6 +21,16 @@ export const MainTitle = styled.h1`
   line-height: 1.2;
 `;
 
+export const MainTitle2 = styled.h1`
+  margin-bottom: 28px;
+
+  color: var(--white);
+  font-family: var(--headline-style-mobile-h1);
+  font-weight: 700;
+  font-size: var(--font-size-5xl);
+  line-height: 1.2;
+`;
+
 export const Decription = styled.h2`
   margin-bottom: 50px;
   color: var(--color-whitesmoke-200);
