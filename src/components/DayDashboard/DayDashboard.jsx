@@ -5,6 +5,7 @@ import {
   StyledDashboardTitleText,
   StyledDashboardICalcText,
   StyledNotificationText,
+  StyledExclamationIcon,
 } from './DayDashboard.styled';
 
 const DayDashboard = () => {
@@ -45,6 +46,13 @@ const DayDashboard = () => {
         </StyledDashboardItem>
       </StyledDashboardList>
       <StyledNotificationText>
+        <StyledExclamationIcon>
+          <use
+            xlinkHref="/svg-sprite/symbol-defs.svg#icon-Exclemation"
+            width="24"
+            height="24"
+          />
+        </StyledExclamationIcon>
         Record all your meals in a calorie diary every day. This will help me be
         aware of my nutrition and make me responsible for my choices.
       </StyledNotificationText>

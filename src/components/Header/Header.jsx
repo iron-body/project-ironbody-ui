@@ -8,8 +8,6 @@ export const Header = () => {
     <HeaderContainer>
       <Navigation>
         <StyledLink to="/diary">Diary</StyledLink>
-      </Navigation>
-      <Navigation>
         <Logo />
         {/* <StyledLink to="/">cdd</StyledLink> */}
       </Navigation>

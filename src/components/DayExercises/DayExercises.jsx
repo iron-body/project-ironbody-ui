@@ -16,7 +16,7 @@ const DayExercises = () => {
     <StyledWrapper>
       <StyledTitleWrapper>
         <StyledTitle>Exercises</StyledTitle>
-        <StyledLink href="#">Add exercises</StyledLink>
+        <StyledLink href="/exercises">Add exercises</StyledLink>
       </StyledTitleWrapper>
       {!columns || columns.length === 0 || !data || data.length === 0 ? (
         <StyledNoFoundText>Not found exercises</StyledNoFoundText>

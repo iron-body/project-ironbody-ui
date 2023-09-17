@@ -10,7 +10,7 @@ export const StyledDashboardList = styled.ul`
 export const StyledDashboardItem = styled.li`
   box-sizing: border-box;
   flex-basis: calc((100% - 16px) / 2);
-  padding: 16px;
+  padding: 16px 0 16px 16px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: rgba(239, 237, 232, 0.05);
@@ -45,8 +45,17 @@ export const StyledDashboardICalcText = styled.p`
 `;
 
 export const StyledNotificationText = styled.p`
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
   color: rgba(239, 237, 232, 0.3);
   font-family: Roboto;
   font-size: 16px;
   line-height: 24px;
+`;
+
+export const StyledExclamationIcon = styled.svg`
+  display: block;
+  fill: #efa082;
 `;
