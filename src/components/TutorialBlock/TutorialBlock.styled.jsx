@@ -3,7 +3,7 @@ import { device } from '../../Constants';
 export const Block = styled.div`
   position: absolute;
   top: 560px;
-  left: 121px;
+  right: 108px;
   width: 146px;
   height: 66px;
   @media ${device.tablet} {
@@ -23,6 +23,31 @@ export const Block = styled.div`
     font-size: var(--font-size-5xl);
   }
 `;
+
+export const BlockForParamsPage = styled.div`
+  position: absolute;
+  top: 665px;
+  left: 170px;
+  width: 146px;
+  height: 66px;
+  @media ${device.tablet} {
+    position: absolute;
+    top: 714px;
+    left: 331px;
+    width: 206px;
+    height: 96px;
+    font-size: var(--font-size-5xl);
+  }
+  @media ${device.desktop} {
+    position: absolute;
+    top: 384px;
+    left: 770px;
+    width: 206px;
+    height: 96px;
+    font-size: var(--font-size-5xl);
+  }
+`;
+
 export const BlockChild = styled.div`
   position: absolute;
   top: 0px;

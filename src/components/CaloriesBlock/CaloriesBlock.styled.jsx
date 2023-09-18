@@ -3,7 +3,7 @@ import { device } from '../../Constants';
 export const CaloriesBlockStyled = styled.div`
   position: absolute;
   top: 696px;
-  left: 236px;
+  right: 20px;
   width: 119px;
   height: 76px;
   font-size: var(--font-size-5xl);
@@ -23,6 +23,31 @@ export const CaloriesBlockStyled = styled.div`
     height: 110px;
   }
 `;
+
+export const CaloriesBlockStyledForParamsPage = styled.div`
+  position: absolute;
+  top: 740px;
+  left: 230px;
+  width: 119px;
+  height: 76px;
+  font-size: var(--font-size-5xl);
+  @media ${device.tablet} {
+    position: absolute;
+    top: 866px;
+    left: 556px;
+    width: 180px;
+    height: 110px;
+    font-size: var(--font-size-29xl);
+  }
+  @media ${device.desktop} {
+    position: absolute;
+    top: 519px;
+    left: 1228px;
+    width: 180px;
+    height: 110px;
+  }
+`;
+
 export const RectangleDiv = styled.div`
   position: absolute;
   top: 0px;

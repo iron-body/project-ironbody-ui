@@ -1,7 +1,14 @@
 import styled from 'styled-components';
+import { device } from '../../Constants';
 
 export const StepList = styled.ul`
   display: flex;
+  position: absolute;
+  top: 97%;
+
+  @media ${device.tablet} {
+    top: 95%;
+  }
 `;
 
 export const StepItemActive = styled.li`
@@ -14,6 +21,10 @@ export const StepItemActive = styled.li`
   border-radius: 2px;
   background: #ef8964;
   box-shadow: 0px 1px 10px 0px rgba(230, 83, 60, 0.8);
+
+  @media ${device.tablet} {
+    width: 80px;
+  }
 `;
 
 export const StepItemNotPassed = styled.li`
@@ -26,6 +37,10 @@ export const StepItemNotPassed = styled.li`
   width: 50px;
   height: 4px;
   border-radius: 2px;
+
+  @media ${device.tablet} {
+    width: 80px;
+  }
 `;
 
 export const StepItemPassed = styled.li`
@@ -33,8 +48,12 @@ export const StepItemPassed = styled.li`
     margin-right: 7px;
   }
 
-  background: #efa082;  
+  background: #efa082;
   width: 50px;
   height: 4px;
   border-radius: 2px;
+
+  @media ${device.tablet} {
+    width: 80px;
+  }
 `;

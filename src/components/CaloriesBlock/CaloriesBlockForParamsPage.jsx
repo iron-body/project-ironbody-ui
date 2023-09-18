@@ -1,16 +1,16 @@
 import {
   Block2,
   Cal,
-  CaloriesBlockStyled,
+  CaloriesBlockStyledForParamsPage,
   EllipseDiv,
   QuantityCal,
   RectangleDiv,
   RunningStickFigureSvgrepoCIcon,
 } from './CaloriesBlock.styled';
 
-export const CaloriesBlock = () => {
+export const CaloriesBlockStyledForParamsPages = () => {
   return (
-    <CaloriesBlockStyled>
+    <CaloriesBlockStyledForParamsPage>
       <RectangleDiv />
       <Block2>
         <QuantityCal>500</QuantityCal>
@@ -21,6 +21,8 @@ export const CaloriesBlock = () => {
         alt=""
         src="public/runningstickfiguresvgrepocom-1.svg"
       />
-    </CaloriesBlockStyled>
+    </CaloriesBlockStyledForParamsPage>
   );
 };
+
+export default CaloriesBlockStyledForParamsPages;

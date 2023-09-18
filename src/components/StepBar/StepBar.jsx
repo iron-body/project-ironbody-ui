@@ -25,6 +25,14 @@ const StepBar = stepNumber => {
           <StepItemNotPassed></StepItemNotPassed>
         </StepList>
       )}
+
+      {step === 3 && (
+        <StepList>
+          <StepItemPassed></StepItemPassed>
+          <StepItemPassed></StepItemPassed>
+          <StepItemActive></StepItemActive>
+        </StepList>
+      )}
     </>
   );
 };
