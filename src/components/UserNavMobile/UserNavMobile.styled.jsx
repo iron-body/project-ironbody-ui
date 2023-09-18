@@ -4,28 +4,34 @@ import { device } from '../../Constants';
 
 export const BurgerMenu = styled.nav`
   position: absolute;
-  top: -110%;
-  left: -10%;
+  top: 0;
+  left: 0;
   height: 100vh;
-  width: 100vh;
+  width: 100%;
   background-color: #e6533c;
   overflow: ${({ isMenuOpen }) => (isMenuOpen ? 'hidden' : 'auto')};
 `;
-export const Cross = styled.div`
+export const Cross = styled.svg`
   position: absolute;
-  left: 55%;
   top: 3%;
+  right: 5%;
+  fill: black;
+  stroke: rgba(239, 237, 232, 0.3);
+  display: block;
+  width: 28px;
+  height: 28px;
+  gap: 16px;
 `;
 export const Menu = styled.ul`
   position: absolute;
   display: flex;
   align-items: center;
   flex-direction: column;
-  top: 40%;
-  left: 23%;
+  top: 30%;
+  left: 33%;
   gap: 40px;
   @media ${device.tablet} {
-    left: 30%;
+    left: 45%;
   }
 `;
 
@@ -33,7 +39,6 @@ export const MenuItem = styled.li``;
 
 export const Link = styled(NavLink)`
   position: relative;
-  /* z-index: 1; */
   padding: 10px 27px;
   margin-right: 16px;
   border-radius: 10px;

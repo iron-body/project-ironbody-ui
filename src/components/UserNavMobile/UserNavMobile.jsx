@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BurgerMenu, Cross, Link, LogOutBtnWrapper, Menu, MenuItem } from './UserNavMobile.styled';
 import LogOutBtn from '../LogOutBtn/LogOutBtn';
+import sprite from '../../../icons.svg';
 
 const UserNavMobile = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -13,7 +14,7 @@ const UserNavMobile = () => {
       {isMenuOpen && (
         <BurgerMenu>
           <Cross onClick={toggleMenu}>
-            <img src={'/cross.png'} alt="cross" />
+            <use href={`${sprite}#icon-cross`} />
           </Cross>
           <Menu>
             <MenuItem onClick={toggleMenu}>
