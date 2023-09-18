@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { BurgerMenu, Cross, Link, Menu, MenuItem } from './UserNavMobile.styled';
+import { BurgerMenu, Cross, Link, LogOutBtnWrapper, Menu, MenuItem } from './UserNavMobile.styled';
+import LogOutBtn from '../LogOutBtn/LogOutBtn';
 
 const UserNavMobile = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(true);
@@ -15,16 +16,19 @@ const UserNavMobile = () => {
             <img src={'/cross.png'} alt="cross" />
           </Cross>
           <Menu>
-            <MenuItem>
-              <Link href="/diary">Diary</Link>
+            <MenuItem onClick={toggleMenu}>
+              <Link to="/diary">Diary</Link>
             </MenuItem>
-            <MenuItem>
-              <Link href="/products">Products</Link>
+            <MenuItem onClick={toggleMenu}>
+              <Link to="/products">Products</Link>
             </MenuItem>
-            <MenuItem>
-              <Link href="/exercises">Exercises</Link>
+            <MenuItem onClick={toggleMenu}>
+              <Link to="/exercises">Exercises</Link>
             </MenuItem>
           </Menu>
+          <LogOutBtnWrapper onClick={toggleMenu}>
+            <LogOutBtn />
+          </LogOutBtnWrapper>
         </BurgerMenu>
       )}
     </>

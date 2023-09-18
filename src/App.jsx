@@ -6,10 +6,7 @@ import { WelcomePage } from './pages/WelcomePage/WelcomePage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { SignInPage } from './pages/SignInPage/SignInPage';
 
-const test = import.meta.env.VITE_API_TEST;
-
 function App() {
-  console.log(test);
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
