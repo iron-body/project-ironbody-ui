@@ -15,6 +15,7 @@ import { authOperations } from './redux/auth/authOperations';
 //import { RestrictedRoute } from './components/RestrictedRoute';
 
 const test = import.meta.env.VITE_API_TEST;
+import ProductsPage from './pages/ProductsPage/ProductsPage';
 
 // const DairyPage = lazy(() => import('./pages/DiaryPage/DiaryPage'));
 
@@ -35,7 +36,7 @@ function App() {
           path="diary"
           element={<PrivateRoute redirectTo="/signin" component={<DiaryPage />} />}
         /> */}
-
+        <Route path="/products" element={<ProductsPage />} />
         <Route index element={<WelcomePage />} />
         <Route path="signup" element={<SignUpPage />} />
         {/* Comment bellow line if you uncomment private route */}

@@ -1,7 +1,11 @@
 import styled from '@emotion/styled';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-export const Link = styled(NavLink)`
+export const Btn = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const LinkBtn = styled(Link)`
   text-decoration: none;
   color: white;
   margin-left: 16px;
@@ -12,5 +16,5 @@ export const Icon = styled.svg`
   display: block;
   width: 28px;
   height: 28px;
-  gap: 16px;
+  margin-left: 8px;
 `;
