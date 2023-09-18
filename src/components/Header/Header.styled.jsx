@@ -16,7 +16,7 @@ export const HeaderContainer = styled.div`
   @media ${device.mobile} {
     position: relative;
     top: 24px;
-
+    justify-content: space-around;
     width: ${375 - 20}px;
     ${'' /* width: 375px; */}
     padding: 0 20px;
