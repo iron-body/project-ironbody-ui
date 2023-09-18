@@ -4,36 +4,49 @@ import styled from '@emotion/styled';
 import { device } from '../../Constants';
 
 export const HeaderContainer = styled.div`
-  position: absolute;
-  top: 24px;
-  z-index: 888;
+  position: relative;
+  top: 20px;
+  width: 374px;
+  //** for use header controls**/
+  z-index: 500;
   display: flex;
-  justify-content: stretch;
-  max-width: ${375 - 20 * 2}px;
+  ${'' /* justify-content: stretch; */}
+  width: ${375 - 20 * 2}px;
   padding: 0 20px;
+  @media ${device.mobile} {
+    position: relative;
+    top: 24px;
+    justify-content: space-around;
+    width: ${375 - 20}px;
+    ${'' /* width: 375px; */}
+    padding: 0 20px;
+  }
 
   @media ${device.tablet} {
+    position: relative;
+    justify-content: space-between;
+    display: flex;
     top: 32px;
-    max-width: ${768 - 32 * 2}px;
-    padding: 0 32px;
+    width: ${768 - 2 * 32}px;
+    padding: 0;
   }
   @media ${device.desktop} {
+    position: relative;
+    justify-content: space-between;
     top: 32px;
-    max-width: ${1440 - 96 * 2}px;
-    padding: 0 96x;
+    left: 0px;
+    padding: 0;
+    width: ${1440 - 2 * 96}px;
+    display: flex;
   }
 `;
 
 export const NavContainer = styled.div`
-  padding-left: 300px;
   display: flex;
-  width: 100vw;
-  justify-content: flex-end;
-  ${'' /* align-items: center; */}
+  align-items: center;
 `;
 
 export const StyledLink = styled(Link)`
-  ${'' /* padding: 8px 16px; */}
   color: #ffffff; /* White text color */
   text-shadow:
     0 0 5px #00baff,

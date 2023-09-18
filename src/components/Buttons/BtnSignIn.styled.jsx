@@ -1,8 +1,15 @@
 import styled from '@emotion/styled';
 import { device } from '../../Constants';
-export const BtnSignInStyled = styled.div`
+import { Link } from 'react-router-dom';
+export const BtnSignInStyled = styled(Link)`
+  text-decoration: none;
+  color: var(--white);
   border-radius: var(--br-12px);
   border: 1px solid var(--color-whitesmoke-200);
+  &:hover,
+  &:focus {
+    border: 1px solid var(--orange);
+  }
   display: flex;
   flex-direction: row;
   padding: var(--padding-xs) var(--padding-21xl);
@@ -10,7 +17,6 @@ export const BtnSignInStyled = styled.div`
   justify-content: center;
   @media ${device.tablet} {
     border-radius: var(--br-12px);
-    border: 1px solid var(--color-whitesmoke-200);
     display: flex;
     flex-direction: row;
     padding: var(--padding-base) var(--padding-41xl);
@@ -19,7 +25,6 @@ export const BtnSignInStyled = styled.div`
   }
   @media ${device.desktop} {
     border-radius: var(--br-12px);
-    border: 1px solid var(--color-whitesmoke-200);
     display: flex;
     flex-direction: row;
     padding: var(--padding-base) var(--padding-41xl);

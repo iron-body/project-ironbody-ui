@@ -37,6 +37,7 @@ export const TransformingYourBody = styled.div`
     position: absolute;
     top: 189px;
     left: 32px;
+    font-size: var(--headline-style-h1-size);
     letter-spacing: 0.01em;
     line-height: 78px;
     font-weight: 500;
