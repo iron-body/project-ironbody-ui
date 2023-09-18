@@ -8,7 +8,7 @@ export const ProductList = styled.ul`
   flex-wrap: wrap;
   gap: 32px 14px;
   height: 487px;
-  width: 850px;
+  width: 842px;
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -25,8 +25,8 @@ export const ProductList = styled.ul`
 
 export const ProductItem = styled.li`
   width: 405px;
-  height: 141px;
-
+  height: auto;
+    // padding: 16px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: rgba(239, 237, 232, 0.05);
