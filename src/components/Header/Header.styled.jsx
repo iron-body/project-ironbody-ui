@@ -43,6 +43,7 @@ export const HeaderContainer = styled.div`
 
 export const NavContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 export const StyledLink = styled(Link)`

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 export const NavMenu = styled.nav``;
 export const Menu = styled.ul`
   display: flex;
+  margin-right: 27px;
 `;
 export const Link = styled(NavLink)`
   position: relative;
@@ -11,8 +12,7 @@ export const Link = styled(NavLink)`
   padding: 10px 27px;
   margin-left: 16px;
   border-radius: 6px;
-  border: 1px solid;
-  border-color: gray;
+  border: 1px solid rgba(239, 237, 232, 0.2);
   text-decoration: none;
   color: white;
   font-weight: 400;
