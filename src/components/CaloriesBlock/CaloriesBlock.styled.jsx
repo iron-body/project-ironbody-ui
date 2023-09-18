@@ -158,27 +158,16 @@ export const EllipseDiv = styled.div`
     height: 24px;
   }
 `;
-export const RunningStickFigureSvgrepoCIcon = styled.img`
+
+export const RunningStickFigureSvgrepoCIcon = styled.svg`
   position: absolute;
-  top: 18px;
-  left: 22px;
+  padding: 4px;
+  fill: var(--white);
   width: 12px;
   height: 12px;
-  overflow: hidden;
+  flex-shrink: 0;
   @media ${device.tablet} {
-    position: absolute;
-    top: 18px;
-    left: 32px;
     width: 16px;
     height: 16px;
-    overflow: hidden;
-  }
-  @media ${device.desktop} {
-    position: absolute;
-    top: 18px;
-    left: 32px;
-    width: 16px;
-    height: 16px;
-    overflow: hidden;
   }
 `;

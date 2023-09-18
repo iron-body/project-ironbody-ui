@@ -7,6 +7,7 @@ import {
   RectangleDiv,
   RunningStickFigureSvgrepoCIcon,
 } from './CaloriesBlock.styled';
+import sprite from '../../../icons.svg';
 
 export const CaloriesBlock = () => {
   return (
@@ -16,8 +17,11 @@ export const CaloriesBlock = () => {
         <QuantityCal>500</QuantityCal>
         <Cal>cal</Cal>
       </Block2>
-      <EllipseDiv />
-      <RunningStickFigureSvgrepoCIcon alt="" src="public/runningstickfiguresvgrepocom-1.svg" />
+      <EllipseDiv>
+        <RunningStickFigureSvgrepoCIcon>
+          <use href={`${sprite}#icon-running-stick-figure-svgrepo-com-1`} />
+        </RunningStickFigureSvgrepoCIcon>
+      </EllipseDiv>
     </CaloriesBlockStyled>
   );
 };
