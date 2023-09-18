@@ -6,6 +6,14 @@ export const Block = styled.div`
   right: 108px;
   width: 146px;
   height: 66px;
+
+  @media ${device.mobile} {
+    position: absolute;
+    top: 560px;
+    left: 121px;
+    width: 146px;
+    height: 66px;
+  }
   @media ${device.tablet} {
     position: absolute;
     top: 714px;
@@ -181,5 +189,23 @@ export const BlockInner = styled.img`
     max-width: 100%;
     overflow: hidden;
     max-height: 100%;
+  }
+`;
+
+export const BlockInnerSvg = styled.svg`
+  position: absolute;
+  padding: 0px;
+  top: 7px;
+  left: 7px;
+  fill: var(--white);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  @media ${device.tablet} {
+    /* padding: 10px; */
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
   }
 `;

@@ -1,11 +1,12 @@
 import {
   Block,
   BlockChild,
-  BlockInner,
+  BlockInnerSvg,
   BlockItem,
   QuantityTutorial,
   VideoTutorial,
 } from './TutorialBlock.styled';
+import sprite from '../../../icons.svg';
 
 export const TutorialBlock = () => {
   return (
@@ -13,8 +14,11 @@ export const TutorialBlock = () => {
       <BlockChild />
       <QuantityTutorial>350+</QuantityTutorial>
       <VideoTutorial>Video tutorial</VideoTutorial>
-      <BlockItem />
-      <BlockInner alt="" src="public/polygon-1.svg" />
+      <BlockItem>
+        <BlockInnerSvg>
+          <use href={`${sprite}#icon-polygon`} />
+        </BlockInnerSvg>
+      </BlockItem>
     </Block>
   );
 };

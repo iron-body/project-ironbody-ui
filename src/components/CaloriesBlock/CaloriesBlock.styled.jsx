@@ -7,18 +7,27 @@ export const CaloriesBlockStyled = styled.div`
   width: 119px;
   height: 76px;
   font-size: var(--font-size-5xl);
+
+  @media ${device.mobile} {
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    width: 119px;
+    height: 76px;
+    font-size: var(--font-size-5xl);
+  }
   @media ${device.tablet} {
     position: absolute;
-    top: 866px;
     left: 556px;
-    width: 180px;
-    height: 110px;
-    font-size: var(--font-size-29xl);
+    top: 866px;
+    width: 119px;
+    height: 76px;
+    font-size: var(--font-size-5xl);
   }
   @media ${device.desktop} {
     position: absolute;
-    top: 519px;
     left: 1228px;
+    top: 519px;
     width: 180px;
     height: 110px;
   }
@@ -84,8 +93,13 @@ export const QuantityCal = styled.b`
   text-transform: uppercase;
   @media ${device.tablet} {
     position: relative;
-    letter-spacing: -1px;
     line-height: 50px;
+    color: #efede8;
+    font-family: Roboto;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: -1px;
     text-transform: uppercase;
   }
   @media ${device.desktop} {
@@ -172,27 +186,16 @@ export const EllipseDiv = styled.div`
     height: 24px;
   }
 `;
-export const RunningStickFigureSvgrepoCIcon = styled.img`
+
+export const RunningStickFigureSvgrepoCIcon = styled.svg`
   position: absolute;
-  top: 18px;
-  left: 22px;
+  padding: 4px;
+  fill: var(--white);
   width: 12px;
   height: 12px;
-  overflow: hidden;
+  flex-shrink: 0;
   @media ${device.tablet} {
-    position: absolute;
-    top: 18px;
-    left: 32px;
     width: 16px;
     height: 16px;
-    overflow: hidden;
-  }
-  @media ${device.desktop} {
-    position: absolute;
-    top: 18px;
-    left: 32px;
-    width: 16px;
-    height: 16px;
-    overflow: hidden;
   }
 `;
