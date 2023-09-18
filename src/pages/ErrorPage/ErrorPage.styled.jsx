@@ -43,10 +43,10 @@ export const Section = styled.div`
     width: 768px;
     background-color: rgba(0, 0, 0, 1);
 
-    background-image: url(/public/sideviewpeopletraininggym-1@2x.png);
+    background-image: url(/public/sideviewpeopletraininggym-11@2x.png);
     background-image: -webkit-image-set(
-      url(/public/sideviewpeopletraininggym-1@2x.png) 1x,
-      url(/public/sideviewpeopletraininggym-1@2x.png) 2x
+      url(/public/sideviewpeopletraininggym-11@2x.png) 1x,
+      url(/public/sideviewpeopletraininggym-11@2x.png) 2x
     );
     background-position: bottom 0 right 0%;
   }
