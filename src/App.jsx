@@ -15,9 +15,12 @@ import { authOperations } from './redux/auth/authOperations';
 //import { RestrictedRoute } from './components/RestrictedRoute';
 
 const test = import.meta.env.VITE_API_TEST;
+
+import ParamsPage from './pages/ParamsPage/ParamsPage';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
 
 // const DairyPage = lazy(() => import('./pages/DiaryPage/DiaryPage'));
+
 
 function App() {
   const dispatch = useDispatch();
@@ -47,6 +50,7 @@ function App() {
           element={<RestrictedRoute redirectTo="/diary" component={<SignInPage />} />}
         /> */}
         <Route path="*" element={<ErrorPage />} />
+        <Route path="/params" element={<ParamsPage />} />
       </Route>
     </Routes>
   );

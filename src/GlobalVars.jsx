@@ -12,7 +12,8 @@ export default createGlobalStyle`
 --headline-style-mobile-h1: Roboto;
 
 /* font sizes */
---font-size-xs: 12px;   
+--font-size-xs: 12px;
+--font-size-xm: 14px;
 --font-size-5xl: 24px;
 --font-size-base: 16px;
 --headline-style-mobile-h1-size: 38px;
