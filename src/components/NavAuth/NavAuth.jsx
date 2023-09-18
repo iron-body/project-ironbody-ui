@@ -1,15 +1,28 @@
-import { Menu, Link } from './NavAuth.styled';
+import { AuthMenu, AuthIcon, MenuItem, Link, MenuItemAvatar } from './NavAuth.styled';
+import sprite from '../../../icons.svg';
 
 const NavAuth = () => {
   return (
-    <Menu>
-      <li>
-        <Link to="/profile">Profile</Link>
-      </li>
-      <li>
+    <AuthMenu>
+      <MenuItem>
+        <Link to="/profile">
+          <AuthIcon>
+            <use href={`${sprite}#icon-settings-01`} />
+          </AuthIcon>
+        </Link>
+      </MenuItem>
+      <MenuItemAvatar>
+        <AuthIcon>
+          <use href={`${sprite}#icon-avatar`} />
+        </AuthIcon>
+      </MenuItemAvatar>
+      <MenuItem>
         <Link to="/logout">Logout</Link>
-      </li>
-    </Menu>
+        <AuthIcon>
+          <use href={`${sprite}#icon-log-out-01`} />
+        </AuthIcon>
+      </MenuItem>
+    </AuthMenu>
   );
 };
 export default NavAuth;
