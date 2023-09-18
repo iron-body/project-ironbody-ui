@@ -117,7 +117,7 @@ font-weight: 400;
 line-height: 1.5;
 `
 
-export const ParamsValue = styled.p`
+export const ParamsValue = styled.span`
 margin-left: 4px;
 color: #EFEDE8;
 font-size: 12px;

@@ -27,12 +27,12 @@ export default function Product({ product }) {
             <RecomendedTitle> Recomended </RecomendedTitle>
             <ButtonItem>
               Add
-              <ButtonIcon alt="" src="../../../public/arrow.svg" />
+              <ButtonIcon alt="" src="/arrow.svg" />
             </ButtonItem>
           </RecomendedInfo>
         </NavCard>
         <FoodName>
-          <FoodIcon alt="" src="../../../public/product-icon.svg" /> {foodName}
+          <FoodIcon alt="" src="/product-icon.svg" /> {foodName}
         </FoodName>
         <FoodParams>
           <NameParams>
