@@ -4,7 +4,7 @@ import Product from '../Product/Product';
 const products = [
   {
     id: 123,
-    foodName: 'Rice semolina Garnets ',
+    foodName: 'Grechka',
     calories: 340,
     category: 'Cereals',
     weight: 100,
@@ -12,7 +12,7 @@ const products = [
   {
     id: 1234,
 
-    foodName: 'Rice semolina Garnets ',
+    foodName: 'Kartoshka',
     calories: 340,
     category: 'Cereals',
     weight: 100,
