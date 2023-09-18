@@ -6,6 +6,10 @@ import {
   SearchField,
   FormGroup,
   FormTitle,
+  SearchInputButton,
+  SearchIconButton,
+  SearchFieldContainer,
+  EraseInputButton,
 } from './ProductsFilters.styled';
 
 import { Formik, Form, Field } from 'formik';
@@ -48,7 +52,7 @@ export default function ProductsFilters() {
   const initialValues = {
     searchInput: '',
     categories: null,
-    recomended: null, 
+    recomended: null,
   };
 
   const handleSubmit = values => {
@@ -61,14 +65,26 @@ export default function ProductsFilters() {
         <FormTitle>Filter</FormTitle>
         <FilterContainer>
           <FormGroup>
-            <SearchField
-              type="text"
-              id="searchInput"
-              name="searchInput"
-              className="form-control"
-              placeholder="Search"
-            />
+            <SearchFieldContainer>
+              <SearchField
+                type="text"
+                id="searchInput"
+                name="searchInput"
+                className="form-control"
+                placeholder="Search"
+              />
+              <EraseInputButton>
+                <SearchIconButton
+                  alt=""
+                  src="/public/Erase.svg"
+                ></SearchIconButton>
+              </EraseInputButton>
+              <SearchInputButton>
+                <SearchIconButton alt="" src="/search.svg"></SearchIconButton>
+              </SearchInputButton>
+            </SearchFieldContainer>
           </FormGroup>
+
           <FormGroup>
             <Field
               name="categories"

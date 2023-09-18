@@ -23,8 +23,6 @@ export const Container = styled.div`
   padding-bottom: 81px;
 `;
 
-
-
 export const SearchField = styled(Field)`
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
@@ -35,31 +33,47 @@ export const SearchField = styled(Field)`
   background: inherit;
 
   padding: 14px;
+
+  &::placeholder {
+  color: #efede8; 
+}'
 `;
 
+export const SearchFieldContainer = styled.div`
+  position: relative;
+`;
 
+export const SearchInputButton = styled.button`
+  position: absolute;
+  border: none;
+  background: inherit;
+  top: 17px;
+  right: 16px;
+  padding: 0;
+`;
 
+export const EraseInputButton = styled.button`
+  position: absolute;
+  border: none;
+  background: inherit;
+  top: 17px;
+  right: 40px;
+  padding: 0;
+`;
 
-export const OptionFilter = styled.option`
-  height: 24px;
-  color: #efede8;
-  font-family: Roboto;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.5;
+export const SearchIconButton = styled.img`
+  width: 18px;
+  height: 18px;
 `;
 
 export const FormTitle = styled.p`
-color: rgba(239, 237, 232, 0.50);
-font-family: Roboto;
-font-size: 14px;
-line-height: 1.28; 
-margin-bottom: 8px;
-text-align: end;
-`
-
-
+  color: rgba(239, 237, 232, 0.5);
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 1.28;
+  margin-bottom: 8px;
+  text-align: end;
+`;
 
 export const categoriesStyles = {
   control: provided => ({
@@ -67,7 +81,6 @@ export const categoriesStyles = {
     borderRadius: '12px',
     border: '1px solid rgba(239, 237, 232, 0.3)',
     background: 'inherit',
-    color: '#333',
     width: '192px',
     height: `52px`,
     alignContent: `center`,
@@ -75,10 +88,28 @@ export const categoriesStyles = {
     padding: '14px',
     cursor: 'pointer',
 
-    //  color: `#EFEDE8`,
+    color: `#EFEDE8`,
     fontFamily: `Roboto`,
     fontSize: `16px`,
     lineHeight: 1.5,
+    placeholder: `#EFEDE8`,
+
+    '&:hover': {
+      border: `1px solid rgba(239, 237, 232, 0.3)`,
+    },
+
+    '&:focus': {
+      border: `1px solid rgba(239, 237, 232, 0.3)`,
+    },
+
+    '&:active': {
+      border: `1px solid rgba(239, 237, 232, 0.3)`,
+    },
+  }),
+
+  placeholder: provided => ({
+    ...provided,
+    color: 'EFEDE8',
   }),
 
   menu: provided => ({
@@ -103,7 +134,7 @@ export const categoriesStyles = {
 
   dropdownIndicator: provided => ({
     ...provided,
-    color: '#333',
+    color: '#EFEDE8',
   }),
 
   indicatorSeparator: provided => ({
@@ -121,14 +152,13 @@ export const categoriesStyles = {
   }),
 };
 
-
 export const recomendedStyles = {
   control: provided => ({
     ...provided,
     borderRadius: '12px',
     border: '1px solid rgba(239, 237, 232, 0.3)',
     background: 'inherit',
-    color: '#333',
+    color: '#EFEDE8',
     width: '204px',
     height: `52px`,
     alignContent: `center`,
@@ -140,18 +170,34 @@ export const recomendedStyles = {
     fontFamily: `Roboto`,
     fontSize: `16px`,
     lineHeight: 1.5,
+    '&:hover': {
+      border: `1px solid rgba(239, 237, 232, 0.3)`,
+    },
+
+    '&:focus': {
+      border: `1px solid rgba(239, 237, 232, 0.3)`,
+    },
+
+    '&:active': {
+      border: `1px solid rgba(239, 237, 232, 0.3)`,
+    },
+  }),
+
+  placeholder: provided => ({
+    ...provided,
+    color: 'EFEDE8',
   }),
 
   menu: provided => ({
     ...provided,
     borderRadius: `12px`,
     background: `#1C1C1C`,
-    padding: `14px`,
+    // padding: `14px`,
   }),
   menuList: provided => ({
     ...provided,
-    height: `276px`,
-    paddingBottom: `14px`,
+    height: `auto`,
+    // paddingBottom: `14px`,
 
     '&::-webkit-scrollbar': {
       width: '8px',
@@ -164,7 +210,7 @@ export const recomendedStyles = {
 
   dropdownIndicator: provided => ({
     ...provided,
-    color: '#333',
+    color: '#EFEDE8',
   }),
 
   indicatorSeparator: provided => ({

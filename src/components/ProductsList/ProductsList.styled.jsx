@@ -6,9 +6,9 @@ export const ProductList = styled.ul`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 32px 14px;
+  gap: 29px 14px;
   height: 487px;
-  width: 842px;
+  width: 850px;
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -26,7 +26,6 @@ export const ProductList = styled.ul`
 export const ProductItem = styled.li`
   width: 405px;
   height: auto;
-    // padding: 16px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: rgba(239, 237, 232, 0.05);
@@ -49,3 +48,24 @@ export const Name = styled.span`
   font-size: 18px;
   font-weight: 700;
 `;
+
+
+export const ErrorMessege = styled.p`
+margin-top: 132px;
+width: 580px;
+color: rgba(239, 237, 232, 0.30);
+font-size: 16px;
+font-weight: 400;
+line-height: 24px;
+`
+
+export const BottomError = styled.p`
+color: #E6533C;
+margin-top:16px;
+`
+
+
+export const StartError = styled.span`
+color: #E6533C;
+
+`
