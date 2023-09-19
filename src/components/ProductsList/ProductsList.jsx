@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   ProductList,
   ProductItem,
@@ -6,6 +7,8 @@ import {
   StartError,
 } from './ProductsList.styled';
 import Product from '../Product/Product';
+import BasicModalWindow from '../BasicModalWindow/BasicModalWindow';
+import AddProductForm from '../AddProductForm/AddProductForm';
 
 const products = [
   {
@@ -88,6 +91,15 @@ const products = [
 ];
 
 export default function ProductsList() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+    console.log(product);
+  };
+
   return (
     <>
       {Array.isArray(products) && products.length > 0 ? (
@@ -95,21 +107,37 @@ export default function ProductsList() {
           {products.map(product => {
             return (
               <ProductItem key={product.id}>
-                <Product product={product} />
+                <Product
+                  product={product}
+                  openModal={() => openModal(product)}
+                />
               </ProductItem>
             );
           })}
         </ProductList>
-      ) : (<>
-        <ErrorMessege>
-          <StartError>Sorry, no results were found</StartError> for the product filters you selected. You
-          may want to consider other search options to find the product you
-          want. Our range is wide and you have the opportunity to find more
-          options that suit your needs.
-          
+      ) : (
+        <>
+          <ErrorMessege>
+            <StartError>Sorry, no results were found</StartError> for the
+            product filters you selected. You may want to consider other search
+            options to find the product you want. Our range is wide and you have
+            the opportunity to find more options that suit your needs.
           </ErrorMessege>
           <BottomError>Try changing the search parameters.</BottomError>
-          </>
+        </>
+      )}
+
+      {isModalOpen && (
+        <BasicModalWindow active={isModalOpen} setActive={setIsModalOpen}>
+          {selectedProduct && (
+            <AddProductForm
+              productCalc={{
+                foodName: selectedProduct.foodName,
+                calories: selectedProduct.calories,
+              }}
+            ></AddProductForm>
+          )}
+        </BasicModalWindow>
       )}
     </>
   );
