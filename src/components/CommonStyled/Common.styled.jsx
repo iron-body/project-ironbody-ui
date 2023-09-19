@@ -9,6 +9,7 @@ export const Container = styled.div`
 `;
 
 export const Root = styled.div`
+  outline: 1px solid rgba(239, 237, 232, 0.3);
   color: var(--white);
   font-family: var(--headline-style-mobile-h1);
   background-position: left 100% top 100%;
