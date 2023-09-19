@@ -6,6 +6,7 @@ export const AuthMenu = styled.ul`
   align-items: center;
   justify-content: center;
   gap: 16px;
+  margin-right: 16px;
 `;
 
 export const MenuItem = styled.li`

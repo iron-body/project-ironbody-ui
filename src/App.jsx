@@ -38,10 +38,19 @@ function App() {
           path="diary"
           element={<PrivateRoute redirectTo="/signin" component={<DiaryPage />} />}
         />
+        {/* <Route path="/params" element={<ParamsPage />} /> */}
+        <Route
+          path="params"
+          element={<PrivateRoute redirectTo="/signin" component={<ParamsPage />} />}
+        />
 
         <Route path="/products" element={<ProductsPage />} />
         <Route index element={<WelcomePage />} />
-        <Route path="signup" element={<SignUpPage />} />
+        {/* <Route path="signup" element={<SignUpPage />} /> */}
+        <Route
+          path="signup"
+          element={<RestrictedRoute redirectTo="/params" component={<SignUpPage />} />}
+        />
         {/* Comment bellow line if you uncomment private route */}
         {/* <Route path="signin" element={<SignInPage />} /> */}
         {/* comment below for unuse redirect after succesfull authorization to Diary Page after login */}
@@ -50,7 +59,6 @@ function App() {
           element={<RestrictedRoute redirectTo="/diary" component={<SignInPage />} />}
         />
         <Route path="*" element={<ErrorPage />} />
-        <Route path="/params" element={<ParamsPage />} />
       </Route>
     </Routes>
   );
