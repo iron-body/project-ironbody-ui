@@ -21,7 +21,6 @@ import ProductsPage from './pages/ProductsPage/ProductsPage';
 
 // const DairyPage = lazy(() => import('./pages/DiaryPage/DiaryPage'));
 
-
 function App() {
   const dispatch = useDispatch();
 

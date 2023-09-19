@@ -1,47 +1,71 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+// import { device } from '../../Constants';
 
 export const Section = styled.div`
-  position: relative;
-  background-image:
-    url(/public/sideviewpeopletraininggym-1@2x.jpg),
-    - webkit-image-set(
-        url(/public/sideviewpeopletraininggym-1@2x.jpg) 1x,
-        url(/public/sideviewpeopletraininggym-1@2x.jpg) 2x
-      );
-  color: #efede8;
-  background-repeat: no-repeat;
-  background-position: bottom 0 right -40%;
-  margin: 0 auto;
-  position: relative;
-  height: 100vh;
+  outline: 1px solid rgba(239, 237, 232, 0.3);
+  color: var(--white);
+  font-family: var(--headline-style-mobile-h1);
+  background-position: left 100% top 100%;
+  background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+    linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
+    image-set(
+      url('/project-ironbody-ui/side-view-people-training-gym-mobile@1x.jpg') 1x,
+      url('/project-ironbody-ui/side-view-people-training-gym-mobile@2x.jpg') 2x
+    );
 
   @media screen and (min-width: 375px) {
-    max-width: 375px;
+    position: relative;
+    width: var(--width-mobile);
+    height: 812px;
+    overflow: hidden;
+    background-position: left 100% top 100%;
+
+    color: var(--white);
+    font-family: var(--headline-style-mobile-h1);
+
+    background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+      linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
+      image-set(
+        url('/project-ironbody-ui/side-view-people-training-gym-mobile@1x.jpg') 1x,
+        url('/project-ironbody-ui/side-view-people-training-gym-mobile@2x.jpg') 2x
+      );
+
+    background-repeat: no-repeat;
   }
 
   @media screen and (min-width: 768px) {
-    max-width: none;
-    width: 768px;
-    background-color:
-      rgba(0, 0, 0, 1),
-      url(/public/sideviewpeopletraininggym-1@2x.jpg),
-      - webkit-image-set(
-          url(/public/sideviewpeopletraininggym-1@2x.jpg) 1x,
-          url(/public/sideviewpeopletraininggym-1@2x.jpg) 2x
-        );
-    background-position: bottom 0 right 0%;
+    max-width: var(--width-tablet);
+    width: var(--width-tablet);
+    height: 1024px;
+    overflow: hidden;
+    color: var(--white);
+    font-family: var(--headline-style-mobile-h1);
+    background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+      linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
+      image-set(
+        url('/project-ironbody-ui/side-view-people-training-gym-tablet@1x.jpg') 1x,
+        url('/project-ironbody-ui/side-view-people-training-gym-tablet@2x.jpg') 2x
+      );
+    background-repeat: no-repeat;
+    background-position: left 100% top 100%;
   }
 
   @media screen and (min-width: 1440px) {
-    width: 1440px;
+    max-width: var(--width-desktop);
+    width: var(--width-desktop);
     height: 800px;
-    background-image:
-      url(/public/sideviewpeopletraininggym-1@2x.jpg) 771px,
-      - webkit-image-set(
-          url(/public/sideviewpeopletraininggym-1@2x.jpg) 1x,
-          url(/public/sideviewpeopletraininggym-1@2x.jpg) 2x
-        );
+    overflow: hidden;
+    color: var(--white);
+    font-family: var(--headline-style-mobile-h1);
+    background-image: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%),
+      image-set(
+        url('/project-ironbody-ui/side-view-people-training-gym-desktop@1x.jpg') 1x,
+        url('/project-ironbody-ui/side-view-people-training-gym-desktop@2x.jpg') 2x
+      );
+
+    background-repeat: no-repeat;
+    background-position: left 100% top 100%;
   }
 `;
 
@@ -102,25 +126,25 @@ export const Text404 = styled.p`
   }
 `;
 
-export const StyledLink = styled(Link)`
-  position: absolute;
-  left: 32px;
-  top: 32px;
+// export const StyledLink = styled(Link)`
+//   position: absolute;
+//   left: 32px;
+//   top: 32px;
 
-  @media screen and (min-width: 1440px) {
-    left: 96px;
-  }
-`;
+//   @media screen and (min-width: 1440px) {
+//     left: 96px;
+//   }
+// `;
 
-export const Svg = styled.svg`
-  width: 126px;
-  height: 13px;
+// export const Svg = styled.svg`
+//   width: 126px;
+//   height: 13px;
 
-  @media screen and (min-width: 768px) {
-    width: 152px;
-    height: 17px;
-  }
-`;
+//   @media screen and (min-width: 768px) {
+//     width: 152px;
+//     height: 17px;
+//   }
+// `;
 
 export const Button = styled.button`
   margin-top: 28px;
