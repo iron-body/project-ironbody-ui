@@ -22,6 +22,7 @@ export const CaloriesBlock = () => {
           <use href={`${sprite}#icon-running-stick-figure-svgrepo-com-1`} />
         </RunningStickFigureSvgrepoCIcon>
       </EllipseDiv>
+
     </CaloriesBlockStyled>
   );
 };

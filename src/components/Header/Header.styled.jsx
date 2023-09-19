@@ -17,9 +17,10 @@ export const HeaderContainer = styled.div`
     position: relative;
     top: 24px;
     justify-content: space-around;
-    width: ${375 - 20}px;
-    ${'' /* width: 375px; */}
-    padding: 0 20px;
+    /* width: ${375 - 20}px; */
+    width: 375px;
+    /* padding: 0 20px; */
+    padding: 0;
   }
 
   @media ${device.tablet} {

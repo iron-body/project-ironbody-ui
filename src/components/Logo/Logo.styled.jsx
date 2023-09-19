@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { device } from '../../Constants';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
-export const LogoStyled = styled(Link)`
+export const LogoStyled = styled.div`
   display: flex;
   align-self: center;
   gap: var(--gap-8px);

@@ -32,6 +32,31 @@ export const CaloriesBlockStyled = styled.div`
     height: 110px;
   }
 `;
+
+export const CaloriesBlockStyledForParamsPage = styled.div`
+  position: absolute;
+  top: 740px;
+  left: 230px;
+  width: 119px;
+  height: 76px;
+  font-size: var(--font-size-5xl);
+  @media ${device.tablet} {
+    position: absolute;
+    top: 866px;
+    left: 556px;
+    width: 180px;
+    height: 110px;
+    font-size: var(--font-size-29xl);
+  }
+  @media ${device.desktop} {
+    position: absolute;
+    top: 519px;
+    left: 1228px;
+    width: 180px;
+    height: 110px;
+  }
+`;
+
 export const RectangleDiv = styled.div`
   position: absolute;
   top: 0px;
@@ -60,6 +85,8 @@ export const RectangleDiv = styled.div`
   }
 `;
 export const QuantityCal = styled.b`
+  color: var(--white);
+  font-family: var(--headline-style-mobile-h1);
   position: relative;
   letter-spacing: -1px;
   line-height: 24px;
@@ -83,6 +110,7 @@ export const QuantityCal = styled.b`
   }
 `;
 export const Cal = styled.b`
+  font-family: var(--headline-style-mobile-h1);
   position: relative;
   font-size: var(--font-size-xs);
   line-height: 16px;
