@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const StyledWrapper = styled.div`
   min-width: 826px;
   min-height: 234px;
+  padding: 0 16px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: rgba(239, 237, 232, 0.05);
@@ -14,7 +15,7 @@ export const StyledWrapper = styled.div`
 export const StyledTitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 16px;
+  padding: 12px;
   /* margin-bottom: 32px; */
 `;
 export const StyledTitle = styled.h2`
