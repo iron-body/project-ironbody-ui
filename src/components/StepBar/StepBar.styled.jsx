@@ -4,10 +4,10 @@ import { device } from '../../Constants';
 export const StepList = styled.ul`
   display: flex;
   position: absolute;
-  top: 97%;
+  bottom: 3%;
 
   @media ${device.tablet} {
-    top: 95%;
+    bottom: 5%;
   }
 `;
 
