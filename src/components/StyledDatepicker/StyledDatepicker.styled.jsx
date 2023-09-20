@@ -21,10 +21,11 @@ export const CalendarGlobalStyles = createGlobalStyle`
     position: relative;
 
   }
+
   .react-datepicker {
     position: absolute;
-    left: 50%;
-    top: 50%;
+    right: 12%;
+    top: 20%;
     transform: translate(-1%, 0%);
     display: flex;
     flex-direction: column;
