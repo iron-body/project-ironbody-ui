@@ -3,8 +3,9 @@ import {
   StyledLink,
   StyledWrapper,
   StyledTitleWrapper,
+  StyledNoFoundText,
 } from './DayProducts.styled';
-import Table from '../Table/Table';
+import ProductsTable from '../ProductsTable/ProductsTable';
 
 const DayProducts = () => {
   const columns = [
@@ -82,12 +83,12 @@ const DayProducts = () => {
     <StyledWrapper>
       <StyledTitleWrapper>
         <StyledTitle>Products</StyledTitle>
-        <StyledLink href="/products">Add product</StyledLink>
+        <StyledLink href="/products">Add product &rarr;</StyledLink>
       </StyledTitleWrapper>
-      {!columns || columns.length === 0 || !data || data.length === 0 ? (
-        <p>Not found products</p>
+      {!(<ProductsTable />) ? (
+        <StyledNoFoundText>Not found products</StyledNoFoundText>
       ) : (
-        <Table columns={columns} data={data} />
+        <ProductsTable columns={columns} data={data} />
       )}
     </StyledWrapper>
   );
