@@ -5,22 +5,22 @@ import {
   StyledTitleWrapper,
   StyledNoFoundText,
 } from '../DayProducts/DayProducts.styled';
+import ExercisesTable from '../ExercisesTable/ExercisesTable';
 
 // import Table from '../Table/Table';
 
 const DayExercises = () => {
-  const columns = [];
-  const data = [];
-
   return (
     <StyledWrapper>
       <StyledTitleWrapper>
         <StyledTitle>Exercises</StyledTitle>
         <StyledLink href="/exercises">Add exercises &rarr;</StyledLink>
       </StyledTitleWrapper>
-      {!columns || columns.length === 0 || !data || data.length === 0 ? (
-        <StyledNoFoundText>Not found exercises</StyledNoFoundText>
-      ) : null}
+      {!(<ExercisesTable />) ? (
+        <StyledNoFoundText>Not found products</StyledNoFoundText>
+      ) : (
+        <ExercisesTable />
+      )}
     </StyledWrapper>
   );
 };
