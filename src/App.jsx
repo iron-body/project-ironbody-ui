@@ -33,12 +33,12 @@ function App() {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         {/* Comment bellow line if you uncomment private route */}
-        {/* <Route path="/diary" element={<DiaryPage />} /> */}
+        <Route path="/diary" element={<DiaryPage />} />
         {/* comment below for unuse automatic redirect if user already logined */}
-        <Route
+        {/* <Route
           path="diary"
           element={<PrivateRoute redirectTo="/signin" component={<DiaryPage />} />}
-        />
+        /> */}
         {/* <Route path="/params" element={<ParamsPage />} /> */}
         <Route
           path="params"
