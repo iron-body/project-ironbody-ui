@@ -27,6 +27,7 @@ function App() {
   useEffect(() => {
     dispatch(authOperations.refreshCurrentUser());
   }, [dispatch]);
+
   console.log(test);
   return (
     <Routes>

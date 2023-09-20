@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import { filterReducer } from './filterSlice';
 import { authReducer } from './auth/authSlice';
 import { persistStore, FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
+import { headerReducer } from './headerSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -25,6 +26,7 @@ export const store = configureStore({
   reducer: {
     filter: filterReducer,
     auth: localStorageAuthReducer,
+    header: headerReducer,
   },
   middleware,
 });

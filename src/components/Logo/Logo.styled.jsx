@@ -15,7 +15,8 @@ export const LogoStyled = styled.div`
 
 export const VectorIconSvg = styled.svg`
   position: relative;
-  fill: var(--orange);
+  /* fill: var(--orange); */
+  fill: ${props => props.stateColorSVGVector};
   display: block;
 
   border-radius: var(--br-1px);
