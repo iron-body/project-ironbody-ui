@@ -1684,10 +1684,10 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
 `,Bj=()=>b.jsxs(Mj,{children:["Already have account?",b.jsx("span",{children:" "}),b.jsx(Dj,{to:"/signup",children:"Sign Up"})]}),Vj=()=>{const e=Ts();return b.jsxs(Nj,{children:[b.jsx(jj,{children:"Sign In"}),b.jsx(Fj,{children:"Welcome! Please enter your credentials to login to the platform:"}),b.jsx(l0,{initialValues:{email:"",password:""},onSubmit:async t=>{await new Promise(i=>setTimeout(i,500)),alert(JSON.stringify(t,null,2)),console.log(t);const{email:n,password:r}=t;try{e(pr.login({email:n,password:r}))}catch{Yi.Notify.failure(`${n} failed to login`)}},children:b.jsxs($j,{children:[b.jsx(Ty,{id:"email",name:"email",placeholder:"Email",type:"email"}),b.jsx(Ty,{id:"password",name:"password",placeholder:"Password",type:"password"}),b.jsx(Lj,{})]})}),b.jsx(Bj,{})]})},Wj=()=>b.jsx("div",{style:{outline:"1px solid rgba(239, 237, 232, 0.3)"},children:b.jsxs(Hh,{children:[b.jsx(Vj,{}),b.jsx(Hc,{}),b.jsx(Wc,{})]})});function Ay({component:e,redirectTo:t="/"}){const n=Ui(zc),r=Ui(iP);return!n&&!r?b.jsx(R1,{to:t}):e}const Iy=({component:e,redirectTo:t="/"})=>Ui(zc)?b.jsx(R1,{to:t}):e,Ny=()=>b.jsxs(OT,{children:[b.jsx(N2,{}),b.jsx(j2,{children:"350+"}),b.jsx(F2,{children:"Video tutorial"}),b.jsx($2,{}),b.jsx(TT,{alt:"",src:"public/polygon-1.svg"})]}),jy=()=>b.jsxs(RT,{children:[b.jsx(R2,{}),b.jsxs(T2,{children:[b.jsx(P2,{children:"500"}),b.jsx(O2,{children:"cal"})]}),b.jsx(A2,{}),b.jsx(I2,{alt:"",src:"public/runningstickfiguresvgrepocom-1.svg"})]}),md=Re.ul`
   display: flex;
   position: absolute;
-  top: 97%;
+  bottom: 3%;
 
   @media ${L.tablet} {
-    top: 95%;
+    bottom: 5%;
   }
 `,hd=Re.li`
   &:not(:last-child) {
@@ -1957,7 +1957,7 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
   background: linear-gradient(168deg, #040404 12.66%, rgba(4, 4, 4, 0) 20.98%),
     linear-gradient(91deg, #040404 -10.38%, rgba(4, 4, 4, 0) 42.83%),
     linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-    url('/public/params-page1-2x.jpg');
+    url('/params-page1-2x.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom 105px right 0px;
@@ -1967,7 +1967,7 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
     width: var(--width-tablet);
     padding: 189px 32px 32px 32px;
 
-    background-image: url('/public/params-page-1-tablet-2x.jpg');
+    background-image: url('/params-page-1-tablet-2x.jpg');
     background-position: bottom -100px right 0px;
   }
 
@@ -1977,7 +1977,7 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
     padding: 200px 96px 96px 96px;
 
     /* background-size: contain; */
-    background-image: url('/public/params-page-1-desktop-2x.jpg');
+    background-image: url('/params-page-1-desktop-2x.jpg');
     background-position: bottom 0px right 100px;
   }
 `,Qj=Re.section`
@@ -1985,7 +1985,7 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
   width: var(--width-mobile);
   padding: 128px 20px 20px 20px;
   position: relative;
-  background-image: url('/public/params-page2-2x.jpg');
+  background-image: url('/params-page2-2x.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom -30px right 0px;
@@ -1995,7 +1995,7 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
     width: var(--width-tablet);
     padding: 189px 32px 32px 32px;
 
-    background-image: url('/public/params-page-2-tablet-2x.jpg');
+    background-image: url('/params-page-2-tablet-2x.jpg');
     background-position: bottom -120px right 0px;
   }
 
@@ -2004,7 +2004,7 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
     width: var(--width-desktop);
     padding: 200px 96px 96px 96px;
 
-    background-image: url('/public/params-page-2-desktop-2x.jpg');
+    background-image: url('/params-page-2-desktop-2x.jpg');
     background-position: bottom 0px right 100px;
   }
 `,qj=Re.section`
@@ -2012,7 +2012,7 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
   width: var(--width-mobile);
   padding: 128px 20px 20px 20px;
   position: relative;
-  background-image: url('/public/params-page3-2x.jpg');
+  background-image: url('/params-page3-2x.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom -30px right 0px;
@@ -2022,7 +2022,7 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
     width: var(--width-tablet);
     padding: 189px 32px 32px 32px;
 
-    background-image: url('/public/params-page-3-tablet-2x.jpg');
+    background-image: url('/params-page-3-tablet-2x.jpg');
     background-position: bottom -120px right 0px;
   }
 
@@ -2031,7 +2031,7 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
     width: var(--width-desktop);
     padding: 200px 96px 96px 96px;
 
-    background-image: url('/public/params-page-3-desktop-2x.jpg');
+    background-image: url('/params-page-3-desktop-2x.jpg');
     background-position: bottom 0px right 100px;
   }
 `,_y=Re.h1`
@@ -2088,7 +2088,7 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
   margin-right: 16px;
   padding: 8px 0px 8px 26px;
   background-color: var(--black);
-  background: url('/public/back-array.svg') no-repeat left;
+  background: url('/back-array.svg') no-repeat left;
   border-color: transparent;
   color: var(--color-whitesmoke-100);
   font-family: var(--headline-style-mobile-h1);
@@ -2101,7 +2101,7 @@ Notiflix needs to be appended to the "<`+I+'>" element, but you called it before
 `,Ly=Re.button`
   padding: 8px 26px 8px 0px;
   background-color: var(--black);
-  background: url('/public/next-array.svg') no-repeat right;
+  background: url('/next-array.svg') no-repeat right;
   border-color: transparent;
   color: var(--white);
   font-family: var(--headline-style-mobile-h1);
