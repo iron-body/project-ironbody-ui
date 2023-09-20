@@ -10,7 +10,12 @@ import {
   SignupFormStyled,
 } from './SignUpForm.styled';
 
+import { useDispatch } from 'react-redux';
+import { authOperations } from '../../redux/auth/authOperations';
+import { Notify } from 'notiflix';
+
 export const SignupForm = () => {
+  const dispatch = useDispatch();
   return (
     <SignupFormStyled>
       <SignUpH1Styled>Sign Up</SignUpH1Styled>
@@ -27,6 +32,14 @@ export const SignupForm = () => {
         onSubmit={async values => {
           await new Promise(r => setTimeout(r, 500));
           alert(JSON.stringify(values, null, 2));
+          const { name, email, password } = values;
+          try {
+            dispatch(authOperations.register({ name, email, password }));
+
+            Notify.success(`${name} registered successfully`);
+          } catch (error) {
+            Notify.failure(`${name} failed to register`);
+          }
         }}
       >
         <FormStyled>

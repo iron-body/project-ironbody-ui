@@ -2,7 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
 import { filterReducer } from './filterSlice';
-import { authRedicer } from './auth/authSlice';
+import { authReducer } from './auth/authSlice';
 import { persistStore, FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 
 const middleware = [
@@ -19,7 +19,7 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-const localStorageAuthReducer = persistReducer(authPersistConfig, authRedicer);
+const localStorageAuthReducer = persistReducer(authPersistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {

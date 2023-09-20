@@ -8,7 +8,7 @@ export const Btn = styled.div`
 export const LinkBtn = styled(Link)`
   text-decoration: none;
   color: white;
-  margin-left: 16px;
+  /* margin-left: 16px; */
 `;
 export const Icon = styled.svg`
   fill: transparent;
