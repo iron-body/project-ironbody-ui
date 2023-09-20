@@ -10,6 +10,7 @@ import {
   SearchIconButton,
   SearchFieldContainer,
   EraseInputButton,
+  MobInpCont,
 } from './ProductsFilters.styled';
 
 import { Formik, Form, Field } from 'formik';
@@ -85,6 +86,7 @@ export default function ProductsFilters() {
             </SearchFieldContainer>
           </FormGroup>
 
+          <MobInpCont>
           <FormGroup>
             <Field
               name="categories"
@@ -99,6 +101,7 @@ export default function ProductsFilters() {
               )}
             />
           </FormGroup>
+
           <FormGroup>
             <Field
               name="recomended"
@@ -111,7 +114,8 @@ export default function ProductsFilters() {
                 />
               )}
             />
-          </FormGroup>
+            </FormGroup>
+            </MobInpCont>
         </FilterContainer>
       </Form>
     </Formik>

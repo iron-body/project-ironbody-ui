@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 import {
   FoodName,
   CalcContainer,
@@ -11,14 +13,16 @@ import {
   CancelBtn,
 } from './AddProductForm.styled';
 
-export default function AddProductForm({ productCalc }) {
+export default function AddProductForm({ productCalc, onClose }) {
+  const { foodName, caloriesValue = 155 } = productCalc;
 
-    const { foodName, caloriesValue = 155 } = productCalc;
+  const handleClose = () => {
+    onClose(); 
+  };
 
-    console.log(foodName)
   return (
     <>
-      <ExitBtn>
+      <ExitBtn onClick={handleClose}>
         <IconExitBtn alt="" src="/ExitIcon.svg"></IconExitBtn>
       </ExitBtn>
       <CalcContainer>
@@ -30,7 +34,7 @@ export default function AddProductForm({ productCalc }) {
       </CalcCalories>
       <BtnFormContainer>
         <AddProductBtn>Add to diary</AddProductBtn>
-        <CancelBtn>Cancel</CancelBtn>
+        <CancelBtn onClick={handleClose}>Cancel</CancelBtn>
       </BtnFormContainer>
     </>
   );

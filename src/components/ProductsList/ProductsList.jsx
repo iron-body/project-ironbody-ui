@@ -134,7 +134,7 @@ export default function ProductsList() {
               productCalc={{
                 foodName: selectedProduct.foodName,
                 calories: selectedProduct.calories,
-              }}
+              }} onClose={() => setIsModalOpen(false)}
             ></AddProductForm>
           )}
         </BasicModalWindow>

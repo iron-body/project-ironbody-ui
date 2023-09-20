@@ -21,7 +21,9 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  padding: 20px;
+  position: relative;
+
+  padding: 48px 32px;
   border-radius: 12px;
   // background-color: black;
   border: 1px solid rgba(239, 237, 232, 0.2);
