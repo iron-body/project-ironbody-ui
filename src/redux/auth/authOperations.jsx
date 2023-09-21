@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Notify } from 'notiflix';
 
 // axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
-axios.defaults.baseURL = 'http://localhost:3030/api/';
-// axios.defaults.baseURL = 'https://iron-body-project-backend.onrender.com/api/';
+// axios.defaults.baseURL = 'http://localhost:3030/api/';
+axios.defaults.baseURL = 'https://iron-body-project-backend.onrender.com/api/';
 
 const token = {
   set(token) {
@@ -17,7 +17,6 @@ const token = {
 
 const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
   try {
-    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     const { data } = await axios.post('users/register', credentials);
 
     token.set(data.accessToken);
@@ -30,7 +29,6 @@ const register = createAsyncThunk('auth/register', async (credentials, thunkAPI)
 
 const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
-    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     const { data } = await axios.post('/users/login', credentials);
 
     token.set(data.accessToken);
@@ -45,7 +43,6 @@ const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
 });
 const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
-    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     await axios.post('/users/logout');
 
     Notify.success('Logout Succesfull');
@@ -65,7 +62,6 @@ const refreshCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
   token.set(persistedToken);
 
   try {
-    axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
     const response = await axios.get('/users/current');
     return response.data;
   } catch (error) {
