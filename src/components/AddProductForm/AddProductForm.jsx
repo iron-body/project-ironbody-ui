@@ -23,7 +23,7 @@ export default function AddProductForm({ productCalc, onClose }) {
   return (
     <>
       <ExitBtn onClick={handleClose}>
-        <IconExitBtn alt="" src="/ExitIcon.svg"></IconExitBtn>
+        <IconExitBtn alt="" src="/project-ironbody-ui/ExitIcon.svg"></IconExitBtn>
       </ExitBtn>
       <CalcContainer>
         <FoodName> {foodName}</FoodName>
