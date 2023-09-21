@@ -63,6 +63,7 @@ const refreshCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
     thunkAPI.rejectWithValue(error.message);
   }
 });
+
 export const authOperations = {
   register,
   login,
