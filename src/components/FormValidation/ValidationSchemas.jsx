@@ -20,7 +20,7 @@ let signinSchema = yup.object().shape({
     .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Error email'),
   password: yup
     .string()
-    .min(8)
+    .min(6)
     .required()
     .matches(/^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/, 'Password bad'),
 });
@@ -32,8 +32,11 @@ let signUpSchema = yup.object().shape({
     .email()
     .required()
     .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Error email'),
-  password: yup.string().min(8).required(),
-  // .matches(/^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/, 'Password bad'),
+  password: yup
+    .string()
+    .min(8)
+    .required()
+    .matches(/^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/, 'Password bad'),
 });
 
 export const ValidationSchemas = { signinSchema, signUpSchema };
