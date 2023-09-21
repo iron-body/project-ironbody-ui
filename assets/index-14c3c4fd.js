@@ -3115,19 +3115,20 @@ transition: transform 0.3s;
   height: 42px;
   width: 151px;
 
-    @media ${R.tablet} {
-     padding: 14px 32px;
-  color: #efede8;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  border: none;
-  border-radius: 12px;
-  background: #e6533c;
-  display: flex;
-  padding: 14px 32px;
-  justify-content: center;
-  align-items: center;
+  @media ${R.tablet} {
+    padding: 14px 32px;
+    color: #efede8;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    border: none;
+    border-radius: 12px;
+    background: #e6533c;
+    display: flex;
+    padding: 14px 32px;
+    justify-content: center;
+    align-items: center;
+  }
 `,SY=A.button`
   color: #efede8;
   font-size: 16px;
@@ -3142,20 +3143,20 @@ transition: transform 0.3s;
   align-items: center;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
- @media ${R.tablet} {
-     padding: 14px 32px;
-  color: #efede8;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  border: none;
-  border-radius: 12px;
-  background: #e6533c;
-  display: flex;
-  padding: 14px 32px;
-  justify-content: center;
-  align-items: center;
-
+  @media ${R.tablet} {
+    padding: 14px 32px;
+    color: #efede8;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    border: none;
+    border-radius: 12px;
+    background: #e6533c;
+    display: flex;
+    padding: 14px 32px;
+    justify-content: center;
+    align-items: center;
+  }
 `;function kY({productCalc:e,onClose:t}){const{foodName:n,caloriesValue:r=155}=e,o=()=>{t()};return v.jsxs(v.Fragment,{children:[v.jsx(pY,{onClick:o,children:v.jsx(hY,{alt:"",src:"/project-ironbody-ui/ExitIcon.svg"})}),v.jsxs(mY,{children:[v.jsxs(gY,{children:[" ",n]}),v.jsx(vY,{})]}),v.jsxs(yY,{children:["Calories: ",v.jsx(xY,{children:r})," "]}),v.jsxs(wY,{children:[v.jsx(bY,{children:"Add to diary"}),v.jsx(SY,{onClick:o,children:"Cancel"})]})]})}const Sh=[{id:123,foodName:"Varena Grechka",calories:340,category:"Cereals",weight:100},{id:1234,foodName:"Smajena kartoshka ;)",calories:340,category:"Cereals",weight:100},{id:1235,foodName:"Buterbrod z kovbaskoy ",calories:340,category:"Cereals",weight:100},{id:1236,foodName:"Buterbrod z surom",calories:340,category:"Cereals",weight:100},{id:1237,foodName:"Rice semolina Garnets ",calories:340,category:"Cereals",weight:100},{id:1238,foodName:"Rice semolina Garnets ",calories:340,category:"Cereals",weight:100},{id:1239,foodName:"Rice semolina Garnets ",calories:340,category:"Cereals",weight:100},{id:12311,foodName:"Rice semolina Garnets ",calories:340,category:"Cereals",weight:100},{id:12312,foodName:"Rice semolina Garnets ",calories:340,category:"Cereals",weight:100},{id:12313,foodName:"Rice semolina Garnets ",calories:340,category:"Cereals",weight:100},{id:12314,foodName:"Rice semolina Garnets ",calories:340,category:"Cereals",weight:100}];function CY(){const[e,t]=S.useState(!1),[n,r]=S.useState(null),o=i=>{r(i),t(!0),console.log(i)};return v.jsxs(v.Fragment,{children:[Array.isArray(Sh)&&Sh.length>0?v.jsx(GW,{children:Sh.map(i=>v.jsx(qW,{children:v.jsx(uY,{product:i,openModal:()=>o(i)})},i.id))}):v.jsxs(v.Fragment,{children:[v.jsxs(QW,{children:[v.jsx(KW,{children:"Sorry, no results were found"})," for the product filters you selected. You may want to consider other search options to find the product you want. Our range is wide and you have the opportunity to find more options that suit your needs."]}),v.jsx(XW,{children:"Try changing the search parameters."})]}),e&&v.jsx(fY,{active:e,setActive:t,children:n&&v.jsx(kY,{productCalc:{foodName:n.foodName,calories:n.calories},onClose:()=>t(!1)})})]})}function EY(){return v.jsx(cU,{children:v.jsxs(dU,{children:[v.jsxs(pU,{children:[v.jsx(fU,{children:"Products"}),v.jsx(YW,{})]}),v.jsx(CY,{})]})})}const DY="";function OY(){const e=jl();return S.useEffect(()=>{e(Kn.refreshCurrentUser())},[e]),console.log(DY),v.jsx(U3,{children:v.jsxs(Mr,{path:"/",element:v.jsx(tM,{}),children:[v.jsx(Mr,{path:"diary",element:v.jsx(rb,{redirectTo:"/signin",component:v.jsx(f8,{})})}),v.jsx(Mr,{path:"params",element:v.jsx(rb,{redirectTo:"/signin",component:v.jsx(uU,{})})}),v.jsx(Mr,{path:"/products",element:v.jsx(EY,{})}),v.jsx(Mr,{index:!0,element:v.jsx(I8,{})}),v.jsx(Mr,{path:"signup",element:v.jsx(ob,{redirectTo:"/params",component:v.jsx(IV,{})})}),v.jsx(Mr,{path:"signin",element:v.jsx(ob,{redirectTo:"/diary",component:v.jsx(KV,{})})}),v.jsx(Mr,{path:"*",element:v.jsx(b8,{})})]})})}const PY=JC`
     body {
       margin: 0; line-height: normal;
