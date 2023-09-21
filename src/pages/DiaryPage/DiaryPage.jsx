@@ -4,22 +4,31 @@ import DayProducts from '../../components/DayProducts/DayProducts';
 import DayExercises from '../../components/DayExercises/DayExercises';
 import DayDashboard from '../../components/DayDashboard/DayDashboard';
 
-import { StyledMainContentWrapper, StyledTablesWrapper } from '../DiaryPage/DiaryPage.styled';
+import {
+  StyledMainContentWrapper,
+  StyledTablesWrapper,
+  StyledTitleContainer,
+} from '../DiaryPage/DiaryPage.styled';
 import DaySwitch from '../../components/DaySwitch/DaySwitch';
+import { useMediaQuery } from '@mui/material';
 
 const DiaryPage = () => {
+  const isTabletOrMobile = useMediaQuery('(max-width: 768px)');
   return (
     <main>
       <Container>
-        <DaySwitch />
-        <TitlePage titleText="Diary" />
-
+        <StyledTitleContainer>
+          {!isTabletOrMobile && <DaySwitch />}
+          <TitlePage titleText="Diary" />
+          {isTabletOrMobile && <DaySwitch />}
+        </StyledTitleContainer>
         <StyledMainContentWrapper>
+          {isTabletOrMobile && <DayDashboard />}
           <StyledTablesWrapper>
             <DayProducts />
             <DayExercises />
           </StyledTablesWrapper>
-          <DayDashboard />
+          {!isTabletOrMobile && <DayDashboard />}
         </StyledMainContentWrapper>
       </Container>
     </main>
