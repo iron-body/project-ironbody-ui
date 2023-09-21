@@ -17,7 +17,7 @@ const middleware = [
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['accessToken'],
 };
 
 const localStorageAuthReducer = persistReducer(authPersistConfig, authReducer);

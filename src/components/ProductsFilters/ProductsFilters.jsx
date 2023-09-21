@@ -6,6 +6,11 @@ import {
   SearchField,
   FormGroup,
   FormTitle,
+  SearchInputButton,
+  SearchIconButton,
+  SearchFieldContainer,
+  EraseInputButton,
+  MobInpCont,
 } from './ProductsFilters.styled';
 
 import { Formik, Form, Field } from 'formik';
@@ -48,7 +53,7 @@ export default function ProductsFilters() {
   const initialValues = {
     searchInput: '',
     categories: null,
-    recomended: null, 
+    recomended: null,
   };
 
   const handleSubmit = values => {
@@ -61,14 +66,27 @@ export default function ProductsFilters() {
         <FormTitle>Filter</FormTitle>
         <FilterContainer>
           <FormGroup>
-            <SearchField
-              type="text"
-              id="searchInput"
-              name="searchInput"
-              className="form-control"
-              placeholder="Search"
-            />
+            <SearchFieldContainer>
+              <SearchField
+                type="text"
+                id="searchInput"
+                name="searchInput"
+                className="form-control"
+                placeholder="Search"
+              />
+              <EraseInputButton>
+                <SearchIconButton
+                  alt=""
+                  src="/project-ironbody-ui/Erase.svg"
+                ></SearchIconButton>
+              </EraseInputButton>
+              <SearchInputButton>
+                <SearchIconButton alt="" src="/project-ironbody-ui/search.svg"></SearchIconButton>
+              </SearchInputButton>
+            </SearchFieldContainer>
           </FormGroup>
+
+          <MobInpCont>
           <FormGroup>
             <Field
               name="categories"
@@ -83,6 +101,7 @@ export default function ProductsFilters() {
               )}
             />
           </FormGroup>
+
           <FormGroup>
             <Field
               name="recomended"
@@ -95,7 +114,8 @@ export default function ProductsFilters() {
                 />
               )}
             />
-          </FormGroup>
+            </FormGroup>
+            </MobInpCont>
         </FilterContainer>
       </Form>
     </Formik>

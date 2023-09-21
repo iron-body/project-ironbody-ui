@@ -14,8 +14,12 @@ import {
   ProductWrapper
 } from './Product.styled';
 
-export default function Product({ product }) {
+export default function Product({ product, openModal }) {
   const { foodName, calories, category, weight } = product;
+
+    const handleButtonClick = () => {
+    openModal();
+  };
 
   return (
     <>
@@ -25,14 +29,14 @@ export default function Product({ product }) {
           <RecomendedInfo>
             <RecomendedMarker />
             <RecomendedTitle> Recomended </RecomendedTitle>
-            <ButtonItem>
+            <ButtonItem onClick={handleButtonClick}>
               Add
-              <ButtonIcon alt="" src="/arrow.svg" />
+              <ButtonIcon alt="" src="/project-ironbody-ui/arrow.svg" />
             </ButtonItem>
           </RecomendedInfo>
         </NavCard>
         <FoodName>
-          <FoodIcon alt="" src="/product-icon.svg" /> {foodName}
+          <FoodIcon alt="" src="/project-ironbody-ui/product-icon.svg" /> {foodName}
         </FoodName>
         <FoodParams>
           <NameParams>
@@ -46,6 +50,8 @@ export default function Product({ product }) {
           </NameParams>
         </FoodParams>
       </ProductWrapper>
+
+      
     </>
   );
 }
