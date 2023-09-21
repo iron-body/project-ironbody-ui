@@ -6,7 +6,7 @@ const BasicModalWindow = ({ active, setActive, children }) => {
   return (
     <ModalContainer
       className={active ? 'modal active' : 'modal'}
-      // onClick={() => setActive(false)}
+      onClick={() => setActive(false)}
     >
       <ModalContent
         className={active ? 'modal__content active' : 'modal__content'}
