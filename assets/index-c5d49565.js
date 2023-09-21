@@ -2541,7 +2541,7 @@ attempted value: ${a}
     overflow: hidden;
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);
-    background-image: url('public/side-view-people-training-gym-2x.png');
+    background-image: url('/project-ironbody-ui/side-view-people-training-gym-2x.png');
     background-repeat: no-repeat;
     background-position: 981px 67px;
     background-size: 438px;
