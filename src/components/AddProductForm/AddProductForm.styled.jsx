@@ -154,7 +154,6 @@ export const CancelBtn = styled.button`
   align-items: center;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
-
   @media ${device.tablet} {
     padding: 14px 32px;
     color: #efede8;
