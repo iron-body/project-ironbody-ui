@@ -77,11 +77,11 @@ export default function ProductsFilters() {
               <EraseInputButton>
                 <SearchIconButton
                   alt=""
-                  src="/public/Erase.svg"
+                  src="/project-ironbody-ui/Erase.svg"
                 ></SearchIconButton>
               </EraseInputButton>
               <SearchInputButton>
-                <SearchIconButton alt="" src="/search.svg"></SearchIconButton>
+                <SearchIconButton alt="" src="/project-ironbody-ui/search.svg"></SearchIconButton>
               </SearchInputButton>
             </SearchFieldContainer>
           </FormGroup>

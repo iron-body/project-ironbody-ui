@@ -109,19 +109,24 @@ export const SearchInputButton = styled.button`
 `;
 
 export const EraseInputButton = styled.button`
-  display: none;
+  width: 18px;
+  height: 18px;
+  display: block;
+  position: absolute;
+  border: none;
+  background: inherit;
+  top: 15px;
+  right: 26px;
+  padding: 0;
 
   @media ${device.tablet} {
-    display: none;
+    top: 17px;
+    right: 40px;
   }
 
   @media ${device.desktop} {
-    position: absolute;
-    border: none;
-    background: inherit;
     top: 17px;
-    right: 16px;
-    padding: 0;
+    right: 40px;
   }
 `;
 

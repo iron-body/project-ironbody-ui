@@ -31,12 +31,12 @@ export default function Product({ product, openModal }) {
             <RecomendedTitle> Recomended </RecomendedTitle>
             <ButtonItem onClick={handleButtonClick}>
               Add
-              <ButtonIcon alt="" src="/arrow.svg" />
+              <ButtonIcon alt="" src="/project-ironbody-ui/arrow.svg" />
             </ButtonItem>
           </RecomendedInfo>
         </NavCard>
         <FoodName>
-          <FoodIcon alt="" src="/product-icon.svg" /> {foodName}
+          <FoodIcon alt="" src="/project-ironbody-ui/product-icon.svg" /> {foodName}
         </FoodName>
         <FoodParams>
           <NameParams>
