@@ -38,9 +38,9 @@ export const SignInForm = () => {
           password: '',
         }}
         onSubmit={async values => {
-          await new Promise(r => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
-          console.log(values);
+          // await new Promise(r => setTimeout(r, 500));
+          // alert(JSON.stringify(values, null, 2));
+          // console.log(values);
           const { email, password } = values;
           try {
             dispatch(authOperations.login({ email, password }));
