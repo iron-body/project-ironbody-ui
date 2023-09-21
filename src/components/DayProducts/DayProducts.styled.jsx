@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledWrapper = styled.div`
@@ -23,7 +24,7 @@ export const StyledTitle = styled.h2`
   font-size: 14px;
   line-height: 1.2;
 `;
-export const StyledLink = styled.a`
+export const StyledLink = styled(Link)`
   color: #e6533c;
   font-size: 16px;
   font-weight: 500;
