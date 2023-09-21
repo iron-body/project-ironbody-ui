@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  valueIconVector: '',
+  valueIconVector: '#e6533c',
 };
 
 export const headerSlice = createSlice({
