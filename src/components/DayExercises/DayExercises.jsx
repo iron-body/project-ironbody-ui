@@ -14,7 +14,7 @@ const DayExercises = () => {
     <StyledWrapper>
       <StyledTitleWrapper>
         <StyledTitle>Exercises</StyledTitle>
-        <StyledLink href="/exercises">Add exercises &rarr;</StyledLink>
+        <StyledLink to="/exercises">Add exercises &rarr;</StyledLink>
       </StyledTitleWrapper>
       {!(<ExercisesTable />) ? (
         <StyledNoFoundText>Not found products</StyledNoFoundText>
