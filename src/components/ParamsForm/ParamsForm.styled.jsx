@@ -71,6 +71,10 @@ export const Input = styled.input`
   &:valid {
     border-color: var(--orange);
   }
+
+  &[id='error'] {
+    border: 1px solid #d80027;
+  }
 `;
 
 export const Label = styled.label`
@@ -245,5 +249,36 @@ export const SubmitBtn = styled.button`
     gap: 10px;
 
     font-size: var(--font-size-xl);
+  }
+`;
+
+export const BackBtn = styled.button`
+  margin-right: 16px;
+  padding: 8px 0px 8px 26px;
+  background-color: var(--black);
+  background: url('/back-array.svg') no-repeat left;
+  border-color: transparent;
+  color: var(--color-whitesmoke-100);
+  font-family: var(--headline-style-mobile-h1);
+  font-size: var(--font-size-xm);
+  line-height: 1.3;
+
+  @media ${device.tablet} {
+    font-size: var(--font-size-base);
+  }
+`;
+
+export const NextBtn = styled.button`
+  padding: 8px 26px 8px 0px;
+  background-color: var(--black);
+  background: url('/next-array.svg') no-repeat right;
+  border-color: transparent;
+  color: var(--white);
+  font-family: var(--headline-style-mobile-h1);
+  font-size: var(--font-size-xm);
+  line-height: 1.3;
+
+  @media ${device.tablet} {
+    font-size: var(--font-size-base);
   }
 `;

@@ -32,17 +32,22 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
+        <Route path="/params" element={<ParamsPage />} />
         {/* Comment bellow line if you uncomment private route */}
         {/* <Route path="/diary" element={<DiaryPage />} /> */}
         {/* comment below for unuse automatic redirect if user already logined */}
         <Route
           path="diary"
-          element={<PrivateRoute redirectTo="/signin" component={<DiaryPage />} />}
+          element={
+            <PrivateRoute redirectTo="/signin" component={<DiaryPage />} />
+          }
         />
         {/* <Route path="/params" element={<ParamsPage />} /> */}
         <Route
           path="params"
-          element={<PrivateRoute redirectTo="/signin" component={<ParamsPage />} />}
+          element={
+            <PrivateRoute redirectTo="/signin" component={<ParamsPage />} />
+          }
         />
 
         <Route path="/products" element={<ProductsPage />} />
@@ -50,14 +55,18 @@ function App() {
         {/* <Route path="signup" element={<SignUpPage />} /> */}
         <Route
           path="signup"
-          element={<RestrictedRoute redirectTo="/params" component={<SignUpPage />} />}
+          element={
+            <RestrictedRoute redirectTo="/params" component={<SignUpPage />} />
+          }
         />
         {/* Comment bellow line if you uncomment private route */}
         {/* <Route path="signin" element={<SignInPage />} /> */}
         {/* comment below for unuse redirect after succesfull authorization to Diary Page after login */}
         <Route
           path="signin"
-          element={<RestrictedRoute redirectTo="/diary" component={<SignInPage />} />}
+          element={
+            <RestrictedRoute redirectTo="/diary" component={<SignInPage />} />
+          }
         />
         <Route path="*" element={<ErrorPage />} />
       </Route>
