@@ -17,9 +17,16 @@ let signinSchema = yup.object().shape({
     .string()
     .email()
     .required()
-    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Error email'),
-  password: yup.string().min(6).required(),
-  // .matches(/^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/, 'Password bad'),
+    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Email must be like "ttt@ttt.com"'),
+  password: yup
+    .string()
+    .min(7)
+    .max(7)
+    .required()
+    .matches(
+      /^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/,
+      'Password must be 7 characters like "ssssss1"',
+    ),
 });
 
 let signUpSchema = yup.object().shape({
@@ -28,9 +35,16 @@ let signUpSchema = yup.object().shape({
     .string()
     .email()
     .required()
-    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Error email'),
-  password: yup.string().min(6).required(),
-  // .matches(/^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/, 'Password bad'),
+    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Email must be like "ttt@ttt.com"'),
+  password: yup
+    .string()
+    .min(7)
+    .max(7)
+    .required()
+    .matches(
+      /^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/,
+      'Password must be 7 characters like "ssssss1"',
+    ),
 });
 
 export const ValidationSchemas = { signinSchema, signUpSchema };
