@@ -15,12 +15,12 @@ import {
 
 import { Formik, Form, Field } from 'formik';
 import Select from 'react-select';
+// import {initialValue} from '../../redux/filterSlice'
 
-// const initialValues = {
-//   searchInput: '',
-//   dropdown1: null,
-//   dropdown2: null,
-// };
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { getFilterValue } from '../../redux/selectors';
+import { updateFilter } from '../../redux/filterSlice';
 
 const optionsCategories = [
   { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
@@ -50,18 +50,19 @@ const optionsRecomended = [
 ];
 
 export default function ProductsFilters() {
-  const initialValues = {
-    searchInput: '',
-    categories: null,
-    recomended: null,
-  };
+  const dispatch = useDispatch();
+  const filterValue = useSelector(getFilterValue);
 
-  const handleSubmit = values => {
-    console.log('Form submitted with values:', values);
+  const onSearchValue = value => {
+    dispatch(updateFilter(value));
+    console.log(filterValue);
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={{ searchInputProduct: filterValue }}
+      onSubmit={onSearchValue}
+    >
       <Form>
         <FormTitle>Filter</FormTitle>
         <FilterContainer>
@@ -69,9 +70,7 @@ export default function ProductsFilters() {
             <SearchFieldContainer>
               <SearchField
                 type="text"
-                id="searchInput"
-                name="searchInput"
-                className="form-control"
+                name="searchInputProduct"
                 placeholder="Search"
               />
               <EraseInputButton>
@@ -81,41 +80,44 @@ export default function ProductsFilters() {
                 ></SearchIconButton>
               </EraseInputButton>
               <SearchInputButton>
-                <SearchIconButton alt="" src="/project-ironbody-ui/search.svg"></SearchIconButton>
+                <SearchIconButton
+                  alt=""
+                  src="/project-ironbody-ui/search.svg"
+                ></SearchIconButton>
               </SearchInputButton>
             </SearchFieldContainer>
           </FormGroup>
 
           <MobInpCont>
-          <FormGroup>
-            <Field
-              name="categories"
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  options={optionsCategories}
-                  isSearchable={false}
-                  styles={categoriesStyles}
-                  placeholder="Categories"
-                />
-              )}
-            />
-          </FormGroup>
-
-          <FormGroup>
-            <Field
-              name="recomended"
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  options={optionsRecomended}
-                  isSearchable={false}
-                  styles={recomendedStyles}
-                />
-              )}
-            />
+            <FormGroup>
+              <Field
+                name="categories"
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={optionsCategories}
+                    isSearchable={false}
+                    styles={categoriesStyles}
+                    placeholder="Categories"
+                  />
+                )}
+              />
             </FormGroup>
-            </MobInpCont>
+
+            <FormGroup>
+              <Field
+                name="recomended"
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={optionsRecomended}
+                    isSearchable={false}
+                    styles={recomendedStyles}
+                  />
+                )}
+              />
+            </FormGroup>
+          </MobInpCont>
         </FilterContainer>
       </Form>
     </Formik>
