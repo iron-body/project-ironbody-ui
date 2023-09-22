@@ -22,6 +22,9 @@ const register = createAsyncThunk('auth/register', async (credentials, thunkAPI)
     token.set(data.accessToken);
     return data;
   } catch (error) {
+    Notify.failure(
+      `Register Error with status code ${error.response.status} and message "${error.response.data.message}"`,
+    );
     console.log(error);
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -36,7 +39,10 @@ const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     Notify.success('Login Success');
     return data;
   } catch (error) {
-    Notify.error('Login Error');
+    Notify.failure(
+      `Login Error with status code ${error.response.status} and message "${error.response.data.message}"`,
+    );
+
     console.log(error);
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -48,7 +54,7 @@ const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     Notify.success('Logout Succesfull');
     token.unset();
   } catch (error) {
-    Notify.failure('Unable to logout');
+    Notify.failure(`Unable to logout. Error message is "${error.message}"`);
     console.log(error);
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -65,6 +71,8 @@ const refreshCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
     const response = await axios.get('/users/current');
     return response.data;
   } catch (error) {
+    console.log(error);
+    Notify.failure(`Unable to refresh. Error message is "${error.message}"`);
     thunkAPI.rejectWithValue(error.message);
   }
 });
