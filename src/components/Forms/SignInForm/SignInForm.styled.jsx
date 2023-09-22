@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Field, Form } from 'formik';
+import { Field, Form, isString } from 'formik';
 import { device } from '../../../Constants';
 
 export const SignInFormStyled = styled.div`
@@ -111,8 +111,37 @@ export const FieldSignInStyled = styled(Field)`
   align-items: center;
   background-color: inherit;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  /* border: 1px solid rgba(239, 237, 232, 0.3); */
+  /* border: ${props =>
+    props.erroremail === undefined && props.touchedemail?.email === true
+      ? '1px solid #3CBF61'
+      : '1px solid #D80027'}; */
+
+  border: ${props => {
+    if (props.erroremail === undefined && props.touchedemail?.email === true) {
+      return '1px solid #3CBF61';
+    }
+    if (props.erroremail && props.touchedemail?.email === true) {
+      return '1px solid #D80027';
+    }
+    if (props.errorpassword === undefined && props.touchedpassword?.password === true) {
+      return '1px solid #3CBF61';
+    }
+
+    console.log('props :>> ', props);
+    console.log('props.touchpassword?.password :>> ', props.touchedpassword?.password);
+    if (props.touchedpassword?.password === true) {
+      return '1px solid #D80027';
+    }
+    return '1px solid rgba(239, 237, 232, 0.3)';
+  }};
+
   color: var(--white);
+
+  &:focus,
+  &:hover {
+    border: 1px solid #e6533c;
+  }
 
   @media ${device.mobile} {
     width: ${335 - 16}px;

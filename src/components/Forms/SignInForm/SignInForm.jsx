@@ -20,7 +20,6 @@ import { ValidationSchemas } from '../../FormValidation/ValidationSchemas';
 
 import spriteIconsRemix from '../../../../remixicon.symbol.svg';
 import { ErrorValidateSvgStyled, ValidateStatusErrorTextStyled } from '../commonSignInForm.styled';
-// import sprite from '../../../icons.svg';
 
 export const SignInForm = () => {
   const dispatch = useDispatch();
@@ -38,9 +37,6 @@ export const SignInForm = () => {
           password: '',
         }}
         onSubmit={async values => {
-          // await new Promise(r => setTimeout(r, 500));
-          // alert(JSON.stringify(values, null, 2));
-          // console.log(values);
           const { email, password } = values;
           try {
             dispatch(authOperations.login({ email, password }));
@@ -50,8 +46,56 @@ export const SignInForm = () => {
         }}
         validationSchema={ValidationSchemas.signinSchema}
       >
-        <FormSignInStyled>
+        {({ ...props }) => (
+          <FormSignInStyled>
+            <FieldSignInStyled
+              id="email"
+              name="email"
+              placeholder="Email"
+              type="email"
+              erroremail={props.errors.email}
+              touchedemail={props.touched}
+            />
+            <ErrorMessage
+              name="email"
+              render={message => (
+                <ValidateStatusEmailBlockStyled>
+                  <ErrorValidateSvgStyled>
+                    <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                  </ErrorValidateSvgStyled>
+                  {nbsp}
+                  <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
+                </ValidateStatusEmailBlockStyled>
+              )}
+            />
+
+            <FieldSignInStyled
+              id="password"
+              name="password"
+              placeholder="Password"
+              type="password"
+              errorpassword={props.errors.password}
+              touchedpassword={props.touched}
+            />
+            <ErrorMessage
+              name="password"
+              render={message => (
+                <ValidateStatusPasswordBlockStyled>
+                  <ErrorValidateSvgStyled>
+                    <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                  </ErrorValidateSvgStyled>
+                  {nbsp}
+                  <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
+                </ValidateStatusPasswordBlockStyled>
+              )}
+            />
+            <BtnSignInForm />
+          </FormSignInStyled>
+        )}
+        {/* 
+   <FormSignInStyled>
           <FieldSignInStyled id="email" name="email" placeholder="Email" type="email" />
+                      {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
           <ErrorMessage
             name="email"
@@ -70,6 +114,7 @@ export const SignInForm = () => {
           />
 
           <FieldSignInStyled id="password" name="password" placeholder="Password" type="password" />
+                    {errors.name && touched.name ? <div>{errors.name}</div> : null}
           <ErrorMessage
             name="password"
             render={message => (
@@ -86,7 +131,8 @@ export const SignInForm = () => {
             )}
           />
           <BtnSignInForm />
-        </FormSignInStyled>
+        </FormSignInStyled> 
+        */}
       </Formik>
       <SignUpBlock />
     </SignInFormStyled>
