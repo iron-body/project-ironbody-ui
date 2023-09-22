@@ -4,6 +4,9 @@ import DiaryPage from './pages/DiaryPage/DiaryPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { WelcomePage } from './pages/WelcomePage/WelcomePage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
+import  ExercisesPage   from './pages/ExercicesPage/ExercicesPage';
+import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
+import { ExercisesList } from './components/ExercisesList/ExercisesList';
 import { SignInPage } from './pages/SignInPage/SignInPage';
 import { useDispatch } from 'react-redux';
 // import React, { lazy, useEffect } from 'react';
@@ -51,6 +54,17 @@ function App() {
         />
 
         <Route path="/products" element={<ProductsPage />} />
+        <Route path="/exercises" element={<ExercisesPage />}/>
+        <Route
+        path="/exercises/:subCategories"
+        element={<ExercisesSubcategoriesList />}
+      ></Route>
+
+      <Route
+        path="/exercises/:subCategories/:name"
+        element={<ExercisesList />}
+      />
+      
         <Route index element={<WelcomePage />} />
         {/* <Route path="signup" element={<SignUpPage />} /> */}
         <Route

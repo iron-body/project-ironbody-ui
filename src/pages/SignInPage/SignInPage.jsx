@@ -1,6 +1,6 @@
 import { CaloriesBlock } from '../../components/CaloriesBlock/CaloriesBlock';
 import { Root } from '../../components/CommonStyled/Common.styled';
-import { SignInForm } from '../../components/SignInForm/SignInForm';
+import { SignInForm } from '../../components/Forms/SignInForm/SignInForm';
 import { TutorialBlock } from '../../components/TutorialBlock/TutorialBlock';
 
 export const SignInPage = () => {

@@ -2,7 +2,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Notify } from 'notiflix';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+// axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+// axios.defaults.baseURL = 'http://localhost:3030/api/';
+axios.defaults.baseURL = 'https://iron-body-project-backend.onrender.com/api/';
 
 const token = {
   set(token) {
@@ -15,8 +17,9 @@ const token = {
 
 const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
   try {
-    const { data } = await axios.post('users/signup', credentials);
-    token.set(data.token);
+    const { data } = await axios.post('users/register', credentials);
+
+    token.set(data.accessToken);
     return data;
   } catch (error) {
     console.log(error);
@@ -27,7 +30,9 @@ const register = createAsyncThunk('auth/register', async (credentials, thunkAPI)
 const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
     const { data } = await axios.post('/users/login', credentials);
-    token.set(data.token);
+
+    token.set(data.accessToken);
+
     Notify.success('Login Success');
     return data;
   } catch (error) {
@@ -50,7 +55,7 @@ const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 });
 const refreshCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
   const state = thunkAPI.getState();
-  const persistedToken = state.auth.token;
+  const persistedToken = state.auth.accessToken;
 
   if (!persistedToken) return thunkAPI.rejectWithValue();
 

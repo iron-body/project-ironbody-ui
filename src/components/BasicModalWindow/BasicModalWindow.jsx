@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {ModalContainer, ModalContent} from './BasicModalWindow.styled';
+import { ModalContainer, ModalContent } from './BasicModalWindow.styled';
 
 const BasicModalWindow = ({ active, setActive, children }) => {
   return (
@@ -10,11 +10,11 @@ const BasicModalWindow = ({ active, setActive, children }) => {
     >
       <ModalContent
         className={active ? 'modal__content active' : 'modal__content'}
-        onAuxClick={e => e.stopPropagation}
+        onClick={e => e.stopPropagation}
       >
         {children}
-        </ModalContent>
-        </ModalContainer>
+      </ModalContent>
+    </ModalContainer>
   );
 };
 

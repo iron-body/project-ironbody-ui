@@ -9,8 +9,6 @@ export const Logo = () => {
   const navigate = useNavigate();
   const stateColorSVGVector = useSelector(state => state.header.valueIconVector);
 
-  console.log('stateColorSVGVector Logopage:>> ', stateColorSVGVector);
-
   return (
     <LogoStyled
       onClick={() => {

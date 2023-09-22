@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { Field, Form } from 'formik';
-import { device } from '../../Constants';
+import { device } from '../../../Constants';
 
-export const SignupFormStyled = styled.div`
+export const SignInFormStyled = styled.div`
   position: absolute;
   top: 127px;
   left: 20px;
@@ -30,7 +30,7 @@ export const SignupFormStyled = styled.div`
   }
 `;
 
-export const SignUpH1Styled = styled.h1`
+export const SignInH1Styled = styled.h1`
   display: inline-block;
   margin-bottom: 14px;
   color: #efede8;
@@ -54,7 +54,7 @@ export const SignUpH1Styled = styled.h1`
     ${'' /* margin-bottom: 16px; */}
   }
 `;
-export const SignUpPStyled = styled.p`
+export const SignInPStyled = styled.p`
   color: rgba(239, 237, 232, 0.3);
   font-family: Roboto;
   font-size: 14px;
@@ -86,22 +86,22 @@ export const SignUpPStyled = styled.p`
   }
 `;
 
-export const FormStyled = styled(Form)`
+export const FormSignInStyled = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 18px;
   @media ${device.mobile} {
     position: absolute;
-    top: 124px;
+    top: 106px;
   }
   @media ${device.tablet} {
     position: absolute;
     gap: 20px;
-    top: 140px;
+    top: 116px;
   }
 `;
 
-export const FieldStyled = styled(Field)`
+export const FieldSignInStyled = styled(Field)`
   display: flex;
   padding: 0;
   padding-left: 14px;
@@ -139,4 +139,16 @@ export const FieldStyled = styled(Field)`
     font-weight: 400;
     line-height: 24px; /* 150% */
   }
+`;
+
+export const ValidateStatusPasswordBlockStyled = styled.div`
+  position: absolute;
+  top: 126px;
+  display: flex;
+`;
+
+export const ValidateStatusEmailBlockStyled = styled.div`
+  position: absolute;
+  top: 54px;
+  display: flex;
 `;
