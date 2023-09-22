@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // import React from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import {
@@ -19,7 +20,12 @@ import { Notify } from 'notiflix';
 import { ValidationSchemas } from '../../FormValidation/ValidationSchemas';
 
 import spriteIconsRemix from '../../../../remixicon.symbol.svg';
-import { ErrorValidateSvgStyled, ValidateStatusErrorTextStyled } from '../commonSignInForm.styled';
+import {
+  ErrorValidateSvgStyled,
+  SuccessValidateSvgStyled,
+  ValidateStatusErrorTextStyled,
+  ValidateStatusSuccessTextStyled,
+} from '../commonSignInForm.styled';
 
 export const SignInForm = () => {
   const dispatch = useDispatch();
@@ -56,6 +62,19 @@ export const SignInForm = () => {
               erroremail={props.errors.email}
               touchedemail={props.touched}
             />
+
+            {console.log('props', props)}
+
+            {props.errors.email === undefined && props.touched?.email === true ? (
+              <ValidateStatusEmailBlockStyled>
+                <SuccessValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </SuccessValidateSvgStyled>
+                {nbsp}
+                <ValidateStatusSuccessTextStyled>Success Email</ValidateStatusSuccessTextStyled>
+              </ValidateStatusEmailBlockStyled>
+            ) : null}
+
             <ErrorMessage
               name="email"
               render={message => (
@@ -89,6 +108,17 @@ export const SignInForm = () => {
                 </ValidateStatusPasswordBlockStyled>
               )}
             />
+
+            {props.errors.password === undefined && props.touched?.password === true ? (
+              <ValidateStatusPasswordBlockStyled>
+                <SuccessValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </SuccessValidateSvgStyled>
+                {nbsp}
+                <ValidateStatusSuccessTextStyled>Success password</ValidateStatusSuccessTextStyled>
+              </ValidateStatusPasswordBlockStyled>
+            ) : null}
+
             <BtnSignInForm />
           </FormSignInStyled>
         )}

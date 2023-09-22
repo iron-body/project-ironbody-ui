@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Field, Form, isString } from 'formik';
+import { Field, Form } from 'formik';
 import { device } from '../../../Constants';
 
 export const SignInFormStyled = styled.div`
@@ -128,8 +128,8 @@ export const FieldSignInStyled = styled(Field)`
       return '1px solid #3CBF61';
     }
 
-    console.log('props :>> ', props);
-    console.log('props.touchpassword?.password :>> ', props.touchedpassword?.password);
+    // console.log('props :>> ', props);
+    // console.log('props.touchpassword?.password :>> ', props.touchedpassword?.password);
     if (props.touchedpassword?.password === true) {
       return '1px solid #D80027';
     }
