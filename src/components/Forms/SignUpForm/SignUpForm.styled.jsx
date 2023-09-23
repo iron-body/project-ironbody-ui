@@ -111,7 +111,32 @@ export const FieldSignUpStyled = styled(Field)`
   align-items: center;
   background-color: inherit;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  /* border: 1px solid rgba(239, 237, 232, 0.3); */
+
+  border: ${props => {
+    if (props.errorname === undefined && props.touchedname?.name === true) {
+      return '1px solid #3CBF61';
+    }
+    if (props.errorname && props.touchedname?.name === true) {
+      return '1px solid #D80027';
+    }
+    if (props.erroremail === undefined && props.touchedemail?.email === true) {
+      return '1px solid #3CBF61';
+    }
+    if (props.erroremail && props.touchedemail?.email === true) {
+      return '1px solid #D80027';
+    }
+    if (props.errorpassword === undefined && props.touchedpassword?.password === true) {
+      return '1px solid #3CBF61';
+    }
+
+    // console.log('props :>> ', props);
+    // console.log('props.touchpassword?.password :>> ', props.touchedpassword?.password);
+    if (props.touchedpassword?.password === true) {
+      return '1px solid #D80027';
+    }
+    return '1px solid rgba(239, 237, 232, 0.3)';
+  }};
   color: var(--white);
 
   @media ${device.mobile} {

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // import React from 'react';
 import { ErrorMessage, Formik } from 'formik';
 import { SignInBlock } from '../../SignInBlock/SignInBlock';
@@ -17,7 +18,12 @@ import { ValidationSchemas } from '../../FormValidation/ValidationSchemas';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../../redux/auth/authOperations';
 import { Notify } from 'notiflix';
-import { ErrorValidateSvgStyled, ValidateStatusErrorTextStyled } from '../commonSignInForm.styled';
+import {
+  ErrorValidateSvgStyled,
+  SuccessValidateSvgStyled,
+  ValidateStatusErrorTextStyled,
+  ValidateStatusSuccessTextStyled,
+} from '../commonSignInForm.styled';
 import spriteIconsRemix from '../../../../remixicon.symbol.svg';
 
 export const SignupForm = () => {
@@ -50,63 +56,116 @@ export const SignupForm = () => {
         }}
         validationSchema={ValidationSchemas.signUpSchema}
       >
-        <FormSignUpStyled>
-          <FieldSignUpStyled id="name" name="name" placeholder="Name" type="text" />
+        {({ ...props }) => (
+          <FormSignUpStyled>
+            <FieldSignUpStyled
+              id="name"
+              name="name"
+              placeholder="Name"
+              type="text"
+              errorname={props.errors.name}
+              touchedname={props.touched}
+            />
 
-          <ErrorMessage
-            name="name"
-            render={message => (
+            {props.errors.name === undefined && props.touched?.name === true ? (
               <ValidateStatusNameBlockStyled>
-                <ErrorValidateSvgStyled>
-                  <use
-                    href={`${spriteIconsRemix}#ri-checkbox-circle-fill`}
-                    // style={{ width: '10px', height: '10px' }}
-                  />
-                </ErrorValidateSvgStyled>
+                <SuccessValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </SuccessValidateSvgStyled>
                 {nbsp}
-                <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
+                <ValidateStatusSuccessTextStyled>Success name</ValidateStatusSuccessTextStyled>
               </ValidateStatusNameBlockStyled>
-            )}
-          />
+            ) : null}
 
-          <FieldSignUpStyled id="email" name="email" placeholder="Email" type="email" />
+            <ErrorMessage
+              name="name"
+              render={message => (
+                <ValidateStatusNameBlockStyled>
+                  <ErrorValidateSvgStyled>
+                    <use
+                      href={`${spriteIconsRemix}#ri-checkbox-circle-fill`}
+                      // style={{ width: '10px', height: '10px' }}
+                    />
+                  </ErrorValidateSvgStyled>
+                  {nbsp}
+                  <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
+                </ValidateStatusNameBlockStyled>
+              )}
+            />
 
-          <ErrorMessage
-            name="email"
-            render={message => (
+            <FieldSignUpStyled
+              id="email"
+              name="email"
+              placeholder="Email"
+              type="email"
+              erroremail={props.errors.email}
+              touchedemail={props.touched}
+            />
+
+            {props.errors.email === undefined && props.touched?.email === true ? (
               <ValidateStatusEmailBlockStyled>
-                <ErrorValidateSvgStyled>
-                  <use
-                    href={`${spriteIconsRemix}#ri-checkbox-circle-fill`}
-                    // style={{ width: '10px', height: '10px' }}
-                  />
-                </ErrorValidateSvgStyled>
+                <SuccessValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </SuccessValidateSvgStyled>
                 {nbsp}
-                <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
+                <ValidateStatusSuccessTextStyled>Success Email</ValidateStatusSuccessTextStyled>
               </ValidateStatusEmailBlockStyled>
-            )}
-          />
+            ) : null}
 
-          <FieldSignUpStyled id="password" name="password" placeholder="Password" type="password" />
+            <ErrorMessage
+              name="email"
+              render={message => (
+                <ValidateStatusEmailBlockStyled>
+                  <ErrorValidateSvgStyled>
+                    <use
+                      href={`${spriteIconsRemix}#ri-checkbox-circle-fill`}
+                      // style={{ width: '10px', height: '10px' }}
+                    />
+                  </ErrorValidateSvgStyled>
+                  {nbsp}
+                  <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
+                </ValidateStatusEmailBlockStyled>
+              )}
+            />
 
-          <ErrorMessage
-            name="password"
-            render={message => (
+            <FieldSignUpStyled
+              id="password"
+              name="password"
+              placeholder="Password"
+              type="password"
+              errorpassword={props.errors.password}
+              touchedpassword={props.touched}
+            />
+
+            {props.errors.password === undefined && props.touched?.password === true ? (
               <ValidateStatusPasswordBlockStyled>
-                <ErrorValidateSvgStyled>
-                  <use
-                    href={`${spriteIconsRemix}#ri-checkbox-circle-fill`}
-                    // style={{ width: '10px', height: '10px' }}
-                  />
-                </ErrorValidateSvgStyled>
+                <SuccessValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </SuccessValidateSvgStyled>
                 {nbsp}
-                <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
+                <ValidateStatusSuccessTextStyled>Success password</ValidateStatusSuccessTextStyled>
               </ValidateStatusPasswordBlockStyled>
-            )}
-          />
+            ) : null}
 
-          <BtnSignUpForm />
-        </FormSignUpStyled>
+            <ErrorMessage
+              name="password"
+              render={message => (
+                <ValidateStatusPasswordBlockStyled>
+                  <ErrorValidateSvgStyled>
+                    <use
+                      href={`${spriteIconsRemix}#ri-checkbox-circle-fill`}
+                      // style={{ width: '10px', height: '10px' }}
+                    />
+                  </ErrorValidateSvgStyled>
+                  {nbsp}
+                  <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
+                </ValidateStatusPasswordBlockStyled>
+              )}
+            />
+
+            <BtnSignUpForm />
+          </FormSignUpStyled>
+        )}
       </Formik>
       <SignInBlock />
     </SignupFormStyled>
