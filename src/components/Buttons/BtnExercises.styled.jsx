@@ -24,7 +24,7 @@ export const BtnStyled = styled(Link)`
     display: flex;
     flex-direction: row;
     margin-left:200px;
-    margin-top: 180px;
+    margin-top: 140px;
 
     padding: 15px 40px;
     align-items: center;

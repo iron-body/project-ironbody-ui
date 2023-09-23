@@ -15,7 +15,7 @@ import {
   ExerciseParams,
   NameParams,
   ParamsValue,
-  FoodIcon,
+  ExerciseIcon,
 } from './ExercisesItem.styled';
 
 
@@ -56,7 +56,7 @@ export const ExercisesItem = ({
         />
       </BasicModalWindow>
       <ExerciseName>
-      <FoodIcon alt="" src="/product-icon.svg" /> {exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
+      <ExerciseIcon alt="" src="/product-icon.svg"/> {exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
       </ExerciseName>
       <ExerciseParams>
         <NameParams>

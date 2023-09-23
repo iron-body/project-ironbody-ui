@@ -1,12 +1,13 @@
-import { StyledLink, Ul, Container} from './ExercisesSubcategoriesList.styled';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
+import { StyledLink, Ul, Container} from './ExercisesSubcategoriesList.styled';
 import { ExercisesSubcategoriesItem } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
-import filters from '../../filters.json';
+// import filters from '../../filters.json';
 
 export const ExercisesSubcategoriesList = () => {
   const { subCategories } = useParams();
-  const categorie = filters.filter(
+  const exerciseFiltered = useSelector(state => state.exercises.filtered);
+  const categorie = exerciseFiltered.filter(
     categorie => categorie.filter === subCategories,
   );
   return (
