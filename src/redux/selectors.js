@@ -3,7 +3,7 @@ export const getExercises = state => state.exercises.items;
 
 export const getExerciseFiltered = state => state.exercises.filtered;
 
-export const getIsLoading = state => state.exercises.isLoading;
+export const getLoading = state => state.exercises.isLoading;
 
 export const getError = state => state.exercises.error;
 

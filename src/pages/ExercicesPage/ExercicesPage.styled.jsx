@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { device } from '../../Constants';
 import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
@@ -25,12 +26,19 @@ export const Container = styled.div`
     padding-right: 32px;
   }
 ;
-  @media screen and (min-width: 1440px) {
-    width: 1440px;
-    padding-left: 96px;
-    padding-right: 96px;
+  @media screen and ${device.desktop} {
+  width: var(--width-desktop);
+  height: 800px;
+  overflow: hidden;
+  color: var(--white);
+  font-family: var(--headline-style-mobile-h1);
+  background-image: url('/project-ironbody-ui/side-view-people-training-gym-2x.png');
+  background-repeat: no-repeat;
+  background-position: 981px 67px;
+  background-size: 438px;
   };
 }
+
 
 `;
 

@@ -5,7 +5,8 @@ import { ExercisesCategories } from '../../components/ExercisesCategories/Exerci
 import TitlePage from '../../components/TitlePage/TitlePage';
 import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { fetchExercises, fetchFilteredExercises } from '../../redux/operations';
-import { getIsLoading } from '../../redux/selectors';
+import { getLoading } from '../../redux/selectors';
+// import Timer from '../../components/Timer/Timer';
 
 
 const ExercisesPage = () => {
@@ -20,9 +21,10 @@ const ExercisesPage = () => {
   return (
     <Container>
       <TitlePage titleText={'Exercices'} />
+      {/* <Timer/> */}
       <ExercisesCategories />
-      <div>{isLoading && 'Request in progress...'||<ExercisesSubcategoriesList />}</div>
-      
+      {/* <div>{isLoading && 'Request in progress...'||<ExercisesSubcategoriesList />}</div> */}
+      <ExercisesSubcategoriesList />
       
     </Container>
   );
