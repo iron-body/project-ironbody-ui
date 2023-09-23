@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { device } from '../../Constants';
 import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
 import{StyledLink} from './ExercisesList.styled'
@@ -8,6 +9,8 @@ export const ExercisesList = () => {
   const { name } = useParams();
   const { subCategories } = useParams();
 
+//   const exercises = useSelector(state => state.exercises.items);
+// console.log(exercises);
   let exercise;
 
   switch (subCategories) {

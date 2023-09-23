@@ -110,38 +110,36 @@ export const TitleCard = styled.h2`
 
 export const ButtonIcon = styled.img`
   display: block;
-  position: relative;
-  border-radius: var(--br-1px);
-  width: 36px;
-  height: 30px;
-  @media ${device.tablet} {
-    position: relative;
-    border-radius: var(--br-1px);
-    width: 40px;
-    height: 30px;
-  }
-  @media ${device.desktop} {
-    width: 16px;
-    height: 16px;
-    margin-left: 8px;
-  }
-`;
 
-export const FoodIcon = styled.img`
-  display: block;
-  position: relative;
   border-radius: var(--br-1px);
-  width: 36px;
-  height: 13px;
+  width: 24px;
+  height: 24px;
   @media ${device.tablet} {
-    position: relative;
+  
     border-radius: var(--br-1px);
-    width: 44px;
-    height: 17px;
+    width: 36px;
+    height: 24px;
   }
   @media ${device.desktop} {
     width: 24px;
     height: 24px;
+    margin-left: 8px;
+  }
+`;
+
+export const ExerciseIcon = styled.img`
+  display: block;
+  
+  border-radius: var(--br-1px);
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+  @media screen and ${device.tablet} {
+    
+  
+  }
+  @media screen and ${device.desktop} {
+   
     margin-right: 16px;
   }
 `;
