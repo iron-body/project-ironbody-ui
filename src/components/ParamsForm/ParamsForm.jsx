@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
+// import StyledDatepicker from './../StyledDatepicker/StyledDatepicker';
+// import { CalendarIcon } from './../DaySwitch/DaySwitch.styled';
+import ParamsFormDaySwitch from './../ParamsFormDaySwitch/ParamsFormDaySwitch';
+
 import {
+  MainForm,
   Input,
   Label,
   LabelBox,
@@ -14,6 +19,7 @@ import {
   RadioInput,
   RadioLabel,
   Title,
+  BirthdayLabel,
   ActivityTitle,
   RadioInputWrapper,
   SubmitBtn,
@@ -34,27 +40,20 @@ const ParamsFormSchema = yup.object().shape({
     .number()
     .min(35, 'Desire weight should be more than 35kg')
     .required('Required'),
-  // birthday
+  birthday: yup.date().required('Date is required'),
+  // .test('is-over-18', 'Дата повинна бути старше 18 років', function (value) {
+  //   const currentDate = new Date();
+  //   const minDate = new Date();
+  //   minDate.setFullYear(currentDate.getFullYear() - 18);
+  //   return value <= minDate;
+  // }),
 });
 
 const ParamsForm = props => {
   const onStepChange = props.onStepChange;
   const currentStep = props.currentStep;
-
-  const [savedValues, setSavedValues] = useState({
-    height: '',
-    currentWeight: '',
-    desiredWeight: '',
-    // birthday: '',
-  });
-
-  const handleNextSetStep = () => {
-    onStepChange(currentStep + 1);
-  };
-
-  const handleBackSetStep = () => {
-    onStepChange(currentStep - 1);
-  };
+  const [formattedDate, setFormattedDate] = useState('');
+  let savedValues = {};
 
   const {
     values,
@@ -66,38 +65,51 @@ const ParamsForm = props => {
     setFieldValue,
   } = useFormik({
     initialValues: {
-      height: savedValues.height,
-      currentWeight: savedValues.currentWeight,
-      desiredWeight: savedValues.desiredWeight,
-      // birthday: '',
+      height: undefined,
+      currentWeight: undefined,
+      desiredWeight: undefined,
+      birthday: formattedDate,
 
       blood: 1,
       sex: 'male',
       levelActivity: 1,
     },
+
     validationSchema: ParamsFormSchema,
     validateOnChange: false,
     validateOnBlur: false,
-    onSubmit: () => {
-      // alert('Fill all fields');
-      setSavedValues({ ...values });
-    },
+    // onSubmit: () => {
+    // alert('Fill all fields');
+    // },
   });
 
-  // const { inputValues } = values;
+  const handleDateChange = date => {
+    setFieldValue('birthday', date);
+    setFormattedDate(date);
+  };
+
+  const handleNextSetStep = () => {
+    onStepChange(currentStep + 1);
+
+    console.log(values);
+    savedValues = values;
+
+    console.log(savedValues);
+  };
+
+  const handleBackSetStep = () => {
+    onStepChange(currentStep - 1);
+  };
 
   const canClickNext =
     Object.keys(errors).length === 0 &&
     Object.values(values)
       .slice(0, 3)
-      .every(value => value.trim() !== '');
+      .every(value => value !== undefined);
 
-  // console.log(canClickNext);
-
-  console.log(values);
-  console.log(errors);
+  // console.log(errors);
   return (
-    <>
+    <MainForm>
       {currentStep === 1 && (
         <FormContainer>
           <Form>
@@ -105,7 +117,7 @@ const ParamsForm = props => {
               <Input
                 name="height"
                 id={errors.height && touched.height ? 'error' : 'height'}
-                value={values.height}
+                value={values.height || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="text"
@@ -124,7 +136,7 @@ const ParamsForm = props => {
                     ? 'error'
                     : 'currentWeight'
                 }
-                value={values.currentWeight}
+                value={values.currentWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="text"
@@ -143,7 +155,7 @@ const ParamsForm = props => {
                     ? 'error'
                     : 'desiredWeight'
                 }
-                value={values.desiredWeight}
+                value={values.desiredWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="text"
@@ -155,10 +167,15 @@ const ParamsForm = props => {
             </Wrapper>
 
             <Wrapper>
-              <Input type="text" required />
               <LabelBox>
-                <Label>Birthday</Label>
+                <BirthdayLabel
+                  value={values.birthday}
+                  // onChange={() => setFieldValue('birthday', formattedDate)}
+                >
+                  Birthday
+                </BirthdayLabel>
               </LabelBox>
+              <ParamsFormDaySwitch onDateChange={handleDateChange} />
             </Wrapper>
           </Form>
 
@@ -331,7 +348,7 @@ const ParamsForm = props => {
           <SubmitBtn type="submit">Go</SubmitBtn>
         </>
       )}
-    </>
+    </MainForm>
   );
 };
 

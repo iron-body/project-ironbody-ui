@@ -15,7 +15,7 @@ import {
   MainTitle2,
   Decription,
   Decription3,
-  NextBtn,
+  // NextBtn,
   BackBtn,
 } from './ParamsPage.styled';
 
