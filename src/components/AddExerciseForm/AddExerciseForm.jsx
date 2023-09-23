@@ -11,7 +11,7 @@ import {
   Tmr,
 } from './AddExerciseForm.styled';
 import { BtnTamplate } from '../Buttons/BtnExercises';
-// import i from '../../../public'
+// import    Timer  from '../Timer/Timer'
 
 
 
@@ -31,7 +31,7 @@ export const AddExerciseForm = ({
   return (
     <Container>
       <Img src={`${exercImg}`} alt="" width={270} height={226} />
-      <Tmr>Timer</Tmr>
+      {/* <Timer /> */}
       <Btn onClick={() => active() } src="../../../public/ExitIcon.svg"/>
       
       
@@ -78,10 +78,4 @@ export const ExercseBoxInf = ({ name, bodyPart, time, target, equipment }) => {
   );
 };
 
-export const Timer = () => {
-  return (
-    <>
-      <p>Hello</p>
-    </>
-  );
-};
+
