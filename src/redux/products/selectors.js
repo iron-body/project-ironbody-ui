@@ -1,8 +1,7 @@
 // import { createSelector } from '@reduxjs/toolkit';
+// import { getFilterValue } from '../selectors';
 
 export const getProducts = state => state.products.items;
-
-// export const getFilterValue = state => state.filter.value;
 
 // export const selectVisibleProducts = createSelector(
 //   [getProducts, getFilterValue],
