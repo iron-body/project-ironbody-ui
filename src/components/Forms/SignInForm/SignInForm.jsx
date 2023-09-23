@@ -28,9 +28,14 @@ import {
   ValidateStatusErrorTextStyled,
   ValidateStatusSuccessTextStyled,
 } from '../commonSignInForm.styled';
+import { useSelector } from 'react-redux';
+import { getIsLoading } from '../../../redux/selectors';
+import Loader from '../../Loader/Loader';
 
 export const SignInForm = () => {
   const dispatch = useDispatch();
+  // const isLoading = useSelector(state => state.auth.isLoading);
+  const isLoading = useSelector(getIsLoading);
   let nbsp = '\u00A0';
 
   return (
@@ -56,6 +61,7 @@ export const SignInForm = () => {
       >
         {({ ...props }) => (
           <FormSignInStyled>
+            {isLoading && <Loader />}
             <FieldSignInStyled
               id="email"
               name="email"
@@ -65,7 +71,7 @@ export const SignInForm = () => {
               touchedemail={props.touched}
             />
 
-            {console.log('props', props)}
+            {/* {console.log('props', props)} */}
 
             {props.errors.email === undefined && props.values.email !== '' ? (
               <ValidateStatusEmailBlockStyled>

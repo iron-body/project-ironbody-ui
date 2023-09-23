@@ -26,10 +26,14 @@ import {
   ValidateStatusSuccessTextStyled,
 } from '../commonSignInForm.styled';
 import spriteIconsRemix from '../../../../remixicon.symbol.svg';
+import { useSelector } from 'react-redux';
+import { getIsLoading } from '../../../redux/selectors';
+import Loader from '../../Loader/Loader';
 
 export const SignupForm = () => {
   const dispatch = useDispatch();
   let nbsp = '\u00A0';
+  const isLoading = useSelector(getIsLoading);
   return (
     <SignupFormStyled>
       <SignUpH1Styled>Sign Up</SignUpH1Styled>
@@ -57,6 +61,7 @@ export const SignupForm = () => {
       >
         {({ ...props }) => (
           <FormSignUpStyled>
+            {isLoading && <Loader />}
             <FieldSignUpStyled
               id="name"
               name="name"
