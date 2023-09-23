@@ -7,7 +7,11 @@ export const Section = styled.div`
   color: var(--white);
   font-family: var(--headline-style-mobile-h1);
   background-position: left 100% top 100%;
-  background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+  background-image: linear-gradient(
+      170deg,
+      #040404 3.66%,
+      rgba(4, 4, 4, 0) 19.15%
+    ),
     linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
     image-set(
       url('/project-ironbody-ui/side-view-people-training-gym-mobile@1x.jpg') 1x,
@@ -24,11 +28,17 @@ export const Section = styled.div`
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);
 
-    background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+    background-image: linear-gradient(
+        170deg,
+        #040404 3.66%,
+        rgba(4, 4, 4, 0) 19.15%
+      ),
       linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
       image-set(
-        url('/project-ironbody-ui/side-view-people-training-gym-mobile@1x.jpg') 1x,
-        url('/project-ironbody-ui/side-view-people-training-gym-mobile@2x.jpg') 2x
+        url('/project-ironbody-ui/side-view-people-training-gym-mobile@1x.jpg')
+          1x,
+        url('/project-ironbody-ui/side-view-people-training-gym-mobile@2x.jpg')
+          2x
       );
 
     background-repeat: no-repeat;
@@ -41,11 +51,17 @@ export const Section = styled.div`
     overflow: hidden;
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);
-    background-image: linear-gradient(170deg, #040404 3.66%, rgba(4, 4, 4, 0) 19.15%),
+    background-image: linear-gradient(
+        170deg,
+        #040404 3.66%,
+        rgba(4, 4, 4, 0) 19.15%
+      ),
       linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
       image-set(
-        url('/project-ironbody-ui/side-view-people-training-gym-tablet@1x.jpg') 1x,
-        url('/project-ironbody-ui/side-view-people-training-gym-tablet@2x.jpg') 2x
+        url('/project-ironbody-ui/side-view-people-training-gym-tablet@1x.jpg')
+          1x,
+        url('/project-ironbody-ui/side-view-people-training-gym-tablet@2x.jpg')
+          2x
       );
     background-repeat: no-repeat;
     background-position: left 100% top 100%;
@@ -58,10 +74,16 @@ export const Section = styled.div`
     overflow: hidden;
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);
-    background-image: linear-gradient(80deg, #040404 -2.45%, rgba(4, 4, 4, 0) 68.17%),
+    background-image: linear-gradient(
+        80deg,
+        #040404 -2.45%,
+        rgba(4, 4, 4, 0) 68.17%
+      ),
       image-set(
-        url('/project-ironbody-ui/side-view-people-training-gym-desktop@1x.jpg') 1x,
-        url('/project-ironbody-ui/side-view-people-training-gym-desktop@2x.jpg') 2x
+        url('/project-ironbody-ui/side-view-people-training-gym-desktop@1x.jpg')
+          1x,
+        url('/project-ironbody-ui/side-view-people-training-gym-desktop@2x.jpg')
+          2x
       );
 
     background-repeat: no-repeat;

@@ -13,8 +13,6 @@ import {
 import { BtnTamplate } from '../Buttons/BtnExercises';
 // import    Timer  from '../Timer/Timer'
 
-
-
 export const AddExerciseForm = ({
   exercImg,
   exerciseName,
@@ -32,9 +30,8 @@ export const AddExerciseForm = ({
     <Container>
       <Img src={`${exercImg}`} alt="" width={270} height={226} />
       {/* <Timer /> */}
-      <Btn onClick={() => active() } src="../../../public/ExitIcon.svg"/>
-      
-      
+      <Btn onClick={() => active()} src="../../../public/ExitIcon.svg" />
+
       <ExercseBoxInf
         name={exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
         bodyPart={bodyPart.charAt(0).toUpperCase() + bodyPart.slice(1)}
@@ -77,5 +74,3 @@ export const ExercseBoxInf = ({ name, bodyPart, time, target, equipment }) => {
     </ExercseBox>
   );
 };
-
-

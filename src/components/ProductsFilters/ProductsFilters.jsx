@@ -81,41 +81,44 @@ export default function ProductsFilters() {
                 ></SearchIconButton>
               </EraseInputButton>
               <SearchInputButton>
-                <SearchIconButton alt="" src="/project-ironbody-ui/search.svg"></SearchIconButton>
+                <SearchIconButton
+                  alt=""
+                  src="/project-ironbody-ui/search.svg"
+                ></SearchIconButton>
               </SearchInputButton>
             </SearchFieldContainer>
           </FormGroup>
 
           <MobInpCont>
-          <FormGroup>
-            <Field
-              name="categories"
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  options={optionsCategories}
-                  isSearchable={false}
-                  styles={categoriesStyles}
-                  placeholder="Categories"
-                />
-              )}
-            />
-          </FormGroup>
-
-          <FormGroup>
-            <Field
-              name="recomended"
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  options={optionsRecomended}
-                  isSearchable={false}
-                  styles={recomendedStyles}
-                />
-              )}
-            />
+            <FormGroup>
+              <Field
+                name="categories"
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={optionsCategories}
+                    isSearchable={false}
+                    styles={categoriesStyles}
+                    placeholder="Categories"
+                  />
+                )}
+              />
             </FormGroup>
-            </MobInpCont>
+
+            <FormGroup>
+              <Field
+                name="recomended"
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={optionsRecomended}
+                    isSearchable={false}
+                    styles={recomendedStyles}
+                  />
+                )}
+              />
+            </FormGroup>
+          </MobInpCont>
         </FilterContainer>
       </Form>
     </Formik>

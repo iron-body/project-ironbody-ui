@@ -42,7 +42,7 @@ export const Title = styled.p`
   margin-block-end: 15px;
 
   @media screen and (min-width: 768px) {
-    font-size: 24px;  
+    font-size: 24px;
   }
 `;
 
@@ -50,5 +50,4 @@ export const Categorie = styled.p`
   color: #efede8;
   font-size: 18px;
   opacity: 0.4;
-
- `;
+`;

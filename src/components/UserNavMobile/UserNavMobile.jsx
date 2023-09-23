@@ -1,5 +1,12 @@
 import { useState } from 'react';
-import { BurgerMenu, Cross, Link, LogOutBtnWrapper, Menu, MenuItem } from './UserNavMobile.styled';
+import {
+  BurgerMenu,
+  Cross,
+  Link,
+  LogOutBtnWrapper,
+  Menu,
+  MenuItem,
+} from './UserNavMobile.styled';
 import LogOutBtn from '../LogOutBtn/LogOutBtn';
 import sprite from '../../../icons.svg';
 

@@ -5,7 +5,15 @@ import { filterReducer } from './filterSlice';
 import { authReducer } from './auth/authSlice';
 import { exercisesReducer } from './exercises.Slice';
 
-import { persistStore, FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
+import {
+  persistStore,
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
 import { headerReducer } from './headerSlice';
 
 const middleware = [
@@ -30,7 +38,6 @@ export const store = configureStore({
     auth: localStorageAuthReducer,
     header: headerReducer,
     exercises: exercisesReducer,
-    
   },
   middleware,
 });

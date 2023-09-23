@@ -25,7 +25,7 @@ export const Img = styled.img`
   }
 
   @media screen and (min-width: 768px) {
-    margin-right:6px;
+    margin-right: 6px;
   }
 `;
 
@@ -48,8 +48,6 @@ export const Tmr = styled.div`
     margin-top: 30px;
     margin-bottom: 16px;
   }
-
-
 `;
 
 export const Btn = styled.button`
@@ -64,7 +62,7 @@ export const Btn = styled.button`
     height: 26px;
     margin: 4px;
     opacity: 1;
-    color:red;
+    color: red;
   }
 `;
 

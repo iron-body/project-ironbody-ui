@@ -17,13 +17,16 @@ export default function AddProductForm({ productCalc, onClose }) {
   const { foodName, caloriesValue = 155 } = productCalc;
 
   const handleClose = () => {
-    onClose(); 
+    onClose();
   };
 
   return (
     <>
       <ExitBtn onClick={handleClose}>
-        <IconExitBtn alt="" src="/project-ironbody-ui/ExitIcon.svg"></IconExitBtn>
+        <IconExitBtn
+          alt=""
+          src="/project-ironbody-ui/ExitIcon.svg"
+        ></IconExitBtn>
       </ExitBtn>
       <CalcContainer>
         <FoodName> {foodName}</FoodName>

@@ -1,4 +1,10 @@
-import { AuthMenu, AuthIcon, MenuItem, Link, MenuItemAvatar } from './UserBar.styled';
+import {
+  AuthMenu,
+  AuthIcon,
+  MenuItem,
+  Link,
+  MenuItemAvatar,
+} from './UserBar.styled';
 import sprite from '../../../icons.svg';
 import { useMediaQuery } from '@mui/material';
 import { useState } from 'react';

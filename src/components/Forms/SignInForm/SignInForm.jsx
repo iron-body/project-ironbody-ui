@@ -79,7 +79,9 @@ export const SignInForm = () => {
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
                 </SuccessValidateSvgStyled>
                 {nbsp}
-                <ValidateStatusSuccessTextStyled>Success Email</ValidateStatusSuccessTextStyled>
+                <ValidateStatusSuccessTextStyled>
+                  Success Email
+                </ValidateStatusSuccessTextStyled>
               </ValidateStatusEmailBlockStyled>
             ) : null}
 
@@ -89,7 +91,9 @@ export const SignInForm = () => {
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
                 </ErrorValidateSvgStyled>
                 {nbsp}
-                <ValidateStatusErrorTextStyled>{props.errors.email}</ValidateStatusErrorTextStyled>
+                <ValidateStatusErrorTextStyled>
+                  {props.errors.email}
+                </ValidateStatusErrorTextStyled>
               </ValidateStatusEmailBlockStyled>
             ) : null}
             {/* 
@@ -127,13 +131,16 @@ export const SignInForm = () => {
               )}
             /> */}
 
-            {props.errors.password === undefined && props.values.password !== '' ? (
+            {props.errors.password === undefined &&
+            props.values.password !== '' ? (
               <ValidateStatusPasswordBlockStyled>
                 <SuccessValidateSvgStyled>
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
                 </SuccessValidateSvgStyled>
                 {nbsp}
-                <ValidateStatusSuccessTextStyled>Success password</ValidateStatusSuccessTextStyled>
+                <ValidateStatusSuccessTextStyled>
+                  Success password
+                </ValidateStatusSuccessTextStyled>
               </ValidateStatusPasswordBlockStyled>
             ) : null}
             {props.errors.password ? (

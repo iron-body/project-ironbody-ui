@@ -23,7 +23,7 @@ export const BtnStyled = styled(Link)`
     border-radius: var(--br-12px);
     display: flex;
     flex-direction: row;
-    margin-left:200px;
+    margin-left: 200px;
     margin-top: 140px;
 
     padding: 15px 40px;

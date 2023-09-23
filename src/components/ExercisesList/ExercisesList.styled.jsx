@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { device } from '../../Constants';
 
-
 export const StyledLink = styled.ul`
 // padding-left:20 px;
 display: flex;

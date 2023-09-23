@@ -126,7 +126,10 @@ export const FieldSignUpStyled = styled(Field)`
     if (props.erroremail && props.touchedemail?.email === true) {
       return '1px solid #D80027';
     }
-    if (props.errorpassword === undefined && props.touchedpassword?.password === true) {
+    if (
+      props.errorpassword === undefined &&
+      props.touchedpassword?.password === true
+    ) {
       return '1px solid #3CBF61';
     }
 

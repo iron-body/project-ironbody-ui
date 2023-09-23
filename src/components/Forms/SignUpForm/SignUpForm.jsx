@@ -38,8 +38,8 @@ export const SignupForm = () => {
     <SignupFormStyled>
       <SignUpH1Styled>Sign Up</SignUpH1Styled>
       <SignUpPStyled>
-        Thank you for your interest in our platform. To complete the registration process, please
-        provide us with the following information.
+        Thank you for your interest in our platform. To complete the
+        registration process, please provide us with the following information.
       </SignUpPStyled>
       <Formik
         initialValues={{
@@ -53,7 +53,9 @@ export const SignupForm = () => {
             dispatch(authOperations.register({ name, email, password }));
           } catch (error) {
             console.log(error);
-            Notify.failure(`${name} failed to register with error ${error.message}`);
+            Notify.failure(
+              `${name} failed to register with error ${error.message}`,
+            );
           }
         }}
         validationSchema={ValidationSchemas.signUpSchema}
@@ -76,7 +78,9 @@ export const SignupForm = () => {
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
                 </SuccessValidateSvgStyled>
                 {nbsp}
-                <ValidateStatusSuccessTextStyled>Success name</ValidateStatusSuccessTextStyled>
+                <ValidateStatusSuccessTextStyled>
+                  Success name
+                </ValidateStatusSuccessTextStyled>
               </ValidateStatusNameBlockStyled>
             ) : null}
 
@@ -86,7 +90,9 @@ export const SignupForm = () => {
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
                 </ErrorValidateSvgStyled>
                 {nbsp}
-                <ValidateStatusErrorTextStyled>{props.errors.name}</ValidateStatusErrorTextStyled>
+                <ValidateStatusErrorTextStyled>
+                  {props.errors.name}
+                </ValidateStatusErrorTextStyled>
               </ValidateStatusNameBlockStyled>
             ) : null}
             {/* 
@@ -120,7 +126,9 @@ export const SignupForm = () => {
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
                 </SuccessValidateSvgStyled>
                 {nbsp}
-                <ValidateStatusSuccessTextStyled>Success Email</ValidateStatusSuccessTextStyled>
+                <ValidateStatusSuccessTextStyled>
+                  Success Email
+                </ValidateStatusSuccessTextStyled>
               </ValidateStatusEmailBlockStyled>
             ) : null}
 
@@ -130,7 +138,9 @@ export const SignupForm = () => {
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
                 </ErrorValidateSvgStyled>
                 {nbsp}
-                <ValidateStatusErrorTextStyled>{props.errors.email}</ValidateStatusErrorTextStyled>
+                <ValidateStatusErrorTextStyled>
+                  {props.errors.email}
+                </ValidateStatusErrorTextStyled>
               </ValidateStatusEmailBlockStyled>
             ) : null}
             {/* 
@@ -158,13 +168,16 @@ export const SignupForm = () => {
               touchedpassword={props.touched}
             />
 
-            {props.errors.password === undefined && props.values.password !== '' ? (
+            {props.errors.password === undefined &&
+            props.values.password !== '' ? (
               <ValidateStatusPasswordBlockStyled>
                 <SuccessValidateSvgStyled>
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
                 </SuccessValidateSvgStyled>
                 {nbsp}
-                <ValidateStatusSuccessTextStyled>Success password</ValidateStatusSuccessTextStyled>
+                <ValidateStatusSuccessTextStyled>
+                  Success password
+                </ValidateStatusSuccessTextStyled>
               </ValidateStatusPasswordBlockStyled>
             ) : null}
 

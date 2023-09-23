@@ -1,6 +1,11 @@
 import { useState, useEffect } from 'react';
 import sprite from '../../../icons.svg';
-import { CalendarIcon, DaySwitchContainer, StyledButton, StyledDate } from './DaySwitch.styled';
+import {
+  CalendarIcon,
+  DaySwitchContainer,
+  StyledButton,
+  StyledDate,
+} from './DaySwitch.styled';
 import StyledDatepicker from '../StyledDatepicker/StyledDatepicker';
 
 function DaySwitch() {
@@ -49,10 +54,17 @@ function DaySwitch() {
           <use href={`${sprite}#icon-calendar`}></use>
         </CalendarIcon>
         {showDatepicker && (
-          <StyledDatepicker date={selectedDate} minDate={minDate} onChange={handleDateChange} />
+          <StyledDatepicker
+            date={selectedDate}
+            minDate={minDate}
+            onChange={handleDateChange}
+          />
         )}
       </StyledDate>
-      <StyledButton onClick={handlePreviousDay} disabled={minDate && selectedDate <= minDate}>
+      <StyledButton
+        onClick={handlePreviousDay}
+        disabled={minDate && selectedDate <= minDate}
+      >
         {'<'}
       </StyledButton>
       <StyledButton onClick={handleNextDay}>{'>'}</StyledButton>

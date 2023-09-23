@@ -1,4 +1,7 @@
-import { BtnSignUpFormStyled, SignUpFormSTexttyled } from './BtnSignUpForm.styled';
+import {
+  BtnSignUpFormStyled,
+  SignUpFormSTexttyled,
+} from './BtnSignUpForm.styled';
 
 export const BtnSignUpForm = () => {
   return (

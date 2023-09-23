@@ -2,15 +2,15 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { device } from '../../Constants';
 import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
-import{StyledLink} from './ExercisesList.styled'
+import { StyledLink } from './ExercisesList.styled';
 import exercises from '../../exercises.json';
 
 export const ExercisesList = () => {
   const { name } = useParams();
   const { subCategories } = useParams();
 
-//   const exercises = useSelector(state => state.exercises.items);
-// console.log(exercises);
+  //   const exercises = useSelector(state => state.exercises.items);
+  // console.log(exercises);
   let exercise;
 
   switch (subCategories) {
@@ -32,7 +32,7 @@ export const ExercisesList = () => {
     <StyledLink>
       {exercise.map(item => (
         <ExercisesItem
-         key={item.name}
+          key={item.name}
           exerciseName={item.name}
           exercImg={item.gifUrl}
           calories={item.burnedCalories}

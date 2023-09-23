@@ -94,7 +94,7 @@ export default function ProductsList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const openModal = (product) => {
+  const openModal = product => {
     setSelectedProduct(product);
     setIsModalOpen(true);
     console.log(product);
@@ -134,7 +134,8 @@ export default function ProductsList() {
               productCalc={{
                 foodName: selectedProduct.foodName,
                 calories: selectedProduct.calories,
-              }} onClose={() => setIsModalOpen(false)}
+              }}
+              onClose={() => setIsModalOpen(false)}
             ></AddProductForm>
           )}
         </BasicModalWindow>

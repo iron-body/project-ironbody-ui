@@ -7,7 +7,9 @@ import { useNavigate } from 'react-router-dom';
 export const Logo = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const navigate = useNavigate();
-  const stateColorSVGVector = useSelector(state => state.header.valueIconVector);
+  const stateColorSVGVector = useSelector(
+    state => state.header.valueIconVector,
+  );
 
   return (
     <LogoStyled

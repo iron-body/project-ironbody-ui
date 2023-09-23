@@ -28,8 +28,6 @@ export const Container = styled.div`
     width: 335px;
     height: 141px;
     box-sizing: border-box;
-  
-
   }
   @media screen and (${device.desktop}) {
     width: 405px;
@@ -115,7 +113,6 @@ export const ButtonIcon = styled.img`
   width: 24px;
   height: 24px;
   @media ${device.tablet} {
-  
     border-radius: var(--br-1px);
     width: 36px;
     height: 24px;
@@ -129,17 +126,14 @@ export const ButtonIcon = styled.img`
 
 export const ExerciseIcon = styled.img`
   display: block;
-  
+
   border-radius: var(--br-1px);
   width: 24px;
   height: 24px;
   margin-right: 16px;
   @media screen and ${device.tablet} {
-    
-  
   }
   @media screen and ${device.desktop} {
-   
     margin-right: 16px;
   }
 `;

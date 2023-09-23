@@ -63,35 +63,34 @@ function MyTabs() {
   const currentTab = routeMatch?.path || '/exercises/Body parts';
 
   return (
-    <Tabs value={currentTab}  >
+    <Tabs value={currentTab}>
       <Tab
-      key='Body parts'
+        key="Body parts"
         label="Body parts"
         value="/exercises/Body parts"
         to="/exercises/Body parts"
-        sx={{ color: '#efede8'}}
+        sx={{ color: '#efede8' }}
         component={Link}
-
       >
         Body parts
       </Tab>
       <Tab
-      key='Muscles'
+        key="Muscles"
         label="Muscles"
         value="/exercises/Muscles"
         to="/exercises/Muscles"
         component={Link}
-        sx={{ color: '#efede8'}}
+        sx={{ color: '#efede8' }}
       >
         Muscles
       </Tab>
       <Tab
-      key='Equipment'
+        key="Equipment"
         label="Equipment"
         value="/exercises/Equipment"
         to="/exercises/Equipment"
         component={Link}
-        sx={{     color: '#efede8'}}
+        sx={{ color: '#efede8' }}
       >
         Equipment
       </Tab>
@@ -111,7 +110,7 @@ function CurrentRoute() {
 
 export const ExercisesCategories = () => {
   return (
-    <Box sx={{ width: '100%', color: 'success.main'}}>
+    <Box sx={{ width: '100%', color: 'success.main' }}>
       <Routes>
         <Route path="*" element={<CurrentRoute />} />
       </Routes>

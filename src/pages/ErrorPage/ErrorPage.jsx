@@ -1,5 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import { Section, Left, Content, Title404, Text404, Button } from './ErrorPage.styled';
+import {
+  Section,
+  Left,
+  Content,
+  Title404,
+  Text404,
+  Button,
+} from './ErrorPage.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateHeaderValueIconVector } from '../../redux/headerSlice';
 import { useEffect } from 'react';
@@ -11,7 +18,9 @@ const ErrorPage = () => {
     navigate('/');
   };
 
-  const stateColorSVGVector = useSelector(state => state.header.valueIconVector);
+  const stateColorSVGVector = useSelector(
+    state => state.header.valueIconVector,
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,9 +41,10 @@ const ErrorPage = () => {
         <Content>
           <Title404>404</Title404>
           <Text404>
-            Sorry, you have reached a page that we could not find. It seems that you are lost among
-            the numbers and letters of our virtual space. Perhaps this page went on vacation or
-            decided to disappear into another dimension. We apologize for this inconvenience.
+            Sorry, you have reached a page that we could not find. It seems that
+            you are lost among the numbers and letters of our virtual space.
+            Perhaps this page went on vacation or decided to disappear into
+            another dimension. We apologize for this inconvenience.
           </Text404>
           <Button onClick={handleClick}>Go Home</Button>
         </Content>

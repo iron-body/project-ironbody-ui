@@ -10,7 +10,9 @@ export const WelcomePage = () => {
     <>
       <Root>
         <LineIcon alt="" src="/project-ironbody-ui/line.svg" />
-        <TransformingYourBody>Transforming your body shape with Power Pulse</TransformingYourBody>
+        <TransformingYourBody>
+          Transforming your body shape with Power Pulse
+        </TransformingYourBody>
         <Btns>
           <BtnSignUp />
           <BtnSignIn />

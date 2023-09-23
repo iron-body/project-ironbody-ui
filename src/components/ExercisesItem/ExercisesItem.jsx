@@ -18,8 +18,6 @@ import {
   ExerciseIcon,
 } from './ExercisesItem.styled';
 
-
-
 export const ExercisesItem = ({
   exerciseName,
   exercImg,
@@ -36,7 +34,7 @@ export const ExercisesItem = ({
       <NavCard>
         <TitleCard>WORKOUT</TitleCard>
         <RecomendedInfo>
-          <ButtonItem onClick={() => setModalActive(true)} >
+          <ButtonItem onClick={() => setModalActive(true)}>
             Start
             <ButtonIcon alt="" src="/next-array.svg" />
           </ButtonItem>
@@ -56,7 +54,8 @@ export const ExercisesItem = ({
         />
       </BasicModalWindow>
       <ExerciseName>
-      <ExerciseIcon alt="" src="/product-icon.svg"/> {exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
+        <ExerciseIcon alt="" src="/product-icon.svg" />{' '}
+        {exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
       </ExerciseName>
       <ExerciseParams>
         <NameParams>
