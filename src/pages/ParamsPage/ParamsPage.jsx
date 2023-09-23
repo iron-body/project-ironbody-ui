@@ -15,13 +15,18 @@ import {
   MainTitle2,
   Decription,
   Decription3,
-  NextBtn,
+  // NextBtn,
   BackBtn,
 } from './ParamsPage.styled';
 
 const ParamsPage = () => {
   const [step, setStep] = useState(1);
 
+  const handleStepChange = newStep => {
+    setStep(newStep);
+  };
+
+  // console.log(step);
   return (
     <>
       {step === 1 && (
@@ -32,16 +37,18 @@ const ParamsPage = () => {
             of our platform, we ask you to provide the following information
             about your weight, height and other relevant data:
           </Decription>
+          <ParamsForm currentStep={step} onStepChange={handleStepChange} />
 
-          <ParamsForm stepNumber={step} />
-
-          <NextBtn type="button" onClick={() => setStep(step + 1)}>
+          {/* <NextBtn
+            type="button"
+            onClick={() => setStep(step + 1)}
+            disabled={isNextBtnDisabled ? true : false}
+          >
             Next
-          </NextBtn>
+          </NextBtn> */}
 
           <TutorialBlock />
           <CaloriesBlock />
-
           <StepBar stepNumber={step} />
         </Wrapper>
       )}
@@ -49,13 +56,13 @@ const ParamsPage = () => {
       {step === 2 && (
         <Wrapper2>
           <MainTitle2>Get closer to your goals!</MainTitle2>
-          <ParamsForm stepNumber={step} />
-          <BackBtn type="button" onClick={() => setStep(step - 1)}>
+          <ParamsForm currentStep={step} onStepChange={handleStepChange} />
+          {/* <BackBtn type="button" onClick={() => setStep(step - 1)}>
             Back
           </BackBtn>
           <NextBtn type="button" onClick={() => setStep(step + 1)}>
             Next
-          </NextBtn>
+          </NextBtn> */}
 
           <TutorialBlockForParamsPages />
           <CaloriesBlockStyledForParamsPages />

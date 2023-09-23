@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 import { device } from '../../Constants';
 
+export const MainForm = styled.form``;
+
 export const FormContainer = styled.div`
   width: 100%;
   max-width: var(--width-mobile);
 `;
 
-export const Form = styled.form`
+export const Form = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 18px;
+  grid-gap: 22px;
   margin-bottom: 10px;
   margin-right: 0px;
 
@@ -19,7 +21,7 @@ export const Form = styled.form`
   }
 `;
 
-export const RadioBtnsForm = styled.form`
+export const RadioBtnsForm = styled.div`
   width: 106%;
   display: flex;
   gap: 19px;
@@ -42,6 +44,39 @@ export const Wrapper = styled.div`
   display: inline;
   max-width: 100%;
   width: 155px;
+`;
+
+export const Container = styled.div`
+  padding: 14px 0px 14px 14px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 46px;
+
+  background-color: transparent;
+  border: 1px solid var(--color-whitesmoke-200);
+  color: var(--color-whitesmoke-100);
+  border-radius: 12px;
+  outline: none;
+
+  font-family: var(--headline-style-mobile-h1);
+  font-size: var(--font-size-xm);
+  font-weight: 400;
+  line-height: 1.3;
+
+  &:focus ~ div > label,
+  &:valid ~ div > label {
+    font-size: 12px;
+    transform: translate(-12px, -32px);
+  }
+
+  &:focus,
+  &:valid {
+    border-color: var(--orange);
+  }
+
+  &[id='error'] {
+    border: 1px solid #d80027;
+  }
 `;
 
 export const Input = styled.input`
@@ -71,6 +106,10 @@ export const Input = styled.input`
   &:valid {
     border-color: var(--orange);
   }
+
+  &[id='error'] {
+    border: 1px solid #d80027;
+  }
 `;
 
 export const Label = styled.label`
@@ -89,6 +128,26 @@ export const Label = styled.label`
   @media ${device.tablet} {
     font-size: var(--font-size-base);
     top: -33.5px;
+  }
+`;
+
+export const BirthdayLabel = styled.label`
+  position: absolute;
+  top: -18px;
+  left: 2px;
+
+  color: var(--color-whitesmoke-100);
+  font-family: var(--headline-style-mobile-h1);
+  font-size: 12px;
+  line-height: 1.3;
+
+  pointer-events: none;
+  transition: 0.2s ease all;
+
+  @media ${device.tablet} {
+    font-size: 12px;
+    top: -18px;
+    left: 4px;
   }
 `;
 
@@ -245,5 +304,36 @@ export const SubmitBtn = styled.button`
     gap: 10px;
 
     font-size: var(--font-size-xl);
+  }
+`;
+
+export const BackBtn = styled.button`
+  margin-right: 16px;
+  padding: 8px 0px 8px 26px;
+  background-color: var(--black);
+  background: url('/back-array.svg') no-repeat left;
+  border-color: transparent;
+  color: var(--color-whitesmoke-100);
+  font-family: var(--headline-style-mobile-h1);
+  font-size: var(--font-size-xm);
+  line-height: 1.3;
+
+  @media ${device.tablet} {
+    font-size: var(--font-size-base);
+  }
+`;
+
+export const NextBtn = styled.button`
+  padding: 8px 26px 8px 0px;
+  background-color: var(--black);
+  background: url('/next-array.svg') no-repeat right;
+  border-color: transparent;
+  color: var(--white);
+  font-family: var(--headline-style-mobile-h1);
+  font-size: var(--font-size-xm);
+  line-height: 1.3;
+
+  @media ${device.tablet} {
+    font-size: var(--font-size-base);
   }
 `;
