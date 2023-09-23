@@ -51,10 +51,9 @@ export const SignupForm = () => {
           const { name, email, password } = values;
           try {
             dispatch(authOperations.register({ name, email, password }));
-
-            Notify.success(`${name} registered successfully`);
           } catch (error) {
-            Notify.failure(`${name} failed to register`);
+            console.log(error);
+            Notify.failure(`${name} failed to register with error ${error.message}`);
           }
         }}
         validationSchema={ValidationSchemas.signUpSchema}

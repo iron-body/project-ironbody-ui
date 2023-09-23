@@ -18,6 +18,11 @@ export const authSlice = createSlice({
     [authOperations.register.pending](state) {
       state.isLoading = true;
     },
+    [authOperations.register.rejected](state) {
+      state.isLoading = false;
+      state.accessToken = null;
+      state.isLoggedIn = false;
+    },
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
@@ -25,6 +30,9 @@ export const authSlice = createSlice({
     },
     [authOperations.login.pending](state) {
       state.isLoading = true;
+    },
+    [authOperations.login.rejected](state) {
+      state.isLoading = false;
     },
     [authOperations.login.fulfilled](state, action) {
       state.user = action.payload.user;
@@ -55,6 +63,9 @@ export const authSlice = createSlice({
     },
     [authOperations.refreshCurrentUser.rejected](state) {
       state.isRefreshing = false;
+      state.accessToken = null;
+      state.isLoading = false;
+      state.isLoggedIn = false;
     },
   },
 });
