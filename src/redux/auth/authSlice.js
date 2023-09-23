@@ -9,20 +9,28 @@ const initialState = {
   accessToken: null,
   isLoggedIn: false,
   isRefreshing: false,
+  isLoading: false,
 };
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
+    [authOperations.register.pending](state) {
+      state.isLoading = true;
+    },
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
     },
+    [authOperations.login.pending](state) {
+      state.isLoading = true;
+    },
     [authOperations.login.fulfilled](state, action) {
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
+      state.isLoading = false;
     },
 
     [authOperations.logout.fulfilled](state) {
