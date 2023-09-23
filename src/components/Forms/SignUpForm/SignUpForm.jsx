@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 // import React from 'react';
-import { ErrorMessage, Formik } from 'formik';
+// import { ErrorMessage, Formik } from 'formik';
+import { Formik } from 'formik';
 import { SignInBlock } from '../../SignInBlock/SignInBlock';
 import { BtnSignUpForm } from '../../Buttons/BtnSignUpForm';
 import {
@@ -43,8 +44,6 @@ export const SignupForm = () => {
           password: '',
         }}
         onSubmit={async values => {
-          // await new Promise(r => setTimeout(r, 500));
-          // alert(JSON.stringify(values, null, 2));
           const { name, email, password } = values;
           try {
             dispatch(authOperations.register({ name, email, password }));
@@ -67,7 +66,7 @@ export const SignupForm = () => {
               touchedname={props.touched}
             />
 
-            {props.errors.name === undefined && props.touched?.name === true ? (
+            {props.errors.name === undefined && props.values.name !== '' ? (
               <ValidateStatusNameBlockStyled>
                 <SuccessValidateSvgStyled>
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
@@ -77,6 +76,16 @@ export const SignupForm = () => {
               </ValidateStatusNameBlockStyled>
             ) : null}
 
+            {props.errors.name ? (
+              <ValidateStatusNameBlockStyled>
+                <ErrorValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </ErrorValidateSvgStyled>
+                {nbsp}
+                <ValidateStatusErrorTextStyled>{props.errors.name}</ValidateStatusErrorTextStyled>
+              </ValidateStatusNameBlockStyled>
+            ) : null}
+            {/* 
             <ErrorMessage
               name="name"
               render={message => (
@@ -84,14 +93,13 @@ export const SignupForm = () => {
                   <ErrorValidateSvgStyled>
                     <use
                       href={`${spriteIconsRemix}#ri-checkbox-circle-fill`}
-                      // style={{ width: '10px', height: '10px' }}
                     />
                   </ErrorValidateSvgStyled>
                   {nbsp}
                   <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
                 </ValidateStatusNameBlockStyled>
               )}
-            />
+            /> */}
 
             <FieldSignUpStyled
               id="email"
@@ -102,7 +110,7 @@ export const SignupForm = () => {
               touchedemail={props.touched}
             />
 
-            {props.errors.email === undefined && props.touched?.email === true ? (
+            {props.errors.email === undefined && props.values.email !== '' ? (
               <ValidateStatusEmailBlockStyled>
                 <SuccessValidateSvgStyled>
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
@@ -112,6 +120,16 @@ export const SignupForm = () => {
               </ValidateStatusEmailBlockStyled>
             ) : null}
 
+            {props.errors.email ? (
+              <ValidateStatusEmailBlockStyled>
+                <ErrorValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </ErrorValidateSvgStyled>
+                {nbsp}
+                <ValidateStatusErrorTextStyled>{props.errors.email}</ValidateStatusErrorTextStyled>
+              </ValidateStatusEmailBlockStyled>
+            ) : null}
+            {/* 
             <ErrorMessage
               name="email"
               render={message => (
@@ -119,14 +137,13 @@ export const SignupForm = () => {
                   <ErrorValidateSvgStyled>
                     <use
                       href={`${spriteIconsRemix}#ri-checkbox-circle-fill`}
-                      // style={{ width: '10px', height: '10px' }}
                     />
                   </ErrorValidateSvgStyled>
                   {nbsp}
                   <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
                 </ValidateStatusEmailBlockStyled>
               )}
-            />
+            /> */}
 
             <FieldSignUpStyled
               id="password"
@@ -137,7 +154,7 @@ export const SignupForm = () => {
               touchedpassword={props.touched}
             />
 
-            {props.errors.password === undefined && props.touched?.password === true ? (
+            {props.errors.password === undefined && props.values.password !== '' ? (
               <ValidateStatusPasswordBlockStyled>
                 <SuccessValidateSvgStyled>
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
@@ -147,21 +164,32 @@ export const SignupForm = () => {
               </ValidateStatusPasswordBlockStyled>
             ) : null}
 
-            <ErrorMessage
+            {props.errors.password ? (
+              <ValidateStatusPasswordBlockStyled>
+                <ErrorValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </ErrorValidateSvgStyled>
+                {nbsp}
+                <ValidateStatusErrorTextStyled>
+                  {props.errors.password}
+                </ValidateStatusErrorTextStyled>
+              </ValidateStatusPasswordBlockStyled>
+            ) : null}
+
+            {/* <ErrorMessage
               name="password"
               render={message => (
                 <ValidateStatusPasswordBlockStyled>
                   <ErrorValidateSvgStyled>
                     <use
                       href={`${spriteIconsRemix}#ri-checkbox-circle-fill`}
-                      // style={{ width: '10px', height: '10px' }}
                     />
                   </ErrorValidateSvgStyled>
                   {nbsp}
                   <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
                 </ValidateStatusPasswordBlockStyled>
               )}
-            />
+            /> */}
 
             <BtnSignUpForm />
           </FormSignUpStyled>

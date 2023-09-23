@@ -130,8 +130,6 @@ export const FieldSignUpStyled = styled(Field)`
       return '1px solid #3CBF61';
     }
 
-    // console.log('props :>> ', props);
-    // console.log('props.touchpassword?.password :>> ', props.touchedpassword?.password);
     if (props.touchedpassword?.password === true) {
       return '1px solid #D80027';
     }
@@ -139,6 +137,9 @@ export const FieldSignUpStyled = styled(Field)`
   }};
   color: var(--white);
 
+  &:hover {
+    border: 1px solid #e6533c;
+  }
   @media ${device.mobile} {
     width: ${335 - 16}px;
     color: rgba(239, 237, 232, 0.6);
@@ -174,12 +175,12 @@ export const ValidateStatusNameBlockStyled = styled.div`
 
 export const ValidateStatusPasswordBlockStyled = styled.div`
   position: absolute;
-  top: 196px;
+  top: 198px;
   display: flex;
 `;
 
 export const ValidateStatusEmailBlockStyled = styled.div`
   position: absolute;
-  top: 124px;
+  top: 126px;
   display: flex;
 `;

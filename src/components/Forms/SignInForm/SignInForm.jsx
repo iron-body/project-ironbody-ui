@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 // import React from 'react';
-import { Formik, ErrorMessage } from 'formik';
+// import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
+
 import {
   FieldSignInStyled,
   FormSignInStyled,
@@ -65,7 +67,7 @@ export const SignInForm = () => {
 
             {console.log('props', props)}
 
-            {props.errors.email === undefined && props.touched?.email === true ? (
+            {props.errors.email === undefined && props.values.email !== '' ? (
               <ValidateStatusEmailBlockStyled>
                 <SuccessValidateSvgStyled>
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
@@ -75,6 +77,16 @@ export const SignInForm = () => {
               </ValidateStatusEmailBlockStyled>
             ) : null}
 
+            {props.errors.email ? (
+              <ValidateStatusEmailBlockStyled>
+                <ErrorValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </ErrorValidateSvgStyled>
+                {nbsp}
+                <ValidateStatusErrorTextStyled>{props.errors.email}</ValidateStatusErrorTextStyled>
+              </ValidateStatusEmailBlockStyled>
+            ) : null}
+            {/* 
             <ErrorMessage
               name="email"
               render={message => (
@@ -86,7 +98,7 @@ export const SignInForm = () => {
                   <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
                 </ValidateStatusEmailBlockStyled>
               )}
-            />
+            /> */}
 
             <FieldSignInStyled
               id="password"
@@ -96,7 +108,7 @@ export const SignInForm = () => {
               errorpassword={props.errors.password}
               touchedpassword={props.touched}
             />
-            <ErrorMessage
+            {/* <ErrorMessage
               name="password"
               render={message => (
                 <ValidateStatusPasswordBlockStyled>
@@ -107,15 +119,26 @@ export const SignInForm = () => {
                   <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
                 </ValidateStatusPasswordBlockStyled>
               )}
-            />
+            /> */}
 
-            {props.errors.password === undefined && props.touched?.password === true ? (
+            {props.errors.password === undefined && props.values.password !== '' ? (
               <ValidateStatusPasswordBlockStyled>
                 <SuccessValidateSvgStyled>
                   <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
                 </SuccessValidateSvgStyled>
                 {nbsp}
                 <ValidateStatusSuccessTextStyled>Success password</ValidateStatusSuccessTextStyled>
+              </ValidateStatusPasswordBlockStyled>
+            ) : null}
+            {props.errors.password ? (
+              <ValidateStatusPasswordBlockStyled>
+                <ErrorValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </ErrorValidateSvgStyled>
+                {nbsp}
+                <ValidateStatusErrorTextStyled>
+                  {props.errors.password}
+                </ValidateStatusErrorTextStyled>
               </ValidateStatusPasswordBlockStyled>
             ) : null}
 

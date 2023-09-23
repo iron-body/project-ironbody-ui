@@ -112,14 +112,10 @@ export const FieldSignInStyled = styled(Field)`
   background-color: inherit;
   border-radius: 12px;
   /* border: 1px solid rgba(239, 237, 232, 0.3); */
-  /* border: ${props =>
-    props.erroremail === undefined && props.touchedemail?.email === true
-      ? '1px solid #3CBF61'
-      : '1px solid #D80027'}; */
 
   border: ${props => {
     if (props.erroremail === undefined && props.touchedemail?.email === true) {
-      return '1px solid #3CBF61';
+      return `1px solid #3CBF61`;
     }
     if (props.erroremail && props.touchedemail?.email === true) {
       return '1px solid #D80027';
@@ -127,9 +123,6 @@ export const FieldSignInStyled = styled(Field)`
     if (props.errorpassword === undefined && props.touchedpassword?.password === true) {
       return '1px solid #3CBF61';
     }
-
-    // console.log('props :>> ', props);
-    // console.log('props.touchpassword?.password :>> ', props.touchedpassword?.password);
     if (props.touchedpassword?.password === true) {
       return '1px solid #D80027';
     }
@@ -138,7 +131,6 @@ export const FieldSignInStyled = styled(Field)`
 
   color: var(--white);
 
-  &:focus,
   &:hover {
     border: 1px solid #e6533c;
   }
@@ -178,6 +170,6 @@ export const ValidateStatusPasswordBlockStyled = styled.div`
 
 export const ValidateStatusEmailBlockStyled = styled.div`
   position: absolute;
-  top: 54px;
+  top: 55px;
   display: flex;
 `;
