@@ -17,33 +17,35 @@ let signinSchema = yup.object().shape({
     .string()
     .email()
     .required()
-    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Email must be like "ttt@ttt.com"'),
+    .matches(/^\S*$/, 'Whitespace is not allowed')
+    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Error email'),
   password: yup
     .string()
     .min(7)
-    .max(7)
+    .matches(/^\S*$/, 'Whitespace is not allowed')
     .required()
     .matches(
       /^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/,
-      'Password must be 7 characters like "ssssss1"',
+      'Password bad. Please use 6 characters and 1 number',
     ),
 });
 
 let signUpSchema = yup.object().shape({
-  name: yup.string().required(),
+  name: yup.string().matches(/^\S*$/, 'Whitespace is not allowed').required(),
   email: yup
     .string()
     .email()
     .required()
-    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Email must be like "ttt@ttt.com"'),
+    .matches(/^\S*$/, 'Whitespace is not allowed')
+    .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Error email'),
   password: yup
     .string()
     .min(7)
-    .max(7)
     .required()
+    .matches(/^\S*$/, 'Whitespace is not allowed')
     .matches(
       /^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/,
-      'Password must be 7 characters like "ssssss1"',
+      'Password bad. Please use 6 characters and 1 number',
     ),
 });
 
