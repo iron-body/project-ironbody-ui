@@ -1,6 +1,9 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import moment from 'moment';
 
 // import StyledDatepicker from './../StyledDatepicker/StyledDatepicker';
 // import { CalendarIcon } from './../DaySwitch/DaySwitch.styled';
@@ -27,15 +30,11 @@ import {
   NextBtn,
 } from './ParamsForm.styled';
 
+import { selectParamsValues, updateAll } from '../../redux/params/paramsSlice';
+
 const ParamsFormSchema = yup.object().shape({
-  height: yup
-    .number()
-    .min(150, 'Height should be higher than 150cm')
-    .required('Required'),
-  currentWeight: yup
-    .number()
-    .min(35, 'Weight should be more than 35kg')
-    .required('Required'),
+  height: yup.number().min(150, 'Height should be higher than 150cm').required('Required'),
+  currentWeight: yup.number().min(35, 'Weight should be more than 35kg').required('Required'),
   desiredWeight: yup
     .number()
     .min(35, 'Desire weight should be more than 35kg')
@@ -50,42 +49,32 @@ const ParamsFormSchema = yup.object().shape({
 });
 
 const ParamsForm = props => {
+  const paramsState = useSelector(selectParamsValues);
+  const dispatch = useDispatch();
   const onStepChange = props.onStepChange;
   const currentStep = props.currentStep;
-  const [formattedDate, setFormattedDate] = useState('');
+  // const [formattedDate, setFormattedDate] = useState('');
+
   let savedValues = {};
 
-  const {
-    values,
-    errors,
-    touched,
-    handleBlur,
-    handleChange,
-    handleSubmit,
-    setFieldValue,
-  } = useFormik({
-    initialValues: {
-      height: undefined,
-      currentWeight: undefined,
-      desiredWeight: undefined,
-      birthday: formattedDate,
+  const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } =
+    useFormik({
+      initialValues: paramsState,
 
-      blood: 1,
-      sex: 'male',
-      levelActivity: 1,
-    },
-
-    validationSchema: ParamsFormSchema,
-    validateOnChange: false,
-    validateOnBlur: false,
-    // onSubmit: () => {
-    // alert('Fill all fields');
-    // },
-  });
+      validationSchema: ParamsFormSchema,
+      validateOnChange: false,
+      validateOnBlur: false,
+      // onSubmit: () => {
+      // alert('Fill all fields');
+      // },
+    });
 
   const handleDateChange = date => {
-    setFieldValue('birthday', date);
-    setFormattedDate(date);
+    const newFormatedDate = moment(date).format();
+    // setFormattedDate(newFormatedDate);
+    setFieldValue('birthday', newFormatedDate);
+    // console.log('newFormatedDate :>> ', newFormatedDate);
+    // console.log('values.birthday :>> ', values.birthday);
   };
 
   const handleNextSetStep = () => {
@@ -107,7 +96,10 @@ const ParamsForm = props => {
       .slice(0, 3)
       .every(value => value !== undefined);
 
-  // console.log(errors);
+  useEffect(() => {
+    dispatch(updateAll(values));
+  }, [dispatch, values]);
+
   return (
     <MainForm>
       {currentStep === 1 && (
@@ -131,11 +123,7 @@ const ParamsForm = props => {
             <Wrapper>
               <Input
                 name="currentWeight"
-                id={
-                  errors.currentWeight && touched.currentWeight
-                    ? 'error'
-                    : 'currentWeight'
-                }
+                id={errors.currentWeight && touched.currentWeight ? 'error' : 'currentWeight'}
                 value={values.currentWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -150,11 +138,7 @@ const ParamsForm = props => {
             <Wrapper>
               <Input
                 name="desiredWeight"
-                id={
-                  errors.desiredWeight && touched.desiredWeight
-                    ? 'error'
-                    : 'desiredWeight'
-                }
+                id={errors.desiredWeight && touched.desiredWeight ? 'error' : 'desiredWeight'}
                 value={values.desiredWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -302,8 +286,7 @@ const ParamsForm = props => {
                   onChange={() => setFieldValue('levelActivity', 3)}
                 />
                 <RadioLabel htmlFor="level-activity-3">
-                  Moderately active (moderate exercises/sports 3-5 days per
-                  week)
+                  Moderately active (moderate exercises/sports 3-5 days per week)
                 </RadioLabel>
               </div>
 
@@ -328,8 +311,7 @@ const ParamsForm = props => {
                 onChange={() => setFieldValue('levelActivity', 5)}
               />
               <RadioLabel htmlFor="level-activity-5">
-                Extremely active (very strenuous exercises/sports and physical
-                work)
+                Extremely active (very strenuous exercises/sports and physical work)
               </RadioLabel>
             </RadioContainer>
 
