@@ -8,16 +8,17 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import {
-  StyledCalories,
-  StyledCategory,
+  StyledBodyPart,
+  StyledCell100,
+  StyledCell30,
   StyledDel,
+  StyledEquipment,
   StyledHeadingTable,
-  StyledRec,
+  StyledName,
   StyledTable,
   StyledTableCell,
   StyledTableRaw,
   StyledTime,
-  StyledTitle,
   StyledWeight,
   TableContainer,
 } from './ExercisesTable.styled';
@@ -69,21 +70,27 @@ const columnHelper = createColumnHelper();
 
 const columns = [
   columnHelper.accessor('BodyPart', {
+    cell: info => <StyledCell100>{info.getValue()}</StyledCell100>,
     header: 'Body Part',
   }),
   columnHelper.accessor('Equipment', {
+    cell: info => <StyledCell100>{info.getValue()}</StyledCell100>,
     header: 'Equipment',
   }),
   columnHelper.accessor('Name', {
+    cell: info => <StyledCell100>{info.getValue()}</StyledCell100>,
     header: 'Name',
   }),
   columnHelper.accessor('Target', {
+    cell: info => <StyledCell30>{info.getValue()}</StyledCell30>,
     header: 'Target',
   }),
   columnHelper.accessor('BurnedCalories', {
+    cell: info => <StyledCell30>{info.getValue()}</StyledCell30>,
     header: 'BurnedCalories',
   }),
   columnHelper.accessor('Time', {
+    cell: info => <StyledCell30>{info.getValue()}</StyledCell30>,
     header: 'Time',
   }),
   columnHelper.accessor('Delete', {
@@ -97,6 +104,7 @@ const columns = [
 ];
 
 const ExercisesTable = () => {
+  // eslint-disable-next-line no-unused-vars
   const [data, setData] = React.useState(() => [...defaultData]);
 
   const table = useReactTable({
@@ -108,9 +116,9 @@ const ExercisesTable = () => {
   return (
     <>
       <StyledHeadingTable>
-        <StyledTitle>Body Part</StyledTitle>
-        <StyledCategory>Equipment</StyledCategory>
-        <StyledCalories>Name</StyledCalories>
+        <StyledBodyPart>Body Part</StyledBodyPart>
+        <StyledEquipment>Equipment</StyledEquipment>
+        <StyledName>Name</StyledName>
         <StyledWeight>Target</StyledWeight>
         <StyledTime>Burned Calories</StyledTime>
         <p>Time</p>

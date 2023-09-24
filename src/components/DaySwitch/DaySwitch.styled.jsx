@@ -5,11 +5,9 @@ export const DaySwitchContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  border-top: 1px solid rgba(239, 237, 232, 0.2);
   @media ${device.tablet} {
   }
   @media ${device.desktop} {
-    margin-top: 50px;
     padding-top: 52px;
     gap: 8px;
   }

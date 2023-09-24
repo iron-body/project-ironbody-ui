@@ -10,14 +10,13 @@ import {
   FoodParams,
   NameParams,
   ParamsValue,
-    FoodIcon,
-  ProductWrapper
+  FoodIcon,
+  ProductWrapper,
 } from './Product.styled';
 
 export default function Product({ product, openModal }) {
-  const { foodName, calories, category, weight } = product;
-
-    const handleButtonClick = () => {
+  const { title, calories, category, weight } = product;
+  const handleButtonClick = () => {
     openModal();
   };
 
@@ -36,7 +35,8 @@ export default function Product({ product, openModal }) {
           </RecomendedInfo>
         </NavCard>
         <FoodName>
-          <FoodIcon alt="" src="/project-ironbody-ui/product-icon.svg" /> {foodName}
+          <FoodIcon alt="" src="/project-ironbody-ui/product-icon.svg" />
+          {title.length > 20 ? ` ${title.slice(0, 20)}... ` : title}
         </FoodName>
         <FoodParams>
           <NameParams>
@@ -50,8 +50,6 @@ export default function Product({ product, openModal }) {
           </NameParams>
         </FoodParams>
       </ProductWrapper>
-
-      
     </>
   );
 }

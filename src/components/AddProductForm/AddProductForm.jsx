@@ -14,7 +14,7 @@ import {
 } from './AddProductForm.styled';
 
 export default function AddProductForm({ productCalc, onClose }) {
-  const { foodName, caloriesValue = 155 } = productCalc;
+  const { foodName, calories  } = productCalc;
 
   const handleClose = () => {
     onClose(); 
@@ -30,7 +30,7 @@ export default function AddProductForm({ productCalc, onClose }) {
         <CaloriesValue />
       </CalcContainer>
       <CalcCalories>
-        Calories: <CalcVelueCalories>{caloriesValue}</CalcVelueCalories>{' '}
+        Calories: <CalcVelueCalories>{calories}</CalcVelueCalories>{' '}
       </CalcCalories>
       <BtnFormContainer>
         <AddProductBtn>Add to diary</AddProductBtn>

@@ -7,5 +7,10 @@ export const getLoading = state => state.exercises.isLoading;
 
 export const getError = state => state.exercises.error;
 
-export const getFilterValue = state => state.filter.value;
-export const getIsLoading = state => state.auth.isLoading;
+export const getFilterValue = state => {
+  return state.filter.value;
+};
+
+export const getCategoryValue = state => {
+  return state.filter.selectedCategory;
+};

@@ -10,6 +10,8 @@ import {
 import {
   StyledCalories,
   StyledCategory,
+  StyledCell100,
+  StyledCell30,
   StyledDel,
   StyledHeadingTable,
   StyledRec,
@@ -84,15 +86,19 @@ const columnHelper = createColumnHelper();
 
 const columns = [
   columnHelper.accessor('Title', {
+    cell: info => <StyledCell100>{info.getValue()}</StyledCell100>,
     header: 'Title',
   }),
   columnHelper.accessor('Category', {
+    cell: info => <StyledCell100>{info.getValue()}</StyledCell100>,
     header: 'Category',
   }),
   columnHelper.accessor('Calories', {
+    cell: info => <StyledCell30>{info.getValue()}</StyledCell30>,
     header: 'Calories',
   }),
   columnHelper.accessor('Weight', {
+    cell: info => <StyledCell30>{info.getValue()}</StyledCell30>,
     header: 'Weight',
   }),
   columnHelper.accessor('Recommended', {
@@ -110,6 +116,7 @@ const columns = [
 ];
 
 const ProductsTable = () => {
+  // eslint-disable-next-line no-unused-vars
   const [data, setData] = React.useState(() => [...defaultData]);
 
   const table = useReactTable({

@@ -4,8 +4,9 @@ import { device } from '../../Constants';
 export const Container = styled.div`
   width: 335px;
   max-height: 141px;
-  // margin-left: auto;
-  // margin-right: auto;
+  
+;
+ 
   padding: 16px;
   border-radius: var(--br-12px);
   background-color: #10100f;
@@ -17,14 +18,7 @@ export const Container = styled.div`
   align-items: center;
   background-image: url(${props => props.img});
 
-  // @media screen and (min-width: 375px) {
-  //   width: 335px;
-  //   height: 141px;
-
-  //   // overflow-x: hidden;
-  // }
-
-  @media screen and (${device.tablet}) {
+    @media screen and (${device.tablet}) {
     width: 335px;
     height: 141px;
     box-sizing: border-box;

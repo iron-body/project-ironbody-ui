@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import sprite from '../../../icons.svg';
 
@@ -27,15 +28,16 @@ function ParamsFormDaySwitch({ onDateChange }) {
     setMinDate(new Date());
   }, []);
 
-  useEffect(() => {
-    // const date = new Date(formattedDate);
+  // useEffect(() => {
+  //   // const date = new Date(formattedDate);
 
-    onDateChange(selectedDate);
-  }, [selectedDate]);
+  //   onDateChange(selectedDate);
+  // }, [selectedDate]);
 
   const handleFormattedDateClick = () => {
     console.log('click!');
     setShowDatepicker(!showDatepicker);
+    onDateChange(selectedDate);
   };
   const handlePreviousDay = () => {
     const previousDate = new Date(selectedDate);
@@ -62,11 +64,7 @@ function ParamsFormDaySwitch({ onDateChange }) {
           <use href={`${sprite}#icon-calendar`}></use>
         </CalendarIcon>
         {showDatepicker && (
-          <StyledDatepicker
-            date={selectedDate}
-            minDate={minDate}
-            onChange={handleDateChange}
-          />
+          <StyledDatepicker date={selectedDate} minDate={minDate} onChange={handleDateChange} />
         )}
       </StyledDate>
       <StyledButton
