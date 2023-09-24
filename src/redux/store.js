@@ -7,12 +7,14 @@ import { exercisesReducer } from './exercises.Slice';
 
 import { persistStore, FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import { headerReducer } from './headerSlice';
+import { paramsReducer } from './params/paramsSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
+    // serializableCheck: false,
   }),
 ];
 
@@ -30,7 +32,7 @@ export const store = configureStore({
     auth: localStorageAuthReducer,
     header: headerReducer,
     exercises: exercisesReducer,
-    
+    params: paramsReducer,
   },
   middleware,
 });
