@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import moment from 'moment';
 
-// import StyledDatepicker from './../StyledDatepicker/StyledDatepicker';
-// import { CalendarIcon } from './../DaySwitch/DaySwitch.styled';
 import ParamsFormDaySwitch from './../ParamsFormDaySwitch/ParamsFormDaySwitch';
-
+import { authOperations } from '../../redux/auth/authOperations';
+import { selectParamsValues, updateAll } from '../../redux/params/paramsSlice';
+import { Notify } from 'notiflix';
 import {
   MainForm,
   Input,
@@ -49,11 +52,10 @@ const ParamsFormSchema = yup.object().shape({
   // }),
 });
 
-const ParamsForm = props => {
-  const onStepChange = props.onStepChange;
-  const currentStep = props.currentStep;
-  const [formattedDate, setFormattedDate] = useState('');
-  let savedValues = {};
+const ParamsForm = ({ currentStep, onStepChange }) => {
+  const paramsState = useSelector(selectParamsValues);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     values,
@@ -64,16 +66,7 @@ const ParamsForm = props => {
     handleSubmit,
     setFieldValue,
   } = useFormik({
-    initialValues: {
-      height: undefined,
-      currentWeight: undefined,
-      desiredWeight: undefined,
-      birthday: formattedDate,
-
-      blood: 1,
-      sex: 'male',
-      levelActivity: 1,
-    },
+    initialValues: paramsState,
 
     validationSchema: ParamsFormSchema,
     validateOnChange: false,
@@ -83,31 +76,39 @@ const ParamsForm = props => {
     // },
   });
 
-  const handleDateChange = date => {
-    setFieldValue('birthday', date);
-    setFormattedDate(date);
-  };
-
-  const handleNextSetStep = () => {
-    onStepChange(currentStep + 1);
-
-    console.log(values);
-    savedValues = values;
-
-    console.log(savedValues);
-  };
-
-  const handleBackSetStep = () => {
-    onStepChange(currentStep - 1);
-  };
-
   const canClickNext =
     Object.keys(errors).length === 0 &&
     Object.values(values)
       .slice(0, 3)
       .every(value => value !== undefined);
 
-  // console.log(errors);
+  useEffect(() => {
+    dispatch(updateAll(values));
+  }, [dispatch, values]);
+
+  const handleDateChange = date => {
+    const newFormatedDate = moment(date).format();
+    setFieldValue('birthday', newFormatedDate);
+  };
+
+  const handleNextSetStep = () => {
+    onStepChange(currentStep + 1);
+  };
+
+  const handleBackSetStep = () => {
+    onStepChange(currentStep - 1);
+  };
+
+  const onSumbitForm = e => {
+    e.preventDefault();
+    try {
+      navigate('/products');
+      dispatch(authOperations.calculateNorms(paramsState));
+    } catch (error) {
+      Notify.failure(error.message);
+    }
+  };
+
   return (
     <MainForm>
       {currentStep === 1 && (
@@ -168,12 +169,7 @@ const ParamsForm = props => {
 
             <Wrapper>
               <LabelBox>
-                <BirthdayLabel
-                  value={values.birthday}
-                  // onChange={() => setFieldValue('birthday', formattedDate)}
-                >
-                  Birthday
-                </BirthdayLabel>
+                <BirthdayLabel value={values.birthday}>Birthday</BirthdayLabel>
               </LabelBox>
               <ParamsFormDaySwitch onDateChange={handleDateChange} />
             </Wrapper>
@@ -182,7 +178,6 @@ const ParamsForm = props => {
           <NextBtn
             type="button"
             onClick={canClickNext ? handleNextSetStep : handleSubmit}
-            // onClick={errors === {} ? handleNextSetStep : handleSubmit}
           >
             Next
           </NextBtn>
@@ -345,7 +340,13 @@ const ParamsForm = props => {
       ;
       {currentStep === 3 && (
         <>
-          <SubmitBtn type="submit">Go</SubmitBtn>
+          <SubmitBtn type="submit" onClick={onSumbitForm}>
+            Go
+          </SubmitBtn>
+
+          <BackBtn type="button" onClick={handleBackSetStep}>
+            Back
+          </BackBtn>
         </>
       )}
     </MainForm>

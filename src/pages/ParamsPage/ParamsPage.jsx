@@ -16,7 +16,7 @@ import {
   Decription,
   Decription3,
   // NextBtn,
-  BackBtn,
+  // BackBtn,
 } from './ParamsPage.styled';
 
 const ParamsPage = () => {
@@ -26,7 +26,6 @@ const ParamsPage = () => {
     setStep(newStep);
   };
 
-  // console.log(step);
   return (
     <>
       {step === 1 && (
@@ -39,14 +38,6 @@ const ParamsPage = () => {
           </Decription>
           <ParamsForm currentStep={step} onStepChange={handleStepChange} />
 
-          {/* <NextBtn
-            type="button"
-            onClick={() => setStep(step + 1)}
-            disabled={isNextBtnDisabled ? true : false}
-          >
-            Next
-          </NextBtn> */}
-
           <TutorialBlock />
           <CaloriesBlock />
           <StepBar stepNumber={step} />
@@ -57,12 +48,6 @@ const ParamsPage = () => {
         <Wrapper2>
           <MainTitle2>Get closer to your goals!</MainTitle2>
           <ParamsForm currentStep={step} onStepChange={handleStepChange} />
-          {/* <BackBtn type="button" onClick={() => setStep(step - 1)}>
-            Back
-          </BackBtn>
-          <NextBtn type="button" onClick={() => setStep(step + 1)}>
-            Next
-          </NextBtn> */}
 
           <TutorialBlockForParamsPages />
           <CaloriesBlockStyledForParamsPages />
@@ -82,11 +67,7 @@ const ParamsPage = () => {
             individual and personalized approach.
           </Decription3>
 
-          <ParamsForm stepNumber={step} />
-
-          <BackBtn type="button" onClick={() => setStep(step - 1)}>
-            Back
-          </BackBtn>
+          <ParamsForm currentStep={step} onStepChange={handleStepChange} />
 
           <TutorialBlockForParamsPages />
           <CaloriesBlockStyledForParamsPages />

@@ -15,20 +15,23 @@ const token = {
   },
 };
 
-const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
-  try {
-    const { name } = credentials;
-    const response = await axios.post('users/register', credentials);
-    Notify.success(`${name} registered successfully`);
+const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, thunkAPI) => {
+    try {
+      const { name } = credentials;
+      const response = await axios.post('users/register', credentials);
+      Notify.success(`${name} registered successfully`);
 
-    token.set(response.data.accessToken);
-    return response.data;
-  } catch (error) {
-    Notify.failure(`Register Error with with message "${error.message}"`);
-    console.log('error :>> ', error);
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
+      token.set(response.data.accessToken);
+      return response.data;
+    } catch (error) {
+      Notify.failure(`Register Error with with message "${error.message}"`);
+      console.log('error :>> ', error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
 
 const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
@@ -57,24 +60,50 @@ const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-const refreshCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
-  try {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.accessToken;
-    if (!persistedToken) return thunkAPI.rejectWithValue();
-    token.set(persistedToken);
-    const response = await axios.get('/users/current');
-    return response.data;
-  } catch (error) {
-    Notify.failure(`Unable to refresh. Error message is "${error.message}"`);
-    console.log('error :>> ', error);
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});
+const refreshCurrentUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.accessToken;
+      if (!persistedToken) return thunkAPI.rejectWithValue();
+      token.set(persistedToken);
+      const response = await axios.get('/users/current');
+      return response.data;
+    } catch (error) {
+      Notify.failure(`Unable to refresh. Error message is "${error.message}"`);
+      console.log('error :>> ', error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
+const calculateNorms = createAsyncThunk(
+  'user/calculate',
+  async (credentials, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      const persistedToken = state.auth.accessToken;
+      if (!persistedToken) return thunkAPI.rejectWithValue();
+      token.set(persistedToken);
+      const { paramsState } = credentials;
+      const response = await axios.post(
+        'calculateNorms/calculate',
+        paramsState,
+      );
+      return response.data;
+    } catch (error) {
+      Notify.failure(`Server error. "${error.message}"`);
+      console.log('error :>> ', error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
 
 export const authOperations = {
   register,
   login,
   logout,
   refreshCurrentUser,
+  calculateNorms,
 };
