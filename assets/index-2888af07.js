@@ -676,12 +676,22 @@ Notiflix needs to be appended to the "<`+E+'>" element, but you called it before
     margin: 0px 0 32px 0;
   }
 `,Qy=({titleText:e})=>h.jsx(lI,{children:e});Qy.propTypes={titleText:mP.PropTypes.string};const uI=qe.div`
-  max-width: 1440px;
-  padding-left: 15px;
-  padding-right: 15px;
+  max-width: 375px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin: 0 auto;
+  @media ${O.tablet} {
+    max-width: 768px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  @media ${O.desktop} {
+    max-width: 1440px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 `,j8=({children:e})=>h.jsx(uI,{children:e});j8.propTypes={children:gP.node};const N8=qe.div`
-  min-width: 826px;
+  min-width: 335px;
   min-height: 234px;
   padding: 0 16px;
   border-radius: 12px;
@@ -691,6 +701,10 @@ Notiflix needs to be appended to the "<`+E+'>" element, but you called it before
     0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  @media ${O.desktop} {
+    min-width: 826px;
+    min-height: 234px;
+  }
 `,I8=qe.div`
   display: flex;
   justify-content: space-between;
@@ -735,23 +749,28 @@ Notiflix needs to be appended to the "<`+E+'>" element, but you called it before
   max-height: 165px;
   overflow-y: auto;
   ::-webkit-scrollbar-track {
-    background-color: transparent; 
+    background-color: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(239, 237, 232, 0.1); 
-    border-radius: 5px; 
+    background-color: rgba(239, 237, 232, 0.1);
+    border-radius: 5px;
   }
   ::-webkit-scrollbar {
-    width: 6px; 
+    width: 6px;
   }
   ::-webkit-scrollbar-corner {
-    background-color: #f1f1f1; 
+    background-color: #f1f1f1;
+  }
+  @media ${O.desktop} {
   }
 `,GI=$.div`
-  display: flex;
+  display: block;
   padding-left: 10px;
   color: rgba(239, 137, 100, 1);
   font-size: 12px;
+  @media ${O.tablet} {
+    display: flex;
+  }
 `,KI=$.p`
   margin-right: 315px;
 `,XI=$.p`
@@ -813,10 +832,13 @@ Notiflix needs to be appended to the "<`+E+'>" element, but you called it before
     background-color: #f1f1f1;
   }
 `,lF=$.div`
-  display: flex;
+  display: block;
   padding-left: 10px;
   color: rgba(239, 137, 100, 1);
   font-size: 12px;
+  @media ${O.tablet} {
+    display: flex;
+  }
 `,uF=$.p`
   margin-right: 60px;
 `,cF=$.p`
@@ -926,12 +948,14 @@ Notiflix needs to be appended to the "<`+E+'>" element, but you called it before
   }
 `,qF=qe.div`
   display: block;
-
+  max-width: 375px;
   @media ${O.tablet} {
     display: block;
+    max-width: 768px;
   }
   @media ${O.desktop} {
     display: flex;
+    max-width: 1440px;
     flex-direction: column;
     row-gap: 32px;
   }
@@ -1148,7 +1172,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   font-size: 16px;
   justify-content: space-around;
   align-items: center;
-`;const Aq=({date:e,onChange:t,minDate:r})=>h.jsxs(h.Fragment,{children:[h.jsx(mH,{popperPlacement:"top-end",selected:e,minDate:r,onChange:t,popperModifiers:{preventOverflow:{enabled:!0,escapeWithReference:!1,boundariesElement:"viewport"}},inline:!0}),h.jsx(hH,{})]});function d3(){const[e,t]=C.useState(new Date),[r,n]=C.useState(null),[i,o]=C.useState(!1);C.useEffect(()=>{n(new Date)},[]);const a=()=>{console.log("click!"),o(!i)},s=()=>{const d=new Date(e);d.setDate(d.getDate()-1),t(d)},l=()=>{const d=new Date(e);d.setDate(d.getDate()+1),t(d)},u=d=>{t(d)},c=e.toLocaleDateString("en-GB",{day:"2-digit",month:"2-digit",year:"numeric"});return h.jsxs(EF,{children:[h.jsxs(zF,{onClick:a,children:[c,h.jsx(_F,{width:"16",height:"16",children:h.jsx("use",{href:`${Mr}#icon-calendar`})}),i&&h.jsx(Aq,{date:e,minDate:r,onChange:u})]}),h.jsx(T2,{onClick:s,disabled:r&&e<=r,children:"<"}),h.jsx(T2,{onClick:l,children:">"})]})}const bH=()=>{const e=Ry("(max-width: 768px)");return h.jsx("main",{children:h.jsxs(j8,{children:[h.jsxs(SF,{children:[!e&&h.jsx(d3,{}),h.jsx(Qy,{titleText:"Diary"}),e&&h.jsx(d3,{})]}),h.jsxs(PF,{children:[e&&h.jsx($2,{}),h.jsxs(qF,{children:[h.jsx(aF,{}),h.jsx(xF,{})]}),!e&&h.jsx($2,{})]})]})})},yH=qe.div`
+`;const Aq=({date:e,onChange:t,minDate:r})=>h.jsxs(h.Fragment,{children:[h.jsx(mH,{popperPlacement:"top-end",selected:e,minDate:r,onChange:t,popperModifiers:{preventOverflow:{enabled:!0,escapeWithReference:!1,boundariesElement:"viewport"}},inline:!0}),h.jsx(hH,{})]});function d3(){const[e,t]=C.useState(new Date),[r,n]=C.useState(null),[i,o]=C.useState(!1);C.useEffect(()=>{n(new Date)},[]);const a=()=>{console.log("click!"),o(!i)},s=()=>{const d=new Date(e);d.setDate(d.getDate()-1),t(d)},l=()=>{const d=new Date(e);d.setDate(d.getDate()+1),t(d)},u=d=>{t(d)},c=e.toLocaleDateString("en-GB",{day:"2-digit",month:"2-digit",year:"numeric"});return h.jsxs(EF,{children:[h.jsxs(zF,{onClick:a,children:[c,h.jsx(_F,{width:"16",height:"16",children:h.jsx("use",{href:`${Mr}#icon-calendar`})}),i&&h.jsx(Aq,{date:e,minDate:r,onChange:u})]}),h.jsx(T2,{onClick:s,disabled:r&&e<=r,children:"<"}),h.jsx(T2,{onClick:l,children:">"})]})}const bH=()=>{const e=Ry("(max-width: 768px)");return h.jsxs(j8,{children:[h.jsxs(SF,{children:[!e&&h.jsx(d3,{}),h.jsx(Qy,{titleText:"Diary"}),e&&h.jsx(d3,{})]}),h.jsxs(PF,{children:[e&&h.jsx($2,{}),h.jsxs(qF,{children:[h.jsx(aF,{}),h.jsx(xF,{})]}),!e&&h.jsx($2,{})]})]})},yH=qe.div`
   outline: 1px solid rgba(239, 237, 232, 0.3);
   color: var(--white);
   font-family: var(--headline-style-mobile-h1);
