@@ -1,19 +1,16 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { device } from '../../Constants';
 import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
 import{StyledLink} from './ExercisesList.styled'
-import exercises from '../../exercises.json';
 
-export const ExercisesList = () => {
+export const ExercisesList = ({subcategory}) => {
   const { name } = useParams();
-  const { subCategories } = useParams();
 
-//   const exercises = useSelector(state => state.exercises.items);
-// console.log(exercises);
+ 
   let exercise;
+  const exercises = useSelector(state => state.exercises.items);
 
-  switch (subCategories) {
+  switch (subcategory) {
     case 'Body parts':
       exercise = exercises.filter(item => item.bodyPart === name);
       break;
@@ -40,6 +37,7 @@ export const ExercisesList = () => {
           muscles={item.target}
           time={item.time}
           equipment={item.equipment}
+          
         />
       ))}
     </StyledLink>
