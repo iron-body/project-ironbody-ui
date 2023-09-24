@@ -42,6 +42,20 @@ export const getCategoryProductsThunk = createAsyncThunk(
   },
 );
 
+export const getAllFillterProductsThunk = createAsyncThunk(
+  'products/fetchAll',
+  async (categoryQuery, titleQuery, thunkAPI) => {
+    try {
+      const response = await axios.get(
+        `api/products?category=${categoryQuery}&title=${titleQuery}&recommended=all`,
+      );
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
+
 export const getCategoriesProductsThunk = createAsyncThunk(
   'category/fetchAll',
   async (_, thunkAPI) => {
