@@ -43,7 +43,7 @@ export default function ProductsFilters() {
   const categoryValue = useSelector(getCategoryValue);
 
   const [localSearchInput, setLocalSearchInput] = useState(filterValue);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(categoryValue);
 
   const categories = useSelector(getCategoriesProducts);
 
@@ -63,16 +63,15 @@ export default function ProductsFilters() {
   useEffect(() => {
     dispatch(
       getAllFillterProductsThunk({
-        categoryQuery: categoryValue,
+        categoryQuery: categoryValue.value,
         serchParams: filterValue,
       }),
     );
-  }, [categoryValue, filterValue, dispatch]);
+  }, [categoryValue.value, filterValue, dispatch]);
 
   const onSearchValue = () => {
     dispatch(updateFilter({ value: localSearchInput, selectedCategory }));
-    console.log(localSearchInput);
-    console.log(selectedCategory);
+
   };
 
   const eraseInputValue = () => {
@@ -83,7 +82,7 @@ export default function ProductsFilters() {
 
   const updateCategoryValue = value => {
     setSelectedCategory(value);
-    dispatch(getCategoryProductsThunk(value));
+    dispatch(getCategoryProductsThunk(value.value));
   };
 
   return (
@@ -136,7 +135,7 @@ export default function ProductsFilters() {
                     value={selectedCategory}
                     onChange={selectedOption => {
                       setSelectedCategory(selectedOption);
-                      updateCategoryValue(selectedOption.value);
+                      updateCategoryValue(selectedOption);
                     }}
                   />
                 )}
