@@ -24,9 +24,7 @@ export const AddExerciseForm = ({
   equipment,
   active,
 }) => {
-  const closeModal = () => {
-    console.log('Hello!');
-  };
+  
 
   return (
     <Container>

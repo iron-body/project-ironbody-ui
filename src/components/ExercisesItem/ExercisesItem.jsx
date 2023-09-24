@@ -32,7 +32,9 @@ export const ExercisesItem = ({
   const [modalActive, setModalActive] = useState(false);
 
   return (
+    
     <Container key={exerciseName}>
+      
       <NavCard>
         <TitleCard>WORKOUT</TitleCard>
         <RecomendedInfo>
