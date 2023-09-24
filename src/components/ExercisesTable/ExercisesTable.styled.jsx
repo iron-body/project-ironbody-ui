@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { device } from '../../Constants';
 
 export const TableContainer = styled.div`
   max-height: 165px;
@@ -19,10 +20,13 @@ export const TableContainer = styled.div`
 `;
 
 export const StyledHeadingTable = styled.div`
-  display: flex;
+  display: block;
   padding-left: 10px;
   color: rgba(239, 137, 100, 1);
   font-size: 12px;
+  @media ${device.tablet} {
+    display: flex;
+  }
 `;
 export const StyledTitle = styled.p`
   margin-right: 60px;

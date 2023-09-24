@@ -20,12 +20,14 @@ export const StyledMainContentWrapper = styled.div`
 
 export const StyledTablesWrapper = styled.div`
   display: block;
-
+  max-width: 375px;
   @media ${device.tablet} {
     display: block;
+    max-width: 768px;
   }
   @media ${device.desktop} {
     display: flex;
+    max-width: 1440px;
     flex-direction: column;
     row-gap: 32px;
   }
