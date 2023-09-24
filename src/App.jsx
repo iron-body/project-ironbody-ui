@@ -21,8 +21,12 @@ const test = import.meta.env.VITE_API_TEST;
 
 import ParamsPage from './pages/ParamsPage/ParamsPage';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
+import axios from 'axios';
 
 // const DairyPage = lazy(() => import('./pages/DiaryPage/DiaryPage'));
+// axios.defaults.baseURL = 'http://localhost:3030/api/';
+// axios.defaults.baseURL = 'http://localhost:3000/api/';
+axios.defaults.baseURL = 'https://iron-body-project-backend.onrender.com/api/';
 
 function App() {
   const dispatch = useDispatch();
@@ -41,47 +45,33 @@ function App() {
         {/* comment below for unuse automatic redirect if user already logined */}
         <Route
           path="diary"
-          element={
-            <PrivateRoute redirectTo="/signin" component={<DiaryPage />} />
-          }
+          element={<PrivateRoute redirectTo="/signin" component={<DiaryPage />} />}
         />
         {/* <Route path="/params" element={<ParamsPage />} /> */}
         <Route
           path="params"
-          element={
-            <PrivateRoute redirectTo="/signin" component={<ParamsPage />} />
-          }
+          element={<PrivateRoute redirectTo="/signin" component={<ParamsPage />} />}
         />
 
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/exercises" element={<ExercisesPage />}>
-          <Route
-            path="/exercises/:subCategories"
-            element={<ExercisesSubcategoriesList />}
-         ><Route
-         path="/exercises/:subCategories/:name"
-         element={<ExercisesList />}
-       /></Route>          
-          
-          
+          <Route path="/exercises/:subCategories" element={<ExercisesSubcategoriesList />}>
+            <Route path="/exercises/:subCategories/:name" element={<ExercisesList />} />
+          </Route>
         </Route>
 
         <Route index element={<WelcomePage />} />
         {/* <Route path="signup" element={<SignUpPage />} /> */}
         <Route
           path="signup"
-          element={
-            <RestrictedRoute redirectTo="/params" component={<SignUpPage />} />
-          }
+          element={<RestrictedRoute redirectTo="/params" component={<SignUpPage />} />}
         />
         {/* Comment bellow line if you uncomment private route */}
         {/* <Route path="signin" element={<SignInPage />} /> */}
         {/* comment below for unuse redirect after succesfull authorization to Diary Page after login */}
         <Route
           path="signin"
-          element={
-            <RestrictedRoute redirectTo="/diary" component={<SignInPage />} />
-          }
+          element={<RestrictedRoute redirectTo="/diary" component={<SignInPage />} />}
         />
         <Route path="*" element={<ErrorPage />} />
       </Route>
