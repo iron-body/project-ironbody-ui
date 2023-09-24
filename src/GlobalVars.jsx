@@ -52,5 +52,9 @@ export default createGlobalStyle`
 --width-tablet: 768px;
 --width-desktop: 1440px;
 
+/*Transition style*/
+  --cubic-bezier: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-duration: 250ms;
+
 }
 `;
