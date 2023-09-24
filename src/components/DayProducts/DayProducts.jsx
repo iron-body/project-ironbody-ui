@@ -12,7 +12,7 @@ const DayProducts = () => {
     <StyledWrapper>
       <StyledTitleWrapper>
         <StyledTitle>Products</StyledTitle>
-        <StyledLink href="/products">Add product &rarr;</StyledLink>
+        <StyledLink to="/products">Add product &rarr;</StyledLink>
       </StyledTitleWrapper>
       {!(<ProductsTable />) ? (
         <StyledNoFoundText>Not found products</StyledNoFoundText>

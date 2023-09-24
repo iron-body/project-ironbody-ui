@@ -1,5 +1,8 @@
+/* eslint-disable react/prop-types */
 // import React from 'react';
-import { Formik, ErrorMessage } from 'formik';
+// import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
+
 import {
   FieldSignInStyled,
   FormSignInStyled,
@@ -19,11 +22,20 @@ import { Notify } from 'notiflix';
 import { ValidationSchemas } from '../../FormValidation/ValidationSchemas';
 
 import spriteIconsRemix from '../../../../remixicon.symbol.svg';
-import { ErrorValidateSvgStyled, ValidateStatusErrorTextStyled } from '../commonSignInForm.styled';
-// import sprite from '../../../icons.svg';
+import {
+  ErrorValidateSvgStyled,
+  SuccessValidateSvgStyled,
+  ValidateStatusErrorTextStyled,
+  ValidateStatusSuccessTextStyled,
+} from '../commonSignInForm.styled';
+import { useSelector } from 'react-redux';
+import { getIsLoading } from '../../../redux/selectors';
+import Loader from '../../Loader/Loader';
 
 export const SignInForm = () => {
   const dispatch = useDispatch();
+  // const isLoading = useSelector(state => state.auth.isLoading);
+  const isLoading = useSelector(getIsLoading);
   let nbsp = '\u00A0';
 
   return (
@@ -38,9 +50,6 @@ export const SignInForm = () => {
           password: '',
         }}
         onSubmit={async values => {
-          await new Promise(r => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
-          console.log(values);
           const { email, password } = values;
           try {
             dispatch(authOperations.login({ email, password }));
@@ -50,8 +59,102 @@ export const SignInForm = () => {
         }}
         validationSchema={ValidationSchemas.signinSchema}
       >
-        <FormSignInStyled>
+        {({ ...props }) => (
+          <FormSignInStyled>
+            {isLoading && <Loader />}
+            <FieldSignInStyled
+              id="email"
+              name="email"
+              placeholder="Email"
+              type="email"
+              erroremail={props.errors.email}
+              touchedemail={props.touched}
+            />
+
+            {/* {console.log('props', props)} */}
+
+            {props.errors.email === undefined && props.values.email !== '' ? (
+              <ValidateStatusEmailBlockStyled>
+                <SuccessValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </SuccessValidateSvgStyled>
+                {nbsp}
+                <ValidateStatusSuccessTextStyled>Success Email</ValidateStatusSuccessTextStyled>
+              </ValidateStatusEmailBlockStyled>
+            ) : null}
+
+            {props.errors.email ? (
+              <ValidateStatusEmailBlockStyled>
+                <ErrorValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </ErrorValidateSvgStyled>
+                {nbsp}
+                <ValidateStatusErrorTextStyled>{props.errors.email}</ValidateStatusErrorTextStyled>
+              </ValidateStatusEmailBlockStyled>
+            ) : null}
+            {/* 
+            <ErrorMessage
+              name="email"
+              render={message => (
+                <ValidateStatusEmailBlockStyled>
+                  <ErrorValidateSvgStyled>
+                    <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                  </ErrorValidateSvgStyled>
+                  {nbsp}
+                  <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
+                </ValidateStatusEmailBlockStyled>
+              )}
+            /> */}
+
+            <FieldSignInStyled
+              id="password"
+              name="password"
+              placeholder="Password"
+              type="password"
+              errorpassword={props.errors.password}
+              touchedpassword={props.touched}
+            />
+            {/* <ErrorMessage
+              name="password"
+              render={message => (
+                <ValidateStatusPasswordBlockStyled>
+                  <ErrorValidateSvgStyled>
+                    <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                  </ErrorValidateSvgStyled>
+                  {nbsp}
+                  <ValidateStatusErrorTextStyled>{message}</ValidateStatusErrorTextStyled>
+                </ValidateStatusPasswordBlockStyled>
+              )}
+            /> */}
+
+            {props.errors.password === undefined && props.values.password !== '' ? (
+              <ValidateStatusPasswordBlockStyled>
+                <SuccessValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </SuccessValidateSvgStyled>
+                {nbsp}
+                <ValidateStatusSuccessTextStyled>Success password</ValidateStatusSuccessTextStyled>
+              </ValidateStatusPasswordBlockStyled>
+            ) : null}
+            {props.errors.password ? (
+              <ValidateStatusPasswordBlockStyled>
+                <ErrorValidateSvgStyled>
+                  <use href={`${spriteIconsRemix}#ri-checkbox-circle-fill`} />
+                </ErrorValidateSvgStyled>
+                {nbsp}
+                <ValidateStatusErrorTextStyled>
+                  {props.errors.password}
+                </ValidateStatusErrorTextStyled>
+              </ValidateStatusPasswordBlockStyled>
+            ) : null}
+
+            <BtnSignInForm />
+          </FormSignInStyled>
+        )}
+        {/* 
+   <FormSignInStyled>
           <FieldSignInStyled id="email" name="email" placeholder="Email" type="email" />
+                      {errors.email && touched.email ? <div>{errors.email}</div> : null}
 
           <ErrorMessage
             name="email"
@@ -70,6 +173,7 @@ export const SignInForm = () => {
           />
 
           <FieldSignInStyled id="password" name="password" placeholder="Password" type="password" />
+                    {errors.name && touched.name ? <div>{errors.name}</div> : null}
           <ErrorMessage
             name="password"
             render={message => (
@@ -86,7 +190,8 @@ export const SignInForm = () => {
             )}
           />
           <BtnSignInForm />
-        </FormSignInStyled>
+        </FormSignInStyled> 
+        */}
       </Formik>
       <SignUpBlock />
     </SignInFormStyled>

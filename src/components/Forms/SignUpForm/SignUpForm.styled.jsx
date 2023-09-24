@@ -111,9 +111,35 @@ export const FieldSignUpStyled = styled(Field)`
   align-items: center;
   background-color: inherit;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  /* border: 1px solid rgba(239, 237, 232, 0.3); */
+
+  border: ${props => {
+    if (props.errorname === undefined && props.touchedname?.name === true) {
+      return '1px solid #3CBF61';
+    }
+    if (props.errorname && props.touchedname?.name === true) {
+      return '1px solid #D80027';
+    }
+    if (props.erroremail === undefined && props.touchedemail?.email === true) {
+      return '1px solid #3CBF61';
+    }
+    if (props.erroremail && props.touchedemail?.email === true) {
+      return '1px solid #D80027';
+    }
+    if (props.errorpassword === undefined && props.touchedpassword?.password === true) {
+      return '1px solid #3CBF61';
+    }
+
+    if (props.touchedpassword?.password === true) {
+      return '1px solid #D80027';
+    }
+    return '1px solid rgba(239, 237, 232, 0.3)';
+  }};
   color: var(--white);
 
+  &:hover {
+    border: 1px solid #e6533c;
+  }
   @media ${device.mobile} {
     width: ${335 - 16}px;
     color: rgba(239, 237, 232, 0.6);
@@ -149,12 +175,12 @@ export const ValidateStatusNameBlockStyled = styled.div`
 
 export const ValidateStatusPasswordBlockStyled = styled.div`
   position: absolute;
-  top: 196px;
+  top: 198px;
   display: flex;
 `;
 
 export const ValidateStatusEmailBlockStyled = styled.div`
   position: absolute;
-  top: 124px;
+  top: 126px;
   display: flex;
 `;

@@ -12,21 +12,34 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
+import { exercisesReducer } from './exercises.Slice';
+
+import {
+  persistStore,
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
 import { headerReducer } from './headerSlice';
 import { productsReducer } from './products/slice';
+import { paramsReducer } from './params/paramsSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
+    // serializableCheck: false,
   }),
 ];
 
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['accessToken'],
 };
 
 const localStorageAuthReducer = persistReducer(authPersistConfig, authReducer);
@@ -37,6 +50,8 @@ export const store = configureStore({
     auth: localStorageAuthReducer,
     header: headerReducer,
     products: productsReducer,
+    exercises: exercisesReducer,
+    params: paramsReducer,
   },
   middleware,
 });

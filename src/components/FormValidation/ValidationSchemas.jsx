@@ -17,23 +17,36 @@ let signinSchema = yup.object().shape({
     .string()
     .email()
     .required()
+    .matches(/^\S*$/, 'Whitespace is not allowed')
     .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Error email'),
   password: yup
     .string()
-    .min(8)
+    .min(7)
+    .matches(/^\S*$/, 'Whitespace is not allowed')
     .required()
-    .matches(/^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/, 'Password bad'),
+    .matches(
+      /^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/,
+      'Password bad. Please use 6 characters and 1 number',
+    ),
 });
 
 let signUpSchema = yup.object().shape({
-  name: yup.string().required(),
+  name: yup.string().matches(/^\S*$/, 'Whitespace is not allowed').required(),
   email: yup
     .string()
     .email()
     .required()
+    .matches(/^\S*$/, 'Whitespace is not allowed')
     .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Error email'),
-  password: yup.string().min(8).required(),
-  // .matches(/^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/, 'Password bad'),
+  password: yup
+    .string()
+    .min(7)
+    .required()
+    .matches(/^\S*$/, 'Whitespace is not allowed')
+    .matches(
+      /^(?=.*[a-zA-Z]{6})(?=.*\d)[a-zA-Z\d]{7}$/,
+      'Password bad. Please use 6 characters and 1 number',
+    ),
 });
 
 export const ValidationSchemas = { signinSchema, signUpSchema };

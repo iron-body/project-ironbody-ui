@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { device } from '../../Constants';
 
 export const StyledWrapper = styled.div`
-  min-width: 826px;
+  min-width: 335px;
   min-height: 234px;
   padding: 0 16px;
   border-radius: 12px;
@@ -11,6 +13,10 @@ export const StyledWrapper = styled.div`
     0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25),
     0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  @media ${device.desktop} {
+    min-width: 826px;
+    min-height: 234px;
+  }
 `;
 export const StyledTitleWrapper = styled.div`
   display: flex;
@@ -23,7 +29,7 @@ export const StyledTitle = styled.h2`
   font-size: 14px;
   line-height: 1.2;
 `;
-export const StyledLink = styled.a`
+export const StyledLink = styled(Link)`
   color: #e6533c;
   font-size: 16px;
   font-weight: 500;

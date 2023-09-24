@@ -124,19 +124,20 @@ export const AddProductBtn = styled.button`
   height: 42px;
   width: 151px;
 
-    @media ${device.tablet} {
-     padding: 14px 32px;
-  color: #efede8;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  border: none;
-  border-radius: 12px;
-  background: #e6533c;
-  display: flex;
-  padding: 14px 32px;
-  justify-content: center;
-  align-items: center;
+  @media ${device.tablet} {
+    padding: 14px 32px;
+    color: #efede8;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    border: none;
+    border-radius: 12px;
+    background: #e6533c;
+    display: flex;
+    padding: 14px 32px;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const CancelBtn = styled.button`
@@ -153,18 +154,18 @@ export const CancelBtn = styled.button`
   align-items: center;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.3);
- @media ${device.tablet} {
-     padding: 14px 32px;
-  color: #efede8;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  border: none;
-  border-radius: 12px;
-  background: #e6533c;
-  display: flex;
-  padding: 14px 32px;
-  justify-content: center;
-  align-items: center;
-
+  @media ${device.tablet} {
+    padding: 14px 32px;
+    color: #efede8;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    border: none;
+    border-radius: 12px;
+    background: #e6533c;
+    display: flex;
+    padding: 14px 32px;
+    justify-content: center;
+    align-items: center;
+  }
 `;
