@@ -6,11 +6,11 @@ import TitlePage from '../../components/TitlePage/TitlePage';
 import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from '../../components/ExercisesList/ExercisesList'; 
 import { fetchExercises, fetchFilteredExercises } from '../../redux/operations';
-import { getLoading } from '../../redux/selectors';
+import { getIsLoading } from '../../redux/selectors';
 
 const ExercisesPage = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getLoading);
+  const isLoading = useSelector(getIsLoading);
 
   // Додайте стан для відстеження обраного підкатегорії
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
