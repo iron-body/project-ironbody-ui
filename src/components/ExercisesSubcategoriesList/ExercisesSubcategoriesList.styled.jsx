@@ -2,41 +2,45 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { device } from '../../Constants';
 
-
 export const Container = styled.div`
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  
+  /* padding: 40px; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
 `;
-
 
 export const Title = styled.h1`
   color: #ffffff;
 `;
 
-
 export const Ul = styled.ul`
   list-style: none;
-   
-    @media screen and (${device.tablet}) {
-      display: flex;
-      flex-wrap: wrap;
-      flex-direction: row;
-      gap: 32px 16px;
-    
-    }
-  
+
+  @media screen and (${device.tablet}) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* justify-content: center; */
+    justify-content: start;
+    justify-content: first baseline;
+    padding-left: 32px;
+    padding-right: 32px;
+    gap: 32px 16px;
+  }
+
+  @media screen and (${device.desktop}) {
+    padding-left: 94px;
+    padding-right: 94px;
+  }
 `;
 
 export const StyledLink = styled(Link)`
-
-@media screen and (${device.mobile}) {
-  
-margin-top: 20px;
-
-}
-
+  @media screen and (${device.mobile}) {
+    margin-bottom: 20px;
+  }
+  @media screen and (${device.tablet}) {
+    margin: 0;
+  }
   color: #ffffff; /* White text color */
 
   transition:
