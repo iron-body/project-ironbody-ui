@@ -1,4 +1,5 @@
-// import React from 'react';
+import { useState } from 'react';
+
 import {
   FilterContainer,
   categoriesStyles,
@@ -15,33 +16,16 @@ import {
 
 import { Formik, Form, Field } from 'formik';
 import Select from 'react-select';
+// import {initialValue} from '../../redux/filterSlice'
+import { getCategoriesProducts } from '../../redux/products/selectors';
+import { useEffect } from 'react';
+import { getCategoriesProductsThunk, getCategoryProductsThunk } from '../../redux/products/productsOperations';
 
-// const initialValues = {
-//   searchInput: '',
-//   dropdown1: null,
-//   dropdown2: null,
-// };
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { getFilterValue, getCategoryValue } from '../../redux/selectors';
 
-const optionsCategories = [
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-];
+import { updateFilter } from '../../redux/filterSlice';
 
 const optionsRecomended = [
   { value: 'All', label: 'All' },
@@ -50,18 +34,53 @@ const optionsRecomended = [
 ];
 
 export default function ProductsFilters() {
-  const initialValues = {
-    searchInput: '',
-    categories: null,
-    recomended: null,
+  const dispatch = useDispatch();
+  const filterValue = useSelector(getFilterValue);
+    const categoryValue = useSelector(getCategoryValue);
+
+  const [localSearchInput, setLocalSearchInput] = useState(filterValue);
+  const [selectedCategory, setSelectedCategory] = useState(categoryValue);
+
+  const categories = useSelector(getCategoriesProducts);
+
+  function convertCategoriesToOptions(categoriesData) {
+    return categoriesData.map(category => ({
+      value: category.title,
+      label: category.title.charAt(0).toUpperCase() + category.title.slice(1),
+    }));
+  }
+
+  const optionsCategories = convertCategoriesToOptions(categories);
+
+  useEffect(() => {
+    dispatch(getCategoriesProductsThunk());
+  }, [dispatch]);
+
+useEffect(() => {
+  if (selectedCategory.value !== null && selectedCategory.value !== undefined) {
+    dispatch(getCategoryProductsThunk(selectedCategory.value));
+  }
+}, [selectedCategory, dispatch]);
+
+  const onSearchValue = () => {
+    dispatch(updateFilter({ value: localSearchInput, selectedCategory }));
   };
 
-  const handleSubmit = values => {
-    console.log('Form submitted with values:', values);
+  const eraseInputValue = () => {
+    dispatch(updateFilter({ value: '', selectedCategory : '', }));
+    setLocalSearchInput('');
   };
+
+  const updateCategoryValue = (value) => {
+  setSelectedCategory(value);
+  dispatch(getCategoryProductsThunk(value));
+};
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={{ SerchInputValue: filterValue }}
+      onSubmit={onSearchValue}
+    >
       <Form>
         <FormTitle>Filter</FormTitle>
         <FilterContainer>
@@ -69,53 +88,64 @@ export default function ProductsFilters() {
             <SearchFieldContainer>
               <SearchField
                 type="text"
-                id="searchInput"
-                name="searchInput"
-                className="form-control"
+                name="searchInputProduct"
                 placeholder="Search"
+                value={localSearchInput}
+                onChange={e => setLocalSearchInput(e.target.value)}
               />
-              <EraseInputButton>
+
+              {localSearchInput.length > 0 && (
+                <EraseInputButton type="button" onClick={eraseInputValue}>
+                  <SearchIconButton
+                    alt=""
+                    src="/project-ironbody-ui/Erase.svg"
+                  ></SearchIconButton>
+                </EraseInputButton>
+              )}
+
+              <SearchInputButton type="submit" onSubmit={onSearchValue}>
                 <SearchIconButton
                   alt=""
-                  src="/project-ironbody-ui/Erase.svg"
+                  src="/project-ironbody-ui/search.svg"
                 ></SearchIconButton>
-              </EraseInputButton>
-              <SearchInputButton>
-                <SearchIconButton alt="" src="/project-ironbody-ui/search.svg"></SearchIconButton>
               </SearchInputButton>
             </SearchFieldContainer>
           </FormGroup>
 
           <MobInpCont>
-          <FormGroup>
-            <Field
-              name="categories"
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  options={optionsCategories}
-                  isSearchable={false}
-                  styles={categoriesStyles}
-                  placeholder="Categories"
-                />
-              )}
-            />
-          </FormGroup>
-
-          <FormGroup>
-            <Field
-              name="recomended"
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  options={optionsRecomended}
-                  isSearchable={false}
-                  styles={recomendedStyles}
-                />
-              )}
-            />
+            <FormGroup>
+              <Field
+                name="categories"
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={optionsCategories}
+                    isSearchable={false}
+                    styles={categoriesStyles}
+                    placeholder="Categories"
+                    onChange={selectedOption => {
+                      setSelectedCategory(selectedOption);
+                       updateCategoryValue(selectedOption.value);
+                    }}
+                  />
+                )}
+              />
             </FormGroup>
-            </MobInpCont>
+
+            <FormGroup>
+              <Field
+                name="recomended"
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={optionsRecomended}
+                    isSearchable={false}
+                    styles={recomendedStyles}
+                  />
+                )}
+              />
+            </FormGroup>
+          </MobInpCont>
         </FilterContainer>
       </Form>
     </Formik>

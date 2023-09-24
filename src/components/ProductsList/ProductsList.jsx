@@ -1,4 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getProductsThunk,
+  filterProductsThunk,
+} from '../../redux/products/productsOperations';
+import { getProducts } from '../../redux/products/selectors';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import {
   ProductList,
   ProductItem,
@@ -9,122 +16,70 @@ import {
 import Product from '../Product/Product';
 import BasicModalWindow from '../BasicModalWindow/BasicModalWindow';
 import AddProductForm from '../AddProductForm/AddProductForm';
-
-const products = [
-  {
-    id: 123,
-    foodName: 'Varena Grechka',
-    calories: 340,
-    category: 'Cereals',
-    weight: 100,
-  },
-  {
-    id: 1234,
-    foodName: 'Smajena kartoshka ;)',
-    calories: 340,
-    category: 'Cereals',
-    weight: 100,
-  },
-  {
-    id: 1235,
-    foodName: 'Buterbrod z kovbaskoy ',
-    calories: 340,
-    category: 'Cereals',
-    weight: 100,
-  },
-  {
-    id: 1236,
-    foodName: 'Buterbrod z surom',
-    calories: 340,
-    category: 'Cereals',
-    weight: 100,
-  },
-  {
-    id: 1237,
-    foodName: 'Rice semolina Garnets ',
-    calories: 340,
-    category: 'Cereals',
-    weight: 100,
-  },
-  {
-    id: 1238,
-    foodName: 'Rice semolina Garnets ',
-    calories: 340,
-    category: 'Cereals',
-    weight: 100,
-  },
-  {
-    id: 1239,
-    foodName: 'Rice semolina Garnets ',
-    calories: 340,
-    category: 'Cereals',
-    weight: 100,
-  },
-  {
-    id: 12311,
-    foodName: 'Rice semolina Garnets ',
-    calories: 340,
-    category: 'Cereals',
-    weight: 100,
-  },
-  {
-    id: 12312,
-    foodName: 'Rice semolina Garnets ',
-    calories: 340,
-    category: 'Cereals',
-    weight: 100,
-  },
-  {
-    id: 12313,
-    foodName: 'Rice semolina Garnets ',
-    calories: 340,
-    category: 'Cereals',
-    weight: 100,
-  },
-  {
-    id: 12314,
-    foodName: 'Rice semolina Garnets ',
-    calories: 340,
-    category: 'Cereals',
-    weight: 100,
-  },
-];
+import { getFilterValue  } from '../../redux/selectors';
 
 export default function ProductsList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const { isLoading, error } = useSelector(getProducts);
+  const [itemsToShow, setItemsToShow] = useState(10);
+  const increment = 10;
 
-  const openModal = (product) => {
+  const filterValue = useSelector(getFilterValue);
+  const dispatch = useDispatch();
+
+  const visibleProducts = useSelector(getProducts);
+
+  useEffect(() => {
+    dispatch(getProductsThunk());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(filterProductsThunk(filterValue || ''));
+  }, [filterValue, dispatch]);
+
+  const openModal = product => {
     setSelectedProduct(product);
     setIsModalOpen(true);
-    console.log(product);
+    console.log(filterValue);
+  };
+
+  const loadMore = () => {
+    setItemsToShow(prevItemsToShow => prevItemsToShow + increment);
   };
 
   return (
     <>
-      {Array.isArray(products) && products.length > 0 ? (
-        <ProductList>
-          {products.map(product => {
-            return (
-              <ProductItem key={product.id}>
+      {isLoading && <h1 style={{ color: 'yellow' }}>Loading...</h1>}
+      {Array.isArray(visibleProducts) && (
+        <InfiniteScroll
+          dataLength={itemsToShow}
+          next={loadMore}
+          hasMore={itemsToShow < visibleProducts.length}
+          scrollableTarget="productList"
+        >
+          <ProductList id="productList">
+            {visibleProducts.slice(0, itemsToShow).map(product => (
+              <ProductItem key={product._id}>
                 <Product
                   product={product}
                   openModal={() => openModal(product)}
                 />
               </ProductItem>
-            );
-          })}
-        </ProductList>
-      ) : (
-        <>
-          <ErrorMessege>
-            <StartError>Sorry, no results were found</StartError> for the
-            product filters you selected. You may want to consider other search
-            options to find the product you want. Our range is wide and you have
-            the opportunity to find more options that suit your needs.
-          </ErrorMessege>
-          <BottomError>Try changing the search parameters.</BottomError>
-        </>
+            ))}
+          </ProductList>
+        </InfiniteScroll>
+      )}
+      {error && (
+        <ErrorMessege>
+          <StartError>Sorry, no results were found</StartError> for the product
+          filters you selected. You may want to consider other search options to
+          find the product you want. Our range is wide and you have the
+          opportunity to find more options that suit your needs.
+          <BottomError>
+            Try refreshing the page or check your internet connection.
+          </BottomError>
+        </ErrorMessege>
       )}
 
       {isModalOpen && (
@@ -132,10 +87,11 @@ export default function ProductsList() {
           {selectedProduct && (
             <AddProductForm
               productCalc={{
-                foodName: selectedProduct.foodName,
+                foodName: selectedProduct.title,
                 calories: selectedProduct.calories,
-              }} onClose={() => setIsModalOpen(false)}
-            ></AddProductForm>
+              }}
+              onClose={() => setIsModalOpen(false)}
+            />
           )}
         </BasicModalWindow>
       )}
