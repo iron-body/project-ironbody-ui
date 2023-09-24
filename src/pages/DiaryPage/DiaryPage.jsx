@@ -15,23 +15,21 @@ import { useMediaQuery } from '@mui/material';
 const DiaryPage = () => {
   const isTabletOrMobile = useMediaQuery('(max-width: 768px)');
   return (
-    <main>
-      <Container>
-        <StyledTitleContainer>
-          {!isTabletOrMobile && <DaySwitch />}
-          <TitlePage titleText="Diary" />
-          {isTabletOrMobile && <DaySwitch />}
-        </StyledTitleContainer>
-        <StyledMainContentWrapper>
-          {isTabletOrMobile && <DayDashboard />}
-          <StyledTablesWrapper>
-            <DayProducts />
-            <DayExercises />
-          </StyledTablesWrapper>
-          {!isTabletOrMobile && <DayDashboard />}
-        </StyledMainContentWrapper>
-      </Container>
-    </main>
+    <Container>
+      <StyledTitleContainer>
+        {!isTabletOrMobile && <DaySwitch />}
+        <TitlePage titleText="Diary" />
+        {isTabletOrMobile && <DaySwitch />}
+      </StyledTitleContainer>
+      <StyledMainContentWrapper>
+        {isTabletOrMobile && <DayDashboard />}
+        <StyledTablesWrapper>
+          <DayProducts />
+          <DayExercises />
+        </StyledTablesWrapper>
+        {!isTabletOrMobile && <DayDashboard />}
+      </StyledMainContentWrapper>
+    </Container>
   );
 };
 

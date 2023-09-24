@@ -1,28 +1,34 @@
 import styled from '@emotion/styled';
+import { device } from '../../Constants';
 
 export const TableContainer = styled.div`
   max-height: 165px;
   overflow-y: auto;
   ::-webkit-scrollbar-track {
-    background-color: transparent; 
+    background-color: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background-color: rgba(239, 237, 232, 0.1); 
-    border-radius: 5px; 
+    background-color: rgba(239, 237, 232, 0.1);
+    border-radius: 5px;
   }
   ::-webkit-scrollbar {
-    width: 6px; 
+    width: 6px;
   }
   ::-webkit-scrollbar-corner {
-    background-color: #f1f1f1; 
+    background-color: #f1f1f1;
+  }
+  @media ${device.desktop} {
   }
 `;
 
 export const StyledHeadingTable = styled.div`
-  display: flex;
+  display: block;
   padding-left: 10px;
   color: rgba(239, 137, 100, 1);
   font-size: 12px;
+  @media ${device.tablet} {
+    display: flex;
+  }
 `;
 export const StyledTitle = styled.p`
   margin-right: 315px;
