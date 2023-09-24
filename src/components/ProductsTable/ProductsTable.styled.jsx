@@ -71,10 +71,17 @@ export const StyledTable = styled.table`
   border-collapse: separate;
   border-spacing: 8px;
 `;
-
+export const StyledThead = styled.thead`
+  text-align: left;
+  padding-left: 10px;
+  color: rgba(239, 137, 100, 1);
+  font-size: 12px;
+`;
+export const StyledTbody = styled.tbody``;
 export const StyledTableRaw = styled.tr`
   /* display: block; */
 `;
+export const StyledTableCellGroup = styled.div``;
 export const StyledTableCell = styled.td`
   display: inline-block;
   margin-bottom: 8px;
