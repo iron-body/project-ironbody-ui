@@ -193,19 +193,27 @@ export const categoriesStyles = {
     },
   }),
 
+  singleValue: provided => ({
+    ...provided,
+    color: '#EFEDE8',
+  }),
   placeholder: provided => ({
     ...provided,
-    color: 'EFEDE8',
+    color: '#EFEDE8',
   }),
 
   menu: provided => ({
     ...provided,
+    color: `#EFEDE8`,
+
     borderRadius: `12px`,
     background: `#1C1C1C`,
     padding: `14px`,
   }),
   menuList: provided => ({
     ...provided,
+    color: `#EFEDE8`,
+
     height: `276px`,
     paddingBottom: `14px`,
 
@@ -281,9 +289,14 @@ export const recomendedStyles = {
     },
   }),
 
+   singleValue: provided => ({
+    ...provided,
+    color: '#EFEDE8',
+  }),
+
   placeholder: provided => ({
     ...provided,
-    color: 'EFEDE8',
+    color: '#EFEDE8',
   }),
 
   menu: provided => ({

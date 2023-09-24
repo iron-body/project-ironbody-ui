@@ -5,6 +5,8 @@ import {
   addProductThunk,
   deleteProductThunk,
   filterProductsThunk,
+  getCategoriesProductsThunk,
+  getCategoryProductsThunk,
 } from './productsOperations';
 
 import { productsInitialState } from './initialProducts';
@@ -20,6 +22,8 @@ const thunksArr = [
   getProductsThunk,
   deleteProductThunk,
   filterProductsThunk,
+  getCategoriesProductsThunk,
+  getCategoryProductsThunk,
 ];
 const helpFn = type => thunksArr.map(el => el[type]);
 const handleFulfilled = state => {
@@ -33,6 +37,10 @@ const handlePending = state => {
 
 const handleFulfilledGet = (state, { payload }) => {
   state.items = payload;
+};
+
+const handleFulfilledGetCategory = (state, { payload }) => {
+  state.categories = payload;
 };
 
 const handleFulfilledAdd = (state, { payload }) => {
@@ -55,6 +63,7 @@ const productsSlice = createSlice({
       .addCase(getProductsThunk.fulfilled, handleFulfilledGet)
       .addCase(addProductThunk.fulfilled, handleFulfilledAdd)
       .addCase(deleteProductThunk.fulfilled, handleFulfilledDel)
+      .addCase(getCategoriesProductsThunk.fulfilled, handleFulfilledGetCategory)
 
       .addMatcher(isAnyOf(...helpFn(PENDING)), handlePending)
       .addMatcher(isAnyOf(...helpFn(REJECTED)), handleRejected)

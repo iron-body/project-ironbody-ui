@@ -4,7 +4,7 @@ axios.defaults.baseURL = 'https://iron-body-project-backend.onrender.com/';
 
 export const getProductsThunk = createAsyncThunk(
   'products/fetchAll',
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
       const response = await axios.get('api/products');
       return response.data;
@@ -21,6 +21,32 @@ export const filterProductsThunk = createAsyncThunk(
       const response = await axios.get(
         `api/products?title=${query}&recommended=all`,
       );
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
+
+export const getCategoryProductsThunk = createAsyncThunk(
+  'products/fetchAll',
+  async (query, thunkAPI) => {
+    try {
+      const response = await axios.get(
+        `api/products?category=${query}&recommended=all`,
+      );
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
+
+export const getCategoriesProductsThunk = createAsyncThunk(
+  'category/fetchAll',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`api/categories`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

@@ -105,6 +105,8 @@ export const FoodName = styled.h2`
     line-height: 1.33;
   }
 `;
+
+
 export const FoodParams = styled.div`
   display: flex;
 `;
@@ -125,3 +127,27 @@ export const ParamsValue = styled.span`
   font-weight: 400;
   line-height: 1.5;
 `;
+
+
+// ...
+
+const Tooltip = styled.div`
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+
+  &:hover::before {
+    content: "${props => props.tooltipText}";
+    position: absolute;
+    top: -30px; // Расположение подсказки над текстом
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+`;
+
+

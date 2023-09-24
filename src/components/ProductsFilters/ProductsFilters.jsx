@@ -1,4 +1,5 @@
-// import React from 'react';
+import { useState } from 'react';
+
 import {
   FilterContainer,
   categoriesStyles,
@@ -16,32 +17,15 @@ import {
 import { Formik, Form, Field } from 'formik';
 import Select from 'react-select';
 // import {initialValue} from '../../redux/filterSlice'
+import { getCategoriesProducts } from '../../redux/products/selectors';
+import { useEffect } from 'react';
+import { getCategoriesProductsThunk, getCategoryProductsThunk } from '../../redux/products/productsOperations';
 
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getFilterValue } from '../../redux/selectors';
-import { updateFilter } from '../../redux/filterSlice';
+import { getFilterValue, getCategoryValue } from '../../redux/selectors';
 
-const optionsCategories = [
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-  { value: 'Alcoholic drinks', label: 'Alcoholic drinks' },
-  { value: 'Berries', label: 'Berries' },
-  { value: 'Cereals', label: 'Cereals' },
-];
+import { updateFilter } from '../../redux/filterSlice';
 
 const optionsRecomended = [
   { value: 'All', label: 'All' },
@@ -52,15 +36,49 @@ const optionsRecomended = [
 export default function ProductsFilters() {
   const dispatch = useDispatch();
   const filterValue = useSelector(getFilterValue);
+    const categoryValue = useSelector(getCategoryValue);
 
-  const onSearchValue = value => {
-    dispatch(updateFilter(value));
-    console.log(filterValue);
+  const [localSearchInput, setLocalSearchInput] = useState(filterValue);
+  const [selectedCategory, setSelectedCategory] = useState(categoryValue);
+
+  const categories = useSelector(getCategoriesProducts);
+
+  function convertCategoriesToOptions(categoriesData) {
+    return categoriesData.map(category => ({
+      value: category.title,
+      label: category.title.charAt(0).toUpperCase() + category.title.slice(1),
+    }));
+  }
+
+  const optionsCategories = convertCategoriesToOptions(categories);
+
+  useEffect(() => {
+    dispatch(getCategoriesProductsThunk());
+  }, [dispatch]);
+
+useEffect(() => {
+  if (selectedCategory.value !== null && selectedCategory.value !== undefined) {
+    dispatch(getCategoryProductsThunk(selectedCategory.value));
+  }
+}, [selectedCategory, dispatch]);
+
+  const onSearchValue = () => {
+    dispatch(updateFilter({ value: localSearchInput, selectedCategory }));
   };
+
+  const eraseInputValue = () => {
+    dispatch(updateFilter({ value: '', selectedCategory : '', }));
+    setLocalSearchInput('');
+  };
+
+  const updateCategoryValue = (value) => {
+  setSelectedCategory(value);
+  dispatch(getCategoryProductsThunk(value));
+};
 
   return (
     <Formik
-      initialValues={{ searchInputProduct: filterValue }}
+      initialValues={{ SerchInputValue: filterValue }}
       onSubmit={onSearchValue}
     >
       <Form>
@@ -72,14 +90,20 @@ export default function ProductsFilters() {
                 type="text"
                 name="searchInputProduct"
                 placeholder="Search"
+                value={localSearchInput}
+                onChange={e => setLocalSearchInput(e.target.value)}
               />
-              <EraseInputButton>
-                <SearchIconButton
-                  alt=""
-                  src="/project-ironbody-ui/Erase.svg"
-                ></SearchIconButton>
-              </EraseInputButton>
-              <SearchInputButton>
+
+              {localSearchInput.length > 0 && (
+                <EraseInputButton type="button" onClick={eraseInputValue}>
+                  <SearchIconButton
+                    alt=""
+                    src="/project-ironbody-ui/Erase.svg"
+                  ></SearchIconButton>
+                </EraseInputButton>
+              )}
+
+              <SearchInputButton type="submit" onSubmit={onSearchValue}>
                 <SearchIconButton
                   alt=""
                   src="/project-ironbody-ui/search.svg"
@@ -99,6 +123,10 @@ export default function ProductsFilters() {
                     isSearchable={false}
                     styles={categoriesStyles}
                     placeholder="Categories"
+                    onChange={selectedOption => {
+                      setSelectedCategory(selectedOption);
+                       updateCategoryValue(selectedOption.value);
+                    }}
                   />
                 )}
               />

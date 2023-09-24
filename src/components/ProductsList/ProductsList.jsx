@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsThunk, filterProductsThunk } from '../../redux/products/productsOperations';
+import {
+  getProductsThunk,
+  filterProductsThunk,
+} from '../../redux/products/productsOperations';
 import { getProducts } from '../../redux/products/selectors';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {
@@ -13,7 +16,7 @@ import {
 import Product from '../Product/Product';
 import BasicModalWindow from '../BasicModalWindow/BasicModalWindow';
 import AddProductForm from '../AddProductForm/AddProductForm';
-import { getFilterValue } from '../../redux/selectors';
+import { getFilterValue  } from '../../redux/selectors';
 
 export default function ProductsList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,22 +26,22 @@ export default function ProductsList() {
   const increment = 10;
 
   const filterValue = useSelector(getFilterValue);
-
-    useEffect(() => {
-    dispatch(filterProductsThunk(filterValue.searchInputProduct || ''));
-  }, [filterValue.searchInputProduct]);
+  const dispatch = useDispatch();
 
   const visibleProducts = useSelector(getProducts);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getProductsThunk());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(filterProductsThunk(filterValue || ''));
+  }, [filterValue, dispatch]);
+
   const openModal = product => {
     setSelectedProduct(product);
     setIsModalOpen(true);
-    console.log(visibleProducts)
+    console.log(filterValue);
   };
 
   const loadMore = () => {
