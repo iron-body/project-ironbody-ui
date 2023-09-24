@@ -19,7 +19,11 @@ import Select from 'react-select';
 // import {initialValue} from '../../redux/filterSlice'
 import { getCategoriesProducts } from '../../redux/products/selectors';
 import { useEffect } from 'react';
-import { getCategoriesProductsThunk, getCategoryProductsThunk } from '../../redux/products/productsOperations';
+import {
+  getCategoriesProductsThunk,
+  getCategoryProductsThunk,
+  getAllFillterProductsThunk,
+} from '../../redux/products/productsOperations';
 
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -36,10 +40,10 @@ const optionsRecomended = [
 export default function ProductsFilters() {
   const dispatch = useDispatch();
   const filterValue = useSelector(getFilterValue);
-    const categoryValue = useSelector(getCategoryValue);
+  const categoryValue = useSelector(getCategoryValue);
 
   const [localSearchInput, setLocalSearchInput] = useState(filterValue);
-  const [selectedCategory, setSelectedCategory] = useState(categoryValue);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const categories = useSelector(getCategoriesProducts);
 
@@ -56,25 +60,31 @@ export default function ProductsFilters() {
     dispatch(getCategoriesProductsThunk());
   }, [dispatch]);
 
-useEffect(() => {
-  if (selectedCategory.value !== null && selectedCategory.value !== undefined) {
-    dispatch(getCategoryProductsThunk(selectedCategory.value));
-  }
-}, [selectedCategory, dispatch]);
+  useEffect(() => {
+    dispatch(
+      getAllFillterProductsThunk({
+        categoryQuery: categoryValue,
+        serchParams: filterValue,
+      }),
+    );
+  }, [categoryValue, filterValue, dispatch]);
 
   const onSearchValue = () => {
     dispatch(updateFilter({ value: localSearchInput, selectedCategory }));
+    console.log(localSearchInput);
+    console.log(selectedCategory);
   };
 
   const eraseInputValue = () => {
-    dispatch(updateFilter({ value: '', selectedCategory : '', }));
+    dispatch(updateFilter({ value: '', selectedCategory: '' }));
     setLocalSearchInput('');
+    setSelectedCategory('');
   };
 
-  const updateCategoryValue = (value) => {
-  setSelectedCategory(value);
-  dispatch(getCategoryProductsThunk(value));
-};
+  const updateCategoryValue = value => {
+    setSelectedCategory(value);
+    dispatch(getCategoryProductsThunk(value));
+  };
 
   return (
     <Formik
@@ -123,9 +133,10 @@ useEffect(() => {
                     isSearchable={false}
                     styles={categoriesStyles}
                     placeholder="Categories"
+                    value={selectedCategory}
                     onChange={selectedOption => {
                       setSelectedCategory(selectedOption);
-                       updateCategoryValue(selectedOption.value);
+                      updateCategoryValue(selectedOption.value);
                     }}
                   />
                 )}
