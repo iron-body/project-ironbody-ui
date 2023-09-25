@@ -3,7 +3,6 @@ import { device } from '../../Constants';
 
 export const Container = styled.div`
   display: flex;
-  
   flex-direction: row;
   flex-direction: column;
 
@@ -19,8 +18,7 @@ export const Container = styled.div`
     margin-top: 40px;
     padding: 0;
     width: 768px;
-    /* padding-left: 32px;
-    padding-right: 32px; 
+    padding: 32px; 
     margin-top: 72px;
   }
   @media screen and (${device.desktop}) {
@@ -37,15 +35,6 @@ export const Container = styled.div`
     // background-size: 438px;
   }
 `;
-
-
-export const ButtonBox = styled.div`
-display:flax;
-justify-content:space-between;
-
-
-`;
-
 
 export const NameExercise = styled.div`
   color:var(--white);

@@ -6,8 +6,7 @@ import {
   Title,
   NameExercise,
   ButtonItem,
-  ButtonIcon,
-  ButtonBox
+  ButtonIcon
 } from './ExercicesPage.styled';
 import ExercisesCategories from '../../components/ExercisesCategories/ExercisesCategories';
 import TitlePage from '../../components/TitlePage/TitlePage';
@@ -52,12 +51,12 @@ const ExercisesPage = () => {
   return (
     <Container>
       {selectedSubcategory && (
-        <ButtonBox>
+        
           <ButtonItem onClick={() => console.log('ok') }>
             <ButtonIcon alt="" src="/back-array.svg" />
             Back
           </ButtonItem>
-        </ButtonBox>
+        
       )}
       <NavigateContainer name={NavigateContainer}>
         {!selectedSubcategory ? (
