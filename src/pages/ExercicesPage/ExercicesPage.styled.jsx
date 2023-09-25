@@ -35,7 +35,7 @@ export const Container = styled.div`
     ${(props) =>
       props.selectedSubcategory &&
       css`
-      background-image: url('/project-ironbody-ui/side-view-people-training-gym-2x.png');
+      background-image: url('/side-view-people-training-gym-desktop@1x.jpg');
       background-repeat: no-repeat;
       background-position: 981px 67px;
       background-size: 438px;
