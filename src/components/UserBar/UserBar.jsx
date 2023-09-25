@@ -5,7 +5,7 @@ import { useState } from 'react';
 import UserNavMobile from '../UserNavMobile/UserNavMobile';
 
 const UserBar = () => {
-  const isTabletOrMobile = useMediaQuery('(max-width: 768px)');
+  const isTabletOrMobile = useMediaQuery('(max-width: 1439px)');
 
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to track menu open/close
 
