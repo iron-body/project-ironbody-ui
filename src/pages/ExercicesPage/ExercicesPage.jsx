@@ -51,12 +51,11 @@ const ExercisesPage = () => {
   return (
     <Container>
       <NavigateContainer>
-      <ButtonItem onClick={() => setModalActive(true)} >
+    
+          {selectedSubcategory && <ButtonItem onClick={() => setModalActive(true)} >
             
             <ButtonIcon alt="" src="/back-array.svg" />Back
-          </ButtonItem>
-
-
+          </ButtonItem>}
 
         {!selectedSubcategory ? (
           <Title>

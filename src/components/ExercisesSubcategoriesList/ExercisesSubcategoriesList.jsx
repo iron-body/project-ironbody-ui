@@ -4,15 +4,13 @@ import { useParams } from 'react-router-dom';
 import { StyledLink, Ul, Container } from './ExercisesSubcategoriesList.styled';
 import { ExercisesSubcategoriesItem } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 
-// eslint-disable-next-line react/prop-types
 export const ExercisesSubcategoriesList = ({ onSelectSubcategory, nameExercise }) => {
   const [subCategories, setSubCategories] = useState('Body parts'); // Початкове значення "Body parts"
   const { subCategories: routeSubCategories } = useParams();
 
   useEffect(() => {
     if (routeSubCategories) {
-      // Якщо параметр subCategories визначений у URL, використовуємо його значення
-      setSubCategories(routeSubCategories);
+       setSubCategories(routeSubCategories);
     }
   }, [routeSubCategories]);
 

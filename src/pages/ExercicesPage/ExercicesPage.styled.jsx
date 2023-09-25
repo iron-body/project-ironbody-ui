@@ -9,8 +9,6 @@ export const Container = styled.div`
   flex-direction: column;
 
   margin-top: 65px;
-  /* padding: 20px; */
-  // background-color:blue;
 
   @media screen and (${device.mobile}) {
     width: 335px;
@@ -43,9 +41,13 @@ export const Container = styled.div`
 `;
 
 
+
 export const NameExercise = styled.div`
   color:var(--white);
 font-size:24px;
+font-weight:600;
+margin-top:10px;
+margin-bottom:20px;
   @media ${device.tablet} {
     margin-bottom: 0;
   }
@@ -71,7 +73,7 @@ font-size:24px;
 `;
 
 export const ButtonItem = styled.button`
-  color: #e6533c;
+  color: rgba(239, 237, 232, 0.4);
   font-size: 16px;
   line-height: 1.5;
   background: inherit;
@@ -82,7 +84,7 @@ export const ButtonItem = styled.button`
 `;
 
 export const Title = styled.div`
-  /* margin-left: 20px; */
+  margin-top: 35px;
   margin-bottom: 20px;
 
   @media ${device.tablet} {
@@ -96,7 +98,7 @@ export const NavigateContainer = styled.div`
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 40px;
+  // margin-bottom: 20px;
   @media ${device.tablet} {
     flex-direction: row;
     width: ${768 - 64}px;
