@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const initialState = {
   value: '',
   selectedCategory: '',
+  recommendedFilter: 'All',
 };
 
 export const filterSlice = createSlice({
@@ -10,9 +11,10 @@ export const filterSlice = createSlice({
   initialState,
   reducers: {
     updateFilter: (state, action) => {
-      const { value, selectedCategory } = action.payload;
+      const { value, selectedCategory, recommendedValue } = action.payload;
       state.value = value;
       state.selectedCategory = selectedCategory;
+      state.recommendedFilter = recommendedValue;
     },
   },
 });

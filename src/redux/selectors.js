@@ -15,3 +15,7 @@ export const getFilterValue = state => {
 export const getCategoryValue = state => {
   return state.filter.selectedCategory;
 };
+
+export const getRecommendedValue = state => {
+  return state.filter.recommendedFilter;
+};

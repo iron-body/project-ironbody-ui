@@ -13,11 +13,31 @@ import {
   FoodIcon,
   ProductWrapper,
 } from './Product.styled';
+import { useSelector } from 'react-redux';
+
+import { selectParamsValues } from '../../redux/params/paramsSlice';
 
 export default function Product({ product, openModal }) {
-  const { title, calories, category, weight } = product;
+  const { title, calories, category, weight, groupBloodNotAllowed } = product;
+  const clientParams = useSelector(selectParamsValues);
+
+  const searchRecommendedProduct = () => {
+    for (const key in groupBloodNotAllowed) {
+      const value = groupBloodNotAllowed[key];
+
+      if (key === clientParams.blood && value === false) {
+        return value;
+      } else {
+        return value;
+      }
+    }
+  };
+
+  const recommendedParams = searchRecommendedProduct();
+
   const handleButtonClick = () => {
     openModal();
+    console.log(groupBloodNotAllowed);
   };
 
   return (
@@ -26,8 +46,17 @@ export default function Product({ product, openModal }) {
         <NavCard>
           <TitleCard>DIET</TitleCard>
           <RecomendedInfo>
-            <RecomendedMarker />
-            <RecomendedTitle> Recomended </RecomendedTitle>
+            <RecomendedMarker
+              style={
+                !recommendedParams
+                  ? { background: 'green' }
+                  : { background: 'red' }
+              }
+            />
+            <RecomendedTitle>
+              {' '}
+              {!recommendedParams ? 'Recomended' : 'No recommended'}{' '}
+            </RecomendedTitle>
             <ButtonItem onClick={handleButtonClick}>
               Add
               <ButtonIcon alt="" src="/project-ironbody-ui/arrow.svg" />
