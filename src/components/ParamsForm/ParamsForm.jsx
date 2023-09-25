@@ -1,14 +1,15 @@
-/* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import moment from 'moment';
 
-// import StyledDatepicker from './../StyledDatepicker/StyledDatepicker';
-// import { CalendarIcon } from './../DaySwitch/DaySwitch.styled';
 import ParamsFormDaySwitch from './../ParamsFormDaySwitch/ParamsFormDaySwitch';
-
+import { selectParamsValues, updateAll } from '../../redux/params/paramsSlice';
+import { selectToken } from '../../redux/auth/authSlice';
+import axios from 'axios';
+import { Notify } from 'notiflix';
 import {
   MainForm,
   Input,
@@ -30,11 +31,15 @@ import {
   NextBtn,
 } from './ParamsForm.styled';
 
-import { selectParamsValues, updateAll } from '../../redux/params/paramsSlice';
-
 const ParamsFormSchema = yup.object().shape({
-  height: yup.number().min(150, 'Height should be higher than 150cm').required('Required'),
-  currentWeight: yup.number().min(35, 'Weight should be more than 35kg').required('Required'),
+  height: yup
+    .number()
+    .min(150, 'Height should be higher than 150cm')
+    .required('Required'),
+  currentWeight: yup
+    .number()
+    .min(35, 'Weight should be more than 35kg')
+    .required('Required'),
   desiredWeight: yup
     .number()
     .min(35, 'Desire weight should be more than 35kg')
@@ -48,47 +53,30 @@ const ParamsFormSchema = yup.object().shape({
   // }),
 });
 
-const ParamsForm = props => {
-  const paramsState = useSelector(selectParamsValues);
+const ParamsForm = ({ currentStep, onStepChange }) => {
+  const paramsState = useSelector(selectParamsValues); //fetch
+  const stateToken = useSelector(selectToken); //fetch
   const dispatch = useDispatch();
-  const onStepChange = props.onStepChange;
-  const currentStep = props.currentStep;
-  // const [formattedDate, setFormattedDate] = useState('');
+  const navigate = useNavigate();
 
-  let savedValues = {};
+  const {
+    values,
+    errors,
+    touched,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    setFieldValue,
+  } = useFormik({
+    initialValues: paramsState,
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } =
-    useFormik({
-      initialValues: paramsState,
-
-      validationSchema: ParamsFormSchema,
-      validateOnChange: false,
-      validateOnBlur: false,
-      // onSubmit: () => {
-      // alert('Fill all fields');
-      // },
-    });
-
-  const handleDateChange = date => {
-    const newFormatedDate = moment(date).format();
-    // setFormattedDate(newFormatedDate);
-    setFieldValue('birthday', newFormatedDate);
-    // console.log('newFormatedDate :>> ', newFormatedDate);
-    // console.log('values.birthday :>> ', values.birthday);
-  };
-
-  const handleNextSetStep = () => {
-    onStepChange(currentStep + 1);
-
-    console.log(values);
-    savedValues = values;
-
-    console.log(savedValues);
-  };
-
-  const handleBackSetStep = () => {
-    onStepChange(currentStep - 1);
-  };
+    validationSchema: ParamsFormSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
+    // onSubmit: () => {
+    // alert('Fill all fields');
+    // },
+  });
 
   const canClickNext =
     Object.keys(errors).length === 0 &&
@@ -99,6 +87,48 @@ const ParamsForm = props => {
   useEffect(() => {
     dispatch(updateAll(values));
   }, [dispatch, values]);
+
+  const handleDateChange = date => {
+    const newFormatedDate = moment(date).format();
+    setFieldValue('birthday', newFormatedDate);
+    console.log(newFormatedDate);
+    console.log(paramsState);
+  };
+
+  const handleNextSetStep = () => {
+    onStepChange(currentStep + 1);
+    console.log(paramsState);
+  };
+
+  const handleBackSetStep = () => {
+    onStepChange(currentStep - 1);
+  };
+
+  const onSubmitForm = async e => {
+    e.preventDefault();
+    try {
+      if (!stateToken) return Notify.failure('Not authorized');
+      const JSONParamsState = JSON.stringify(paramsState);
+      console.log(JSONParamsState);
+
+      const response = await axios.post(
+        'calculateNorms/calculate',
+        JSONParamsState,
+        {
+          headers: {
+            Authorization: `Bearer ${stateToken}`,
+          },
+        },
+      );
+
+      console.log(response);
+      navigate('/products');
+      return response.data;
+    } catch (error) {
+      console.log('error :>> ', error);
+      Notify.failure(error.message);
+    }
+  };
 
   return (
     <MainForm>
@@ -112,7 +142,7 @@ const ParamsForm = props => {
                 value={values.height || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="text"
+                type="number"
                 required
               />
               <LabelBox>
@@ -123,11 +153,15 @@ const ParamsForm = props => {
             <Wrapper>
               <Input
                 name="currentWeight"
-                id={errors.currentWeight && touched.currentWeight ? 'error' : 'currentWeight'}
+                id={
+                  errors.currentWeight && touched.currentWeight
+                    ? 'error'
+                    : 'currentWeight'
+                }
                 value={values.currentWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="text"
+                type="number"
                 required
               />
               <LabelBox>
@@ -138,11 +172,15 @@ const ParamsForm = props => {
             <Wrapper>
               <Input
                 name="desiredWeight"
-                id={errors.desiredWeight && touched.desiredWeight ? 'error' : 'desiredWeight'}
+                id={
+                  errors.desiredWeight && touched.desiredWeight
+                    ? 'error'
+                    : 'desiredWeight'
+                }
                 value={values.desiredWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="text"
+                type="number"
                 required
               />
               <LabelBox>
@@ -152,12 +190,7 @@ const ParamsForm = props => {
 
             <Wrapper>
               <LabelBox>
-                <BirthdayLabel
-                  value={values.birthday}
-                  // onChange={() => setFieldValue('birthday', formattedDate)}
-                >
-                  Birthday
-                </BirthdayLabel>
+                <BirthdayLabel value={values.birthday}>Birthday</BirthdayLabel>
               </LabelBox>
               <ParamsFormDaySwitch onDateChange={handleDateChange} />
             </Wrapper>
@@ -166,7 +199,6 @@ const ParamsForm = props => {
           <NextBtn
             type="button"
             onClick={canClickNext ? handleNextSetStep : handleSubmit}
-            // onClick={errors === {} ? handleNextSetStep : handleSubmit}
           >
             Next
           </NextBtn>
@@ -286,7 +318,8 @@ const ParamsForm = props => {
                   onChange={() => setFieldValue('levelActivity', 3)}
                 />
                 <RadioLabel htmlFor="level-activity-3">
-                  Moderately active (moderate exercises/sports 3-5 days per week)
+                  Moderately active (moderate exercises/sports 3-5 days per
+                  week)
                 </RadioLabel>
               </div>
 
@@ -311,7 +344,8 @@ const ParamsForm = props => {
                 onChange={() => setFieldValue('levelActivity', 5)}
               />
               <RadioLabel htmlFor="level-activity-5">
-                Extremely active (very strenuous exercises/sports and physical work)
+                Extremely active (very strenuous exercises/sports and physical
+                work)
               </RadioLabel>
             </RadioContainer>
 
@@ -327,7 +361,13 @@ const ParamsForm = props => {
       ;
       {currentStep === 3 && (
         <>
-          <SubmitBtn type="submit">Go</SubmitBtn>
+          <SubmitBtn type="submit" onClick={onSubmitForm}>
+            Go
+          </SubmitBtn>
+
+          <BackBtn type="button" onClick={handleBackSetStep}>
+            Back
+          </BackBtn>
         </>
       )}
     </MainForm>

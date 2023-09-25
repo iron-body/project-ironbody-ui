@@ -5,7 +5,7 @@ const initialState = {
     height: undefined,
     currentWeight: undefined,
     desiredWeight: undefined,
-    birthday: null,
+    birthday: undefined,
 
     blood: 1,
     sex: 'male',
