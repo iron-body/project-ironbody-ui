@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { device } from '../../Constants';
 export const ModalContainer = styled.div`
   height: 100vh;
   width: 100vw;
