@@ -23,6 +23,7 @@ import {
   getCategoriesProductsThunk,
   getCategoryProductsThunk,
   getAllFillterProductsThunk,
+  getAllFillteredProductsThunk,
 } from '../../redux/products/productsOperations';
 
 import { useDispatch } from 'react-redux';
@@ -32,13 +33,14 @@ import {
   getCategoryValue,
   getRecommendedValue,
 } from '../../redux/selectors';
+import { selectParamsValues } from '../../redux/params/paramsSlice';
 
 import { updateFilter } from '../../redux/filterSlice';
 
 const optionsRecomended = [
-  { value: "all" , label: 'All' },
-  { value: 'recommended', label: 'Recommended' },
-  { value: 'noRecommended' , label: 'No recommended' },
+  { value: 'all', label: 'All' },
+  { value: 'false', label: 'Recommended' },
+  { value: 'true', label: 'No recommended' },
 ];
 
 export default function ProductsFilters() {
@@ -52,6 +54,7 @@ export default function ProductsFilters() {
   const [recommended, setRecommended] = useState(recoemmdedValue);
 
   const categories = useSelector(getCategoriesProducts);
+  const clientBlood = useSelector(selectParamsValues);
 
   function convertCategoriesToOptions(categoriesData) {
     return categoriesData.map(category => ({
@@ -68,16 +71,24 @@ export default function ProductsFilters() {
 
   useEffect(() => {
     dispatch(
-      getAllFillterProductsThunk({
+      getAllFillteredProductsThunk({
+        bloodType: clientBlood.blood,
+        recommendedQuery: recommended.value,
         categoryQuery: categoryValue.value,
         serchParams: filterValue,
       }),
     );
-  }, [categoryValue.value, filterValue, dispatch]);
+  }, [categoryValue.value, filterValue, recommended.value, dispatch]);
 
   const onSearchValue = () => {
-    dispatch(updateFilter({ value: localSearchInput, selectedCategory }));
-
+    dispatch(
+      updateFilter({
+        value: localSearchInput,
+        selectedCategory,
+        recommendedFilter: recoemmdedValue,
+      }),
+    );
+    console.log()
   };
 
   const eraseInputValue = () => {
@@ -93,9 +104,15 @@ export default function ProductsFilters() {
     dispatch(getCategoryProductsThunk(value.value));
   };
 
-   const updateRecommendedValue = value => {
-     setRecommended(value);
-     dispatch(updateFilter( {value: localSearchInput, selectedCategory ,recommendedValue: value}))
+  const updateRecommendedValue = value => {
+    setRecommended(value);
+    dispatch(
+      updateFilter({
+        value: localSearchInput,
+        selectedCategory,
+        recommendedValue: value,
+      }),
+    );
   };
 
   return (
