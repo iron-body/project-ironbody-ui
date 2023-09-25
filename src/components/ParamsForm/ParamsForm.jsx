@@ -6,8 +6,9 @@ import * as yup from 'yup';
 import moment from 'moment';
 
 import ParamsFormDaySwitch from './../ParamsFormDaySwitch/ParamsFormDaySwitch';
-import { authOperations } from '../../redux/auth/authOperations';
 import { selectParamsValues, updateAll } from '../../redux/params/paramsSlice';
+import { selectToken } from '../../redux/auth/authSlice';
+import axios from 'axios';
 import { Notify } from 'notiflix';
 import {
   MainForm,
@@ -53,7 +54,8 @@ const ParamsFormSchema = yup.object().shape({
 });
 
 const ParamsForm = ({ currentStep, onStepChange }) => {
-  const paramsState = useSelector(selectParamsValues);
+  const paramsState = useSelector(selectParamsValues); //fetch
+  const stateToken = useSelector(selectToken); //fetch
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -89,22 +91,41 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
   const handleDateChange = date => {
     const newFormatedDate = moment(date).format();
     setFieldValue('birthday', newFormatedDate);
+    console.log(newFormatedDate);
+    console.log(paramsState);
   };
 
   const handleNextSetStep = () => {
     onStepChange(currentStep + 1);
+    console.log(paramsState);
   };
 
   const handleBackSetStep = () => {
     onStepChange(currentStep - 1);
   };
 
-  const onSumbitForm = e => {
+  const onSubmitForm = async e => {
     e.preventDefault();
     try {
+      if (!stateToken) return Notify.failure('Not authorized');
+      const JSONParamsState = JSON.stringify(paramsState);
+      console.log(JSONParamsState);
+
+      const response = await axios.post(
+        'calculateNorms/calculate',
+        JSONParamsState,
+        {
+          headers: {
+            Authorization: `Bearer ${stateToken}`,
+          },
+        },
+      );
+
+      console.log(response);
       navigate('/products');
-      dispatch(authOperations.calculateNorms(paramsState));
+      return response.data;
     } catch (error) {
+      console.log('error :>> ', error);
       Notify.failure(error.message);
     }
   };
@@ -121,7 +142,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
                 value={values.height || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="text"
+                type="number"
                 required
               />
               <LabelBox>
@@ -140,7 +161,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
                 value={values.currentWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="text"
+                type="number"
                 required
               />
               <LabelBox>
@@ -159,7 +180,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
                 value={values.desiredWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="text"
+                type="number"
                 required
               />
               <LabelBox>
@@ -340,7 +361,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
       ;
       {currentStep === 3 && (
         <>
-          <SubmitBtn type="submit" onClick={onSumbitForm}>
+          <SubmitBtn type="submit" onClick={onSubmitForm}>
             Go
           </SubmitBtn>
 
