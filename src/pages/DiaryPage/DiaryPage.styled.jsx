@@ -11,6 +11,8 @@ export const StyledTitleContainer = styled.div`
   @media ${device.tablet} {
   }
   @media ${device.desktop} {
+    display: block;
+    padding-top: 0px;
   }
 `;
 

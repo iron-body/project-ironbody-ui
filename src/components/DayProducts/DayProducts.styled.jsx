@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { device } from '../../Constants';
 
 export const StyledWrapper = styled.div`
+  position: relative;
   min-width: 335px;
   min-height: 234px;
   padding: 0 16px;
