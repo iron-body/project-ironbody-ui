@@ -28,11 +28,9 @@ export const AddExerciseForm = ({
 
   return (
     <Container>
-      <Img  alt="" width={270} height={226} />
-      {/* <Img src={`${exercImg}`} alt="" width={270} height={226} /> */}
+            <Img src={`${exercImg}`} alt="" width={270} height={226} />
        <Btn onClick={() => active() } src="../../../public/ExitIcon.svg"/>
-      
-      
+          
       <ExercseBoxInf
         name={exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
         bodyPart={bodyPart.charAt(0).toUpperCase() + bodyPart.slice(1)}
