@@ -7,20 +7,22 @@ import filters from '../filters.json';
 
 export const fetchExercises = createAsyncThunk('exercises/data', async (_, thunkAPI) => {
   try {
-    const response = await axios.get('/products');
+    // const response = await axios.get('/products');
     const exercise = exercises;
     return exercise;
   } catch (e) {
+    console.log(e);
     return thunkAPI.rejectWithValue(e.message);
   }
 });
 
 export const fetchFilteredExercises = createAsyncThunk('exercises/filter', async (_, thunkAPI) => {
   try {
-    const response = await axios.get('/products');
+    // const response = await axios.get('/products');
     const filter = filters;
     return filter;
   } catch (e) {
+    console.log(e);
     return thunkAPI.rejectWithValue(e.message);
   }
 });
