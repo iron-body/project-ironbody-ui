@@ -2296,11 +2296,11 @@ attempted value: ${o}
     // background-size: 438px;
   }
 `,pQ=O.div`
-  color:var(--white);
-font-size:24px;
-font-weight:600;
-margin-top:10px;
-margin-bottom:20px;
+  color: var(--white);
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 20px;
   @media ${q.tablet} {
     margin-bottom: 0;
   }
@@ -2311,7 +2311,6 @@ margin-bottom:20px;
   width: 24px;
   height: 24px;
   @media ${q.tablet} {
-  
     border-radius: var(--br-1px);
     width: 36px;
     height: 24px;
@@ -2335,7 +2334,7 @@ margin-bottom:20px;
   margin-bottom: 20px;
 
   @media ${q.tablet} {
-    margin-bottom: 0;
+    margin: 0;
   }
 `,hQ=O.div`
   display: flex;
@@ -2359,9 +2358,12 @@ margin-bottom:20px;
   }
 `,bQ=O.div`
   display: flex;
- margin-top:20px; 
+  margin-top: 20px;
   /* margin-bottom: 20 px; */
   color: #efede8;
+  @media ${q.tablet} {
+    margin: 0;
+  }
 `,qh=O(Yi)`
   display: flex;
   align-items: center;
@@ -2371,8 +2373,11 @@ margin-bottom:20px;
 
   @media screen and (${q.mobile}) {
     margin-right: 28px;
+    /* height: 28px;
+    margin-bottom: 20px; */
   }
   @media screen and (${q.tablet}) {
+    height: 32px;
     margin-right: 0px;
     margin-top: 6px;
     margin-left: 20px;
@@ -2386,23 +2391,25 @@ margin-bottom:20px;
     color: #efede8;
     &:after {
       content: '';
-      margin-top: 10px;
+      margin-top: 4px;
       width: 100%;
       height: 3px;
       background-color: #ef8964;
       border-radius: 2px;
+      @media ${q.tablet} {
+        margin-top: 10px;
+      }
     }
   }
 `,yQ=({resetSubcategorySelect:e})=>{const t=()=>{e()};return h.jsxs(bQ,{children:[h.jsx(qh,{onClick:()=>t(),to:"/exercises/Body parts",children:"Body parts"}),h.jsx(qh,{onClick:()=>t(),to:"/exercises/Muscles",children:"Muscles"}),h.jsx(qh,{onClick:()=>t(),to:"/exercises/Equipment",children:"Equipment"})]})},vQ=O.div`
-margin-top:15px;
-  padding: 20px;
+  margin-top: 15px;
+  /* padding: 20px; */
   display: flex;
   flex-direction: column;
   @media screen and (${q.tablet}) {
-    padding: 32px;
-  
+    margin: 0;
+    /* padding: 32px; */
   }
-  
 `;O.h1`
   color: #ffffff;
 `;const xQ=O.ul`
