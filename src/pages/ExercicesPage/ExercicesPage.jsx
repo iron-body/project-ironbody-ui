@@ -68,7 +68,7 @@ const ExercisesPage = () => {
   };
 
   return (
-    <Container>
+    <Container selectedSubcategory={selectedSubcategory}>
       <NavigateContainer>
         {selectedSubcategory && (
           <ButtonItem onClick={() => setModalActive(true)}>
