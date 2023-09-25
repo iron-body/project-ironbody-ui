@@ -6,11 +6,10 @@ import{StyledLink} from './ExercisesList.styled'
 export const ExercisesList = ({subcategory, nameExercise}) => {
   const { name } = useParams();
 
-
- 
+   
   let exercise;
   const exercises = useSelector(state => state.exercises.items);
-
+console.log(exercises.dataList);
   switch (subcategory) {
     case 'Body parts':
       exercise = exercises.filter(item => item.bodyPart === name);

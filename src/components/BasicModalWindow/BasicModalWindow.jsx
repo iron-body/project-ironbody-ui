@@ -10,7 +10,7 @@ const BasicModalWindow = ({ active, setActive, children }) => {
     >
       <ModalContent
         className={active ? 'modal__content active' : 'modal__content'}
-        onClick={e => e.stopPropagation}
+        onClick={e => e.stopPropagation()}
       >
         {children}
       </ModalContent>

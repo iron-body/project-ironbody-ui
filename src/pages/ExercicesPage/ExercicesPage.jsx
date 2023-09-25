@@ -12,7 +12,8 @@ import ExercisesCategories from '../../components/ExercisesCategories/ExercisesC
 import TitlePage from '../../components/TitlePage/TitlePage';
 import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
-import { fetchExercises, fetchFilteredExercises } from '../../redux/operations';
+// import { fetchExercises, fetchFilteredExercises } from '../../redux/operations';
+import { fetchFilteredExercises,fetchExercises } from '../../redux/operations';
 import { getIsLoading } from '../../redux/selectors';
 
 const ExercisesPage = () => {
@@ -23,9 +24,23 @@ const ExercisesPage = () => {
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
   const [nameExercise, setNameExercise] = useState(null);
 
-  useEffect(() => {
-    dispatch(fetchFilteredExercises());
-    dispatch(fetchExercises());
+  // useEffect(() => {
+  //   dispatch(fetchFilteredExercises());
+  //   dispatch(fetchExercises());
+  // }, [dispatch]);
+const dinamicFilter='Equipment'
+
+    useEffect(() => {
+      dispatch(fetchFilteredExercises(dinamicFilter))
+      .then((result) => {
+        // Обработайте успешный результат запроса здесь
+        // console.log(result);
+      })
+      .catch((error) => {
+        // Обработайте ошибку запроса здесь
+        // console.error(error);
+      });
+       dispatch(fetchExercises());
   }, [dispatch]);
 
   // Функція для зміни обраної підкатегорії
@@ -44,7 +59,6 @@ const ExercisesPage = () => {
   // Функція для передавання назви  обраної підкатегорії
   const handNameExercise = name => {
     const capitalizedName = capitalizeFirstLetter(name);
-    console.log(capitalizedName);
     setNameExercise(capitalizedName);
   };
 
