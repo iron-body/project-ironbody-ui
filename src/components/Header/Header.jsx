@@ -8,7 +8,7 @@ import { selectIsLoggedIn } from '../../redux/auth/authSlice';
 import { useSelector } from 'react-redux';
 
 export const Header = () => {
-  const isTabletOrMobile = useMediaQuery('(max-width: 768px)');
+  const isTabletOrMobile = useMediaQuery('(max-width: 1439px)');
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
   return (
