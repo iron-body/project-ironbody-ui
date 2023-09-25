@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
 import{StyledLink} from './ExercisesList.styled'
 
-export const ExercisesList = ({subcategory}) => {
+export const ExercisesList = ({subcategory, nameExercise}) => {
   const { name } = useParams();
+
 
  
   let exercise;
@@ -29,6 +30,7 @@ export const ExercisesList = ({subcategory}) => {
     <StyledLink>
       {exercise.map(item => (
         <ExercisesItem
+        onClick={() => active(item.name)}
          key={item.name}
           exerciseName={item.name}
           exercImg={item.gifUrl}

@@ -2,15 +2,15 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { device } from '../../Constants';
 
+
 export const Container = styled.div`
   display: flex;
-  /* margin-top:20px; */
+ margin-top:20px; 
   /* margin-bottom: 20 px; */
   color: #efede8;
 `;
 
 export const StyledLink = styled(Link)`
-  /* padding-top: 20 px; */
   display: flex;
   align-items: center;
   flex-direction: column;
