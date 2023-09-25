@@ -13,7 +13,6 @@ import ExercisesCategories from '../../components/ExercisesCategories/ExercisesC
 import TitlePage from '../../components/TitlePage/TitlePage';
 import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
-// import { fetchExercises, fetchFilteredExercises } from '../../redux/operations';
 import { fetchFilteredExercises, fetchExercises } from '../../redux/operations';
 import { getIsLoading } from '../../redux/selectors';
 
@@ -27,7 +26,6 @@ const ExercisesPage = () => {
 
   const [subCategories, setSubCategories] = useState('Body parts'); // Початкове значення "Body parts"
   const { subCategories: routeSubCategories } = useParams();
-  console.log(subCategories);
 
   useEffect(() => {
     if (routeSubCategories) {

@@ -34,7 +34,7 @@ console.log(exercises.dataList);
       {exercise.map(item => (
         <ExercisesItem
         onClick={() => active(item.name)}
-         key={item.name}
+         key={item.id}
           exerciseName={item.name}
           exercImg={item.gifUrl}
           calories={item.burnedCalories}
