@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { device } from '../../Constants';
 
+
 export const Container = styled.div`
   display: flex;
   /* margin-top:20px; */

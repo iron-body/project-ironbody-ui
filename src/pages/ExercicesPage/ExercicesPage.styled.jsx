@@ -42,6 +42,45 @@ export const Container = styled.div`
   }
 `;
 
+
+export const NameExercise = styled.div`
+  color:var(--white);
+font-size:24px;
+  @media ${device.tablet} {
+    margin-bottom: 0;
+  }
+`;
+
+  export const ButtonIcon = styled.img`
+  display: block;
+
+  border-radius: var(--br-1px);
+  width: 24px;
+  height: 24px;
+  @media ${device.tablet} {
+  
+    border-radius: var(--br-1px);
+    width: 36px;
+    height: 24px;
+  }
+  @media ${device.desktop} {
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+  }
+`;
+
+export const ButtonItem = styled.button`
+  color: #e6533c;
+  font-size: 16px;
+  line-height: 1.5;
+  background: inherit;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+`;
+
 export const Title = styled.div`
   /* margin-left: 20px; */
   margin-bottom: 20px;

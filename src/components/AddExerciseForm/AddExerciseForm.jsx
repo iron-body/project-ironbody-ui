@@ -28,9 +28,9 @@ export const AddExerciseForm = ({
 
   return (
     <Container>
-      <Img src={`${exercImg}`} alt="" width={270} height={226} />
-      {/* <Timer /> */}
-      <Btn onClick={() => active() } src="../../../public/ExitIcon.svg"/>
+      <Img  alt="" width={270} height={226} />
+      {/* <Img src={`${exercImg}`} alt="" width={270} height={226} /> */}
+       <Btn onClick={() => active() } src="../../../public/ExitIcon.svg"/>
       
       
       <ExercseBoxInf

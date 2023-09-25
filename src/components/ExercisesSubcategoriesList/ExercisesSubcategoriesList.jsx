@@ -5,7 +5,7 @@ import { StyledLink, Ul, Container } from './ExercisesSubcategoriesList.styled';
 import { ExercisesSubcategoriesItem } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 
 // eslint-disable-next-line react/prop-types
-export const ExercisesSubcategoriesList = ({ onSelectSubcategory }) => {
+export const ExercisesSubcategoriesList = ({ onSelectSubcategory, nameExercise }) => {
   const [subCategories, setSubCategories] = useState('Body parts'); // Початкове значення "Body parts"
   const { subCategories: routeSubCategories } = useParams();
 
@@ -19,16 +19,19 @@ export const ExercisesSubcategoriesList = ({ onSelectSubcategory }) => {
   const exerciseFiltered = useSelector(state => state.exercises.filtered);
   const categorie = exerciseFiltered.filter(categorie => categorie.filter === subCategories);
 
-  const selectSubcategory = () => {
+  const selectSubcategory = (name) => {
     onSelectSubcategory(subCategories);
-  };
+    nameExercise(name);
+  }
+
+
 
   return (
     <Container>
       <Ul>
         {categorie.map(item => (
           <StyledLink
-            onClick={() => selectSubcategory()}
+            onClick={() => selectSubcategory(item.name)}
             key={item.name}
             to={`${subCategories}/${item.name}`}
           >

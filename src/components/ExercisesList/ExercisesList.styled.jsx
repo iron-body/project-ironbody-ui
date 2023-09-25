@@ -3,7 +3,7 @@ import { device } from '../../Constants';
 
 
 export const StyledLink = styled.ul`
-// padding-left:20 px;
+margin-top:48px;
 display: flex;
 flex-direction: column;
 gap:20px;
@@ -16,6 +16,7 @@ gap:20px;
   gap: 32px 14px;
   
   width: 704px;
+  margin-top:32px;
   overflow: auto;
   overflow-y: auto; 
   max-height: 90vh; 

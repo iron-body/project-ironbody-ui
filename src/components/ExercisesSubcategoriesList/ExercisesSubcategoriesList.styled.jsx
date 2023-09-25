@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom';
 import { device } from '../../Constants';
 
 export const Container = styled.div`
-  /* padding: 40px; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: center; */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  @media screen and (${device.tablet}) {
+    padding: 32px;
+  
+  }
+  
 `;
 
 export const Title = styled.h1`
