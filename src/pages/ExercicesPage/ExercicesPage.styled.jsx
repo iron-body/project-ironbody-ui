@@ -37,24 +37,23 @@ export const Container = styled.div`
 `;
 
 export const NameExercise = styled.div`
-  color:var(--white);
-font-size:24px;
-font-weight:600;
-margin-top:10px;
-margin-bottom:20px;
+  color: var(--white);
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 20px;
   @media ${device.tablet} {
     margin-bottom: 0;
   }
 `;
 
-  export const ButtonIcon = styled.img`
+export const ButtonIcon = styled.img`
   display: block;
 
   border-radius: var(--br-1px);
   width: 24px;
   height: 24px;
   @media ${device.tablet} {
-  
     border-radius: var(--br-1px);
     width: 36px;
     height: 24px;
@@ -85,7 +84,7 @@ export const Title = styled.div`
   margin-bottom: 20px;
 
   @media ${device.tablet} {
-  margin-top: 10px;
+    margin: 0;
   }
 `;
 

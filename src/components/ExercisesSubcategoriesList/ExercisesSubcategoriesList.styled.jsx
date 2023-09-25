@@ -3,18 +3,17 @@ import { Link } from 'react-router-dom';
 import { device } from '../../Constants';
 
 export const Container = styled.div`
-margin-top:15px;
-  padding: 20px;
+  margin-top: 15px;
+  /* padding: 20px; */
   display: flex;
     
   justify-content: center;
   align-items: center;
   flex-direction: column;
   @media screen and (${device.tablet}) {
-  padding: 0px;
-  width:768px;
+    margin: 0;
+    /* padding: 32px; */
   }
-  
 `;
 
 export const Title = styled.h1`
