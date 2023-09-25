@@ -4,6 +4,7 @@ export const getExercises = state => state.exercises.items;
 export const getExerciseFiltered = state => state.exercises.filtered;
 
 export const getLoading = state => state.exercises.isLoading;
+export const getIsLoading = state => state.auth.isLoading;
 
 export const getError = state => state.exercises.error;
 

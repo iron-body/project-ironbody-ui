@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, NavigateContainer, Title } from './ExercicesPage.styled';
+import {
+  Container,
+  NavigateContainer,
+  Title,
+  NameExercise,
+  ButtonItem,
+  ButtonIcon
+} from './ExercicesPage.styled';
 import ExercisesCategories from '../../components/ExercisesCategories/ExercisesCategories';
 import TitlePage from '../../components/TitlePage/TitlePage';
 import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
@@ -14,6 +21,7 @@ const ExercisesPage = () => {
 
   // Додайте стан для відстеження обраного підкатегорії
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+  const [nameExercise, setNameExercise] = useState(null);
 
   useEffect(() => {
     dispatch(fetchFilteredExercises());
@@ -24,25 +32,52 @@ const ExercisesPage = () => {
   const handleSubcategorySelect = subcategory => {
     setSelectedSubcategory(subcategory);
   };
+
   const handleResetSubcategorySelect = () => {
     setSelectedSubcategory(null);
+  };
+
+  const capitalizeFirstLetter = name => {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  };
+
+  // Функція для передавання назви  обраної підкатегорії
+  const handNameExercise = name => {
+    const capitalizedName = capitalizeFirstLetter(name);
+    console.log(capitalizedName);
+    setNameExercise(capitalizedName);
   };
 
   return (
     <Container>
       <NavigateContainer>
-        {!selectedSubcategory && (
+    
+          {selectedSubcategory && <ButtonItem onClick={() => setModalActive(true)} >
+            
+            <ButtonIcon alt="" src="/back-array.svg" />Back
+          </ButtonItem>}
+
+        {!selectedSubcategory ? (
           <Title>
             <TitlePage titleText={'Exercices'} />
           </Title>
+        ) : (
+           <NameExercise>{nameExercise}</NameExercise>
         )}
-        <ExercisesCategories resetSubcategorySelect={handleResetSubcategorySelect} />
+        <ExercisesCategories
+          resetSubcategorySelect={handleResetSubcategorySelect}
+        />
       </NavigateContainer>
       {isLoading && 'Request in progress...'}
       {!isLoading && !selectedSubcategory && (
-        <ExercisesSubcategoriesList onSelectSubcategory={handleSubcategorySelect} />
+        <ExercisesSubcategoriesList
+          onSelectSubcategory={handleSubcategorySelect}
+          nameExercise={handNameExercise}
+        />
       )}
-      {selectedSubcategory && <ExercisesList subcategory={selectedSubcategory} />}
+      {selectedSubcategory && (
+        <ExercisesList subcategory={selectedSubcategory} />
+      )}
     </Container>
   );
 };
