@@ -54,11 +54,20 @@ function App() {
         />
 
         <Route path="/products" element={<ProductsPage />} />
-        <Route path="/exercises" element={<ExercisesPage />}>
+
+        <Route path="exercises" element={<PrivateRoute redirectTo="/exercises" component={<ExercisesPage />} />}>
+          <Route path=":subCategories" element={<PrivateRoute redirectTo="/exercises/:subCategories" component={<ExercisesSubcategoriesList />} />}>
+            <Route path=":name" element={<PrivateRoute redirectTo="/exercises/:subCategories/:name" component={<ExercisesList />} />} />
+          </Route>
+        </Route>
+
+
+
+        {/* <Route path="/exercises" element={<ExercisesPage />}>
           <Route path="/exercises/:subCategories" element={<ExercisesSubcategoriesList />}>
             <Route path="/exercises/:subCategories/:name" element={<ExercisesList />} />
           </Route>
-        </Route>
+        </Route> */}
 
         <Route index element={<WelcomePage />} />
         {/* <Route path="signup" element={<SignUpPage />} /> */}
