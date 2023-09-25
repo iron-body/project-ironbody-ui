@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Container,
@@ -13,7 +14,7 @@ import TitlePage from '../../components/TitlePage/TitlePage';
 import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
 // import { fetchExercises, fetchFilteredExercises } from '../../redux/operations';
-import { fetchFilteredExercises,fetchExercises } from '../../redux/operations';
+import { fetchFilteredExercises, fetchExercises } from '../../redux/operations';
 import { getIsLoading } from '../../redux/selectors';
 
 const ExercisesPage = () => {
@@ -24,24 +25,30 @@ const ExercisesPage = () => {
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
   const [nameExercise, setNameExercise] = useState(null);
 
-  // useEffect(() => {
-  //   dispatch(fetchFilteredExercises());
-  //   dispatch(fetchExercises());
-  // }, [dispatch]);
-const dinamicFilter='Equipment'
+  const [subCategories, setSubCategories] = useState('Body parts'); // Початкове значення "Body parts"
+  const { subCategories: routeSubCategories } = useParams();
+  console.log(subCategories);
 
-    useEffect(() => {
-      dispatch(fetchFilteredExercises(dinamicFilter))
-      .then((result) => {
+  useEffect(() => {
+    if (routeSubCategories) {
+      setSubCategories(routeSubCategories);
+    }
+  }, [routeSubCategories]);
+
+  const dinamicFilter = { filter: subCategories };
+
+  useEffect(() => {
+    dispatch(fetchFilteredExercises(dinamicFilter))
+      .then(result => {
         // Обработайте успешный результат запроса здесь
         // console.log(result);
       })
-      .catch((error) => {
+      .catch(error => {
         // Обработайте ошибку запроса здесь
         // console.error(error);
       });
-       dispatch(fetchExercises());
-  }, [dispatch]);
+    dispatch(fetchExercises());
+  }, [subCategories]);
 
   // Функція для зміни обраної підкатегорії
   const handleSubcategorySelect = subcategory => {
@@ -79,16 +86,21 @@ const dinamicFilter='Equipment'
         ) : (
           <NameExercise>{nameExercise}</NameExercise>
         )}
-        <ExercisesCategories resetSubcategorySelect={handleResetSubcategorySelect} />
+        <ExercisesCategories
+          resetSubcategorySelect={handleResetSubcategorySelect}
+        />
       </NavigateContainer>
       {isLoading && 'Request in progress...'}
       {!isLoading && !selectedSubcategory && (
         <ExercisesSubcategoriesList
           onSelectSubcategory={handleSubcategorySelect}
           nameExercise={handNameExercise}
+          subCategories={subCategories}
         />
       )}
-      {selectedSubcategory && <ExercisesList subcategory={selectedSubcategory} />}
+      {selectedSubcategory && (
+        <ExercisesList subcategory={selectedSubcategory} />
+      )}
     </Container>
   );
 };

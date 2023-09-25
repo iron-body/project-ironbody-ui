@@ -19,9 +19,9 @@ export const fetchExercises = createAsyncThunk('exercises/data', async (_, thunk
 
 export const fetchFilteredExercises = createAsyncThunk('exercises/filter', async (dinamicFilter, thunkAPI) => {
   try {
-    const response = await axios.get('filters?filter=', {params:filters});
-    // console.log(dinamicFilter);
-    // console.log(response.data);
+    const response = await axios.get('filters/filtered?', {params:dinamicFilter});
+    console.log(dinamicFilter);
+    console.log(response.data);
     // const filter = filters;
     return response.data;
   } catch (e) {
