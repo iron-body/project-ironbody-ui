@@ -4,9 +4,6 @@ import { device } from '../../Constants';
 export const Container = styled.div`
   width: 335px;
   max-height: 141px;
-  
-;
- 
   padding: 16px;
   border-radius: var(--br-12px);
   background-color: #10100f;

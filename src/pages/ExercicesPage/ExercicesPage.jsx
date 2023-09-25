@@ -6,7 +6,8 @@ import {
   Title,
   NameExercise,
   ButtonItem,
-  ButtonIcon
+  ButtonIcon,
+  ButtonBox
 } from './ExercicesPage.styled';
 import ExercisesCategories from '../../components/ExercisesCategories/ExercisesCategories';
 import TitlePage from '../../components/TitlePage/TitlePage';
@@ -50,19 +51,21 @@ const ExercisesPage = () => {
 
   return (
     <Container>
-      <NavigateContainer>
-    
-          {selectedSubcategory && <ButtonItem onClick={() => setModalActive(true)} >
-            
-            <ButtonIcon alt="" src="/back-array.svg" />Back
-          </ButtonItem>}
-
+      {selectedSubcategory && (
+        <ButtonBox>
+          <ButtonItem onClick={() => console.log('ok') }>
+            <ButtonIcon alt="" src="/back-array.svg" />
+            Back
+          </ButtonItem>
+        </ButtonBox>
+      )}
+      <NavigateContainer name={NavigateContainer}>
         {!selectedSubcategory ? (
           <Title>
             <TitlePage titleText={'Exercices'} />
           </Title>
         ) : (
-           <NameExercise>{nameExercise}</NameExercise>
+          <NameExercise>{nameExercise}</NameExercise>
         )}
         <ExercisesCategories
           resetSubcategorySelect={handleResetSubcategorySelect}

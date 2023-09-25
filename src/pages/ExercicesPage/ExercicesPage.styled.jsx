@@ -3,8 +3,7 @@ import { device } from '../../Constants';
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  
   flex-direction: row;
   flex-direction: column;
 
@@ -19,11 +18,10 @@ export const Container = styled.div`
   @media screen and (${device.tablet}) {
     margin-top: 40px;
     padding: 0;
-    /* margin-top: 72px; */
     width: 768px;
     /* padding-left: 32px;
-    padding-right: 32px; */
-    margin-top: 156px;
+    padding-right: 32px; 
+    margin-top: 72px;
   }
   @media screen and (${device.desktop}) {
     width: var(--width-desktop);
@@ -40,6 +38,13 @@ export const Container = styled.div`
   }
 `;
 
+
+export const ButtonBox = styled.div`
+display:flax;
+justify-content:space-between;
+
+
+`;
 
 
 export const NameExercise = styled.div`
@@ -73,6 +78,7 @@ margin-bottom:20px;
 `;
 
 export const ButtonItem = styled.button`
+padding-left: 0;
   color: rgba(239, 237, 232, 0.4);
   font-size: 16px;
   line-height: 1.5;
@@ -81,6 +87,8 @@ export const ButtonItem = styled.button`
   display: flex;
   align-items: center;
   padding: 0;
+
+
 `;
 
 export const Title = styled.div`
@@ -88,7 +96,7 @@ export const Title = styled.div`
   margin-bottom: 20px;
 
   @media ${device.tablet} {
-    margin-bottom: 0;
+  margin-top: 10px;
   }
 `;
 
@@ -102,7 +110,8 @@ export const NavigateContainer = styled.div`
   @media ${device.tablet} {
     flex-direction: row;
     width: ${768 - 64}px;
-    margin-bottom: 64px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     padding-left: 32px;
     padding-right: 32px;
   }

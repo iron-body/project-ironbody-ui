@@ -11,6 +11,10 @@ export const Container = styled.div`
     height: 42px;
   }
 
+  @media screen and (${device.tablet}) {
+    margin-bottom: 0px;
+  }
+
 
 
 `;

@@ -6,10 +6,13 @@ export const Container = styled.div`
 margin-top:15px;
   padding: 20px;
   display: flex;
+    
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   @media screen and (${device.tablet}) {
-    padding: 32px;
-  
+  padding: 0px;
+  width:768px;
   }
   
 `;
@@ -20,6 +23,7 @@ export const Title = styled.h1`
 
 export const Ul = styled.ul`
   list-style: none;
+
 
   @media screen and (${device.tablet}) {
     display: flex;

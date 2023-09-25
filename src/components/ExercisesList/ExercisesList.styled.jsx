@@ -3,7 +3,7 @@ import { device } from '../../Constants';
 
 
 export const StyledLink = styled.ul`
-margin-top:48px;
+margin-top:35px;
 display: flex;
 flex-direction: column;
 gap:20px;
