@@ -2493,22 +2493,24 @@ attempted value: ${o}
   font-size: 18px;
   opacity: 0.4;
 `,_Q=({name:e,img:t,nameCategorie:r})=>h.jsxs(SQ,{img:t,children:[h.jsx(PQ,{children:`${e}`}),h.jsx(qQ,{children:`${r}`})]},`${e}`),W4=({onSelectSubcategory:e,nameExercise:t})=>{const[r,i]=C.useState("Body parts"),{subCategories:n}=zC();C.useEffect(()=>{n&&i(n)},[n]);const o=Nt(l=>l.exercises.filtered).filter(l=>l.filter===r),s=l=>{e(r),t(l)};return h.jsx(wQ,{children:h.jsx(CQ,{children:o.map(l=>h.jsx(kQ,{onClick:()=>s(l.name),to:`${r}/${l.name}`,children:h.jsx(_Q,{name:l.name.charAt(0).toUpperCase()+l.name.slice(1),nameCategorie:r,img:l.imgURL})},l.name))})})},EQ=ve.div`
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.4);
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.5s;
+  flex-direction: column;
+  height: 100vh;
+  width: 200px;
+  padding: 19px 20px 21px 20px;
+  background-color: #e6533c;
+  z-index: 9;
 
-  &.active {
-    opacity: 1;
-    pointer-events: all;
+  @media ${q.tablet} {
+    width: 350px;
+    padding: 26px 32px 32px 32px;
+  }
+
+  @media ${q.desktop} {
+    display: none;
   }
 `,zQ=ve.div`
   position: relative;
@@ -2520,7 +2522,7 @@ attempted value: ${o}
   background: #10100f;
   transform: scale(0.5);
   transition: 0.4s all;
-  // width: 50vw;
+  /* width: 50vw; */
 
   &.active {
     transform: scale(1);
