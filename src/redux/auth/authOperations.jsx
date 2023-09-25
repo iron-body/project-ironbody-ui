@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Notify } from 'notiflix';
+import { useSelector } from 'react-redux';
+import { selectParamsValues } from '../params/paramsSlice';
 
 // axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 // axios.defaults.baseURL = 'http://localhost:3030/api/';
@@ -81,18 +83,17 @@ const refreshCurrentUser = createAsyncThunk(
 const calculateNorms = createAsyncThunk(
   'calculateNorms/calculate',
   async (credentials, thunkAPI) => {
+    const paramsState = useSelector(selectParamsValues);
     try {
       const state = thunkAPI.getState();
-      const persistedToken = state.auth.accessToken;
-      if (!persistedToken) return thunkAPI.rejectWithValue();
-      token.set(persistedToken);
-      const { paramsState } = credentials;
+      const savedToken = state.auth.accessToken;
+      if (!savedToken) return thunkAPI.rejectWithValue();
+      token.set(savedToken);
+
       const response = await axios.post(
         'calculateNorms/calculate',
         paramsState,
       );
-      console.log('message');
-      console.log(response.data);
       return response.data;
     } catch (error) {
       Notify.failure(`Server error. "${error.message}"`);
