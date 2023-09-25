@@ -79,7 +79,7 @@ const refreshCurrentUser = createAsyncThunk(
 );
 
 const calculateNorms = createAsyncThunk(
-  'user/calculate',
+  'calculateNorms/calculate',
   async (credentials, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
@@ -91,6 +91,8 @@ const calculateNorms = createAsyncThunk(
         'calculateNorms/calculate',
         paramsState,
       );
+      console.log('message');
+      console.log(response.data);
       return response.data;
     } catch (error) {
       Notify.failure(`Server error. "${error.message}"`);
