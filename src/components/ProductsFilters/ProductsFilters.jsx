@@ -16,30 +16,40 @@ import {
 
 import { Formik, Form, Field } from 'formik';
 import Select from 'react-select';
-// import {initialValue} from '../../redux/filterSlice'
 import { getCategoriesProducts } from '../../redux/products/selectors';
 import { useEffect } from 'react';
-import { getCategoriesProductsThunk, getCategoryProductsThunk } from '../../redux/products/productsOperations';
+import {
+  getProductsThunk,
+  getCategoriesProductsThunk,
+  getCategoryProductsThunk,
+  getAllFillterProductsThunk,
+} from '../../redux/products/productsOperations';
 
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getFilterValue, getCategoryValue } from '../../redux/selectors';
+import {
+  getFilterValue,
+  getCategoryValue,
+  getRecommendedValue,
+} from '../../redux/selectors';
 
 import { updateFilter } from '../../redux/filterSlice';
 
 const optionsRecomended = [
-  { value: 'All', label: 'All' },
-  { value: 'Recommended', label: 'Recommended' },
-  { value: 'No recommended', label: 'No recommended' },
+  { value: "all" , label: 'All' },
+  { value: 'recommended', label: 'Recommended' },
+  { value: 'noRecommended' , label: 'No recommended' },
 ];
 
 export default function ProductsFilters() {
   const dispatch = useDispatch();
   const filterValue = useSelector(getFilterValue);
-    const categoryValue = useSelector(getCategoryValue);
+  const categoryValue = useSelector(getCategoryValue);
+  const recoemmdedValue = useSelector(getRecommendedValue);
 
   const [localSearchInput, setLocalSearchInput] = useState(filterValue);
   const [selectedCategory, setSelectedCategory] = useState(categoryValue);
+  const [recommended, setRecommended] = useState(recoemmdedValue);
 
   const categories = useSelector(getCategoriesProducts);
 
@@ -56,25 +66,37 @@ export default function ProductsFilters() {
     dispatch(getCategoriesProductsThunk());
   }, [dispatch]);
 
-useEffect(() => {
-  if (selectedCategory.value !== null && selectedCategory.value !== undefined) {
-    dispatch(getCategoryProductsThunk(selectedCategory.value));
-  }
-}, [selectedCategory, dispatch]);
+  useEffect(() => {
+    dispatch(
+      getAllFillterProductsThunk({
+        categoryQuery: categoryValue.value,
+        serchParams: filterValue,
+      }),
+    );
+  }, [categoryValue.value, filterValue, dispatch]);
 
   const onSearchValue = () => {
     dispatch(updateFilter({ value: localSearchInput, selectedCategory }));
+
   };
 
   const eraseInputValue = () => {
-    dispatch(updateFilter({ value: '', selectedCategory : '', }));
+    dispatch(updateFilter({ value: '', selectedCategory: '' }));
+    dispatch(getProductsThunk());
+
     setLocalSearchInput('');
+    setSelectedCategory('');
   };
 
-  const updateCategoryValue = (value) => {
-  setSelectedCategory(value);
-  dispatch(getCategoryProductsThunk(value));
-};
+  const updateCategoryValue = value => {
+    setSelectedCategory(value);
+    dispatch(getCategoryProductsThunk(value.value));
+  };
+
+   const updateRecommendedValue = value => {
+     setRecommended(value);
+     dispatch(updateFilter( {value: localSearchInput, selectedCategory ,recommendedValue: value}))
+  };
 
   return (
     <Formik
@@ -123,9 +145,10 @@ useEffect(() => {
                     isSearchable={false}
                     styles={categoriesStyles}
                     placeholder="Categories"
+                    value={selectedCategory}
                     onChange={selectedOption => {
                       setSelectedCategory(selectedOption);
-                       updateCategoryValue(selectedOption.value);
+                      updateCategoryValue(selectedOption);
                     }}
                   />
                 )}
@@ -141,6 +164,11 @@ useEffect(() => {
                     options={optionsRecomended}
                     isSearchable={false}
                     styles={recomendedStyles}
+                    value={recommended}
+                    onChange={recommendedOption => {
+                      setRecommended(recommendedOption);
+                      updateRecommendedValue(recommendedOption);
+                    }}
                   />
                 )}
               />
