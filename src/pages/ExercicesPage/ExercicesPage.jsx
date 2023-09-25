@@ -6,7 +6,7 @@ import {
   Title,
   NameExercise,
   ButtonItem,
-  ButtonIcon
+  ButtonIcon,
 } from './ExercicesPage.styled';
 import ExercisesCategories from '../../components/ExercisesCategories/ExercisesCategories';
 import TitlePage from '../../components/TitlePage/TitlePage';
@@ -51,22 +51,21 @@ const ExercisesPage = () => {
   return (
     <Container>
       <NavigateContainer>
-    
-          {selectedSubcategory && <ButtonItem onClick={() => setModalActive(true)} >
-            
-            <ButtonIcon alt="" src="/back-array.svg" />Back
-          </ButtonItem>}
+        {selectedSubcategory && (
+          <ButtonItem onClick={() => setModalActive(true)}>
+            <ButtonIcon alt="" src="/back-array.svg" />
+            Back
+          </ButtonItem>
+        )}
 
         {!selectedSubcategory ? (
           <Title>
             <TitlePage titleText={'Exercices'} />
           </Title>
         ) : (
-           <NameExercise>{nameExercise}</NameExercise>
+          <NameExercise>{nameExercise}</NameExercise>
         )}
-        <ExercisesCategories
-          resetSubcategorySelect={handleResetSubcategorySelect}
-        />
+        <ExercisesCategories resetSubcategorySelect={handleResetSubcategorySelect} />
       </NavigateContainer>
       {isLoading && 'Request in progress...'}
       {!isLoading && !selectedSubcategory && (
@@ -75,9 +74,7 @@ const ExercisesPage = () => {
           nameExercise={handNameExercise}
         />
       )}
-      {selectedSubcategory && (
-        <ExercisesList subcategory={selectedSubcategory} />
-      )}
+      {selectedSubcategory && <ExercisesList subcategory={selectedSubcategory} />}
     </Container>
   );
 };
