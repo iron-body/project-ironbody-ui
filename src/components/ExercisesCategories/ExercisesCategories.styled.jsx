@@ -2,19 +2,23 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { device } from '../../Constants';
 
-
 export const Container = styled.div`
+  height: 32px;
   display: flex;
- margin-top:20px; 
-  /* margin-bottom: 20 px; */
+  margin-top: 20px;
   color: #efede8;
+  @media screen and (${device.mobile}) {
+    height: 42px;
+  }
+
+
+
 `;
 
 export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
   flex-direction: column;
-
   color: rgba(239, 237, 232, 0.4);
 
   @media screen and (${device.mobile}) {
