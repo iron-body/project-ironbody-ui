@@ -2501,24 +2501,22 @@ attempted value: ${o}
   font-size: 18px;
   opacity: 0.4;
 `,OQ=({name:e,img:t,nameCategorie:r})=>h.jsxs(EQ,{img:t,children:[h.jsx(zQ,{children:`${e}`}),h.jsx(DQ,{children:`${r}`})]},`${e}`),W4=({onSelectSubcategory:e,nameExercise:t})=>{const[r,i]=C.useState("Body parts"),{subCategories:n}=OC();C.useEffect(()=>{n&&i(n)},[n]);const o=Et(l=>l.exercises.filtered).filter(l=>l.filter===r),s=l=>{e(r),t(l)};return h.jsx(PQ,{children:h.jsx(qQ,{children:o.map(l=>h.jsx(_Q,{onClick:()=>s(l.name),to:`${r}/${l.name}`,children:h.jsx(OQ,{name:l.name.charAt(0).toUpperCase()+l.name.slice(1),nameCategorie:r,img:l.imgURL})},l.name))})})},TQ=ve.div`
-  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 200px;
-  padding: 19px 20px 21px 20px;
-  background-color: #e6533c;
-  z-index: 9;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
 
-  @media ${q.tablet} {
-    width: 350px;
-    padding: 26px 32px 32px 32px;
-  }
-
-  @media ${q.desktop} {
-    display: none;
+  &.active {
+    opacity: 1;
+    pointer-events: all;
   }
 `,UQ=ve.div`
   position: relative;
