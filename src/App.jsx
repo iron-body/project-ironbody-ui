@@ -39,7 +39,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route path="/params" element={<ParamsPage />} />
+        {/* <Route path="/params" element={<ParamsPage />} /> */}
         {/* Comment bellow line if you uncomment private route */}
         {/* <Route path="/diary" element={<DiaryPage />} /> */}
         {/* comment below for unuse automatic redirect if user already logined */}
@@ -55,13 +55,30 @@ function App() {
 
         <Route path="/products" element={<ProductsPage />} />
 
-        <Route path="exercises" element={<PrivateRoute redirectTo="/exercises" component={<ExercisesPage />} />}>
-          <Route path=":subCategories" element={<PrivateRoute redirectTo="/exercises/:subCategories" component={<ExercisesSubcategoriesList />} />}>
-            <Route path=":name" element={<PrivateRoute redirectTo="/exercises/:subCategories/:name" component={<ExercisesList />} />} />
+        <Route
+          path="exercises"
+          element={<PrivateRoute redirectTo="/exercises" component={<ExercisesPage />} />}
+        >
+          <Route
+            path=":subCategories"
+            element={
+              <PrivateRoute
+                redirectTo="/exercises/:subCategories"
+                component={<ExercisesSubcategoriesList />}
+              />
+            }
+          >
+            <Route
+              path=":name"
+              element={
+                <PrivateRoute
+                  redirectTo="/exercises/:subCategories/:name"
+                  component={<ExercisesList />}
+                />
+              }
+            />
           </Route>
         </Route>
-
-
 
         {/* <Route path="/exercises" element={<ExercisesPage />}>
           <Route path="/exercises/:subCategories" element={<ExercisesSubcategoriesList />}>
