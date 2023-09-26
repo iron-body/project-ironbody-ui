@@ -1,47 +1,150 @@
-import ava from '../../DefaultPics/def-avatar.jpg';
-import { useSelector } from 'react-redux';
-import { getUserName } from '../../redux/selectors';
-window.onload = () => {
-  const uploadAvatar = document.getElementById('upload-avatar');
-  const uploadBtn = document.getElementById('upload-btn');
-  uploadBtn.addEventListener('click', function () {
-    uploadAvatar.click();
-  });
-};
 
-
+// import { useSelector } from 'react-redux';
+// import { getUserName } from '../../redux/selectors';
+// import { useRef, useState } from 'react';
+import sprite from '../../../icons.svg';
+import { Btn, LinkBtn } from '../LogOutBtn/LogOutBtn.styled';
+import {
+  AvatarWrapper,
+  AvatarBtnSvg,
+  AvatarBtn,
+  FileInput,
+  AvatarSvg,
+  AvatarCircle,
+  NameWrapper,
+  Name,
+  User,
+  DailyList,
+  DailyItem,
+  DailyBox,
+  DailyWrapper,
+  DailySvg,
+  DailyText,
+  DailyNumber,
+  WarningContainer,
+  WarningWrapper,
+  WarningSvg,
+  WarningText,
+  LogoutWrapper,
+  UserCardWrapper,
+  LogoutBtnSvg,Wrapper
+} from './UserCard.styled';
+// window.onload = () => {
+//   const uploadAvatar = document.getElementById('upload-avatar');
+//   const uploadBtn = document.getElementById('upload-btn');
+//   uploadBtn.addEventListener('click', function () {
+//     uploadAvatar.click();
+//   });
+// };
+// const baseURL = 'https://connections-api.herokuapp.com/';
 
 const UserCard = () => {
-   const userName = useSelector(getUserName);
+  // const filePicker = useRef(null);
+  // const [selectedFile, setSelectedFile] = useState(null);
+  // const [uploaded, setUploaded] = useState();
+
+  // const handleChange = event => {
+  //   console.log(event.target.files);
+  //   setSelectedFile(event.target.files[0]);
+  // };
+
+  // const handleUpload = async () => {
+  //   filePicker.current.click();
+  //   if (!selectedFile) {
+  //     alert('pleas select a file');
+  //     return;
+  //   }
+  //   const formData = new FormData();
+  //   formData.append('avatar', selectedFile);
+
+  //   const res = await fetch(baseURL, {
+  //     method: 'POST',
+  //   });
+  //   const data = await res.json();
+  //   setUploaded(data);
+  // };
+
+  //   const handlePick = () => {
+  //     filePicker.current.click();
+  //     handleUpload()
+  // }
+  // const userName = useSelector(getUserName);
   return (
-    <div>
-      <div>
-        <img width="370" src={ava} alt="dvfg" />
-        <input type="file" id="upload-avatar" hidden="hidden" />
-        <button id="upload-btn">AVA</button>
-      </div>
-      <div>
-        <p>{userName}</p>
-        <p>User</p>
-      </div>
-      <div>
-        <div>
-          <p>Daily calorie intake</p>
-          <p>2200</p>
-        </div>
-        <div>
-          <p>Daily norm of sports</p>
-          <p>110 min</p>
-        </div>
-      </div>
-      <p>
-        We understand that each individual is unique, so the entire approach to
-        diet is relative and tailored to your unique body and goals.
-      </p>
-      <button>Logout</button>
-    </div>
+    <Wrapper>
+      <UserCardWrapper>
+        <AvatarWrapper>
+          <AvatarCircle>
+            <AvatarSvg>
+              <use href={`${sprite}#gridicons_user`} />
+            </AvatarSvg>
+            <FileInput
+              type="file"
+              // onChange={handleChange}
+              // ref={filePicker}
+              id="upload-avatar"
+              accept="image/*,.png,.jpg,.web"
+            />
+            <AvatarBtn>
+              <AvatarBtnSvg>
+                <use href={`${sprite}#check mark`} />
+              </AvatarBtnSvg>
+            </AvatarBtn>
+          </AvatarCircle>
+        </AvatarWrapper>
+        <NameWrapper>
+          <Name>Anna Rybachok</Name>
+          <User>User</User>
+        </NameWrapper>
+
+        <DailyList>
+          <DailyItem>
+            <DailyBox>
+              <DailyWrapper>
+                <DailySvg>
+                  <use href={`${sprite}#icon-fluent_food-24-filled`} />
+                </DailySvg>
+                <DailyText>Daily calorie intake</DailyText>
+              </DailyWrapper>
+              <DailyNumber>2200</DailyNumber>
+            </DailyBox>
+          </DailyItem>
+          <DailyItem>
+            <DailyBox>
+              <DailyWrapper>
+                <DailySvg>
+                  <use href={`${sprite}#icon-dumbbell`} />
+                </DailySvg>
+                <DailyText>Daily norm of sports</DailyText>
+              </DailyWrapper>
+              <DailyNumber>110 min</DailyNumber>
+            </DailyBox>
+          </DailyItem>
+        </DailyList>
+        <WarningContainer>
+          <WarningWrapper>
+            <WarningSvg>
+              <use href={`${sprite}#tabler:exclamation-mark`} />
+            </WarningSvg>
+            <WarningText>
+              We understand that each individual is unique, so the entire
+              approach to diet is relative and tailored to your unique body and
+              goals.
+            </WarningText>
+          </WarningWrapper>
+        </WarningContainer>
+
+        <LogoutWrapper>
+          <Btn>
+            <LinkBtn to="/logout">Logout</LinkBtn>
+            <LogoutBtnSvg>
+              <use href={`${sprite}#log-out-01`} />
+            </LogoutBtnSvg>
+          </Btn>
+        </LogoutWrapper>
+      </UserCardWrapper>
+    </Wrapper>
   );
 };
 
-
 export default UserCard;
+

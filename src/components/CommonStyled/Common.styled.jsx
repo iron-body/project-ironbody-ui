@@ -72,3 +72,40 @@ export const Root = styled.div`
     background-position: left 100% top 100%;
   }
 `;
+
+
+export const NoOutlineRoot = styled.div`
+: 1;
+  color: var(--white);
+  font-family: var(--headline-style-mobile-h1);
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  @media ${device.mobile} {
+    position: relative;
+    width: var(--width-mobile);
+   
+    overflow: hidden;
+    background-position: left 100% top 100%;
+    color: var(--white);
+    font-family: var(--headline-style-mobile-h1);
+  }
+  @media ${device.tablet} {
+    max-width: var(--width-tablet);
+    width: var(--width-tablet);
+   
+    overflow: hidden;
+    color: var(--white);
+    font-family: var(--headline-style-mobile-h1);
+    background-position: left 100% top 100%;
+  }
+  @media ${device.desktop} {
+    max-width: var(--width-desktop);
+    width: var(--width-desktop);
+    
+    overflow: hidden;
+    color: var(--white);
+    font-family: var(--headline-style-mobile-h1);
+    background-position: left 100% top 100%;
+  }
+`;
