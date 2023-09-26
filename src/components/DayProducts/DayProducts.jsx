@@ -5,7 +5,7 @@ import {
   StyledTitleWrapper,
   StyledNoFoundText,
 } from './DayProducts.styled';
-import ProductsTable from '../ProductsTable/ProductsTable';
+import ProductsTable from '../DiaryTables/ProductsTable/ProductsTable';
 
 const DayProducts = () => {
   return (

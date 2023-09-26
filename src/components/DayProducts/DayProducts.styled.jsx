@@ -6,7 +6,8 @@ export const StyledWrapper = styled.div`
   position: relative;
   min-width: 335px;
   min-height: 234px;
-  padding: 0 16px;
+  margin-bottom: 20px;
+  padding: 16px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: rgba(239, 237, 232, 0.05);
