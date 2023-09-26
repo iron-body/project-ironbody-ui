@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { paramsOperations } from './paramsOperations';
 
 const initialState = {
   params: {
@@ -11,36 +12,31 @@ const initialState = {
     sex: 'male',
     levelActivity: 1,
   },
+  isUpdated: false,
 };
 
 export const paramsSlice = createSlice({
   name: 'params',
   initialState,
   reducers: {
-    // updateAll(state, action) {
-    //   const payload = action.payload;
-
-    //   const keys = Object.keys(payload);
-    //   const filterdValues = {};
-
-    //   for (const key of keys) {
-    //     if (payload[key] === '') {
-    //       return;
-    //     }
-    //     if (payload[key] !== undefined) {
-    //       filterdValues[key] = payload[key];
-    //     }
-    //   }
-
-    //   state.params = { ...state.params, ...filterdValues };
-    //   },
     updateAll(state, action) {
       state.params = action.payload;
     },
   },
+  extraReducers: {
+    // [paramsOperations.updateParams.pending](state, action) {},
+    [paramsOperations.updateParams.rejected](state) {
+      state.isUpdated = false;
+    },
+    [paramsOperations.updateParams.fulfilled](state, action) {
+      state.params = action.payload;
+      state.isUpdated = true;
+    },
+  },
 });
 
-export const { updateStepOne, updateStepTwo, updateAll } = paramsSlice.actions;
+export const { updateAll } = paramsSlice.actions;
 export const paramsReducer = paramsSlice.reducer;
 
 export const selectParamsValues = state => state.params.params;
+export const selectParamsValueHeight = state => state.params.params.height;
