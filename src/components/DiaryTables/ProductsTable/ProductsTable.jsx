@@ -1,5 +1,5 @@
 import * as React from 'react';
-import sprite from '../../../icons.svg';
+import sprite from '../../../../icons.svg';
 
 import {
   createColumnHelper,
@@ -19,7 +19,6 @@ import {
   StyledTableCell,
   StyledTableRaw,
   StyledTbody,
-  StyledThead,
   StyledTitle,
   StyledWeight,
   TableContainer,
@@ -119,7 +118,7 @@ const columns = [
 ];
 
 const ProductsTable = () => {
-  const isMobile = useMediaQuery('(max-width: 375px)');
+  const isMobile = useMediaQuery('(max-width: 767px)');
   // eslint-disable-next-line no-unused-vars
   const [data, setData] = React.useState(() => [...defaultData]);
 
@@ -142,31 +141,18 @@ const ProductsTable = () => {
       )}
       <TableContainer>
         <StyledTable>
-          {/* {isMobile && (
-            <StyledThead>
-              {table.getHeaderGroups().map(headerGroup => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map(header => (
-                    <th key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(header.column.columnDef.header, header.getContext())}
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </StyledThead>
-          )} */}
           <StyledTbody>
             {table.getRowModel().rows.map(row => (
               <StyledTableRaw key={row.id}>
                 {row.getVisibleCells().map(cell => (
-                  <>
-                    {isMobile && flexRender(cell.column.columnDef.header)}
-                    <StyledTableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </StyledTableCell>
-                  </>
+                  <StyledTableCell key={cell.id}>
+                    {isMobile && (
+                      <StyledHeadingTable>
+                        {flexRender(cell.column.columnDef.header)}
+                      </StyledHeadingTable>
+                    )}
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </StyledTableCell>
                 ))}
               </StyledTableRaw>
             ))}

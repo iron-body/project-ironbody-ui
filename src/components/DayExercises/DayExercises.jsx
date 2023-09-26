@@ -5,7 +5,7 @@ import {
   StyledTitleWrapper,
   StyledNoFoundText,
 } from '../DayProducts/DayProducts.styled';
-import ExercisesTable from '../ExercisesTable/ExercisesTable';
+import ExercisesTable from '../DiaryTables/ExercisesTable/ExercisesTable';
 
 // import Table from '../Table/Table';
 
