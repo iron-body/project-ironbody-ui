@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { useSearchParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
 import{StyledLink} from './ExercisesList.styled'
@@ -26,24 +27,35 @@ export const ExercisesList = ({subcategory, nameExercise}) => {
 
     default:
       break;
+      
   }
 
+  const ex = ()=> {const [searchParams]=useSearchParams()
+    const name = searchParams.get("name");
+    console.log(name);
+  };
+  
+
+
+
   return (
-    <StyledLink>
-      {exercise.map(item => (
-        <ExercisesItem
-        onClick={() => active(item.name)}
-         key={item.id}
-          exerciseName={item.name}
-          exercImg={item.gifUrl}
-          calories={item.burnedCalories}
-          bodyPart={item.bodyPart}
-          muscles={item.target}
-          time={item.time}
-          equipment={item.equipment}
-          
+    <> <StyledLink>
+    {exercise.map(item => (
+      
+      <ExercisesItem
+      onClick={() => active(item.name)}
+       key={item.id}
+        exerciseName={item.name}
+        exercImg={item.gifUrl}
+        calories={item.burnedCalories}
+        bodyPart={item.bodyPart}
+        muscles={item.target}
+        time={item.time}
+        equipment={item.equipment}
         />
-      ))}
+    ))}
     </StyledLink>
+  </>
+   
   );
 };
