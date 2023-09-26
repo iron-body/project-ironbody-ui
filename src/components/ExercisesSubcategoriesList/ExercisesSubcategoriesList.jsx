@@ -23,7 +23,7 @@ export const ExercisesSubcategoriesList = ({ onSelectSubcategory, nameExercise,s
             onClick={() => selectSubcategory(item.name)}
             key={item.name}
             to={`${subCategories}/${item.name}`}
-            state={{from:`${subCategories}`}}
+            state={{from:location}}
           >
             <ExercisesSubcategoriesItem
               name={item.name.charAt(0).toUpperCase() + item.name.slice(1)}

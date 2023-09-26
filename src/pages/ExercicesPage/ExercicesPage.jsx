@@ -21,6 +21,7 @@ import { getLoading } from '../../redux/selectors';
 const ExercisesPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getLoading);
+  const location = useLocation();
 
 
 
@@ -70,11 +71,15 @@ const ExercisesPage = () => {
     const capitalizedName = capitalizeFirstLetter(name);
     setNameExercise(capitalizedName);
   };
+ 
+const clearSelectedSubcategory=()=>{
+  setSelectedSubcategory(null);
+}
 
   return (
     <Container selectedSubcategory={selectedSubcategory}>
       <NavigateContainer>
-        {selectedSubcategory && (<ButtonItem><Link  to={selectedSubcategory}>
+        {selectedSubcategory && (<ButtonItem><Link  to={selectedSubcategory} onClick={()=>clearSelectedSubcategory()}>
             <ButtonIcon alt="" src="/back-array.svg" />
             Back
           </Link></ButtonItem>
