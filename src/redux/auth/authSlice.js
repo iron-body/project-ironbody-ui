@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { authOperations } from './authOperations';
-
+import { updateOperations } from '../update/updateOperations';
 const initialState = {
   user: {
     name: null,
@@ -66,6 +66,12 @@ export const authSlice = createSlice({
       state.accessToken = null;
       state.isLoading = false;
       state.isLoggedIn = false;
+    },
+
+    [updateOperations.update.fulfilled](state, action) {
+       state.user = Object.assign(state.user, action.meta.arg), (state.isRefreshing = true);
+      // state.user = action.payload;
+      // state.isRefreshing = true;
     },
   },
 });

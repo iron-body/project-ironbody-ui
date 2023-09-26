@@ -1,0 +1,304 @@
+
+
+.radioField {
+   position: absolute;
+   width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.radioSpan {
+  color: #efede8;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.radioSpan::before {
+  content: '';
+  min-width: 18px;
+  min-height: 18px;
+  border: 1.5px #ef8964 solid;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 9px;
+}
+.radioSpan::after {
+  content: '';
+  position: absolute;
+  top: 23.4%;
+  right: 59%;
+  width: 10px;
+  height: 10px;
+  background-color: #ef8964;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.radioField:checked + .radioSpan::after {
+  opacity: 1;
+}
+
+.radioItem {
+  &:not(:last-child) {
+    padding-right: 9px;
+  }
+}
+
+.radioItemLevel{
+    &:not(:last-child) {
+    padding-bottom: 8px;
+  }
+}
+
+.radioSpanSex {
+  color: #efede8;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.radioSpanSex::before {
+  content: '';
+   min-width: 18px;
+  min-height: 18px;
+  border: 1.5px #ef8964 solid;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 9px;
+
+}
+.radioSpanSex::after {
+  content: '';
+  position: absolute;
+  left:7%;
+  width: 10px;
+  height: 10px;
+  background-color: #ef8964;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.radioField:checked + .radioSpanSex::after {
+  opacity: 1;
+}
+
+.radioSpanSexMale {
+  color: #efede8;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.radioSpanSexMale::before {
+  content: '';
+   min-width: 18px;
+  min-height: 18px;
+  border: 1.5px #ef8964 solid;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 9px;
+}
+.radioSpanSexMale::after {
+  content: '';
+  position: absolute;
+  left:9%;
+  width: 10px;
+  height: 10px;
+  background-color: #ef8964;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.radioField:checked + .radioSpanSexMale::after {
+  opacity: 1;
+}
+
+.radioSpanLevel {
+  color: #efede8;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.3;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.radioSpanLevel::before {
+  content: '';
+   min-width: 18px;
+  min-height: 18px;
+  border: 1.5px #ef8964 solid;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 9px;
+}
+
+
+.radioSpanLevel::after {
+  content: '';
+  position: absolute;
+  left:1.5%;
+  width: 10px;
+  height: 10px;
+  background-color: #ef8964;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.radioField:checked + .radioSpanLevel::after {
+  opacity: 1;
+}
+
+
+.radioBloodList{
+  display: flex; margin-right: 17px; 
+}
+
+.radioSexList{
+ display: flex; 
+}
+
+.radioWrapper{
+  display: flex; 
+  margin-top: 4px;
+  margin-bottom: 42px;
+}
+
+.radioWrapperTwo{
+  align-items: center;
+  display: flex; 
+  margin-bottom: 40px;
+}
+
+   @media screen and (min-width: 1248px){
+  .radioWrapperTwo{
+  margin-bottom: 48px;
+}
+  }
+
+   @media screen and (min-width: 704px) {
+    .radioSpanLevel::before{
+  border: 2px #EF8964 solid;
+   min-width: 20px;
+  min-height: 20px;
+margin-right: 10px;};
+  }
+  @media screen and (min-width: 704px){
+   .radioSpanLevel::after{
+     width: 12px;
+  height: 12px; 
+  left:1.2%;
+  };
+}
+ @media screen and (min-width: 704px){
+  .radioSpanLevel{
+  font-size: 16px;
+line-height: 1.5;
+}}
+
+
+
+     @media screen and (min-width: 704px) {
+    .radioSpanSexMale::before{
+  border: 2px #EF8964 solid;
+   min-width: 20px;
+  min-height: 20px;margin-right: 10px;};
+  }
+
+     @media screen and (min-width: 704px) {
+  .radioSpanSexMale::after{
+     width: 12px;
+  height: 12px;
+  };}
+
+   @media screen and (min-width: 704px) {
+  .radioSpanSexMale{
+     font-size: 16px;
+line-height: 1.5;
+  };}
+
+
+
+
+
+      @media screen and (min-width: 704px) {
+    .radioSpanSex::before{
+  border: 2px #EF8964 solid;
+   min-width: 20px;
+  min-height: 20px;margin-right: 10px;};
+  }
+      @media screen and (min-width: 704px) {
+  .radioSpanSex::after{
+     width: 12px;
+  height: 12px;
+  };
+  }
+     @media screen and (min-width: 704px) {
+  .radioSpanSex{
+         font-size: 16px;
+line-height: 1.5;
+  };
+  }
+
+
+
+
+
+
+        @media screen and (min-width: 704px) {
+    .radioSpan::before{
+  border: 2px #EF8964 solid;
+   min-width: 20px;
+  min-height: 20px;margin-right: 10px;};
+
+  }
+  
+        @media screen and (min-width: 704px) {
+  
+  .radioSpan::after{
+     width: 12px;
+  height: 12px;
+  };
+
+  }
+    
+        @media screen and (min-width: 1248px) {
+  
+  .radioSpan::after{
+  top: 25%;
+  right: 59%;
+  };
+
+  }
+
+          @media screen and (min-width: 935px) {
+  
+  .radioSpan::after{
+  top: 25%;
+  right: 58.4%;
+  };
+
+  }
+
+  
+        @media screen and (min-width: 704px) {
+  .radioSpan{
+              font-size: 16px;
+line-height: 1.5;
+  };
+
+  }
+
+      @media screen and (min-width: 704px) {
+    .radioWrapper{
+ 
+  margin-top: 8px;
+  
+}
+}
+  
