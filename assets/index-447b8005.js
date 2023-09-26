@@ -271,8 +271,18 @@ Notiflix needs to be appended to the "<`+z+'>" element, but you called it before
   left: 0;
   height: 100vh;
   width: 100%;
+  /* width: 200px; */
+  padding: 19px 20px 21px 20px;
   background-color: #e6533c;
   overflow: ${({isMenuOpen:e})=>e?"hidden":"auto"};
+  @media ${q.tablet} {
+    width: 350px;
+    padding: 26px 32px 32px 32px;
+  }
+
+  @media ${q.desktop} {
+    display: none;
+  }
 `,LR=O.svg`
   position: absolute;
   top: 3%;
@@ -292,7 +302,7 @@ Notiflix needs to be appended to the "<`+z+'>" element, but you called it before
   left: 33%;
   gap: 40px;
   @media ${q.tablet} {
-    left: 45%;
+    left: 33%;
   }
 `,Hg=O.li``,Gg=O(_y)`
   position: relative;
