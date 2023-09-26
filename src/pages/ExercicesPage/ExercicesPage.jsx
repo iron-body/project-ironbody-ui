@@ -13,12 +13,13 @@ import ExercisesCategories from '../../components/ExercisesCategories/ExercisesC
 import TitlePage from '../../components/TitlePage/TitlePage';
 import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
+import Loader from '../../components/Loader/Loader'
 import { fetchFilteredExercises, fetchExercises } from '../../redux/operations';
-import { getIsLoading } from '../../redux/selectors';
+import { getLoading } from '../../redux/selectors';
 
 const ExercisesPage = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
+  const isLoading = useSelector(getLoading);
 
   // Додайте стан для відстеження обраного підкатегорії
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
@@ -88,7 +89,7 @@ const ExercisesPage = () => {
           resetSubcategorySelect={handleResetSubcategorySelect}
         />
       </NavigateContainer>
-      {isLoading && 'Request in progress...'}
+      {isLoading && <Loader/>}
       {!isLoading && !selectedSubcategory && (
         <ExercisesSubcategoriesList
           onSelectSubcategory={handleSubcategorySelect}

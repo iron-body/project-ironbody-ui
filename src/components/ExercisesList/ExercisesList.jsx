@@ -13,7 +13,6 @@ export const ExercisesList = ({subcategory, nameExercise}) => {
     console.log('problem with data uploading');
     return
   }
-console.log(exercises.dataList);
   switch (subcategory) {
     case 'Body parts':
       exercise = exercises.dataList.filter(item => item.bodyPart === name);
