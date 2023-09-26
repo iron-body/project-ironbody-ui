@@ -1,7 +1,7 @@
 import { Field, Form } from 'formik';
 import styled from 'styled-components';
+import { device } from '../../Constants';
 // import { device } from '../../Constants';
-
 
 export const Label = styled.label`
   color: rgba(239, 237, 232, 0.5);
@@ -24,14 +24,13 @@ export const FieldBasicStyled = styled(Field)`
   align-items: center;
   padding-left: 14px;
   padding-right: 14px;
-  @media screen and (min-width: 704px) {
+  @media ${device.tablet} {
     font-size: 16px;
     line-height: 1.5;
     width: 345px;
     height: 52px;
   }
 `;
-
 
 export const FieldBigStyled = styled(Field)`
   font-family: Roboto;
@@ -48,13 +47,12 @@ export const FieldBigStyled = styled(Field)`
   align-items: center;
   padding-left: 14px;
   padding-right: 14px;
-  @media screen and (min-width: 704px) {
+  @media ${device.tablet} {
     width: 100%;
     height: 52px;
     margin-top: 8px;
   }
 `;
-
 
 export const FieldSmallStyled = styled(Field)`
   font-family: Roboto;
@@ -71,7 +69,7 @@ export const FieldSmallStyled = styled(Field)`
   align-items: center;
   padding-left: 14px;
   padding-right: 14px;
-  @media screen and (min-width: 704px) {
+  @media ${device.tablet} {
     width: 100%;
     height: 52px;
     margin-top: 8px;
@@ -80,44 +78,43 @@ export const FieldSmallStyled = styled(Field)`
 
 export const BasicWrapper = styled.div`
   margin-top: 4px;
-  @media screen and (min-width: 704px) {
+  @media ${device.tablet} {
     display: flex;
     margin-top: 8px;
   }
 `;
 export const NameWrapper = styled.div`
-  @media screen and (min-width: 704px) {
+  @media ${device.tablet} {
     padding-right: 14px;
   }
 `;
 
 export const ParamsWrapper = styled.div`
   padding-right: 14px;
-  @media screen and (min-width: 704px) {
-   display: flex;
-   flex-direction: column;
+  @media ${device.tablet} {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
 export const CurrentWeightWrapper = styled.div`
-  @media screen and (min-width: 704px) {
+  @media ${device.tablet} {
     display: flex;
     flex-direction: column;
   }
 `;
 
 export const InfoWrapper = styled.div`
-  @media screen and (min-width: 704px) {
+  @media ${device.tablet} {
     display: flex;
     align-items: center;
-   
   }
 `;
 
 export const InfoContainer = styled.div`
   display: flex;
   padding-bottom: 14px;
-  @media screen and (min-width: 704px) {
+  @media ${device.tablet} {
     padding-right: 14px;
     padding-bottom: 16px;
   }
@@ -130,15 +127,14 @@ export const InfoContainerTwo = styled.div`
 export const ParamsWrapperTwo = styled.div`
   margin-top: 4px;
   display: flex;
-  @media screen and (min-width: 704px) {
+  @media ${device.tablet} {
     margin-top: 0;
   }
 `;
 
-
 export const FormStyled = styled(Form)`
   padding-bottom: 66px;
-  @media screen and (min-width: 704px) {
+  @media ${device.tablet} {
     padding-bottom: 54px;
   }
   @media screen and (min-width: 1248px) {

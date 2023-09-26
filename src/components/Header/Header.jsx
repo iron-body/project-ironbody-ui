@@ -17,7 +17,7 @@ export const Header = () => {
   return (
     <HeaderContainer>
       <Logo />
-      {isLoggedIn && filledParamsHeight !== undefined ? (
+      {isLoggedIn !== undefined ? (
         <NavContainer>
           {isTabletOrMobile ? null : <UserNav />}
           <UserBar />
