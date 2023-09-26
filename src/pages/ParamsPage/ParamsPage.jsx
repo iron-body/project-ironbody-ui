@@ -15,12 +15,16 @@ import {
   MainTitle2,
   Decription,
   Decription3,
-  NextBtn,
-  BackBtn,
+  // NextBtn,
+  // BackBtn,
 } from './ParamsPage.styled';
 
 const ParamsPage = () => {
   const [step, setStep] = useState(1);
+
+  const handleStepChange = newStep => {
+    setStep(newStep);
+  };
 
   return (
     <>
@@ -32,16 +36,10 @@ const ParamsPage = () => {
             of our platform, we ask you to provide the following information
             about your weight, height and other relevant data:
           </Decription>
-
-          <ParamsForm stepNumber={step} />
-
-          <NextBtn type="button" onClick={() => setStep(step + 1)}>
-            Next
-          </NextBtn>
+          <ParamsForm currentStep={step} onStepChange={handleStepChange} />
 
           <TutorialBlock />
           <CaloriesBlock />
-
           <StepBar stepNumber={step} />
         </Wrapper>
       )}
@@ -49,13 +47,7 @@ const ParamsPage = () => {
       {step === 2 && (
         <Wrapper2>
           <MainTitle2>Get closer to your goals!</MainTitle2>
-          <ParamsForm stepNumber={step} />
-          <BackBtn type="button" onClick={() => setStep(step - 1)}>
-            Back
-          </BackBtn>
-          <NextBtn type="button" onClick={() => setStep(step + 1)}>
-            Next
-          </NextBtn>
+          <ParamsForm currentStep={step} onStepChange={handleStepChange} />
 
           <TutorialBlockForParamsPages />
           <CaloriesBlockStyledForParamsPages />
@@ -75,11 +67,7 @@ const ParamsPage = () => {
             individual and personalized approach.
           </Decription3>
 
-          <ParamsForm stepNumber={step} />
-
-          <BackBtn type="button" onClick={() => setStep(step - 1)}>
-            Back
-          </BackBtn>
+          <ParamsForm currentStep={step} onStepChange={handleStepChange} />
 
           <TutorialBlockForParamsPages />
           <CaloriesBlockStyledForParamsPages />

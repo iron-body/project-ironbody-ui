@@ -1,12 +1,33 @@
 import styled from 'styled-components';
+import { device } from '../../Constants';
 
-const StyledTitlePage = styled.h1`
+const StyledTitlePage = styled.div`
   color: #efede8;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 32px;
+  height: 100%;
+  display: inline-block;
+  color: #efede8;
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
   font-weight: 700;
-  line-height: 1.8;
-  margin: 0px 0 32px 0;
+  line-height: 28px; /* 116.667% */
+
+  @media ${device.tablet} {
+    color: #efede8;
+    font-family: Roboto;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 44px; /* 137.5% */
+  }
+  @media ${device.desktop} {
+    font-size: 32px;
+    font-weight: 700;
+    /* line-height: 1.8; */
+    /* margin: 0px 0 32px 0; */
+    line-height: 44px; /* 137.5% */
+  }
 `;
 
 export default StyledTitlePage;

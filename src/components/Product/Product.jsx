@@ -10,12 +10,35 @@ import {
   FoodParams,
   NameParams,
   ParamsValue,
-    FoodIcon,
-  ProductWrapper
+  FoodIcon,
+  ProductWrapper,
 } from './Product.styled';
+import { useSelector } from 'react-redux';
 
-export default function Product({ product }) {
-  const { foodName, calories, category, weight } = product;
+import { selectParamsValues } from '../../redux/params/paramsSlice';
+
+export default function Product({ product, openModal }) {
+  const { title, calories, category, weight, groupBloodNotAllowed } = product;
+  const clientParams = useSelector(selectParamsValues);
+
+  const searchRecommendedProduct = () => {
+    for (const key in groupBloodNotAllowed) {
+      const value = groupBloodNotAllowed[key];
+
+      if (key === clientParams.blood && value === false) {
+        return value;
+      } else {
+        return value;
+      }
+    }
+  };
+
+  const recommendedParams = searchRecommendedProduct();
+
+  const handleButtonClick = () => {
+    openModal();
+    console.log(groupBloodNotAllowed);
+  };
 
   return (
     <>
@@ -23,16 +46,26 @@ export default function Product({ product }) {
         <NavCard>
           <TitleCard>DIET</TitleCard>
           <RecomendedInfo>
-            <RecomendedMarker />
-            <RecomendedTitle> Recomended </RecomendedTitle>
-            <ButtonItem>
+            <RecomendedMarker
+              style={
+                !recommendedParams
+                  ? { background: 'green' }
+                  : { background: 'red' }
+              }
+            />
+            <RecomendedTitle>
+              {' '}
+              {!recommendedParams ? 'Recomended' : 'No recommended'}{' '}
+            </RecomendedTitle>
+            <ButtonItem onClick={handleButtonClick}>
               Add
-              <ButtonIcon alt="" src="/arrow.svg" />
+              <ButtonIcon alt="" src="/project-ironbody-ui/arrow.svg" />
             </ButtonItem>
           </RecomendedInfo>
         </NavCard>
         <FoodName>
-          <FoodIcon alt="" src="/product-icon.svg" /> {foodName}
+          <FoodIcon alt="" src="/project-ironbody-ui/product-icon.svg" />
+          {title.length > 20 ? ` ${title.slice(0, 20)}... ` : title}
         </FoodName>
         <FoodParams>
           <NameParams>

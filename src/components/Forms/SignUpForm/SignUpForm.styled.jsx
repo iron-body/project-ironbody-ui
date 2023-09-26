@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { Field, Form } from 'formik';
-import { device } from '../../Constants';
+import { device } from '../../../Constants';
 
-export const SignInFormStyled = styled.div`
+export const SignupFormStyled = styled.div`
   position: absolute;
   top: 127px;
   left: 20px;
@@ -30,7 +30,7 @@ export const SignInFormStyled = styled.div`
   }
 `;
 
-export const SignInH1Styled = styled.h1`
+export const SignUpH1Styled = styled.h1`
   display: inline-block;
   margin-bottom: 14px;
   color: #efede8;
@@ -54,7 +54,7 @@ export const SignInH1Styled = styled.h1`
     ${'' /* margin-bottom: 16px; */}
   }
 `;
-export const SignInPStyled = styled.p`
+export const SignUpPStyled = styled.p`
   color: rgba(239, 237, 232, 0.3);
   font-family: Roboto;
   font-size: 14px;
@@ -86,22 +86,22 @@ export const SignInPStyled = styled.p`
   }
 `;
 
-export const FormSignInStyled = styled(Form)`
+export const FormSignUpStyled = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 18px;
   @media ${device.mobile} {
     position: absolute;
-    top: 106px;
+    top: 124px;
   }
   @media ${device.tablet} {
     position: absolute;
     gap: 20px;
-    top: 116px;
+    top: 140px;
   }
 `;
 
-export const FieldSignInStyled = styled(Field)`
+export const FieldSignUpStyled = styled(Field)`
   display: flex;
   padding: 0;
   padding-left: 14px;
@@ -111,9 +111,35 @@ export const FieldSignInStyled = styled(Field)`
   align-items: center;
   background-color: inherit;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  /* border: 1px solid rgba(239, 237, 232, 0.3); */
+
+  border: ${props => {
+    if (props.errorname === undefined && props.touchedname?.name === true) {
+      return '1px solid #3CBF61';
+    }
+    if (props.errorname && props.touchedname?.name === true) {
+      return '1px solid #D80027';
+    }
+    if (props.erroremail === undefined && props.touchedemail?.email === true) {
+      return '1px solid #3CBF61';
+    }
+    if (props.erroremail && props.touchedemail?.email === true) {
+      return '1px solid #D80027';
+    }
+    if (props.errorpassword === undefined && props.touchedpassword?.password === true) {
+      return '1px solid #3CBF61';
+    }
+
+    if (props.errorpassword && props.touchedpassword?.password === true) {
+      return '1px solid #D80027';
+    }
+    return '1px solid rgba(239, 237, 232, 0.3)';
+  }};
   color: var(--white);
 
+  &:hover {
+    border: 1px solid #e6533c;
+  }
   @media ${device.mobile} {
     width: ${335 - 16}px;
     color: rgba(239, 237, 232, 0.6);
@@ -138,5 +164,41 @@ export const FieldSignInStyled = styled(Field)`
     font-style: normal;
     font-weight: 400;
     line-height: 24px; /* 150% */
+  }
+`;
+
+export const ValidateStatusNameBlockStyled = styled.div`
+  position: absolute;
+  display: flex;
+  @media ${device.mobile} {
+    top: 46px;
+  }
+  @media ${device.tablet} {
+    top: 54px;
+  }
+`;
+
+export const ValidateStatusPasswordBlockStyled = styled.div`
+  position: absolute;
+
+  display: flex;
+
+  @media ${device.mobile} {
+    top: 174px;
+  }
+  @media ${device.tablet} {
+    top: 198px;
+  }
+`;
+
+export const ValidateStatusEmailBlockStyled = styled.div`
+  position: absolute;
+  display: flex;
+
+  @media ${device.mobile} {
+    top: 110px;
+  }
+  @media ${device.tablet} {
+    top: 126px;
   }
 `;

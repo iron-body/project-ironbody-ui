@@ -4,25 +4,32 @@ import DayProducts from '../../components/DayProducts/DayProducts';
 import DayExercises from '../../components/DayExercises/DayExercises';
 import DayDashboard from '../../components/DayDashboard/DayDashboard';
 
-import { StyledMainContentWrapper, StyledTablesWrapper } from '../DiaryPage/DiaryPage.styled';
+import {
+  StyledMainContentWrapper,
+  StyledTablesWrapper,
+  StyledTitleContainer,
+} from '../DiaryPage/DiaryPage.styled';
 import DaySwitch from '../../components/DaySwitch/DaySwitch';
+import { useMediaQuery } from '@mui/material';
 
 const DiaryPage = () => {
+  const isTabletOrMobile = useMediaQuery('(max-width: 768px)');
   return (
-    <main>
-      <Container>
-        <DaySwitch />
+    <Container>
+      <StyledTitleContainer>
+        {!isTabletOrMobile && <DaySwitch />}
         <TitlePage titleText="Diary" />
-
-        <StyledMainContentWrapper>
-          <StyledTablesWrapper>
-            <DayProducts />
-            <DayExercises />
-          </StyledTablesWrapper>
-          <DayDashboard />
-        </StyledMainContentWrapper>
-      </Container>
-    </main>
+        {isTabletOrMobile && <DaySwitch />}
+      </StyledTitleContainer>
+      <StyledMainContentWrapper>
+        {isTabletOrMobile && <DayDashboard />}
+        <StyledTablesWrapper>
+          <DayProducts />
+          <DayExercises />
+        </StyledTablesWrapper>
+        {!isTabletOrMobile && <DayDashboard />}
+      </StyledMainContentWrapper>
+    </Container>
   );
 };
 

@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import { Field, Form } from 'formik';
-import { device } from '../../Constants';
+import { device } from '../../../Constants';
 
-export const SignupFormStyled = styled.div`
+export const SignInFormStyled = styled.div`
   position: absolute;
   top: 127px;
   left: 20px;
@@ -30,7 +30,7 @@ export const SignupFormStyled = styled.div`
   }
 `;
 
-export const SignUpH1Styled = styled.h1`
+export const SignInH1Styled = styled.h1`
   display: inline-block;
   margin-bottom: 14px;
   color: #efede8;
@@ -54,7 +54,7 @@ export const SignUpH1Styled = styled.h1`
     ${'' /* margin-bottom: 16px; */}
   }
 `;
-export const SignUpPStyled = styled.p`
+export const SignInPStyled = styled.p`
   color: rgba(239, 237, 232, 0.3);
   font-family: Roboto;
   font-size: 14px;
@@ -86,22 +86,22 @@ export const SignUpPStyled = styled.p`
   }
 `;
 
-export const FormStyled = styled(Form)`
+export const FormSignInStyled = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 18px;
   @media ${device.mobile} {
     position: absolute;
-    top: 124px;
+    top: 106px;
   }
   @media ${device.tablet} {
     position: absolute;
     gap: 20px;
-    top: 140px;
+    top: 116px;
   }
 `;
 
-export const FieldStyled = styled(Field)`
+export const FieldSignInStyled = styled(Field)`
   display: flex;
   padding: 0;
   padding-left: 14px;
@@ -111,8 +111,29 @@ export const FieldStyled = styled(Field)`
   align-items: center;
   background-color: inherit;
   border-radius: 12px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  /* border: 1px solid rgba(239, 237, 232, 0.3); */
+
+  border: ${props => {
+    if (props.erroremail === undefined && props.touchedemail?.email === true) {
+      return `1px solid #3CBF61`;
+    }
+    if (props.erroremail && props.touchedemail?.email === true) {
+      return '1px solid #D80027';
+    }
+    if (props.errorpassword === undefined && props.touchedpassword?.password === true) {
+      return '1px solid #3CBF61';
+    }
+    if (props.errorpassword && props.touchedpassword?.password === true) {
+      return '1px solid #D80027';
+    }
+    return '1px solid rgba(239, 237, 232, 0.3)';
+  }};
+
   color: var(--white);
+
+  &:hover {
+    border: 1px solid #e6533c;
+  }
 
   @media ${device.mobile} {
     width: ${335 - 16}px;
@@ -138,5 +159,30 @@ export const FieldStyled = styled(Field)`
     font-style: normal;
     font-weight: 400;
     line-height: 24px; /* 150% */
+  }
+`;
+
+export const ValidateStatusPasswordBlockStyled = styled.div`
+  position: absolute;
+
+  display: flex;
+
+  @media ${device.mobile} {
+    top: 110px;
+  }
+  @media ${device.tablet} {
+    top: 126px;
+  }
+`;
+
+export const ValidateStatusEmailBlockStyled = styled.div`
+  position: absolute;
+  /* top: 55px; */
+  display: flex;
+  @media ${device.mobile} {
+    top: 46px;
+  }
+  @media ${device.tablet} {
+    top: 55px;
   }
 `;

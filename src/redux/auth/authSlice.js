@@ -6,23 +6,39 @@ const initialState = {
     name: null,
     email: null,
   },
-  token: null,
+  accessToken: null,
   isLoggedIn: false,
   isRefreshing: false,
+  isLoading: false,
 };
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
+    [authOperations.register.pending](state) {
+      state.isLoading = true;
+    },
+    [authOperations.register.rejected](state) {
+      state.isLoading = false;
+      state.accessToken = null;
+      state.isLoggedIn = false;
+    },
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
+    },
+    [authOperations.login.pending](state) {
+      state.isLoading = true;
+    },
+    [authOperations.login.rejected](state) {
+      state.isLoading = false;
     },
     [authOperations.login.fulfilled](state, action) {
       state.user = action.payload.user;
-      state.token = action.payload.token;
+      state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
+      state.isLoading = false;
     },
 
     [authOperations.logout.fulfilled](state) {
@@ -30,7 +46,11 @@ export const authSlice = createSlice({
         name: null,
         email: null,
       };
-      state.token = null;
+      state.accessToken = null;
+      state.isLoggedIn = false;
+    },
+    [authOperations.logout.rejected](state) {
+      state.accessToken = null;
       state.isLoggedIn = false;
     },
     [authOperations.refreshCurrentUser.fulfilled](state, action) {
@@ -43,6 +63,9 @@ export const authSlice = createSlice({
     },
     [authOperations.refreshCurrentUser.rejected](state) {
       state.isRefreshing = false;
+      state.accessToken = null;
+      state.isLoading = false;
+      state.isLoggedIn = false;
     },
 
     [updateOperations.update.fulfilled](state, action) {
@@ -54,6 +77,7 @@ export const authSlice = createSlice({
 });
 
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
+export const selectToken = state => state.auth.accessToken;
 export const selectUsername = state => state.auth.user.name;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 

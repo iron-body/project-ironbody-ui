@@ -10,16 +10,21 @@ import {
 import {
   StyledCalories,
   StyledCategory,
+  StyledCell100,
+  StyledCell30,
   StyledDel,
   StyledHeadingTable,
   StyledRec,
   StyledTable,
   StyledTableCell,
   StyledTableRaw,
+  StyledTbody,
+  StyledThead,
   StyledTitle,
   StyledWeight,
   TableContainer,
 } from './ProductsTable.styled';
+import { useMediaQuery } from '@mui/material';
 
 const defaultData = [
   {
@@ -84,15 +89,19 @@ const columnHelper = createColumnHelper();
 
 const columns = [
   columnHelper.accessor('Title', {
+    cell: info => <StyledCell100>{info.getValue()}</StyledCell100>,
     header: 'Title',
   }),
   columnHelper.accessor('Category', {
+    cell: info => <StyledCell100>{info.getValue()}</StyledCell100>,
     header: 'Category',
   }),
   columnHelper.accessor('Calories', {
+    cell: info => <StyledCell30>{info.getValue()}</StyledCell30>,
     header: 'Calories',
   }),
   columnHelper.accessor('Weight', {
+    cell: info => <StyledCell30>{info.getValue()}</StyledCell30>,
     header: 'Weight',
   }),
   columnHelper.accessor('Recommended', {
@@ -105,11 +114,13 @@ const columns = [
         <use href={`${sprite}#icon-trash-03`} />
       </StyledDel>
     ),
-    header: 'Delete',
+    header: '',
   }),
 ];
 
 const ProductsTable = () => {
+  const isMobile = useMediaQuery('(max-width: 375px)');
+  // eslint-disable-next-line no-unused-vars
   const [data, setData] = React.useState(() => [...defaultData]);
 
   const table = useReactTable({
@@ -120,26 +131,46 @@ const ProductsTable = () => {
 
   return (
     <>
-      <StyledHeadingTable>
-        <StyledTitle>Title</StyledTitle>
-        <StyledCategory>Category</StyledCategory>
-        <StyledCalories>Calories</StyledCalories>
-        <StyledWeight>Weight</StyledWeight>
-        <p>Recommended</p>
-      </StyledHeadingTable>
+      {!isMobile && (
+        <StyledHeadingTable>
+          <StyledTitle>Title</StyledTitle>
+          <StyledCategory>Category</StyledCategory>
+          <StyledCalories>Calories</StyledCalories>
+          <StyledWeight>Weight</StyledWeight>
+          <p>Recommended</p>
+        </StyledHeadingTable>
+      )}
       <TableContainer>
         <StyledTable>
-          <tbody>
+          {/* {isMobile && (
+            <StyledThead>
+              {table.getHeaderGroups().map(headerGroup => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map(header => (
+                    <th key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(header.column.columnDef.header, header.getContext())}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </StyledThead>
+          )} */}
+          <StyledTbody>
             {table.getRowModel().rows.map(row => (
               <StyledTableRaw key={row.id}>
                 {row.getVisibleCells().map(cell => (
-                  <StyledTableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </StyledTableCell>
+                  <>
+                    {isMobile && flexRender(cell.column.columnDef.header)}
+                    <StyledTableCell key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </StyledTableCell>
+                  </>
                 ))}
               </StyledTableRaw>
             ))}
-          </tbody>
+          </StyledTbody>
         </StyledTable>
       </TableContainer>
     </>

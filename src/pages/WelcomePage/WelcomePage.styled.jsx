@@ -27,12 +27,21 @@ export const TransformingYourBody = styled.div`
   position: absolute;
   top: 127px;
   left: 20px;
+
+  width: 270px;
   font-size: var(--headline-style-mobile-h1-size);
   letter-spacing: 0.01em;
   line-height: 40px;
   font-weight: 500;
   display: inline-block;
-  width: 335px;
+  @media ${device.mobile} {
+    position: absolute;
+    top: 127px;
+    left: 20px;
+
+    width: 335px;
+  }
+
   @media ${device.tablet} {
     position: absolute;
     top: 189px;
@@ -58,13 +67,25 @@ export const TransformingYourBody = styled.div`
 `;
 export const Btns = styled.div`
   position: absolute;
-  top: 287px;
+  top: 307px;
   left: 20px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-start;
   gap: 14px;
+
+  @media ${device.mobile} {
+    position: absolute;
+    top: 287px;
+    left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 14px;
+  }
+
   @media ${device.tablet} {
     position: absolute;
     top: 487px;
