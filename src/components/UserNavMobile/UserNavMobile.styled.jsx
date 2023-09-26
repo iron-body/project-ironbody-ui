@@ -5,7 +5,7 @@ import { device } from '../../Constants';
 export const BurgerMenu = styled.nav`
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   height: 100vh;
   width: 100%;
   /* width: 200px; */
