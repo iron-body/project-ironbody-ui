@@ -4,9 +4,11 @@ import DiaryPage from './pages/DiaryPage/DiaryPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { WelcomePage } from './pages/WelcomePage/WelcomePage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
+import  ProfilePage  from './pages/ProfilePage/ProfilePage';
 import ExercisesPage from './pages/ExercicesPage/ExercicesPage';
 import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from './components/ExercisesList/ExercisesList';
+
 import { SignInPage } from './pages/SignInPage/SignInPage';
 import { useDispatch } from 'react-redux';
 // import React, { lazy, useEffect } from 'react';
@@ -99,6 +101,7 @@ function App() {
           path="signin"
           element={<RestrictedRoute redirectTo="/diary" component={<SignInPage />} />}
         />
+        <Route path="/profile" element={<ProfilePage/>} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>

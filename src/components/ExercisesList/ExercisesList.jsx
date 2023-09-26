@@ -9,16 +9,19 @@ export const ExercisesList = ({subcategory, nameExercise}) => {
    
   let exercise;
   const exercises = useSelector(state => state.exercises.items);
-console.log(exercises.dataList);
+  if (typeof exercises !== 'object') {
+    console.log('problem with data uploading');
+    return
+  }
   switch (subcategory) {
     case 'Body parts':
-      exercise = exercises.filter(item => item.bodyPart === name);
+      exercise = exercises.dataList.filter(item => item.bodyPart === name);
       break;
     case 'Muscles':
-      exercise = exercises.filter(item => item.target === name);
+      exercise = exercises.dataList.filter(item => item.target === name);
       break;
     case 'Equipment':
-      exercise = exercises.filter(item => item.equipment === name);
+      exercise = exercises.dataList.filter(item => item.equipment === name);
       break;
 
     default:
@@ -30,7 +33,7 @@ console.log(exercises.dataList);
       {exercise.map(item => (
         <ExercisesItem
         onClick={() => active(item.name)}
-         key={item.name}
+         key={item.id}
           exerciseName={item.name}
           exercImg={item.gifUrl}
           calories={item.burnedCalories}
