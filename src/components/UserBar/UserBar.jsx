@@ -35,7 +35,9 @@ const UserBar = () => {
         </MenuItem>
       ) : null}
       {/* Conditional rendering of menu content based on isMenuOpen */}
-      {isTabletOrMobile && isMenuOpen ? <UserNavMobile /> : null}
+      {isTabletOrMobile && isMenuOpen ? (
+        <UserNavMobile isMenuOpenUserBar={isMenuOpen} setIsMenuOpenUserBar={setIsMenuOpen} />
+      ) : null}
     </AuthMenu>
   );
 };
