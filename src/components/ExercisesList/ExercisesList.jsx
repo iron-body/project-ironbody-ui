@@ -7,6 +7,9 @@ import{StyledLink} from './ExercisesList.styled'
 export const ExercisesList = ({subcategory, nameExercise}) => {
   const { name } = useParams();
 
+
+ 
+
    
   let exercise;
   const exercises = useSelector(state => state.exercises.items);
