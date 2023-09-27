@@ -35,22 +35,28 @@ const ParamsFormSchema = yup.object().shape({
   height: yup
     .number()
     .min(150, 'Height should be higher than 150cm')
-    .required('Required'),
+    .required('Height is required'),
   currentWeight: yup
     .number()
     .min(35, 'Weight should be more than 35kg')
-    .required('Required'),
+    .required('Current weight is required'),
   desiredWeight: yup
     .number()
     .min(35, 'Desire weight should be more than 35kg')
-    .required('Required'),
-  birthday: yup.date().required('Date is required'),
-  // .test('is-over-18', 'Дата повинна бути старше 18 років', function (value) {
-  //   const currentDate = new Date();
-  //   const minDate = new Date();
-  //   minDate.setFullYear(currentDate.getFullYear() - 18);
-  //   return value <= minDate;
-  // }),
+    .required('Desired weight is required'),
+  birthday: yup
+    .date()
+    .required('Date is required')
+    .test(
+      'is-over-18',
+      'You should be older then 18 years old',
+      function (value) {
+        const currentDate = new Date();
+        const minDate = new Date();
+        minDate.setFullYear(currentDate.getFullYear() - 18);
+        return value <= minDate;
+      },
+    ),
 });
 
 const ParamsForm = ({ currentStep, onStepChange }) => {
@@ -73,10 +79,20 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
     validationSchema: ParamsFormSchema,
     validateOnChange: false,
     validateOnBlur: false,
-    // onSubmit: () => {
-    // alert('Fill all fields');
-    // },
+    // onSubmit: warnAboutErrors,
   });
+
+  const warnAboutErrors = () => {
+    handleSubmit();
+
+    if (Object.keys(errors).length === 0) {
+      return Notify.failure('Fill all the fields');
+    } else {
+      const arrayOfErrors = Object.values(errors);
+
+      return Notify.failure(`${arrayOfErrors[0]}`);
+    }
+  };
 
   const canClickNext =
     Object.keys(errors).length === 0 &&
@@ -89,9 +105,9 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
   }, [dispatch, values]);
 
   const handleDateChange = date => {
-    const newFormatedDate = moment(date).format();
-    setFieldValue('birthday', newFormatedDate);
+    const newFormatedDate = moment(date).toISOString();
     console.log(newFormatedDate);
+    setFieldValue('birthday', newFormatedDate);
     console.log(paramsState);
   };
 
@@ -109,7 +125,6 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
     try {
       if (!stateToken) return Notify.failure('Not authorized');
       const JSONParamsState = JSON.stringify(paramsState);
-      console.log(JSONParamsState);
 
       const response = await axios.post(
         'calculateNorms/calculate',
@@ -121,7 +136,6 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
         },
       );
 
-      console.log(response);
       navigate('/products');
       return response.data;
     } catch (error) {
@@ -198,7 +212,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
 
           <NextBtn
             type="button"
-            onClick={canClickNext ? handleNextSetStep : handleSubmit}
+            onClick={canClickNext ? handleNextSetStep : warnAboutErrors}
           >
             Next
           </NextBtn>
