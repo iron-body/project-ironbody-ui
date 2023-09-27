@@ -3,7 +3,7 @@ import { device } from '../../../Constants';
 
 export const TableContainer = styled.div`
   padding-top: 20px;
-  height: 100vh;
+  height: 500px;
   overflow-y: auto;
   ::-webkit-scrollbar-track {
     background-color: transparent;
