@@ -629,22 +629,18 @@ Notiflix needs to be appended to the "<`+T+'>" element, but you called it before
 `],[`
   transform-origin: 50% 65%;
 `])));var L2,z2,V2,B2=globalThis&&globalThis.__assign||function(){return B2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},B2.apply(this,arguments)},W2=globalThis&&globalThis.__assign||function(){return W2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},W2.apply(this,arguments)},Y2=globalThis&&globalThis.__assign||function(){return Y2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},Y2.apply(this,arguments)},U2=globalThis&&globalThis.__assign||function(){return U2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},U2.apply(this,arguments)},H2=globalThis&&globalThis.__assign||function(){return H2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},H2.apply(this,arguments)},G2=globalThis&&globalThis.__assign||function(){return G2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},G2.apply(this,arguments)},q2=globalThis&&globalThis.__assign||function(){return q2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},q2.apply(this,arguments)},Q2=globalThis&&globalThis.__assign||function(){return Q2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},Q2.apply(this,arguments)},X2=globalThis&&globalThis.__assign||function(){return X2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},X2.apply(this,arguments)},K2=globalThis&&globalThis.__assign||function(){return K2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},K2.apply(this,arguments)},Z2=globalThis&&globalThis.__assign||function(){return Z2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},Z2.apply(this,arguments)},J2=globalThis&&globalThis.__assign||function(){return J2=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},J2.apply(this,arguments)},ek=globalThis&&globalThis.__assign||function(){return ek=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},ek.apply(this,arguments)},tk=globalThis&&globalThis.__assign||function(){return tk=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++){t=arguments[n];for(var i in t)Object.prototype.hasOwnProperty.call(t,i)&&(e[i]=t[i])}return e},tk.apply(this,arguments)};const Rh=()=>p.jsx(w8,{children:p.jsx(S8,{children:p.jsx(d9,{width:"100",height:"100",color:"#E6533C",wrapperStyle:{},ariaLabel:"oval-loading",secondaryColor:"rgba(239, 237, 232, 0.1)"})})}),m9=()=>p.jsxs(bL,{children:[p.jsx(xL,{}),p.jsx(S.Suspense,{fallback:p.jsx(Rh,{}),children:p.jsx(nR,{})})]}),g9=ee.div`
-  margin-top: 40px;
+  /* margin-top: 40px; */
   color: #efede8;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   height: 100%;
   display: inline-block;
   color: #efede8;
-  font-family: Roboto;
   font-size: 24px;
   font-style: normal;
-  font-weight: 700;
   line-height: 28px; /* 116.667% */
 
   @media ${k.tablet} {
-    margin-top: 72px;
     color: #efede8;
-    font-family: Roboto;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -731,7 +727,7 @@ Notiflix needs to be appended to the "<`+T+'>" element, but you called it before
  * @license MIT
  */function Kf(e,t){return e?Z9(e)?S.createElement(e,t):e:null}function Z9(e){return J9(e)||typeof e=="function"||e7(e)}function J9(e){return typeof e=="function"&&(()=>{const t=Object.getPrototypeOf(e);return t.prototype&&t.prototype.isReactComponent})()}function e7(e){return typeof e=="object"&&typeof e.$$typeof=="symbol"&&["react.memo","react.forward_ref"].includes(e.$$typeof.description)}function MT(e){const t={state:{},onStateChange:()=>{},renderFallbackValue:null,...e},[n]=S.useState(()=>({current:Q9(t)})),[r,i]=S.useState(()=>n.current.initialState);return n.current.setOptions(o=>({...o,...e,state:{...r,...e.state},onStateChange:a=>{i(a),e.onStateChange==null||e.onStateChange(a)}})),n.current}const t7=P.div`
   padding-top: 20px;
-  height: 100vh;
+  height: 500px;
   overflow-y: auto;
   ::-webkit-scrollbar-track {
     background-color: transparent;
@@ -851,7 +847,7 @@ Notiflix needs to be appended to the "<`+T+'>" element, but you called it before
   height: 20px;
 `,f7=[{Title:"Bread Hercules grain",Category:"Flour",Calories:289,Weight:100,Recommended:"Yes"},{Title:"Bread Hercules grain",Category:"Flour",Calories:289,Weight:100,Recommended:"Yes"},{Title:"Bread Hercules grain",Category:"Flour",Calories:289,Weight:100,Recommended:"Yes"},{Title:"Bread Hercules grain",Category:"Flour",Calories:289,Weight:100,Recommended:"Yes"},{Title:"Bread Hercules grain",Category:"Flour",Calories:289,Weight:100,Recommended:"Yes"},{Title:"Bread Hercules grain",Category:"Flour",Calories:289,Weight:100,Recommended:"Yes"},{Title:"Bread Hercules grain",Category:"Flour",Calories:289,Weight:100,Recommended:"Yes"},{Title:"Bread Hercules grain",Category:"Flour",Calories:289,Weight:100,Recommended:"Yes"}],Ya=$T(),p7=[Ya.accessor("Title",{cell:e=>p.jsx(ak,{children:e.getValue()}),header:"Title"}),Ya.accessor("Category",{cell:e=>p.jsx(ak,{children:e.getValue()}),header:"Category"}),Ya.accessor("Calories",{cell:e=>p.jsx(sk,{children:e.getValue()}),header:"Calories"}),Ya.accessor("Weight",{cell:e=>p.jsx(sk,{children:e.getValue()}),header:"Weight"}),Ya.accessor("Recommended",{cell:e=>p.jsx(c7,{children:e.getValue()}),header:"Recommended"}),Ya.accessor("Delete",{cell:()=>p.jsx(d7,{children:p.jsx("use",{href:`${Yt}#icon-trash-03`})}),header:""})],lk=()=>{const e=xc("(max-width: 767px)"),[t,n]=S.useState(()=>[...f7]),r=MT({data:t,columns:p7,getCoreRowModel:PT()});return p.jsxs(p.Fragment,{children:[!e&&p.jsxs(ok,{children:[p.jsx(n7,{children:"Title"}),p.jsx(r7,{children:"Category"}),p.jsx(i7,{children:"Calories"}),p.jsx(o7,{children:"Weight"}),p.jsx("p",{children:"Recommended"})]}),p.jsx(t7,{children:p.jsx(a7,{children:p.jsx(s7,{children:r.getRowModel().rows.map(i=>p.jsx(l7,{children:i.getVisibleCells().map(o=>p.jsxs(u7,{children:[e&&p.jsx(ok,{children:Kf(o.column.columnDef.header)}),Kf(o.column.columnDef.cell,o.getContext())]},o.id))},i.id))})})})]})},h7=()=>p.jsxs(gT,{children:[p.jsxs(vT,{children:[p.jsx(yT,{children:"Products"}),p.jsx(xT,{to:"/products",children:"Add product →"})]}),p.jsx(lk,{})?p.jsx(lk,{}):p.jsx(bT,{children:"Not found products"})]}),m7=P.div`
   padding-top: 20px;
-  height: 100vh;
+  height: 500px;
   overflow-y: auto;
   ::-webkit-scrollbar-track {
     background-color: transparent;
@@ -1018,14 +1014,15 @@ Notiflix needs to be appended to the "<`+T+'>" element, but you called it before
 `,dk=()=>p.jsxs("aside",{children:[p.jsxs(O7,{children:[p.jsxs(Ua,{children:[p.jsx(Ha,{children:"Daily calorie intake"}),p.jsx(Ga,{children:"2200"})]}),p.jsxs(Ua,{children:[p.jsx(Ha,{children:"Daily norm of sports"}),p.jsx(Ga,{children:"110 min"})]}),p.jsxs(Ua,{children:[p.jsx(Ha,{children:"Сalories consumed"}),p.jsx(Ga,{children:"707"})]}),p.jsxs(Ua,{children:[p.jsx(Ha,{children:"Сalories burned"}),p.jsx(Ga,{children:"855"})]}),p.jsxs(Ua,{children:[p.jsx(Ha,{children:"The rest of the calories"}),p.jsx(Ga,{children:"1493"})]}),p.jsxs(Ua,{children:[p.jsx(Ha,{children:"The rest of sports"}),p.jsx(Ga,{children:"85 min"})]})]}),p.jsxs(T7,{children:[p.jsx($7,{children:p.jsx("use",{xlinkHref:"/svg-sprite/symbol-defs.svg#icon-Exclemation",width:"24",height:"24"})}),"Record all your meals in a calorie diary every day. This will help me be aware of my nutrition and make me responsible for my choices."]})]}),P7=ee.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 60px;
-  padding-top: 45px;
+  margin-top: 40px;
+  padding-top: 20px;
   margin-bottom: 45px;
   border-top: 1px solid rgba(239, 237, 232, 0.2);
   @media ${k.tablet} {
   }
   @media ${k.desktop} {
     display: block;
+    margin-top: 50px;
     padding-top: 0px;
   }
 `,M7=ee.div`
@@ -1056,7 +1053,7 @@ Notiflix needs to be appended to the "<`+T+'>" element, but you called it before
   @media ${k.tablet} {
   }
   @media ${k.desktop} {
-    padding-top: 52px;
+    padding-top: 40px;
     gap: 8px;
   }
 `,A7=P.span`
