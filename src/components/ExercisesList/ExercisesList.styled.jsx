@@ -31,4 +31,15 @@ gap:20px;
     border-radius: 12px;
     background: #ef8964;
   }
+
+
+  @media screen and (${device.desktop}) {
+  
+   
+    
+   
+    
+  
 `;
+
+
