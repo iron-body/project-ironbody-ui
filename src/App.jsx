@@ -66,7 +66,6 @@ function App() {
           }
         />
 
-        {/* <Route path="/products" element={<ProductsPage />} /> */}
         <Route path="/exercises" element={<ExercisesPage />}>
           <Route
             path="/exercises/:subCategories"
@@ -77,7 +76,7 @@ function App() {
               element={<ExercisesList />}
             />
           </Route>
-        </Route> */}
+        </Route> 
 
         <Route index element={<WelcomePage />} />
         {/* <Route path="signup" element={<SignUpPage />} /> */}
