@@ -10,7 +10,7 @@
 // StyledDate,
 // } from './ParamsFormDaySwitch.styled';
 
-import { forwardRef, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import { format } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import {
@@ -25,14 +25,16 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 function ParamsFormDaySwitch({ onDateChange }) {
   const currentDate = new Date();
-  const [selectedDate, setSelectedDate] = useState(
-    currentDate.getFullYear() - 1,
-  );
+  const [selectedDate, setSelectedDate] = useState(currentDate);
+
+  useEffect(() => {
+    onDateChange(selectedDate);
+  }, [selectedDate]);
 
   const Btn = forwardRef(({ value, onClick }, ref) => {
     return (
       <StyledDate onClick={onClick} ref={ref}>
-        {format(selectedDate, 'dd-MM-yyyy')}
+        {format(selectedDate, 'dd.MM.yyyy')}
       </StyledDate>
     );
   });
@@ -42,11 +44,10 @@ function ParamsFormDaySwitch({ onDateChange }) {
       <DatePicker
         selected={selectedDate}
         onChange={date => {
-          onDateChange(date);
           setSelectedDate(date);
         }}
         customInput={<Btn />}
-        dateFormat={'dd MM yyyy'}
+        dateFormat={'dd MM yyyy'} // Формат, який використовується
         calendarStartDay={1}
         formatWeekDay={day => day.substr(0, 1)}
       />
@@ -55,4 +56,5 @@ function ParamsFormDaySwitch({ onDateChange }) {
     </DaySwitchContainer>
   );
 }
+
 export default ParamsFormDaySwitch;

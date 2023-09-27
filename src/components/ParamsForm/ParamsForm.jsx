@@ -106,8 +106,8 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
 
   const handleDateChange = date => {
     const newFormatedDate = moment(date).toISOString();
-    console.log(newFormatedDate);
     setFieldValue('birthday', newFormatedDate);
+    console.log(newFormatedDate);
     console.log(paramsState);
   };
 

@@ -8,7 +8,7 @@ export const DaySwitchContainer = styled.div`
   height: 46px;
 
   background-color: transparent;
-  border: 1px solid var(--color-lightsalmon);
+  border: 1px solid var(--orange);
   color: var(--color-whitesmoke-100);
   border-radius: 12px;
   outline: none;
