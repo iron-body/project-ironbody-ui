@@ -9,6 +9,7 @@ import {
   Info,
   Btn,
   Tmr,
+  ExitBtn,
 } from './AddExerciseForm.styled';
 import { BtnTamplate } from '../Buttons/BtnExercises';
 
@@ -24,7 +25,11 @@ export const AddExerciseForm = ({
   return (
     <Container>
       <Img src={`${exercImg}`} alt="" width={270} height={226} />
-      <Btn onClick={() => active()} src="/public/ExitIcon.svg" />
+
+      <ExitBtn onClick={() => active()}>
+        <Btn src="/project-ironbody-ui/ExitIcon.svg" />
+      </ExitBtn>
+
       <Tmr> Timer </Tmr>
       <ExercseBoxInf
         name={exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
