@@ -14,6 +14,18 @@ export const getProductsThunk = createAsyncThunk(
   },
 );
 
+export const getCategoriesProductsThunk = createAsyncThunk(
+  'category/fetchAll',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`${baseURL}api/categories`);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  },
+);
+
 export const getCategoryProductsThunk = createAsyncThunk(
   'products/fetchAll',
   async (query, thunkAPI) => {
@@ -28,12 +40,12 @@ export const getCategoryProductsThunk = createAsyncThunk(
   },
 );
 
-export const getAllFillterProductsThunk = createAsyncThunk(
+export const getAllFillteredProductsThunk = createAsyncThunk(
   'products/fetchAll',
-  async ({ categoryQuery = '', serchParams = '' }, thunkAPI) => {
+  async ({ categoryQuery = '', searchParams = '' }, thunkAPI) => {
     try {
       const response = await axios.get(
-        `${baseURL}api/products?category=${categoryQuery}&title=${serchParams}&recommended=all`,
+        `${baseURL}api/products?category=${categoryQuery}&title=${searchParams}`,
       );
       return response.data;
     } catch (e) {
@@ -42,33 +54,16 @@ export const getAllFillterProductsThunk = createAsyncThunk(
   },
 );
 
-export const getAllFillteredProductsThunk = createAsyncThunk(
+export const getFillterRecommendedProductsThunk = createAsyncThunk(
   'products/fetchAll',
   async (
-    {
-      bloodType = '',
-      recommendedQuery = 'all ',
-      categoryQuery = '',
-      serchParams = '',
-    },
+    { categoryQuery = '', searchParams = '', recommendedQuery = '' },
     thunkAPI,
   ) => {
     try {
       const response = await axios.get(
-        `${baseURL}api/products?bloodtype=${bloodType}&recommended=${recommendedQuery}&category=${categoryQuery}&title=${serchParams}`,
+        `${baseURL}api/products?category=${categoryQuery}&title=${searchParams}&isNotAllowed=${recommendedQuery}`,
       );
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
-    }
-  },
-);
-
-export const getCategoriesProductsThunk = createAsyncThunk(
-  'category/fetchAll',
-  async (_, thunkAPI) => {
-    try {
-      const response = await axios.get(`${baseURL}api/categories`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -80,8 +75,10 @@ export const addProductThunk = createAsyncThunk(
   'product/addProduct',
   async (product, thunkAPI) => {
     try {
-      const response = await axios.post('/products', { ...product });
-
+      const response = await axios.post(`${baseURL}api/userproducts/`, {
+        ...product,
+      });
+      console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

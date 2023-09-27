@@ -15,6 +15,9 @@ import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
 import { fetchExercises, fetchFilteredExercises } from '../../redux/operations';
 import { getIsLoading } from '../../redux/selectors';
 
+import { selectParamsValues } from '../../redux/params/paramsSlice';
+
+
 const ExercisesPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getIsLoading);
@@ -41,10 +44,12 @@ const ExercisesPage = () => {
     return name.charAt(0).toUpperCase() + name.slice(1);
   };
 
+    const clientBlood = useSelector(selectParamsValues);
+
   // Функція для передавання назви  обраної підкатегорії
   const handNameExercise = name => {
     const capitalizedName = capitalizeFirstLetter(name);
-    console.log(capitalizedName);
+    console.log(clientBlood);
     setNameExercise(capitalizedName);
   };
 

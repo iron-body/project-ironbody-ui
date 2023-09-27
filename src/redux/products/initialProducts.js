@@ -3,6 +3,7 @@ export const productsInitialState = {
   isLoading: false,
   categories: [],
   error: null,
+  // isSuccessPost: false,
 };
 
 // export const initialState = {
