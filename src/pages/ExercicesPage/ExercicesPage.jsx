@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useLocation, Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Container,
@@ -20,6 +21,9 @@ import { getLoading } from '../../redux/selectors';
 const ExercisesPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getLoading);
+  const location = useLocation();
+
+
 
   // Додайте стан для відстеження обраного підкатегорії
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
@@ -67,15 +71,19 @@ const ExercisesPage = () => {
     const capitalizedName = capitalizeFirstLetter(name);
     setNameExercise(capitalizedName);
   };
+ 
+const clearSelectedSubcategory=()=>{
+  setSelectedSubcategory(null);
+}
 
   return (
     <Container selectedSubcategory={selectedSubcategory}>
       <NavigateContainer>
-        {selectedSubcategory && (
-          <ButtonItem onClick={() => setModalActive(true)}>
+        {selectedSubcategory && (<ButtonItem><Link  to={selectedSubcategory} onClick={()=>clearSelectedSubcategory()}>
             <ButtonIcon alt="" src="/back-array.svg" />
             Back
-          </ButtonItem>
+          </Link></ButtonItem>
+          
         )}
 
         {!selectedSubcategory ? (
