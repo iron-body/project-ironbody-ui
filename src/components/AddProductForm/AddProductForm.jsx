@@ -14,19 +14,25 @@ import {
 } from './AddProductForm.styled';
 
 export default function AddProductForm({ productCalc, onClose }) {
-  const { foodName, calories  } = productCalc;
+  const { foodName, calories } = productCalc;
 
   const handleClose = () => {
-    onClose(); 
+    onClose();
   };
 
   return (
     <>
       <ExitBtn onClick={handleClose}>
-        <IconExitBtn alt="" src="/project-ironbody-ui/ExitIcon.svg"></IconExitBtn>
+        <IconExitBtn
+          alt=""
+          src="/project-ironbody-ui/ExitIcon.svg"
+        ></IconExitBtn>
       </ExitBtn>
       <CalcContainer>
-        <FoodName> {foodName}</FoodName>
+        <FoodName>
+          {' '}
+          {foodName.length > 20 ? ` ${foodName.slice(0, 20)}... ` : foodName}
+        </FoodName>
         <CaloriesValue />
       </CalcContainer>
       <CalcCalories>

@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
-import { device } from '../../Constants';
+import { device } from '../../../Constants';
 
 export const TableContainer = styled.div`
+  padding-top: 20px;
   height: 100vh;
   overflow-y: auto;
   ::-webkit-scrollbar-track {
@@ -19,76 +20,76 @@ export const TableContainer = styled.div`
   }
   @media ${device.tablet} {
     max-height: 165px;
+    padding-top: 0px;
   }
 `;
 
 export const StyledHeadingTable = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-left: 10px;
+  position: absolute;
+  top: -60%;
+
   color: rgba(239, 137, 100, 1);
   font-size: 12px;
   @media ${device.tablet} {
+    position: static;
+    display: flex;
     justify-content: flex-start;
+    padding-left: 10px;
   }
 `;
-export const StyledTitle = styled.p`
+export const StyledBodyPart = styled.p`
   @media ${device.tablet} {
-    margin-right: 280px;
+    margin-right: 50px;
   }
   @media ${device.desktop} {
-    margin-right: 315px;
   }
 `;
-export const StyledCategory = styled.p`
+export const StyledEquipment = styled.p`
   @media ${device.tablet} {
-    margin-right: 45px;
+    margin-right: 130px;
   }
   @media ${device.desktop} {
-    margin-right: 60px;
   }
 `;
-export const StyledCalories = styled.p`
+export const StyledName = styled.p`
   @media ${device.tablet} {
-    margin-right: 35px;
+    margin-right: 120px;
   }
   @media ${device.desktop} {
-    margin-right: 45px;
   }
 `;
 export const StyledWeight = styled.p`
   @media ${device.tablet} {
-    margin-right: 40px;
+    margin-right: 45px;
   }
   @media ${device.desktop} {
-    margin-right: 50px;
   }
 `;
-
+export const StyledTime = styled.p`
+  @media ${device.tablet} {
+    margin-right: 5px;
+  }
+  @media ${device.desktop} {
+  }
+`;
 export const StyledTable = styled.table`
   color: white;
   width: 100%;
   border-collapse: separate;
   border-spacing: 8px;
 `;
-export const StyledThead = styled.thead`
-  text-align: left;
-  padding-left: 10px;
-  color: rgba(239, 137, 100, 1);
-  font-size: 12px;
-`;
-export const StyledTbody = styled.tbody``;
 export const StyledTableRaw = styled.tr`
-  /* display: block; */
+  position: relative;
 `;
-export const StyledTableCellGroup = styled.div``;
 export const StyledTableCell = styled.td`
   display: inline-block;
-  margin-bottom: 8px;
-  margin-right: 10px;
+  margin-bottom: 42px;
+  position: relative;
+  margin-right: 8px;
   border: 1px solid gray;
   &:last-child {
     border: none;
+    margin-right: 0px;
   }
   border-radius: 12px;
   font-size: 16px;
@@ -98,7 +99,6 @@ export const StyledTableCell = styled.td`
     margin-bottom: 0px;
   }
 `;
-
 export const StyledCell100 = styled.div`
   width: 297px;
   @media ${device.tablet} {
@@ -106,7 +106,7 @@ export const StyledCell100 = styled.div`
   }
 `;
 export const StyledCell30 = styled.div`
-  width: 81px;
+  width: 70px;
   @media ${device.tablet} {
     width: 100%;
   }

@@ -3,6 +3,7 @@ import { device } from '../../Constants';
 // import { Link } from 'react-router-dom';
 
 export const LogoStyled = styled.div`
+  cursor: pointer;
   display: flex;
   align-self: center;
   gap: var(--gap-8px);

@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
-import { device } from '../../Constants';
+import { device } from '../../../Constants';
 
 export const TableContainer = styled.div`
+  padding-top: 20px;
   height: 100vh;
   overflow-y: auto;
   ::-webkit-scrollbar-track {
@@ -19,71 +20,81 @@ export const TableContainer = styled.div`
   }
   @media ${device.tablet} {
     max-height: 165px;
+    padding-top: 0px;
   }
 `;
 
 export const StyledHeadingTable = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-left: 10px;
+  position: absolute;
+  top: -60%;
+
   color: rgba(239, 137, 100, 1);
   font-size: 12px;
   @media ${device.tablet} {
+    position: static;
+    display: flex;
     justify-content: flex-start;
+    padding-left: 10px;
   }
 `;
-export const StyledBodyPart = styled.p`
+export const StyledTitle = styled.p`
   @media ${device.tablet} {
-    margin-right: 50px;
+    margin-right: 280px;
   }
   @media ${device.desktop} {
+    margin-right: 315px;
   }
 `;
-export const StyledEquipment = styled.p`
-  @media ${device.tablet} {
-    margin-right: 130px;
-  }
-  @media ${device.desktop} {
-  }
-`;
-export const StyledName = styled.p`
-  @media ${device.tablet} {
-    margin-right: 120px;
-  }
-  @media ${device.desktop} {
-  }
-`;
-export const StyledWeight = styled.p`
+export const StyledCategory = styled.p`
   @media ${device.tablet} {
     margin-right: 45px;
   }
   @media ${device.desktop} {
+    margin-right: 60px;
   }
 `;
-export const StyledTime = styled.p`
+export const StyledCalories = styled.p`
   @media ${device.tablet} {
-    margin-right: 5px;
+    margin-right: 35px;
   }
   @media ${device.desktop} {
+    margin-right: 45px;
   }
 `;
+export const StyledWeight = styled.p`
+  @media ${device.tablet} {
+    margin-right: 40px;
+  }
+  @media ${device.desktop} {
+    margin-right: 50px;
+  }
+`;
+
 export const StyledTable = styled.table`
   color: white;
   width: 100%;
   border-collapse: separate;
   border-spacing: 8px;
 `;
-
-export const StyledTableRaw = styled.tr`
-  /* height: 40px; */
+export const StyledThead = styled.thead`
+  text-align: left;
+  color: rgba(239, 137, 100, 1);
+  font-size: 12px;
 `;
+export const StyledTbody = styled.tbody``;
+export const StyledTableRaw = styled.tr`
+  position: relative;
+`;
+
 export const StyledTableCell = styled.td`
   display: inline-block;
-  margin-bottom: 8px;
-  margin-right: 10px;
+  margin-bottom: 42px;
+  margin-right: 8px;
+  position: relative;
   border: 1px solid gray;
   &:last-child {
     border: none;
+    margin-right: 0px;
   }
   border-radius: 12px;
   font-size: 16px;
@@ -93,6 +104,7 @@ export const StyledTableCell = styled.td`
     margin-bottom: 0px;
   }
 `;
+
 export const StyledCell100 = styled.div`
   width: 297px;
   @media ${device.tablet} {
@@ -100,7 +112,7 @@ export const StyledCell100 = styled.div`
   }
 `;
 export const StyledCell30 = styled.div`
-  width: 70px;
+  width: 81px;
   @media ${device.tablet} {
     width: 100%;
   }

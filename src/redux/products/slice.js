@@ -4,9 +4,11 @@ import {
   getProductsThunk,
   addProductThunk,
   deleteProductThunk,
-  filterProductsThunk,
+  // filterProductsThunk,
   getCategoriesProductsThunk,
   getCategoryProductsThunk,
+  getAllFillterProductsThunk,
+  getAllFillteredProductsThunk,
 } from './productsOperations';
 
 import { productsInitialState } from './initialProducts';
@@ -21,9 +23,11 @@ const thunksArr = [
   addProductThunk,
   getProductsThunk,
   deleteProductThunk,
-  filterProductsThunk,
+  // filterProductsThunk,
   getCategoriesProductsThunk,
   getCategoryProductsThunk,
+  getAllFillterProductsThunk,
+  getAllFillteredProductsThunk,
 ];
 const helpFn = type => thunksArr.map(el => el[type]);
 const handleFulfilled = state => {

@@ -5,11 +5,21 @@ import { device } from '../../Constants';
 export const BurgerMenu = styled.nav`
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   height: 100vh;
   width: 100%;
+  /* width: 200px; */
+  padding: 19px 20px 21px 20px;
   background-color: #e6533c;
   overflow: ${({ isMenuOpen }) => (isMenuOpen ? 'hidden' : 'auto')};
+  @media ${device.tablet} {
+    width: 350px;
+    padding: 26px 32px 32px 32px;
+  }
+
+  @media ${device.desktop} {
+    display: none;
+  }
 `;
 export const Cross = styled.svg`
   position: absolute;
@@ -31,7 +41,7 @@ export const Menu = styled.ul`
   left: 33%;
   gap: 40px;
   @media ${device.tablet} {
-    left: 45%;
+    left: 33%;
   }
 `;
 
