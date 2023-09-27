@@ -1,5 +1,8 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { device } from '../../Constants';
+
+import img from '../../../public/side-view-people-training-gym-desktop@2x.jpg'
 
 export const Container = styled.div`
   display: flex;
@@ -7,8 +10,9 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: row;
   flex-direction: column;
-
   margin-top: 65px;
+
+ 
 
   @media screen and (${device.mobile}) {
     width: 335px;
@@ -28,39 +32,36 @@ export const Container = styled.div`
   @media screen and (${device.desktop}) {
     width: var(--width-desktop);
     padding: 0;
-
-    // height: 800px;
-    // overflow: hidden;
-    // color: var(--white);
-    // font-family: var(--headline-style-mobile-h1);
-    // background-image: url('/project-ironbody-ui/side-view-people-training-gym-2x.png');
-    // background-repeat: no-repeat;
-    // background-position: 981px 67px;
-    // background-size: 438px;
+    ${(props) =>
+      props.selectedSubcategory &&
+      css`
+      background-image: url('/side-view-people-training-gym-desktop@1x.jpg');
+      background-repeat: no-repeat;
+      background-position: 981px 67px;
+      background-size: 438px;
+      `}
+  
   }
 `;
 
-
-
 export const NameExercise = styled.div`
-  color:var(--white);
-font-size:24px;
-font-weight:600;
-margin-top:10px;
-margin-bottom:20px;
+  color: var(--white);
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 20px;
   @media ${device.tablet} {
     margin-bottom: 0;
   }
 `;
 
-  export const ButtonIcon = styled.img`
+export const ButtonIcon = styled.img`
   display: block;
 
   border-radius: var(--br-1px);
   width: 24px;
   height: 24px;
   @media ${device.tablet} {
-  
     border-radius: var(--br-1px);
     width: 36px;
     height: 24px;
@@ -88,7 +89,7 @@ export const Title = styled.div`
   margin-bottom: 20px;
 
   @media ${device.tablet} {
-    margin-bottom: 0;
+    margin: 0;
   }
 `;
 

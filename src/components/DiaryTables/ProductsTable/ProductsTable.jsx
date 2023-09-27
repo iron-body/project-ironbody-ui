@@ -1,5 +1,5 @@
 import * as React from 'react';
-import sprite from '../../../icons.svg';
+import sprite from '../../../../icons.svg';
 
 import {
   createColumnHelper,
@@ -18,10 +18,12 @@ import {
   StyledTable,
   StyledTableCell,
   StyledTableRaw,
+  StyledTbody,
   StyledTitle,
   StyledWeight,
   TableContainer,
 } from './ProductsTable.styled';
+import { useMediaQuery } from '@mui/material';
 
 const defaultData = [
   {
@@ -111,11 +113,12 @@ const columns = [
         <use href={`${sprite}#icon-trash-03`} />
       </StyledDel>
     ),
-    header: 'Delete',
+    header: '',
   }),
 ];
 
 const ProductsTable = () => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
   // eslint-disable-next-line no-unused-vars
   const [data, setData] = React.useState(() => [...defaultData]);
 
@@ -127,26 +130,33 @@ const ProductsTable = () => {
 
   return (
     <>
-      <StyledHeadingTable>
-        <StyledTitle>Title</StyledTitle>
-        <StyledCategory>Category</StyledCategory>
-        <StyledCalories>Calories</StyledCalories>
-        <StyledWeight>Weight</StyledWeight>
-        <p>Recommended</p>
-      </StyledHeadingTable>
+      {!isMobile && (
+        <StyledHeadingTable>
+          <StyledTitle>Title</StyledTitle>
+          <StyledCategory>Category</StyledCategory>
+          <StyledCalories>Calories</StyledCalories>
+          <StyledWeight>Weight</StyledWeight>
+          <p>Recommended</p>
+        </StyledHeadingTable>
+      )}
       <TableContainer>
         <StyledTable>
-          <tbody>
+          <StyledTbody>
             {table.getRowModel().rows.map(row => (
               <StyledTableRaw key={row.id}>
                 {row.getVisibleCells().map(cell => (
                   <StyledTableCell key={cell.id}>
+                    {isMobile && (
+                      <StyledHeadingTable>
+                        {flexRender(cell.column.columnDef.header)}
+                      </StyledHeadingTable>
+                    )}
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </StyledTableCell>
                 ))}
               </StyledTableRaw>
             ))}
-          </tbody>
+          </StyledTbody>
         </StyledTable>
       </TableContainer>
     </>

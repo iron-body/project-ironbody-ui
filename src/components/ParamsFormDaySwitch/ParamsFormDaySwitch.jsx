@@ -9,7 +9,6 @@ import {
   StyledDate,
 } from './ParamsFormDaySwitch.styled';
 import StyledDatepicker from '../StyledDatepicker/StyledDatepicker';
-
 function ParamsFormDaySwitch({ onDateChange }) {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [minDate, setMinDate] = useState(null); // Дата реєстрації користувача
@@ -64,7 +63,11 @@ function ParamsFormDaySwitch({ onDateChange }) {
           <use href={`${sprite}#icon-calendar`}></use>
         </CalendarIcon>
         {showDatepicker && (
-          <StyledDatepicker date={selectedDate} minDate={minDate} onChange={handleDateChange} />
+          <StyledDatepicker
+            date={selectedDate}
+            minDate={minDate}
+            onChange={handleDateChange}
+          />
         )}
       </StyledDate>
       <StyledButton
@@ -75,5 +78,4 @@ function ParamsFormDaySwitch({ onDateChange }) {
     </DaySwitchContainer>
   );
 }
-
 export default ParamsFormDaySwitch;

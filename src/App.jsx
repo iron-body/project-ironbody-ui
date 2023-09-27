@@ -4,9 +4,11 @@ import DiaryPage from './pages/DiaryPage/DiaryPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { WelcomePage } from './pages/WelcomePage/WelcomePage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
+import  ProfilePage  from './pages/ProfilePage/ProfilePage';
 import ExercisesPage from './pages/ExercicesPage/ExercicesPage';
 import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from './components/ExercisesList/ExercisesList';
+
 import { SignInPage } from './pages/SignInPage/SignInPage';
 import { useDispatch } from 'react-redux';
 // import React, { lazy, useEffect } from 'react';
@@ -39,7 +41,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
-        <Route path="/params" element={<ParamsPage />} />
+        {/* <Route path="/params" element={<ParamsPage />} /> */}
         {/* Comment bellow line if you uncomment private route */}
         {/* <Route path="/diary" element={<DiaryPage />} /> */}
         {/* comment below for unuse automatic redirect if user already logined */}
@@ -75,7 +77,7 @@ function App() {
               element={<ExercisesList />}
             />
           </Route>
-        </Route>
+        </Route> */}
 
         <Route index element={<WelcomePage />} />
         {/* <Route path="signup" element={<SignUpPage />} /> */}
@@ -94,6 +96,7 @@ function App() {
             <RestrictedRoute redirectTo="/diary" component={<SignInPage />} />
           }
         />
+        <Route path="/profile" element={<ProfilePage/>} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>

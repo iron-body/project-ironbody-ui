@@ -6,18 +6,23 @@ import { device } from '../../Constants';
 export const HeaderContainer = styled.div`
   position: relative;
   top: 20px;
-  width: 374px;
   //** for use header controls**/
   z-index: 500;
   display: flex;
   ${'' /* justify-content: stretch; */}
-  width: ${375 - 20 * 2}px;
+  /* width: 100%;
+  justify-content: left; */
+   margin-right: auto;
+
   padding: 0 20px;
   @media ${device.mobile} {
+    width: ${375 - 20 * 2}px;
     position: relative;
     top: 24px;
-    justify-content: space-around;
+    justify-content: space-between;
+    /* justify-content: left; */
     /* width: ${375 - 20}px; */
+    margin: 0;
     width: 375px;
     /* padding: 0 20px; */
     padding: 0;
