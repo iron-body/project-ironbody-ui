@@ -27,6 +27,7 @@ export const authSlice = createSlice({
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
+      state.isLoading = false;
       state.isRefreshing = true;
     },
     [authOperations.login.pending](state) {
@@ -72,7 +73,7 @@ export const authSlice = createSlice({
     },
 
     [updateOperations.update.fulfilled](state, action) {
-       state.user = Object.assign(state.user, action.meta.arg), (state.isRefreshing = true);
+      (state.user = Object.assign(state.user, action.meta.arg)), (state.isRefreshing = true);
       // state.user = action.payload;
       // state.isRefreshing = true;
     },

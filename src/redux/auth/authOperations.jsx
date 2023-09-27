@@ -15,23 +15,28 @@ const token = {
   },
 };
 
-const register = createAsyncThunk(
-  'auth/register',
-  async (credentials, thunkAPI) => {
-    try {
-      const { name } = credentials;
-      const response = await axios.post('users/register', credentials);
-      Notify.success(`${name} registered successfully`);
+const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
+  try {
+    const { name } = credentials;
+    const response = await axios.post('users/register', credentials);
+    Notify.success(`${name} registered successfully`);
 
-      token.set(response.data.accessToken);
-      return response.data;
-    } catch (error) {
-      Notify.failure(`Register Error with with message "${error.message}"`);
-      console.log('error :>> ', error);
-      return thunkAPI.rejectWithValue(error.message);
+    token.set(response.data.accessToken);
+    return response.data;
+  } catch (error) {
+    console.log('error :>> ', error);
+
+    if (error.response) {
+      Notify.failure(`${error.response.data.message}`);
     }
-  },
-);
+
+    if (!error.response) {
+      Notify.failure(`Register Error with with message "${error.message}"`);
+    }
+
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
 const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
   try {
@@ -42,8 +47,16 @@ const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     Notify.success('Login Success');
     return data;
   } catch (error) {
-    Notify.failure(`Login Error with message "${error.message}"`);
-    console.log('error :>> ', error);
+    console.log('error :>> ', error.response);
+
+    if (error.response) {
+      Notify.failure(`${error.response.data.message}`);
+    }
+
+    if (!error.response) {
+      Notify.failure(`Login Error with message "${error.message}"`);
+    }
+
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -54,29 +67,43 @@ const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     Notify.success('Logout Succesfull');
     token.unset();
   } catch (error) {
-    Notify.failure(`Unable to logout. Error message is "${error.message}"`);
     console.log('error :>> ', error);
+
+    if (error.response) {
+      Notify.failure(`${error.response.data.message}`);
+    }
+
+    if (!error.response) {
+      Notify.failure(`Unable to logout. Error message is "${error.message}"`);
+    }
+
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
-const refreshCurrentUser = createAsyncThunk(
-  'auth/refresh',
-  async (_, thunkAPI) => {
-    try {
-      const state = thunkAPI.getState();
-      const persistedToken = state.auth.accessToken;
-      if (!persistedToken) return thunkAPI.rejectWithValue();
-      token.set(persistedToken);
-      const response = await axios.get('/users/current');
-      return response.data;
-    } catch (error) {
-      Notify.failure(`Unable to refresh. Error message is "${error.message}"`);
-      console.log('error :>> ', error);
-      return thunkAPI.rejectWithValue(error.message);
+const refreshCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
+  try {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.accessToken;
+
+    if (!persistedToken) return thunkAPI.rejectWithValue();
+    token.set(persistedToken);
+    const response = await axios.get('/users/current');
+    return response.data;
+  } catch (error) {
+    console.log('error :>> ', error);
+
+    if (error.response) {
+      Notify.failure(`${error.response.data.message}`);
     }
-  },
-);
+
+    if (!error.response) {
+      Notify.failure(`Unable to refresh. Error message is "${error.message}"`);
+    }
+
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
 export const authOperations = {
   register,
