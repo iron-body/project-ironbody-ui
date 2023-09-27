@@ -1,11 +1,18 @@
 import { Overlay, LoaderContent } from './Loader.styled';
-import { InfinitySpin } from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 
 const Loader = () => {
   return (
     <Overlay>
       <LoaderContent>
-        <InfinitySpin width="200" color="#4fa94d" wrapperStyle={{}} />
+        <Oval
+          width="100"
+          height="100"
+          color="#E6533C"
+          wrapperStyle={{}}
+          ariaLabel="oval-loading"
+          secondaryColor="rgba(239, 237, 232, 0.1)"
+        />
       </LoaderContent>
     </Overlay>
   );
