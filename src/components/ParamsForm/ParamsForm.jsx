@@ -60,8 +60,8 @@ const ParamsFormSchema = yup.object().shape({
 });
 
 const ParamsForm = ({ currentStep, onStepChange }) => {
-  const paramsState = useSelector(selectParamsValues); //fetch
-  const stateToken = useSelector(selectToken); //fetch
+  const paramsState = useSelector(selectParamsValues);
+  const stateToken = useSelector(selectToken);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -104,11 +104,14 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
     dispatch(updateAll(values));
   }, [dispatch, values]);
 
+  useEffect(() => {
+    console.log('paramsState :>> ', paramsState);
+  }, [paramsState]);
+
   const handleDateChange = date => {
     const newFormatedDate = moment(date).toISOString();
     setFieldValue('birthday', newFormatedDate);
     console.log(newFormatedDate);
-    console.log(paramsState);
   };
 
   const handleNextSetStep = () => {
