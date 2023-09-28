@@ -2,7 +2,6 @@ import { Formik, Field, useFormik } from 'formik';
 import * as Yup from 'yup';
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
-import { getUserEmail } from '../../redux/selectors';
 import { useDispatch } from 'react-redux';
 import css from './UserForm.module.css';
 import {

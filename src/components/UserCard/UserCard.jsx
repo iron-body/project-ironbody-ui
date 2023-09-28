@@ -81,7 +81,7 @@ const UserCard = () => {
   const profileData = useSelector(selectProfileData);
   // console.log('profileData UserCard :>> ', profileData);
 
-  const { owner, calorieNorm, sportTimeNorm } = profileData;
+  const { name, calorieNorm, sportTimeNorm } = profileData;
   // console.log('profileData :>> ', profileData);
   return (
     <Wrapper>
@@ -106,7 +106,7 @@ const UserCard = () => {
           </AvatarCircle>
         </AvatarWrapper>
         <NameWrapper>
-          <Name>{owner.name}</Name>
+          <Name>{name}</Name>
           <User>User</User>
         </NameWrapper>
 
