@@ -32,6 +32,7 @@ import {
 } from './UserCard.styled';
 
 import { selectProfileData } from '../../redux/profile/profileSlice';
+import { useEffect } from 'react';
 // window.onload = () => {
 //   const uploadAvatar = document.getElementById('upload-avatar');
 //   const uploadBtn = document.getElementById('upload-btn');
@@ -77,6 +78,7 @@ const UserCard = () => {
   // useEffect(() => {
   //   dispatch(profileOperations.profileData());
   // }, [dispatch]);
+  // useEffect(() => {const { name, calorieNorm, sportTimeNorm } = profileData; },[profileData])
 
   const profileData = useSelector(selectProfileData);
   // console.log('profileData UserCard :>> ', profileData);
@@ -106,7 +108,7 @@ const UserCard = () => {
           </AvatarCircle>
         </AvatarWrapper>
         <NameWrapper>
-          <Name>{profileData.name}</Name>
+          <Name>{profileData?.name}</Name>
           <User>User</User>
         </NameWrapper>
 
@@ -119,7 +121,7 @@ const UserCard = () => {
                 </DailySvg>
                 <DailyText>Daily calorie intake</DailyText>
               </DailyWrapper>
-              <DailyNumber>{profileData.calorieNorm?.toFixed()}</DailyNumber>
+              <DailyNumber>{profileData?.calorieNorm?.toFixed()}</DailyNumber>
             </DailyBox>
           </DailyItem>
           <DailyItem>
@@ -130,7 +132,7 @@ const UserCard = () => {
                 </DailySvg>
                 <DailyText>Daily norm of sports</DailyText>
               </DailyWrapper>
-              <DailyNumber>{profileData.sportTimeNorm} min</DailyNumber>
+              <DailyNumber>{profileData?.sportTimeNorm} min</DailyNumber>
             </DailyBox>
           </DailyItem>
         </DailyList>
