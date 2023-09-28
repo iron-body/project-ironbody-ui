@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 import { getUserEmail } from '../../redux/selectors';
 import { useDispatch } from 'react-redux';
 import { updateOperations } from '../../redux/update/updateOperations';
-import { BtnSave } from '../Buttons/BtnSave';
 import css from './UserForm.module.css';
 import {
   Label,
@@ -24,26 +23,13 @@ import {
 } from './UserForm.styled';
 import { selectProfileData, updateProfile } from '../../redux/profile/profileSlice';
 import { useEffect } from 'react';
+import { BtnSaveStyled, SaveStyled } from '../Buttons/BtnSave.styled';
 const UserForm = () => {
   const dispatch = useDispatch();
   const profileData = useSelector(selectProfileData);
   const userEmail = useSelector(getUserEmail);
 
   const eighteenYearsAgo = dayjs().subtract(18, 'year').format('YYYY-MM-DD');
-
-  // console.log('profileData UserForm :>> ', profileData);
-  // const profileValues = {
-  //   name: owner.name,
-  //   email: owner.email,
-  //   height: height,
-  //   currentWeight,
-  //   desiredWeight,
-  //   birthday,
-  //   blood,
-  //   sex,
-  //   levelActivity,
-  // };
-  // console.log('profileValues :>> ', profileValues);
   const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } =
     useFormik({
       initialValues: profileData,
@@ -60,21 +46,6 @@ const UserForm = () => {
     dispatch(updateProfile(values));
   }, [dispatch, values]);
 
-  // console.log('values :>> ', values);
-
-  // initialValues={{
-  //   name: '',
-  //   email: userEmail,
-  //   height: '',
-  //   currentWeight: '',
-  //   desiredWeight: '',
-  //   birthday: eighteenYearsAgo,
-  //   blood: '',
-  //   sex: '',
-  //   levelActivity: '',
-  // }}
-  const { owner, height, currentWeight, desiredWeight, birthday, blood, sex, levelActivity } =
-    profileData;
   return (
     <Formik
       // initialValues={profileValues}
@@ -105,16 +76,6 @@ const UserForm = () => {
               onBlur={handleBlur}
               value={values.name || ''}
             />
-
-            {/* <FieldBasicStyled
-              name="height"
-              id={errors.owner && touched.owner ? 'error' : 'height'}
-              value={values.height || ''}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              type="text"
-              required
-            /> */}
           </NameWrapper>
           <FieldBasicStyled
             type="email"
@@ -133,7 +94,7 @@ const UserForm = () => {
                 min="150"
                 type="number"
                 name="height"
-                // id={errors.owner && touched.owner ? 'error' : 'height'}
+                id={errors.height && touched.height ? 'error' : 'height'}
                 value={values.height || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -305,7 +266,9 @@ const UserForm = () => {
             </li>
           </ul>
         </div>
-        <BtnSave />
+        <BtnSaveStyled type="submit" onClick={handleSubmit}>
+          <SaveStyled>Save</SaveStyled>
+        </BtnSaveStyled>
       </FormStyled>
     </Formik>
   );

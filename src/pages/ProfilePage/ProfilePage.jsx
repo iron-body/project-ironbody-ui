@@ -5,7 +5,7 @@ import { Container, ProfileWrapper } from './ProfilePage.styled';
 import { useEffect } from 'react';
 import { profileOperations } from '../../redux/profile/profileOperations';
 import { useSelector, useDispatch } from 'react-redux';
-import { getIsProfileLoading, selectProfileData } from '../../redux/profile/profileSlice';
+import { getIsProfileLoading } from '../../redux/profile/profileSlice';
 import Loader from '../../components/Loader/Loader';
 
 const ProfilePage = () => {
@@ -15,7 +15,7 @@ const ProfilePage = () => {
     dispatch(profileOperations.profileData());
   }, [dispatch]);
   const isLoading = useSelector(getIsProfileLoading);
-  console.log('isLoading  profileData :>> ', isLoading);
+
   return (
     <Container>
       <main>
