@@ -1,5 +1,13 @@
 import { useState } from 'react';
-import { BurgerMenu, Cross, Link, LogOutBtnWrapper, Menu, MenuItem } from './UserNavMobile.styled';
+import {
+  BurgerMenu,
+  Cross,
+  Link,
+  LogOutBtnWrapper,
+  Menu,
+  MenuItem,
+  MobileMenuContainer,
+} from './UserNavMobile.styled';
 import LogOutBtn from '../LogOutBtn/LogOutBtn';
 import sprite from '../../../icons.svg';
 
@@ -11,7 +19,7 @@ const UserNavMobile = ({ isMenuOpenUserBar, setIsMenuOpenUserBar }) => {
     setIsMenuOpen(!isMenuOpen);
   };
   return (
-    <>
+    <MobileMenuContainer>
       {isMenuOpen && (
         <BurgerMenu>
           <Cross
@@ -58,7 +66,7 @@ const UserNavMobile = ({ isMenuOpenUserBar, setIsMenuOpenUserBar }) => {
           </LogOutBtnWrapper>
         </BurgerMenu>
       )}
-    </>
+    </MobileMenuContainer>
   );
 };
 export default UserNavMobile;

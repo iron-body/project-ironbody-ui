@@ -1,29 +1,28 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Container,
   NavigateContainer,
   Title,
   NameExercise,
-  ButtonItem,
   ButtonIcon,
-} from './ExercicesPage.styled';
+  StyledNavLink,
+  
+  } from './ExercicesPage.styled';
 import ExercisesCategories from '../../components/ExercisesCategories/ExercisesCategories';
 import TitlePage from '../../components/TitlePage/TitlePage';
 import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
-import Loader from '../../components/Loader/Loader'
-import { fetchFilteredExercises, fetchExercises } from '../../redux/operations';
+import Loader from '../../components/Loader/Loader';
+import { fetchFilteredExercises, fetchExercises } from '../../redux/exercises/operations';
 import { getLoading } from '../../redux/selectors';
 
 const ExercisesPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(getLoading);
   const location = useLocation();
-
-
 
   // Додайте стан для відстеження обраного підкатегорії
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
@@ -48,7 +47,7 @@ const ExercisesPage = () => {
       })
       .catch(error => {
         // Обработайте ошибку запроса здесь
-        // console.error(error);
+        console.error(error);
       });
     dispatch(fetchExercises());
   }, [subCategories]);
@@ -71,21 +70,28 @@ const ExercisesPage = () => {
     const capitalizedName = capitalizeFirstLetter(name);
     setNameExercise(capitalizedName);
   };
- 
-const clearSelectedSubcategory=()=>{
-  setSelectedSubcategory(null);
-}
+
+  const clearSelectedSubcategory = () => {
+    setSelectedSubcategory(null);
+  };
 
   return (
     <Container selectedSubcategory={selectedSubcategory}>
-      <NavigateContainer>
-        {selectedSubcategory && (<ButtonItem><Link  to={selectedSubcategory} onClick={()=>clearSelectedSubcategory()}>
-            <ButtonIcon alt="" src="/back-array.svg" />
-            Back
-          </Link></ButtonItem>
+    
+        <StyledNavLink
+            to={selectedSubcategory}
+            onClick={() => handleResetSubcategorySelect()}
+            activeClassName="
+            active"
+            selectedSubcategory={selectedSubcategory}
+          >
+            <ButtonIcon alt="" src="/back-array-grey.svg" /> Back
+          </StyledNavLink>
           
-        )}
+       
+      
 
+      <NavigateContainer>
         {!selectedSubcategory ? (
           <Title>
             <TitlePage titleText={'Exercices'} />
@@ -95,9 +101,10 @@ const clearSelectedSubcategory=()=>{
         )}
         <ExercisesCategories
           resetSubcategorySelect={handleResetSubcategorySelect}
+          subCategories={subCategories}
         />
       </NavigateContainer>
-      {isLoading && <Loader/>}
+      {isLoading && <Loader />}
       {!isLoading && !selectedSubcategory && (
         <ExercisesSubcategoriesList
           onSelectSubcategory={handleSubcategorySelect}

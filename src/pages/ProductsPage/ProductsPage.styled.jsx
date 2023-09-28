@@ -29,8 +29,8 @@ export const Overlay = styled.div`
     font-family: var(--headline-style-mobile-h1);
     background-image: url('/project-ironbody-ui/side-view-people-training-gym-2x.png');
     background-repeat: no-repeat;
-    background-position: 981px 67px;
-    background-size: 438px;
+    background-position: 1000px 0px;
+    background-size: 440px;
   }
 `;
 
@@ -96,6 +96,7 @@ export const HeaderProducts = styled.div`
   @media ${device.tablet} {
     display: block;
     margin-bottom: 32px;
+    margin-top: 42px;
   }
 
   @media ${device.desktop} {

@@ -4,13 +4,13 @@ import DiaryPage from './pages/DiaryPage/DiaryPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { WelcomePage } from './pages/WelcomePage/WelcomePage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
-import  ProfilePage  from './pages/ProfilePage/ProfilePage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ExercisesPage from './pages/ExercicesPage/ExercicesPage';
 import { ExercisesSubcategoriesList } from './components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from './components/ExercisesList/ExercisesList';
 
 import { SignInPage } from './pages/SignInPage/SignInPage';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import React, { lazy, useEffect } from 'react';
 import { useEffect } from 'react';
 import { authOperations } from './redux/auth/authOperations';
@@ -24,6 +24,7 @@ const test = import.meta.env.VITE_API_TEST;
 import ParamsPage from './pages/ParamsPage/ParamsPage';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
 import axios from 'axios';
+import { selectIsLoggedIn, selectIsRefreshing } from './redux/auth/authSlice';
 
 // const DairyPage = lazy(() => import('./pages/DiaryPage/DiaryPage'));
 // axios.defaults.baseURL = 'http://localhost:3030/api/';
@@ -36,11 +37,19 @@ function App() {
   useEffect(() => {
     dispatch(authOperations.refreshCurrentUser());
   }, [dispatch]);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const isRefreshing = useSelector(selectIsRefreshing);
+  const shouldRedirect = !isLoggedIn && !isRefreshing;
 
   console.log(test);
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
+        {!shouldRedirect ? (
+          <Route index element={<DiaryPage />} />
+        ) : (
+          <Route index element={<WelcomePage />} />
+        )}
         {/* <Route path="/params" element={<ParamsPage />} /> */}
         {/* Comment bellow line if you uncomment private route */}
         {/* <Route path="/diary" element={<DiaryPage />} /> */}
@@ -55,40 +64,17 @@ function App() {
           element={<PrivateRoute redirectTo="/signin" component={<ParamsPage />} />}
         />
 
-        <Route path="/products" element={<ProductsPage />} />
-
         <Route
-          path="exercises"
-          element={<PrivateRoute redirectTo="/exercises" component={<ExercisesPage />} />}
-        >
-          <Route
-            path=":subCategories"
-            element={
-              <PrivateRoute
-                redirectTo="/exercises/:subCategories"
-                component={<ExercisesSubcategoriesList />}
-              />
-            }
-          >
-            <Route
-              path=":name"
-              element={
-                <PrivateRoute
-                  redirectTo="/exercises/:subCategories/:name"
-                  component={<ExercisesList />}
-                />
-              }
-            />
-          </Route>
-        </Route>
+          path="products"
+          element={<PrivateRoute redirectTo="/products" component={<ProductsPage />} />}
+        />
 
-        {/* <Route path="/exercises" element={<ExercisesPage />}>
+        <Route path="/exercises" element={<ExercisesPage />}>
           <Route path="/exercises/:subCategories" element={<ExercisesSubcategoriesList />}>
             <Route path="/exercises/:subCategories/:name" element={<ExercisesList />} />
           </Route>
-        </Route> */}
+        </Route>
 
-        <Route index element={<WelcomePage />} />
         {/* <Route path="signup" element={<SignUpPage />} /> */}
         <Route
           path="signup"
@@ -101,7 +87,7 @@ function App() {
           path="signin"
           element={<RestrictedRoute redirectTo="/diary" component={<SignInPage />} />}
         />
-        <Route path="/profile" element={<ProfilePage/>} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>

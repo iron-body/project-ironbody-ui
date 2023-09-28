@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 import { device } from '../../Constants';
 import { Link } from 'react-router-dom';
+
+
+
 export const BtnStyled = styled(Link)`
   text-decoration: none;
   color: var(--white);
@@ -23,7 +26,7 @@ export const BtnStyled = styled(Link)`
     border-radius: var(--br-12px);
     display: flex;
     flex-direction: row;
-    margin-left:200px;
+    margin-left:185px;
     margin-top: 140px;
 
     padding: 15px 40px;
@@ -31,20 +34,14 @@ export const BtnStyled = styled(Link)`
     justify-content: center;
     height: 24px;
   }
-  @media ${device.desktop} {
-    border-radius: var(--br-12px);
-    display: flex;
-    flex-direction: row;
-    padding: var(--padding-base) var(--padding-41xl);
-    align-items: center;
-    justify-content: center;
-  }
 `;
+
 export const Styled = styled.div`
   position: relative;
   line-height: 18px;
   font-weight: 500;
   @media ${device.tablet} {
+    
     position: relative;
     line-height: 24px;
     font-weight: 500;
