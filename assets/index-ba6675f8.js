@@ -2958,7 +2958,6 @@ attempted value: ${a}
 
   padding: 48px 32px;
   border-radius: 12px;
-  // background-color: black;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: #10100f;
   transform: scale(0.5);
@@ -2969,29 +2968,28 @@ attempted value: ${a}
     transform: scale(1);
   }
 `,pP=({active:e,setActive:t,children:n})=>p.jsx(XX,{className:e?"modal active":"modal",onClick:()=>t(!1),children:p.jsx(KX,{className:e?"modal__content active":"modal__content",onClick:r=>r.stopPropagation(),children:n})}),ZX=P.div`
-  border-radius: var(--br-12px);
-  color: EFEDE8;
-  display: flex;
+
+
+display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+ 
 
   @media screen and (min-width: 375px) {
-    width: 271px;
-    height: 762px;
-  }
+     width: 303px;
+     height: 858px;
+     }
 
   @media screen and (${k.tablet}) {
     width: 630px;
     height: 454px;
   }
+ 
+  
 `,JX=P.img`
   border-radius: var(--br-12px);
-  @media screen and (min-width: 375px) {
-  }
-
-  @media screen and (min-width: 768px) {
-    margin-right:6px;
-  }
+  margin-left: auto;
+  margin-right: auto;
 `,eK=P.div`
   margin-top: 22px;
   margin-left: auto;
@@ -3036,8 +3034,15 @@ fill:red;
   flex-direction: column;
   flex-wrap: wrap;
   gap: 8px;
-
   height: 240px;
+
+  @media screen and (${k.tablet}) {
+    margin-left:5px;
+  }
+
+  
+
+
 `,zl=P.div`
   width: 147px;
   height: 62px;
@@ -3086,7 +3091,7 @@ fill:red;
     border-radius: var(--br-12px);
     display: flex;
     flex-direction: row;
-    margin-left:200px;
+    margin-left:185px;
     margin-top: 140px;
 
     padding: 15px 40px;
@@ -3094,19 +3099,12 @@ fill:red;
     justify-content: center;
     height: 24px;
   }
-  @media ${k.desktop} {
-    border-radius: var(--br-12px);
-    display: flex;
-    flex-direction: row;
-    padding: var(--padding-base) var(--padding-41xl);
-    align-items: center;
-    justify-content: center;
-  }
 `,oK=P.div`
   position: relative;
   line-height: 18px;
   font-weight: 500;
   @media ${k.tablet} {
+    
     position: relative;
     line-height: 24px;
     font-weight: 500;
@@ -3258,15 +3256,9 @@ display: flex;
 justify-content: center;
 @media screen and (${k.tablet}) {
   justify-content: start;
-  padding-left:96px;
+  padding-left:32px;
   margin-top:32px;
 }
-
-@media screen and (${k.desktop}) {
-  
- 
-}
-
 
 
 `,bK=P.ul`
@@ -3298,6 +3290,12 @@ gap:20px;
     border-radius: 12px;
     background: #ef8964;
   }
+
+  @media screen and (${k.tablet}) {
+    
+    height: 700px;
+  }
+
   @media screen and (${k.desktop}) {
     width:850px;
     height: 500px;
