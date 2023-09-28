@@ -4,7 +4,6 @@ import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 import { getUserEmail } from '../../redux/selectors';
 import { useDispatch } from 'react-redux';
-import { updateOperations } from '../../redux/update/updateOperations';
 import css from './UserForm.module.css';
 import {
   Label,
@@ -27,7 +26,7 @@ import { BtnSaveStyled, SaveStyled } from '../Buttons/BtnSave.styled';
 const UserForm = () => {
   const dispatch = useDispatch();
   const profileData = useSelector(selectProfileData);
-  const userEmail = useSelector(getUserEmail);
+  // const userEmail = useSelector(getUserEmail);
 
   const eighteenYearsAgo = dayjs().subtract(18, 'year').format('YYYY-MM-DD');
   const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } =
@@ -37,9 +36,9 @@ const UserForm = () => {
       // validationSchema: ParamsFormSchema,
       validateOnChange: false,
       validateOnBlur: false,
-      // onSubmit: () => {
-      // alert('Fill all fields');
-      // },
+      onSubmit: () => {
+        alert('Fill all fields');
+      },
     });
 
   useEffect(() => {
@@ -62,7 +61,8 @@ const UserForm = () => {
         levelActivity: Yup.number().required('Reqired'),
       })}
       onSubmit={values => {
-        dispatch(updateOperations.update(values));
+        // dispatch(updateOperations.update(values));
+        console.log('click');
       }}
     >
       <FormStyled>
@@ -84,6 +84,7 @@ const UserForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.email || ''}
+            disabled
           />
         </BasicWrapper>
         <InfoWrapper>
@@ -226,7 +227,14 @@ const UserForm = () => {
           <ul>
             <li className={css.radioItemLevel}>
               <label className={css.radio}>
-                <Field className={css.radioField} type="radio" name="levelActivity" value="1" />
+                <Field
+                  className={css.radioField}
+                  type="radio"
+                  name="levelActivity"
+                  value={1}
+                  checked={values.levelActivity === 1}
+                  onChange={() => setFieldValue('levelActivity', 1)}
+                />
                 <span className={css.radioSpanLevel}>
                   Sedentary lifestyle (little or no physical activity)
                 </span>
@@ -234,7 +242,14 @@ const UserForm = () => {
             </li>
             <li className={css.radioItemLevel}>
               <label className={css.radio}>
-                <Field className={css.radioField} type="radio" name="levelActivity" value="2" />
+                <Field
+                  className={css.radioField}
+                  type="radio"
+                  name="levelActivity"
+                  value={2}
+                  checked={values.levelActivity === 2}
+                  onChange={() => setFieldValue('levelActivity', 2)}
+                />
                 <span className={css.radioSpanLevel}>
                   Light activity (light exercises/sports 1-3 days per week)
                 </span>
@@ -242,7 +257,14 @@ const UserForm = () => {
             </li>
             <li className={css.radioItemLevel}>
               <label className={css.radio}>
-                <Field className={css.radioField} type="radio" name="levelActivity" value="3" />
+                <Field
+                  className={css.radioField}
+                  type="radio"
+                  name="levelActivity"
+                  value={3}
+                  checked={values.levelActivity === 3}
+                  onChange={() => setFieldValue('levelActivity', 3)}
+                />
                 <span className={css.radioSpanLevel}>
                   Moderately active (moderate exercises/sports 3-5 days per week)
                 </span>
@@ -250,7 +272,14 @@ const UserForm = () => {
             </li>
             <li className={css.radioItemLevel}>
               <label className={css.radio}>
-                <Field className={css.radioField} type="radio" name="levelActivity" value="4" />
+                <Field
+                  className={css.radioField}
+                  type="radio"
+                  name="levelActivity"
+                  value={4}
+                  checked={values.levelActivity === 4}
+                  onChange={() => setFieldValue('levelActivity', 4)}
+                />
                 <span className={css.radioSpanLevel}>
                   Very active (intense exercises/sports 6-7 days per week)
                 </span>
@@ -258,7 +287,14 @@ const UserForm = () => {
             </li>
             <li className={css.radioItemLevel}>
               <label className={css.radio}>
-                <Field className={css.radioField} type="radio" name="levelActivity" value="5" />
+                <Field
+                  className={css.radioField}
+                  type="radio"
+                  name="levelActivity"
+                  value={5}
+                  checked={values.levelActivity === 5}
+                  onChange={() => setFieldValue('levelActivity', 5)}
+                />
                 <span className={css.radioSpanLevel}>
                   Extremely active (very strenuous exercises/sports and physical work)
                 </span>
@@ -266,7 +302,7 @@ const UserForm = () => {
             </li>
           </ul>
         </div>
-        <BtnSaveStyled type="submit" onClick={handleSubmit}>
+        <BtnSaveStyled type="submit">
           <SaveStyled>Save</SaveStyled>
         </BtnSaveStyled>
       </FormStyled>
