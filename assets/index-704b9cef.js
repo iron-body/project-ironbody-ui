@@ -3942,6 +3942,12 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
   font-weight: 400;
   line-height: 1.3;
 
+  transition: border-color 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &[id='error'] {
+    border: 1px solid #d80027;
+  }
+
   &:focus ~ div > label,
   &:valid ~ div > label {
     font-size: 12px;
@@ -3949,12 +3955,9 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
   }
 
   &:focus,
-  &:valid {
+  &:valid,
+  &:hover {
     border-color: var(--orange);
-  }
-
-  &[id='error'] {
-    border: 1px solid #d80027;
   }
 `,e0=Z.label`
   position: absolute;
@@ -4022,6 +4025,8 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
   display: flex;
   flex-direction: column;
 
+  transition: color 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
   input[type='radio'] {
     position: absolute;
     opacity: 0;
@@ -4058,7 +4063,8 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
         }
       }
     }
-    &:focus {
+    &:focus,
+    &:hover {
       + label {
         &:before {
           outline: none;
@@ -4125,6 +4131,13 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
   font-weight: 500;
   line-height: 1.1;
 
+  transition: background 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    background: #d74b35;
+  }
+
   @media ${k.tablet} {
     padding: 16px 75px;
     gap: 10px;
@@ -4135,12 +4148,19 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
   margin-right: 16px;
   padding: 8px 0px 8px 26px;
   background-color: var(--black);
-  background: url('/back-array.svg') no-repeat left;
+  background: url('back-array.svg') no-repeat left;
   border-color: transparent;
   color: var(--color-whitesmoke-100);
   font-family: var(--headline-style-mobile-h1);
   font-size: var(--font-size-xm);
   line-height: 1.3;
+
+  transition: color 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: var(--color-whitesmoke-200);
+  }
 
   @media ${k.tablet} {
     font-size: var(--font-size-base);
@@ -4148,17 +4168,24 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
 `,t_=Z.button`
   padding: 8px 26px 8px 0px;
   background-color: var(--black);
-  background: url('/next-array.svg') no-repeat right;
+  background: url('next-array.svg') no-repeat right;
   border-color: transparent;
   color: var(--white);
   font-family: var(--headline-style-mobile-h1);
   font-size: var(--font-size-xm);
   line-height: 1.3;
 
+  transition: color 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: rgba(239, 237, 232, 0.493);
+  }
+
   @media ${k.tablet} {
     font-size: var(--font-size-base);
   }
-`,Hte=Oc().shape({height:Mi().min(150,"Height should be higher than 150cm").required("Height is required"),currentWeight:Mi().min(35,"Weight should be more than 35kg").required("Current weight is required"),desiredWeight:Mi().min(35,"Desire weight should be more than 35kg").required("Desired weight is required"),birthday:Qh().required("Date is required").test("is-over-18","You should be older then 18 years old",function(e){const t=new Date,n=new Date;return n.setFullYear(t.getFullYear()-18),e<=n})}),n0=({currentStep:e,onStepChange:t})=>{const n=_t(px),r=_t(wF),i=yi(),o=ll(),{values:a,errors:s,touched:l,handleBlur:u,handleChange:c,handleSubmit:d,setFieldValue:f}=J$({initialValues:n,validationSchema:Hte,validateOnChange:!1,validateOnBlur:!1}),h=()=>{if(d(),Object.keys(s).length===0)return Vt.Notify.failure("Fill all the fields");{const x=Object.values(s);return Vt.Notify.failure(`${x[0]}`)}},m=Object.keys(s).length===0&&Object.values(a).slice(0,3).every(x=>x!==void 0);S.useEffect(()=>{i(vL(a))},[i,a]);const g=x=>{const w=he(x).toISOString();f("birthday",w),console.log(w),console.log(n)},b=()=>{t(e+1),console.log(n)},v=()=>{t(e-1)},y=async x=>{x.preventDefault();try{if(!r)return Vt.Notify.failure("Not authorized");const w=JSON.stringify(n),E=await Ft.post("calculateNorms/calculate",w,{headers:{Authorization:`Bearer ${r}`}});return o("/products"),E.data}catch(w){console.log("error :>> ",w),Vt.Notify.failure(w.message)}};return p.jsxs(Lte,{children:[e===1&&p.jsxs(zte,{children:[p.jsxs(Vte,{children:[p.jsxs(hd,{children:[p.jsx(Jg,{name:"height",id:s.height&&l.height?"error":"height",value:a.height||"",onChange:c,onBlur:u,type:"number",required:!0}),p.jsx(md,{children:p.jsx(e0,{children:"Height"})})]}),p.jsxs(hd,{children:[p.jsx(Jg,{name:"currentWeight",id:s.currentWeight&&l.currentWeight?"error":"currentWeight",value:a.currentWeight||"",onChange:c,onBlur:u,type:"number",required:!0}),p.jsx(md,{children:p.jsx(e0,{children:"Current Weight"})})]}),p.jsxs(hd,{children:[p.jsx(Jg,{name:"desiredWeight",id:s.desiredWeight&&l.desiredWeight?"error":"desiredWeight",value:a.desiredWeight||"",onChange:c,onBlur:u,type:"number",required:!0}),p.jsx(md,{children:p.jsx(e0,{children:"Desired Weight"})})]}),p.jsxs(hd,{children:[p.jsx(md,{children:p.jsx(Wte,{value:a.birthday,children:"Birthday"})}),p.jsx(Ite,{onDateChange:g})]})]}),p.jsx(t_,{type:"button",onClick:m?b:h,children:"Next"})]}),";",e===2&&p.jsx(p.Fragment,{children:p.jsxs(Bte,{children:[p.jsxs(JC,{children:[p.jsx(ZC,{children:"Blood:"}),p.jsxs(t0,{children:[p.jsx(Dr,{id:"blood-1",name:"radio-blood",type:"radio",value:1,checked:a.blood===1,onChange:()=>f("blood",1)}),p.jsx(Er,{htmlFor:"blood-1",children:"1"}),p.jsx(Dr,{id:"blood-2",name:"radio-blood",type:"radio",value:2,checked:a.blood===2,onChange:()=>f("blood",2)}),p.jsx(Er,{htmlFor:"blood-2",children:"2"}),p.jsx(Dr,{id:"blood-3",name:"radio-blood",type:"radio",value:3,checked:a.blood===3,onChange:()=>f("blood",3)}),p.jsx(Er,{htmlFor:"blood-3",children:"3"}),p.jsx(Dr,{id:"blood-4",name:"radio-blood",type:"radio",value:4,checked:a.blood===4,onChange:()=>f("blood",4)}),p.jsx(Er,{htmlFor:"blood-4",children:"4"})]})]}),p.jsxs(JC,{children:[p.jsx(ZC,{children:"Sex:"}),p.jsxs(t0,{children:[p.jsx(Dr,{id:"sex-male",name:"radio-sex",type:"radio",value:"male",checked:a.sex==="male",onChange:()=>f("sex","male")}),p.jsx(Er,{htmlFor:"sex-male",children:"Male"}),p.jsx(Dr,{id:"sex-female",name:"radio-sex",type:"radio",value:"female",checked:a.sex==="female",onChange:()=>f("sex","female")}),p.jsx(Er,{htmlFor:"sex-female",children:"Female"})]})]}),p.jsxs(t0,{children:[p.jsx(Yte,{children:"Level Activity:"}),p.jsxs("div",{children:[p.jsx(Dr,{id:"level-activity-1",name:"radio-activity",type:"radio",value:1,checked:a.levelActivity===1,onChange:()=>f("levelActivity",1)}),p.jsx(Er,{htmlFor:"level-activity-1",children:"Sedentary lifestyle (little or no physical activity)"})]}),p.jsxs("div",{children:[p.jsx(Dr,{id:"level-activity-2",name:"radio-activity",type:"radio",value:2,checked:a.levelActivity===2,onChange:()=>f("levelActivity",2)}),p.jsx(Er,{htmlFor:"level-activity-2",children:"Light activity (light exercises/sports 1-3 days per week)"})]}),p.jsxs("div",{children:[p.jsx(Dr,{id:"level-activity-3",name:"radio-activity",type:"radio",value:3,checked:a.levelActivity===3,onChange:()=>f("levelActivity",3)}),p.jsx(Er,{htmlFor:"level-activity-3",children:"Moderately active (moderate exercises/sports 3-5 days per week)"})]}),p.jsx(Dr,{id:"level-activity-4",name:"radio-activity",type:"radio",value:4,checked:a.levelActivity===4,onChange:()=>f("levelActivity",4)}),p.jsx(Er,{htmlFor:"level-activity-4",children:"Very active (intense exercises/sports 6-7 days per week)"}),p.jsx(Dr,{id:"level-activity-5",name:"radio-activity",type:"radio",value:5,checked:a.levelActivity===5,onChange:()=>f("levelActivity",5)}),p.jsx(Er,{htmlFor:"level-activity-5",children:"Extremely active (very strenuous exercises/sports and physical work)"})]}),p.jsx(e_,{type:"button",onClick:v,children:"Back"}),p.jsx(t_,{type:"button",onClick:b,children:"Next"})]})}),";",e===3&&p.jsxs(p.Fragment,{children:[p.jsx(Ute,{type:"submit",onClick:y,children:"Go"}),p.jsx(e_,{type:"button",onClick:v,children:"Back"})]})]})},Gte=Z.section`
+`,Hte=Oc().shape({height:Mi().min(150,"Height should be higher than 150cm").required("Height is required"),currentWeight:Mi().min(35,"Weight should be more than 35kg").required("Current weight is required"),desiredWeight:Mi().min(35,"Desire weight should be more than 35kg").required("Desired weight is required"),birthday:Qh().test("is-over-18","You should be older then 18 years old",function(e){const t=new Date,n=new Date;return n.setFullYear(t.getFullYear()-18),e<=n}).required("Date is required")}),n0=({currentStep:e,onStepChange:t})=>{const n=_t(px),r=_t(wF),i=yi(),o=ll(),{values:a,errors:s,touched:l,handleBlur:u,handleChange:c,handleSubmit:d,setFieldValue:f}=J$({initialValues:n,validationSchema:Hte,validateOnChange:!1,validateOnBlur:!1}),h=()=>{if(d(),Object.keys(s).length===0)return Vt.Notify.failure("Fill all the fields");{const x=Object.values(s);return Vt.Notify.failure(`${x[0]}`)}},m=Object.keys(s).length===0&&Object.values(a).slice(0,3).every(x=>x!==void 0);S.useEffect(()=>{i(vL(a))},[i,a]);const g=x=>{const w=he(x).toISOString();f("birthday",w),console.log(w),console.log(n)},b=()=>{t(e+1),console.log(n)},v=()=>{t(e-1)},y=async x=>{x.preventDefault();try{if(!r)return Vt.Notify.failure("Not authorized");const w=JSON.stringify(n),E=await Ft.post("calculateNorms/calculate",w,{headers:{Authorization:`Bearer ${r}`}});return o("/products"),E.data}catch(w){console.log("error :>> ",w),Vt.Notify.failure(w.message)}};return p.jsxs(Lte,{children:[e===1&&p.jsxs(zte,{children:[p.jsxs(Vte,{children:[p.jsxs(hd,{children:[p.jsx(Jg,{name:"height",id:s.height&&l.height?"error":"height",value:a.height||"",onChange:c,onBlur:u,type:"number",required:!0}),p.jsx(md,{children:p.jsx(e0,{children:"Height"})})]}),p.jsxs(hd,{children:[p.jsx(Jg,{name:"currentWeight",id:s.currentWeight&&l.currentWeight?"error":"currentWeight",value:a.currentWeight||"",onChange:c,onBlur:u,type:"number",required:!0}),p.jsx(md,{children:p.jsx(e0,{children:"Current Weight"})})]}),p.jsxs(hd,{children:[p.jsx(Jg,{name:"desiredWeight",id:s.desiredWeight&&l.desiredWeight?"error":"desiredWeight",value:a.desiredWeight||"",onChange:c,onBlur:u,type:"number",required:!0}),p.jsx(md,{children:p.jsx(e0,{children:"Desired Weight"})})]}),p.jsxs(hd,{children:[p.jsx(md,{children:p.jsx(Wte,{value:a.birthday,children:"Birthday"})}),p.jsx(Ite,{onDateChange:g})]})]}),p.jsx(t_,{type:"button",onClick:m?b:h,children:"Next"})]}),";",e===2&&p.jsx(p.Fragment,{children:p.jsxs(Bte,{children:[p.jsxs(JC,{children:[p.jsx(ZC,{children:"Blood:"}),p.jsxs(t0,{children:[p.jsx(Dr,{id:"blood-1",name:"radio-blood",type:"radio",value:1,checked:a.blood===1,onChange:()=>f("blood",1)}),p.jsx(Er,{htmlFor:"blood-1",children:"1"}),p.jsx(Dr,{id:"blood-2",name:"radio-blood",type:"radio",value:2,checked:a.blood===2,onChange:()=>f("blood",2)}),p.jsx(Er,{htmlFor:"blood-2",children:"2"}),p.jsx(Dr,{id:"blood-3",name:"radio-blood",type:"radio",value:3,checked:a.blood===3,onChange:()=>f("blood",3)}),p.jsx(Er,{htmlFor:"blood-3",children:"3"}),p.jsx(Dr,{id:"blood-4",name:"radio-blood",type:"radio",value:4,checked:a.blood===4,onChange:()=>f("blood",4)}),p.jsx(Er,{htmlFor:"blood-4",children:"4"})]})]}),p.jsxs(JC,{children:[p.jsx(ZC,{children:"Sex:"}),p.jsxs(t0,{children:[p.jsx(Dr,{id:"sex-male",name:"radio-sex",type:"radio",value:"male",checked:a.sex==="male",onChange:()=>f("sex","male")}),p.jsx(Er,{htmlFor:"sex-male",children:"Male"}),p.jsx(Dr,{id:"sex-female",name:"radio-sex",type:"radio",value:"female",checked:a.sex==="female",onChange:()=>f("sex","female")}),p.jsx(Er,{htmlFor:"sex-female",children:"Female"})]})]}),p.jsxs(t0,{children:[p.jsx(Yte,{children:"Level Activity:"}),p.jsxs("div",{children:[p.jsx(Dr,{id:"level-activity-1",name:"radio-activity",type:"radio",value:1,checked:a.levelActivity===1,onChange:()=>f("levelActivity",1)}),p.jsx(Er,{htmlFor:"level-activity-1",children:"Sedentary lifestyle (little or no physical activity)"})]}),p.jsxs("div",{children:[p.jsx(Dr,{id:"level-activity-2",name:"radio-activity",type:"radio",value:2,checked:a.levelActivity===2,onChange:()=>f("levelActivity",2)}),p.jsx(Er,{htmlFor:"level-activity-2",children:"Light activity (light exercises/sports 1-3 days per week)"})]}),p.jsxs("div",{children:[p.jsx(Dr,{id:"level-activity-3",name:"radio-activity",type:"radio",value:3,checked:a.levelActivity===3,onChange:()=>f("levelActivity",3)}),p.jsx(Er,{htmlFor:"level-activity-3",children:"Moderately active (moderate exercises/sports 3-5 days per week)"})]}),p.jsx(Dr,{id:"level-activity-4",name:"radio-activity",type:"radio",value:4,checked:a.levelActivity===4,onChange:()=>f("levelActivity",4)}),p.jsx(Er,{htmlFor:"level-activity-4",children:"Very active (intense exercises/sports 6-7 days per week)"}),p.jsx(Dr,{id:"level-activity-5",name:"radio-activity",type:"radio",value:5,checked:a.levelActivity===5,onChange:()=>f("levelActivity",5)}),p.jsx(Er,{htmlFor:"level-activity-5",children:"Extremely active (very strenuous exercises/sports and physical work)"})]}),p.jsx(e_,{type:"button",onClick:v,children:"Back"}),p.jsx(t_,{type:"button",onClick:b,children:"Next"})]})}),";",e===3&&p.jsxs(p.Fragment,{children:[p.jsx(Ute,{type:"submit",onClick:y,children:"Go"}),p.jsx(e_,{type:"button",onClick:v,children:"Back"})]})]})},Gte=Z.section`
   height: 94vh;
   width: var(--width-mobile);
   padding: 128px 20px 20px 20px;
@@ -4166,7 +4193,7 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
   background: linear-gradient(168deg, #040404 12.66%, rgba(4, 4, 4, 0) 20.98%),
     linear-gradient(91deg, #040404 -10.38%, rgba(4, 4, 4, 0) 42.83%),
     linear-gradient(73deg, #040404 6.11%, rgba(4, 4, 4, 0) 66.68%),
-    url('/params-page1-2x.jpg');
+    url('params-page1-2x.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom 105px right 0px;
@@ -4176,7 +4203,7 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
     width: var(--width-tablet);
     padding: 189px 32px 32px 32px;
 
-    background-image: url('/params-page-1-tablet-2x.jpg');
+    background-image: url('params-page-1-tablet-2x.jpg');
     background-position: bottom -100px right 0px;
   }
 
@@ -4186,7 +4213,7 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
     padding: 200px 96px 96px 96px;
 
     /* background-size: contain; */
-    background-image: url('/params-page-1-desktop-2x.jpg');
+    background-image: url('params-page-1-desktop-2x.jpg');
     background-position: bottom 0px right 100px;
   }
 `,qte=Z.section`
@@ -4194,7 +4221,7 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
   width: var(--width-mobile);
   padding: 128px 20px 20px 20px;
   position: relative;
-  background-image: url('/params-page2-2x.jpg');
+  background-image: url('params-page2-2x.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom -30px right 0px;
@@ -4204,7 +4231,7 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
     width: var(--width-tablet);
     padding: 189px 32px 32px 32px;
 
-    background-image: url('/params-page-2-tablet-2x.jpg');
+    background-image: url('params-page-2-tablet-2x.jpg');
     background-position: bottom -120px right 0px;
   }
 
@@ -4213,7 +4240,7 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
     width: var(--width-desktop);
     padding: 200px 96px 96px 96px;
 
-    background-image: url('/params-page-2-desktop-2x.jpg');
+    background-image: url('params-page-2-desktop-2x.jpg');
     background-position: bottom 0px right 100px;
   }
 `,Qte=Z.section`
@@ -4221,7 +4248,7 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
   width: var(--width-mobile);
   padding: 128px 20px 20px 20px;
   position: relative;
-  background-image: url('/params-page3-2x.jpg');
+  background-image: url('params-page3-2x.jpg');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom -30px right 0px;
@@ -4231,7 +4258,7 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
     width: var(--width-tablet);
     padding: 189px 32px 32px 32px;
 
-    background-image: url('/params-page-3-tablet-2x.jpg');
+    background-image: url('params-page-3-tablet-2x.jpg');
     background-position: bottom -120px right 0px;
   }
 
@@ -4240,7 +4267,7 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
     width: var(--width-desktop);
     padding: 200px 96px 96px 96px;
 
-    background-image: url('/params-page-3-desktop-2x.jpg');
+    background-image: url('params-page-3-desktop-2x.jpg');
     background-position: bottom 0px right 100px;
   }
 `,n_=Z.h1`
@@ -4293,34 +4320,7 @@ he.version="2.29.4";NK(yt);he.fn=ie;he.min=wJ;he.max=SJ;he.now=kJ;he.utc=wi;he.u
     width: 496px;
     margin-bottom: 64px;
   }
-`;Z.button`
-  margin-right: 16px;
-  padding: 8px 0px 8px 26px;
-  background-color: var(--black);
-  background: url('/back-array.svg') no-repeat left;
-  border-color: transparent;
-  color: var(--color-whitesmoke-100);
-  font-family: var(--headline-style-mobile-h1);
-  font-size: var(--font-size-xm);
-  line-height: 1.3;
-
-  @media ${k.tablet} {
-    font-size: var(--font-size-base);
-  }
-`;Z.button`
-  padding: 8px 26px 8px 0px;
-  background-color: var(--black);
-  background: url('/next-array.svg') no-repeat right;
-  border-color: transparent;
-  color: var(--white);
-  font-family: var(--headline-style-mobile-h1);
-  font-size: var(--font-size-xm);
-  line-height: 1.3;
-
-  @media ${k.tablet} {
-    font-size: var(--font-size-base);
-  }
-`;const Jte=()=>{const[e,t]=S.useState(1),n=r=>{t(r)};return p.jsxs(p.Fragment,{children:[e===1&&p.jsxs(Gte,{children:[p.jsx(n_,{children:"Get closer to your goals!"}),p.jsx(Kte,{children:"To ensure a personalized user experience and the proper functioning of our platform, we ask you to provide the following information about your weight, height and other relevant data:"}),p.jsx(n0,{currentStep:e,onStepChange:n}),p.jsx(zh,{}),p.jsx(Lh,{}),p.jsx(qg,{stepNumber:e})]}),e===2&&p.jsxs(qte,{children:[p.jsx(Xte,{children:"Get closer to your goals!"}),p.jsx(n0,{currentStep:e,onStepChange:n}),p.jsx(UC,{}),p.jsx(HC,{}),p.jsx(qg,{stepNumber:e})]}),e===3&&p.jsxs(Qte,{children:[p.jsx(n_,{children:"Dear user"}),p.jsx(Zte,{children:"Thank you for filling in all the required data. We greatly appreciate your cooperation and commitment to a healthy lifestyle. The collected information will allow us to provide you with a more individual and personalized approach."}),p.jsx(n0,{currentStep:e,onStepChange:n}),p.jsx(UC,{}),p.jsx(HC,{}),p.jsx(qg,{stepNumber:e})]})]})},ene=P.div`
+`,Jte=()=>{const[e,t]=S.useState(1),n=r=>{t(r)};return p.jsxs(p.Fragment,{children:[e===1&&p.jsxs(Gte,{children:[p.jsx(n_,{children:"Get closer to your goals!"}),p.jsx(Kte,{children:"To ensure a personalized user experience and the proper functioning of our platform, we ask you to provide the following information about your weight, height and other relevant data:"}),p.jsx(n0,{currentStep:e,onStepChange:n}),p.jsx(zh,{}),p.jsx(Lh,{}),p.jsx(qg,{stepNumber:e})]}),e===2&&p.jsxs(qte,{children:[p.jsx(Xte,{children:"Get closer to your goals!"}),p.jsx(n0,{currentStep:e,onStepChange:n}),p.jsx(UC,{}),p.jsx(HC,{}),p.jsx(qg,{stepNumber:e})]}),e===3&&p.jsxs(Qte,{children:[p.jsx(n_,{children:"Dear user"}),p.jsx(Zte,{children:"Thank you for filling in all the required data. We greatly appreciate your cooperation and commitment to a healthy lifestyle. The collected information will allow us to provide you with a more individual and personalized approach."}),p.jsx(n0,{currentStep:e,onStepChange:n}),p.jsx(UC,{}),p.jsx(HC,{}),p.jsx(qg,{stepNumber:e})]})]})},ene=P.div`
   border-top: 1px solid rgba(239, 237, 232, 0.2);
   position: relative;
   width: var(--width-mobile);
