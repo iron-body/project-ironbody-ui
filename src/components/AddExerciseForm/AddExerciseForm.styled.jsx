@@ -52,20 +52,26 @@ export const Tmr = styled.div`
 
 `;
 
-export const Btn = styled.button`
+export const ExitBtn = styled.button`
   position: absolute;
   top: 14px;
   right: 14px;
-  cursor: pointer;
   opacity: 0;
-
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: #10100f;
+ 
+fill:red;
   @media screen and (min-width: 768px) {
-    width: 26px;
-    height: 26px;
-    margin: 4px;
     opacity: 1;
-    color:red;
-  }
+ 
+}
+`;
+
+export const Btn = styled.img`
+  width: 24px;
+  height: 24px;
 `;
 
 export const ExercseBox = styled.div`
