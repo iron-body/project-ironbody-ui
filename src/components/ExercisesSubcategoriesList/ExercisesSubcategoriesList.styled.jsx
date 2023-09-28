@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { device } from '../../Constants';
 
 export const Container = styled.div`
-  margin-top: 15px;
-  /* padding: 20px; */
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
+  
   @media screen and (${device.tablet}) {
-    margin: 0;
-    /* padding: 32px; */
+    margin-top: 64px;
+    
   }
 `;
 
