@@ -27,7 +27,7 @@ export const profileSlice = createSlice({
   initialState,
   reducers: {
     updateProfile(state, action) {
-      console.log(action.payload);
+      //   console.log(action.payload);
       state.profile = { ...state.profile, ...action.payload };
     },
   },

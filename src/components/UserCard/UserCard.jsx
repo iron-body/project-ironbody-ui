@@ -1,8 +1,8 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { getUserName } from '../../redux/selectors';
 // import { useRef, useState } from 'react';
 import sprite from '../../../icons.svg';
-import { profileOperations } from '../../redux/profile/profileOperations';
+// import { profileOperations } from '../../redux/profile/profileOperations';
 import { Btn, LinkBtn } from '../LogOutBtn/LogOutBtn.styled';
 import {
   AvatarWrapper,
@@ -30,8 +30,9 @@ import {
   LogoutBtnSvg,
   Wrapper,
 } from './UserCard.styled';
+
+import { selectProfileData } from '../../redux/profile/profileSlice';
 import { useEffect } from 'react';
-import { selectProfileData, updateProfile } from '../../redux/profile/profileSlice';
 // window.onload = () => {
 //   const uploadAvatar = document.getElementById('upload-avatar');
 //   const uploadBtn = document.getElementById('upload-btn');
@@ -77,11 +78,12 @@ const UserCard = () => {
   // useEffect(() => {
   //   dispatch(profileOperations.profileData());
   // }, [dispatch]);
+  // useEffect(() => {const { name, calorieNorm, sportTimeNorm } = profileData; },[profileData])
 
   const profileData = useSelector(selectProfileData);
   // console.log('profileData UserCard :>> ', profileData);
 
-  const { owner, calorieNorm, sportTimeNorm } = profileData;
+  // const { name, calorieNorm, sportTimeNorm } = profileData;
   // console.log('profileData :>> ', profileData);
   return (
     <Wrapper>
@@ -106,7 +108,7 @@ const UserCard = () => {
           </AvatarCircle>
         </AvatarWrapper>
         <NameWrapper>
-          <Name>{owner.name}</Name>
+          <Name>{profileData?.name}</Name>
           <User>User</User>
         </NameWrapper>
 
@@ -119,7 +121,7 @@ const UserCard = () => {
                 </DailySvg>
                 <DailyText>Daily calorie intake</DailyText>
               </DailyWrapper>
-              <DailyNumber>{calorieNorm?.toFixed()}</DailyNumber>
+              <DailyNumber>{profileData?.calorieNorm?.toFixed()}</DailyNumber>
             </DailyBox>
           </DailyItem>
           <DailyItem>
@@ -130,7 +132,7 @@ const UserCard = () => {
                 </DailySvg>
                 <DailyText>Daily norm of sports</DailyText>
               </DailyWrapper>
-              <DailyNumber>{sportTimeNorm} min</DailyNumber>
+              <DailyNumber>{profileData?.sportTimeNorm} min</DailyNumber>
             </DailyBox>
           </DailyItem>
         </DailyList>
