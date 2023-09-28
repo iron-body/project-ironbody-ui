@@ -46,7 +46,6 @@ const ParamsFormSchema = yup.object().shape({
     .required('Desired weight is required'),
   birthday: yup
     .date()
-    .required('Date is required')
     .test(
       'is-over-18',
       'You should be older then 18 years old',
@@ -56,7 +55,8 @@ const ParamsFormSchema = yup.object().shape({
         minDate.setFullYear(currentDate.getFullYear() - 18);
         return value <= minDate;
       },
-    ),
+    )
+    .required('Date is required'),
 });
 
 const ParamsForm = ({ currentStep, onStepChange }) => {

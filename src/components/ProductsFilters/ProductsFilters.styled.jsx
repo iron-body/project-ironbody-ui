@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Field } from 'formik';
+import { Field, ErrorMessage } from 'formik';
 import { device } from '../../Constants';
 
 export const FilterContainer = styled.div`
@@ -17,6 +17,10 @@ export const FormGroup = styled.div`
     margin-right: 0;
   }
 `;
+
+export const ErrMessage = styled(ErrorMessage)`
+color: red;
+`
 
 export const MobInpCont = styled.div`
   display: flex;
