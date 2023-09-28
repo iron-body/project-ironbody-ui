@@ -9,6 +9,7 @@ import { headerReducer } from './headerSlice';
 import { productsReducer } from './products/slice';
 import { paramsReducer } from './params/paramsSlice';
 import { profileReducer } from './profile/profileSlice';
+import dateReducer from './selectedDate/dateReducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -36,6 +37,7 @@ export const store = configureStore({
     exercises: exercisesReducer,
     params: paramsReducer,
     profile: profileReducer,
+    date: dateReducer,
   },
   middleware,
 });
