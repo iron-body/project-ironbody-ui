@@ -1,8 +1,8 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { getUserName } from '../../redux/selectors';
 // import { useRef, useState } from 'react';
 import sprite from '../../../icons.svg';
-import { profileOperations } from '../../redux/profile/profileOperations';
+// import { profileOperations } from '../../redux/profile/profileOperations';
 import { Btn, LinkBtn } from '../LogOutBtn/LogOutBtn.styled';
 import {
   AvatarWrapper,
@@ -30,8 +30,8 @@ import {
   LogoutBtnSvg,
   Wrapper,
 } from './UserCard.styled';
-import { useEffect } from 'react';
-import { selectProfileData, updateProfile } from '../../redux/profile/profileSlice';
+
+import { selectProfileData } from '../../redux/profile/profileSlice';
 // window.onload = () => {
 //   const uploadAvatar = document.getElementById('upload-avatar');
 //   const uploadBtn = document.getElementById('upload-btn');

@@ -27,4 +27,28 @@ const profileData = createAsyncThunk('profile/userdata', async (profileData, thu
   }
 });
 
+const profileDataUpdate = createAsyncThunk('profile/update', async (_, thunkAPI) => {
+  try {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.accessToken;
+    const profileData = state.profile;
+    const response = await axios.post('users/userData', profileData, {
+      headers: {
+        Authorization: `Bearer ${persistedToken}`,
+      },
+    });
+    return response.data[0];
+  } catch (error) {
+    if (error.response) {
+      Notify.failure(`Set profile data failure with message "${error.response.data.message}"`);
+    }
+
+    if (!error.response) {
+      Notify.failure(`Set profile data failure with message "${error.message}"`);
+    }
+
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
 export const profileOperations = { profileData };
