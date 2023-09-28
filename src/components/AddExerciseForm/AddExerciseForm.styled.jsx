@@ -2,28 +2,32 @@ import styled from '@emotion/styled';
 import { device } from '../../Constants';
 
 export const Container = styled.div`
-  border-radius: var(--br-12px);
-  color: EFEDE8;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  
+ 
 
-  @media screen and (min-width: 375px) {
-    width: 271px;
+  @media screen and (min-width: 365px} {
+    width: 300px;
     height: 762px;
   }
 
-  @media screen and (${device.tablet}) {
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap:wrap;
     width: 630px;
     height: 454px;
   }
+  @media screen and (min-width: 1440px) {
+    width: 694px;
+    height: 550px;
+  }
+
 `;
 
 export const Img = styled.img`
   border-radius: var(--br-12px);
-  @media screen and (min-width: 375px) {
-  }
-
+ 
   @media screen and (min-width: 768px) {
     margin-right:6px;
   }
@@ -79,7 +83,6 @@ export const ExercseBox = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   gap: 8px;
-
   height: 240px;
 `;
 

@@ -25,11 +25,9 @@ export const AddExerciseForm = ({
   return (
     <Container>
       <Img src={`${exercImg}`} alt="" width={270} height={226} />
-
       <ExitBtn onClick={() => active()}>
         <Btn src="/project-ironbody-ui/ExitIcon.svg" />
       </ExitBtn>
-
       <Tmr> Timer </Tmr>
       <ExercseBoxInf
         name={exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
