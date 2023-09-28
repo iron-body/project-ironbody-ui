@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchExercises, fetchFilteredExercises } from './operations';
+import { fetchExercises, fetchFilteredExercises, fetchUserExercise } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -18,6 +18,7 @@ export const exercisesSlice = createSlice({
     isLoading: false,
     error: null,
     filtered: [],
+    userExercise: null
   },
   extraReducers: {
     [fetchExercises.pending]: handlePending,
@@ -32,6 +33,13 @@ export const exercisesSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.filtered = action.payload;
+    },
+
+    [fetchUserExercise.pending]: handlePending,
+    [fetchUserExercise.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.userExercise = action.payload;
     },
   },
 });

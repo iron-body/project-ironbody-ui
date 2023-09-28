@@ -16,7 +16,7 @@ import TitlePage from '../../components/TitlePage/TitlePage';
 import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
 import Loader from '../../components/Loader/Loader';
-import { fetchFilteredExercises, fetchExercises } from '../../redux/operations';
+import { fetchFilteredExercises, fetchExercises } from '../../redux/exercises/operations';
 import { getLoading } from '../../redux/selectors';
 
 const ExercisesPage = () => {

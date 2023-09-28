@@ -5,7 +5,6 @@ import { filterReducer } from './filterSlice';
 import { authReducer } from './auth/authSlice';
 import { persistStore, FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import { exercisesReducer } from './exercises.Slice';
-
 import { headerReducer } from './headerSlice';
 import { productsReducer } from './products/slice';
 import { paramsReducer } from './params/paramsSlice';
