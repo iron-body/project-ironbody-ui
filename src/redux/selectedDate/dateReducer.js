@@ -12,7 +12,8 @@ const dateReducer = (state = initialState, action) => {
     case SET_SELECTED_DATE:
       return action.payload;
     default:
-      return state;
+      // Parse the ISO string back to a Date object when loading the state from storage
+      return new Date(state);
   }
 };
 
