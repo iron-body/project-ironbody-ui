@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 
 import {
@@ -16,7 +16,6 @@ import {
   Unit,
 } from './AddProductForm.styled';
 import AddProductSuccess from '../AddProductSuccess/AddProductSuccess';
-import BasicModalWindow from '../BasicModalWindow/BasicModalWindow';
 
 import { addProductThunk } from '../../redux/products/productsOperations';
 
@@ -24,7 +23,6 @@ export default function AddProductForm({ productCalc, onClose }) {
   const { title, calories, category, recommended, _id } = productCalc;
   const [gramsInpValue, setGramsInpValue] = useState(100);
   const [modalStatus, setIsModalOpenSuccess] = useState(true);
-
 
   const formattedDate = new Date().toISOString();
 
@@ -37,7 +35,7 @@ export default function AddProductForm({ productCalc, onClose }) {
     amount: gramsInpValue,
     date: formattedDate,
     recommended: recommended,
-    _id: _id,
+    productid: _id,
   };
 
   const calcCalories = () => {
@@ -49,21 +47,12 @@ export default function AddProductForm({ productCalc, onClose }) {
     onClose();
   };
 
-  // const handleSubmitProduct = () => {
-  //   dispatch(addProductThunk(objSubmitProduct));
-  // };
-
   const handleSubmitProduct = async () => {
     try {
       await dispatch(addProductThunk(objSubmitProduct));
-      setIsModalOpenSuccess(true);
-      console.log(modalStatus);
-      console.log(formattedDate)
+      dispatch(setIsModalOpenSuccess(false));
     } catch (error) {
-      console.error('Произошла ошибка при отправке продукта:', error);
-       setIsModalOpenSuccess(false);
-            // console.log(modalStatus);
-
+      setIsModalOpenSuccess(false);
     }
   };
 
@@ -95,12 +84,14 @@ export default function AddProductForm({ productCalc, onClose }) {
             </CalcCalories>
 
             <BtnFormContainer>
-              <AddProductBtn onSubmit={handleSubmitProduct} calories={calcCalories()}>
+              <AddProductBtn
+                onSubmit={handleSubmitProduct}
+                calories={calcCalories()}
+              >
                 Add to diary
               </AddProductBtn>
               <CancelBtn onClick={handleClose}>Cancel</CancelBtn>
             </BtnFormContainer>
-            {/* {!successStatus && <p>ok</p>} */}
           </Form>
         </Formik>
       ) : (

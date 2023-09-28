@@ -27,11 +27,8 @@ import {
   getFillterRecommendedProductsThunk,
 } from '../../redux/products/productsOperations';
 
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import {
-  getFilterValue,
-} from '../../redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilterValue } from '../../redux/selectors';
 
 import { updateFilter } from '../../redux/filterSlice';
 
@@ -48,8 +45,6 @@ const schema = yup.object().shape({
 export default function ProductsFilters() {
   const dispatch = useDispatch();
   const filterValue = useSelector(getFilterValue);
-  // const categoryValue = useSelector(getCategoryValue);
-  // const recoemmdedValue = useSelector(getRecommendedValue);
 
   const [localSearchInput, setLocalSearchInput] = useState(filterValue);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -70,15 +65,6 @@ export default function ProductsFilters() {
     dispatch(getCategoriesProductsThunk());
     dispatch(getProductsThunk());
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch(
-  //     getAllFillteredProductsThunk({
-  //       categoryQuery: selectedCategory.value,
-  //       searchParams: filterValue,
-  //     }),
-  //   );
-  // }, [selectedCategory.value, filterValue, dispatch]);
 
   useEffect(() => {
     if (recommended.value !== 'All' && recommended.value !== undefined) {
@@ -117,7 +103,6 @@ export default function ProductsFilters() {
       getAllFillteredProductsThunk({
         categoryQuery: selectedCategory.value,
         searchParams: filterValue,
-        // recommendedQuery: recommended.value,
       }),
     ),
       dispatch(
@@ -182,7 +167,6 @@ export default function ProductsFilters() {
                     onChange={selectedOption => {
                       setSelectedCategory(selectedOption);
                       console.log(selectedCategory);
-                      // updateCategoryValue(selectedOption);
                     }}
                   />
                 )}
@@ -201,7 +185,6 @@ export default function ProductsFilters() {
                     value={recommended}
                     onChange={recommendedValue => {
                       setRecommended(recommendedValue);
-                      // updateRecommendedValue(recommendedValue);
                     }}
                   />
                 )}
