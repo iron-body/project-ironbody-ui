@@ -9,7 +9,7 @@ export const Label = styled.label`
   line-height: 1.3;
 `;
 
-export const FieldBasicStyled = styled(Field)`
+export const FieldBasicStyled = styled.input`
   font-family: Roboto;
   font-size: 16px;
   line-height: 1.5;
@@ -132,7 +132,7 @@ export const ParamsWrapperTwo = styled.div`
   }
 `;
 
-export const FormStyled = styled(Form)`
+export const FormStyled = styled.form`
   padding-bottom: 66px;
   @media ${device.tablet} {
     padding-bottom: 54px;

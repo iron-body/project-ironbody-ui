@@ -31,7 +31,7 @@ let signinSchema = yup.object().shape({
 });
 
 let signUpSchema = yup.object().shape({
-  name: yup.string().matches(/^\S*$/, 'Whitespace is not allowed').required(),
+  name: yup.string().trim().required(),
   email: yup
     .string()
     .email()
