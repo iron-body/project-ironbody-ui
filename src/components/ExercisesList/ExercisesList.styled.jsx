@@ -2,6 +2,17 @@ import styled from '@emotion/styled';
 import { device } from '../../Constants';
 
 
+export const Container =styled.div`
+display: flex;
+justify-content: center;
+@media screen and (${device.tablet}) {
+  justify-content: start;
+  padding-left:32px;
+  margin-top:32px;
+}
+
+
+`
 export const StyledLink = styled.ul`
 margin-top:48px;
 display: flex;
@@ -32,14 +43,16 @@ gap:20px;
     background: #ef8964;
   }
 
+  @media screen and (${device.tablet}) {
+    
+    height: 700px;
+  }
 
   @media screen and (${device.desktop}) {
-  
-   
-    
-   
-    
-  
-`;
+    width:850px;
+    height: 500px;
+    margin-top:0px;
+  }
+  `;
 
 

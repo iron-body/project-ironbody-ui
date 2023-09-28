@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useSearchParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
-import{StyledLink} from './ExercisesList.styled'
+import{StyledLink, Container } from './ExercisesList.styled'
 
 export const ExercisesList = ({subcategory, nameExercise}) => {
   const { name } = useParams();
@@ -42,7 +42,7 @@ export const ExercisesList = ({subcategory, nameExercise}) => {
 
 
   return (
-    <> <StyledLink>
+  <Container><StyledLink>
     {exercise.map(item => (
       
       <ExercisesItem
@@ -57,8 +57,8 @@ export const ExercisesList = ({subcategory, nameExercise}) => {
         equipment={item.equipment}
         />
     ))}
-    </StyledLink>
-  </>
+    </StyledLink></Container>
+  
    
   );
 };

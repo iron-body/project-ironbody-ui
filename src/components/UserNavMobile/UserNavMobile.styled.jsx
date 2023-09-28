@@ -2,20 +2,28 @@ import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 import { device } from '../../Constants';
 
-export const BurgerMenu = styled.nav`
-  position: absolute;
+export const MobileMenuContainer = styled.div`
+  position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   height: 100vh;
   width: 100%;
-  /* width: 200px; */
-  padding: 19px 20px 21px 20px;
-  background-color: #e6533c;
-  overflow: ${({ isMenuOpen }) => (isMenuOpen ? 'hidden' : 'auto')};
+  overflow: ${({ isMenuOpen }) => (isMenuOpen ? 'auto' : 'hidden')};
   @media ${device.tablet} {
-    width: 350px;
-    padding: 26px 32px 32px 32px;
+    height: 105vh;
   }
+`;
+
+export const BurgerMenu = styled.nav`
+  position: absolute;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #e6533c;
+  overflow: ${({ isMenuOpen }) => (isMenuOpen ? 'auto' : 'hidden')};
 
   @media ${device.desktop} {
     display: none;
@@ -33,16 +41,11 @@ export const Cross = styled.svg`
   gap: 16px;
 `;
 export const Menu = styled.ul`
-  position: absolute;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-  top: 30%;
-  left: 33%;
   gap: 40px;
-  @media ${device.tablet} {
-    left: 33%;
-  }
 `;
 
 export const MenuItem = styled.li``;

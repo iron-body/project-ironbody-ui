@@ -47,59 +47,53 @@ function App() {
         {/* comment below for unuse automatic redirect if user already logined */}
         <Route
           path="diary"
-          element={<PrivateRoute redirectTo="/signin" component={<DiaryPage />} />}
+          element={
+            <PrivateRoute redirectTo="/signin" component={<DiaryPage />} />
+          }
         />
         {/* <Route path="/params" element={<ParamsPage />} /> */}
         <Route
           path="params"
-          element={<PrivateRoute redirectTo="/signin" component={<ParamsPage />} />}
+          element={
+            <PrivateRoute redirectTo="/signin" component={<ParamsPage />} />
+          }
         />
 
-        <Route path="/products" element={<ProductsPage />} />
-
         <Route
-          path="exercises"
-          element={<PrivateRoute redirectTo="/exercises" component={<ExercisesPage />} />}
-        >
+          path="products"
+          element={
+            <PrivateRoute redirectTo="/products" component={<ProductsPage />} />
+          }
+        />
+
+        <Route path="/exercises" element={<ExercisesPage />}>
           <Route
-            path=":subCategories"
-            element={
-              <PrivateRoute
-                redirectTo="/exercises/:subCategories"
-                component={<ExercisesSubcategoriesList />}
-              />
-            }
+            path="/exercises/:subCategories"
+            element={<ExercisesSubcategoriesList />}
           >
             <Route
-              path=":name"
-              element={
-                <PrivateRoute
-                  redirectTo="/exercises/:subCategories/:name"
-                  component={<ExercisesList />}
-                />
-              }
+              path="/exercises/:subCategories/:name"
+              element={<ExercisesList />}
             />
           </Route>
-        </Route>
-
-        {/* <Route path="/exercises" element={<ExercisesPage />}>
-          <Route path="/exercises/:subCategories" element={<ExercisesSubcategoriesList />}>
-            <Route path="/exercises/:subCategories/:name" element={<ExercisesList />} />
-          </Route>
-        </Route> */}
+        </Route> 
 
         <Route index element={<WelcomePage />} />
         {/* <Route path="signup" element={<SignUpPage />} /> */}
         <Route
           path="signup"
-          element={<RestrictedRoute redirectTo="/params" component={<SignUpPage />} />}
+          element={
+            <RestrictedRoute redirectTo="/params" component={<SignUpPage />} />
+          }
         />
         {/* Comment bellow line if you uncomment private route */}
         {/* <Route path="signin" element={<SignInPage />} /> */}
         {/* comment below for unuse redirect after succesfull authorization to Diary Page after login */}
         <Route
           path="signin"
-          element={<RestrictedRoute redirectTo="/diary" component={<SignInPage />} />}
+          element={
+            <RestrictedRoute redirectTo="/diary" component={<SignInPage />} />
+          }
         />
         <Route path="/profile" element={<ProfilePage/>} />
         <Route path="*" element={<ErrorPage />} />

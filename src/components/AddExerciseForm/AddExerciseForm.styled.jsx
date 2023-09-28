@@ -2,31 +2,30 @@ import styled from '@emotion/styled';
 import { device } from '../../Constants';
 
 export const Container = styled.div`
-  border-radius: var(--br-12px);
-  color: EFEDE8;
-  display: flex;
+
+
+display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+ 
 
   @media screen and (min-width: 375px) {
-    width: 271px;
-    height: 762px;
-  }
+     width: 303px;
+     height: 858px;
+     }
 
   @media screen and (${device.tablet}) {
     width: 630px;
     height: 454px;
   }
+ 
+  
 `;
 
 export const Img = styled.img`
   border-radius: var(--br-12px);
-  @media screen and (min-width: 375px) {
-  }
-
-  @media screen and (min-width: 768px) {
-    margin-right:6px;
-  }
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Tmr = styled.div`
@@ -52,20 +51,26 @@ export const Tmr = styled.div`
 
 `;
 
-export const Btn = styled.button`
+export const ExitBtn = styled.button`
   position: absolute;
   top: 14px;
   right: 14px;
-  cursor: pointer;
   opacity: 0;
-
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: #10100f;
+ 
+fill:red;
   @media screen and (min-width: 768px) {
-    width: 26px;
-    height: 26px;
-    margin: 4px;
     opacity: 1;
-    color:red;
-  }
+ 
+}
+`;
+
+export const Btn = styled.img`
+  width: 24px;
+  height: 24px;
 `;
 
 export const ExercseBox = styled.div`
@@ -73,8 +78,15 @@ export const ExercseBox = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   gap: 8px;
-
   height: 240px;
+
+  @media screen and (${device.tablet}) {
+    margin-left:5px;
+  }
+
+  
+
+
 `;
 
 export const SmallBox = styled.div`
@@ -108,3 +120,4 @@ export const Info = styled.div`
     font-size: 16px;
   }
 `;
+

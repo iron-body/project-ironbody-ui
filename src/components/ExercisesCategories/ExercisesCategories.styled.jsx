@@ -8,7 +8,7 @@ export const Container = styled.div`
   margin-top: 20px;
   color: #efede8;
   @media ${device.tablet} {
-    margin: 0;
+    gap:20px;
   }
 `;
 
