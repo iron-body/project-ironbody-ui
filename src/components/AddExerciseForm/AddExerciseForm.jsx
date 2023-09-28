@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-// import { fetchUserExercise } from '../../redux/operations';
+import { fetchUserExercise } from '../../redux/exercises/operations';
 import {
   Container,
   Img,
@@ -14,8 +13,6 @@ import {
   ExitBtn,
 } from './AddExerciseForm.styled';
 import { BtnTamplate } from '../Buttons/BtnExercises';
-import { AddExerciseSuccess } from '../AddExerciseSuccess/AddExerciseSuccess';
-import BasicModalWindow from '../BasicModalWindow/BasicModalWindow';
 
 export const AddExerciseForm = ({
   exercImg,
@@ -27,12 +24,11 @@ export const AddExerciseForm = ({
   active,
   id,
   calories,
+  setActive,
 }) => {
   const dispatch = useDispatch();
   const { loading, error } = useSelector(state => state.exercises);
-  const [modalSuccessActive, setModalSuccessActive] = useState(false);
 
-  
   const handleAddToDiaryClick = () => {
     const today = new Date();
     const year = today.getFullYear();
@@ -43,33 +39,38 @@ export const AddExerciseForm = ({
     const parsedTime = parseInt(time, 10);
 
     const requestData = {
-      "exercise": `${id}`, // ID вправи
-      "date": `${formattedDate}`, // Дата
-      "time": parsedTime, // Час
-      "calories": calories, // Калорії
+      exercise: `${id}`, // ID вправи
+      date: `${formattedDate}`, // Дата
+      time: parsedTime, // Час
+      calories: calories, // Калорії
     };
 
-      //   dispatch(fetchUserExercise(requestData))
-      // .unwrap()
-      // .then(response => {
-      //   // Handle successful response
-      //   console.log('Success:', response)
-            // })
-      // .catch(err => {
-      //   // Handle error
-      //   console.error('Error:', err);
-      // });
-    console.log('post user exercise');
+    console.log(requestData);
+
+    dispatch(fetchUserExercise(requestData))
+      .unwrap()
+      .then(response => {
+        // Handle successful response
+        console.log('Success:', response);
+      })
+      .catch(err => {
+        // Handle error
+        console.error('Error:', err);
+        return;
+      });
 
     active();
-               };
+  };
 
-           
+  // Функція для закриття модального вікна AddExerciseForm
+  const closeAddExerciseForm = () => {
+    setActive(false);
+  };
 
   return (
     <Container>
       <Img src={`${exercImg}`} alt="" width={270} height={226} />
-      <ExitBtn onClick={() => active()}>
+      <ExitBtn onClick={() => closeAddExerciseForm()}>
         <Btn src="/project-ironbody-ui/ExitIcon.svg" />
       </ExitBtn>
       <Tmr> Timer </Tmr>
@@ -81,8 +82,6 @@ export const AddExerciseForm = ({
         equipment={equipment.charAt(0).toUpperCase() + equipment.slice(1)}
       />
       <BtnTamplate name={'Add to diary'} onClick={handleAddToDiaryClick} />
-  
-   
 
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}

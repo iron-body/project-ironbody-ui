@@ -17,7 +17,7 @@ import {
   ParamsValue,
   ExerciseIcon,
 } from './ExercisesItem.styled';
-import { AddExerciseSuccess } from '../AddExerciseSuccess/AddExerciseSuccess';
+import  AddExerciseSucces  from '../AddExerciseSuccess/AddExerciseSucces';
 
 
 
@@ -45,6 +45,12 @@ export const ExercisesItem = ({
     setAddExerciseSuccessOpen(true);
   };
 
+  // Функція для закриття модального вікна AddExerciseForm 
+  const closeAddExerciseForm = () => {
+    setAddExerciseFormOpen(false);
+    
+  };
+
   // Функція для закриття модального вікна AddExerciseSuccess
   const closeAddExerciseSuccess = () => {
     setAddExerciseSuccessOpen(false);
@@ -67,7 +73,7 @@ export const ExercisesItem = ({
         </RecomendedInfo>
       </NavCard>
 
-        <BasicModalWindow active={addExerciseFormOpen} setActive={closeAddExerciseFormAndOpenSuccess}>
+        <BasicModalWindow active={addExerciseFormOpen} setActive={closeAddExerciseForm}>
         <AddExerciseForm
           exercImg={`${exercImg}`}
           exerciseName={`${exerciseName}`}
@@ -78,11 +84,12 @@ export const ExercisesItem = ({
           active={closeAddExerciseFormAndOpenSuccess}
           id={`${id}`}
           calories={calories}
+          setActive={closeAddExerciseForm}
         />
       </BasicModalWindow>
       
       <BasicModalWindow active={addExerciseSuccessOpen} setActive={closeAddExerciseSuccess}>
-        <AddExerciseSuccess time={time} calories={calories} />
+        <AddExerciseSucces time={time} calories={calories} active={closeAddExerciseSuccess} />
       </BasicModalWindow>
       
       
