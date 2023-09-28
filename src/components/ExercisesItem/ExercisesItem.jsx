@@ -45,8 +45,7 @@ export const ExercisesItem = ({
         </RecomendedInfo>
       </NavCard>
 
-      {/* <Button onClick={() => setModalActive(true)}>Я кнопка</Button> */}
-      <BasicModalWindow active={modalActive} setActive={setModalActive}>
+        <BasicModalWindow active={modalActive} setActive={setModalActive}>
         <AddExerciseForm
           exercImg={`${exercImg}`}
           exerciseName={`${exerciseName}`}
