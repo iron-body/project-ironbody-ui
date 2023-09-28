@@ -17,6 +17,7 @@ import {
   ParamsValue,
   ExerciseIcon,
 } from './ExercisesItem.styled';
+import { AddExerciseSuccess } from '../AddExerciseSuccess/AddExerciseSuccess';
 
 
 
@@ -28,24 +29,45 @@ export const ExercisesItem = ({
   muscles,
   time,
   equipment,
+  id
 }) => {
-  const [modalActive, setModalActive] = useState(false);
+  const [addExerciseFormOpen, setAddExerciseFormOpen] = useState(false);
+  const [addExerciseSuccessOpen, setAddExerciseSuccessOpen] = useState(false);
+
+  // Функція для відкриття модального вікна AddExerciseForm
+  const openAddExerciseForm = () => {
+    setAddExerciseFormOpen(true);
+  };
+
+  // Функція для закриття модального вікна AddExerciseForm та відкриття AddExerciseSuccess
+  const closeAddExerciseFormAndOpenSuccess = () => {
+    setAddExerciseFormOpen(false);
+    setAddExerciseSuccessOpen(true);
+  };
+
+  // Функція для закриття модального вікна AddExerciseSuccess
+  const closeAddExerciseSuccess = () => {
+    setAddExerciseSuccessOpen(false);
+  };
+
+
 
   return (
     
+   
     <Container key={exerciseName}>
       
       <NavCard>
         <TitleCard>WORKOUT</TitleCard>
         <RecomendedInfo>
-          <ButtonItem onClick={() => setModalActive(true)} >
+          <ButtonItem onClick={openAddExerciseForm} >
             Start
             <ButtonIcon alt="" src="/next-array.svg" />
           </ButtonItem>
         </RecomendedInfo>
       </NavCard>
 
-        <BasicModalWindow active={modalActive} setActive={setModalActive}>
+        <BasicModalWindow active={addExerciseFormOpen} setActive={closeAddExerciseFormAndOpenSuccess}>
         <AddExerciseForm
           exercImg={`${exercImg}`}
           exerciseName={`${exerciseName}`}
@@ -53,9 +75,18 @@ export const ExercisesItem = ({
           muscles={`${muscles}`}
           time={`${time}`}
           equipment={`${equipment}`}
-          active={setModalActive}
+          active={closeAddExerciseFormAndOpenSuccess}
+          id={`${id}`}
+          calories={calories}
         />
       </BasicModalWindow>
+      
+      <BasicModalWindow active={addExerciseSuccessOpen} setActive={closeAddExerciseSuccess}>
+        <AddExerciseSuccess time={time} calories={calories} />
+      </BasicModalWindow>
+      
+      
+      
       <ExerciseName>
       <ExerciseIcon alt="" src="/product-icon.svg"/> {exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
       </ExerciseName>

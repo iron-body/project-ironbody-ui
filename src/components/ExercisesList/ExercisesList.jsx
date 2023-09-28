@@ -33,21 +33,14 @@ export const ExercisesList = ({subcategory, nameExercise}) => {
       
   }
 
-  const ex = ()=> {const [searchParams]=useSearchParams()
-    const name = searchParams.get("name");
-    console.log(name);
-  };
-  
-
-
-
+ 
   return (
   <Container><StyledLink>
     {exercise.map(item => (
       
       <ExercisesItem
       onClick={() => active(item.name)}
-       key={item.id}
+       key={item._id}
         exerciseName={item.name}
         exercImg={item.gifUrl}
         calories={item.burnedCalories}
@@ -55,6 +48,7 @@ export const ExercisesList = ({subcategory, nameExercise}) => {
         muscles={item.target}
         time={item.time}
         equipment={item.equipment}
+        id={item._id}
         />
     ))}
     </StyledLink></Container>
