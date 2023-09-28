@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { useSearchParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
 import{StyledLink, Container } from './ExercisesList.styled'
