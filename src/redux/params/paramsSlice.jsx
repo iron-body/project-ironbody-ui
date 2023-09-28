@@ -20,6 +20,7 @@ export const paramsSlice = createSlice({
   initialState,
   reducers: {
     updateAll(state, action) {
+      console.log(action.payload);
       state.params = action.payload;
     },
   },
