@@ -2,35 +2,30 @@ import styled from '@emotion/styled';
 import { device } from '../../Constants';
 
 export const Container = styled.div`
-  display: flex;
+
+
+display: flex;
   flex-direction: column;
-  
+  flex-wrap: wrap;
  
 
-  @media screen and (min-width: 365px} {
-    width: 300px;
-    height: 762px;
-  }
+  @media screen and (min-width: 375px) {
+     width: 303px;
+     height: 858px;
+     }
 
-  @media screen and (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap:wrap;
+  @media screen and (${device.tablet}) {
     width: 630px;
     height: 454px;
   }
-  @media screen and (min-width: 1440px) {
-    width: 694px;
-    height: 550px;
-  }
-
+ 
+  
 `;
 
 export const Img = styled.img`
   border-radius: var(--br-12px);
- 
-  @media screen and (min-width: 768px) {
-    margin-right:6px;
-  }
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Tmr = styled.div`
@@ -84,6 +79,14 @@ export const ExercseBox = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   height: 240px;
+
+  @media screen and (${device.tablet}) {
+    margin-left:5px;
+  }
+
+  
+
+
 `;
 
 export const SmallBox = styled.div`
@@ -117,3 +120,4 @@ export const Info = styled.div`
     font-size: 16px;
   }
 `;
+

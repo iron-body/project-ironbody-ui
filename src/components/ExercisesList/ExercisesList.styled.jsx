@@ -7,15 +7,9 @@ display: flex;
 justify-content: center;
 @media screen and (${device.tablet}) {
   justify-content: start;
-  padding-left:96px;
+  padding-left:32px;
   margin-top:32px;
 }
-
-@media screen and (${device.desktop}) {
-  
- 
-}
-
 
 
 `
@@ -48,6 +42,12 @@ gap:20px;
     border-radius: 12px;
     background: #ef8964;
   }
+
+  @media screen and (${device.tablet}) {
+    
+    height: 700px;
+  }
+
   @media screen and (${device.desktop}) {
     width:850px;
     height: 500px;

@@ -9,7 +9,7 @@ import {
   Info,
   Btn,
   Tmr,
-  ExitBtn,
+  ExitBtn 
 } from './AddExerciseForm.styled';
 import { BtnTamplate } from '../Buttons/BtnExercises';
 
@@ -37,6 +37,7 @@ export const AddExerciseForm = ({
         equipment={equipment.charAt(0).toUpperCase() + equipment.slice(1)}
       />
       <BtnTamplate name={'Add to diary'} />
+      
     </Container>
   );
 };
