@@ -1,6 +1,12 @@
 // export const getContacts = state => state.contacts.items;
 export const getExercises = state => state.exercises.items;
 
+export const getUser = state => state.auth.user;
+
+export const getUserName = state => state.auth.user.name
+
+export const getUserEmail = state => state.auth.user.email;
+
 export const getExerciseFiltered = state => state.exercises.filtered;
 
 export const getLoading = state => state.exercises.isLoading;
@@ -19,3 +25,4 @@ export const getCategoryValue = state => {
 export const getRecommendedValue = state => {
   return state.filter.recommendedFilter;
 };
+
