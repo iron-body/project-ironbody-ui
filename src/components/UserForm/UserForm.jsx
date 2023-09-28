@@ -73,7 +73,7 @@ const UserForm = () => {
               name="name"
               onChange={handleChange}
               onBlur={handleBlur}
-              value={values.name || ''}
+              value={values?.name || ''}
             />
           </NameWrapper>
           <FieldBasicStyled
@@ -82,7 +82,7 @@ const UserForm = () => {
             disabled="disabled"
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values.email || ''}
+            value={values?.email || ''}
             disabled
           />
         </BasicWrapper>
@@ -95,7 +95,7 @@ const UserForm = () => {
                 type="number"
                 name="height"
                 id={errors.height && touched.height ? 'error' : 'height'}
-                value={values.height || ''}
+                value={values?.height || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -106,7 +106,7 @@ const UserForm = () => {
                 min="35"
                 type="number"
                 name="currentWeight"
-                value={values.currentWeight || ''}
+                value={values?.currentWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -120,7 +120,7 @@ const UserForm = () => {
                   min="35"
                   type="number"
                   name="desiredWeight"
-                  value={values.desiredWeight || ''}
+                  value={values?.desiredWeight || ''}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
@@ -128,7 +128,7 @@ const UserForm = () => {
               <FieldBigStyled
                 type="date"
                 name="birthday"
-                value={values.birthday || ''}
+                value={values?.birthday || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -145,7 +145,7 @@ const UserForm = () => {
                   type="radio"
                   name="blood"
                   value={1}
-                  checked={values.blood === 1}
+                  checked={values?.blood === 1}
                   onChange={() => setFieldValue('blood', 1)}
                 />
                 <span className={css.radioSpan}>1</span>
@@ -158,7 +158,7 @@ const UserForm = () => {
                   type="radio"
                   name="blood"
                   value={2}
-                  checked={values.blood === 2}
+                  checked={values?.blood === 2}
                   onChange={() => setFieldValue('blood', 2)}
                 />
                 <span className={css.radioSpan}>2</span>
@@ -171,7 +171,7 @@ const UserForm = () => {
                   type="radio"
                   name="blood"
                   value={3}
-                  checked={values.blood === 3}
+                  checked={values?.blood === 3}
                   onChange={() => setFieldValue('blood', 3)}
                 />
                 <span className={css.radioSpan}>3</span>
@@ -184,7 +184,7 @@ const UserForm = () => {
                   type="radio"
                   name="blood"
                   value={4}
-                  checked={values.blood === 4}
+                  checked={values?.blood === 4}
                   onChange={() => setFieldValue('blood', 4)}
                 />
                 <span className={css.radioSpan}>4</span>
@@ -200,7 +200,7 @@ const UserForm = () => {
                     type="radio"
                     name="sex"
                     value="Male"
-                    checked={values.sex === 'male'}
+                    checked={values?.sex === 'male'}
                     onChange={() => setFieldValue('sex', 'male')}
                   />
                   <span className={css.radioSpanSexMale}>Male</span>
@@ -213,7 +213,7 @@ const UserForm = () => {
                     type="radio"
                     name="sex"
                     value="Female"
-                    checked={values.sex === 'female'}
+                    checked={values?.sex === 'female'}
                     onChange={() => setFieldValue('sex', 'female')}
                   />
                   <span className={css.radioSpanSex}>Female</span>
@@ -231,7 +231,7 @@ const UserForm = () => {
                   type="radio"
                   name="levelActivity"
                   value={1}
-                  checked={values.levelActivity === 1}
+                  checked={values?.levelActivity === 1}
                   onChange={() => setFieldValue('levelActivity', 1)}
                 />
                 <span className={css.radioSpanLevel}>
@@ -246,7 +246,7 @@ const UserForm = () => {
                   type="radio"
                   name="levelActivity"
                   value={2}
-                  checked={values.levelActivity === 2}
+                  checked={values?.levelActivity === 2}
                   onChange={() => setFieldValue('levelActivity', 2)}
                 />
                 <span className={css.radioSpanLevel}>
@@ -261,7 +261,7 @@ const UserForm = () => {
                   type="radio"
                   name="levelActivity"
                   value={3}
-                  checked={values.levelActivity === 3}
+                  checked={values?.levelActivity === 3}
                   onChange={() => setFieldValue('levelActivity', 3)}
                 />
                 <span className={css.radioSpanLevel}>
@@ -276,7 +276,7 @@ const UserForm = () => {
                   type="radio"
                   name="levelActivity"
                   value={4}
-                  checked={values.levelActivity === 4}
+                  checked={values?.levelActivity === 4}
                   onChange={() => setFieldValue('levelActivity', 4)}
                 />
                 <span className={css.radioSpanLevel}>
@@ -291,7 +291,7 @@ const UserForm = () => {
                   type="radio"
                   name="levelActivity"
                   value={5}
-                  checked={values.levelActivity === 5}
+                  checked={values?.levelActivity === 5}
                   onChange={() => setFieldValue('levelActivity', 5)}
                 />
                 <span className={css.radioSpanLevel}>
