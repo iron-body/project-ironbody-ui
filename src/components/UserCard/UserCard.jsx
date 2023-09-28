@@ -81,7 +81,7 @@ const UserCard = () => {
   const profileData = useSelector(selectProfileData);
   // console.log('profileData UserCard :>> ', profileData);
 
-  const { name, calorieNorm, sportTimeNorm } = profileData;
+  // const { name, calorieNorm, sportTimeNorm } = profileData;
   // console.log('profileData :>> ', profileData);
   return (
     <Wrapper>
@@ -106,7 +106,7 @@ const UserCard = () => {
           </AvatarCircle>
         </AvatarWrapper>
         <NameWrapper>
-          <Name>{name}</Name>
+          <Name>{profileData.name}</Name>
           <User>User</User>
         </NameWrapper>
 
@@ -119,7 +119,7 @@ const UserCard = () => {
                 </DailySvg>
                 <DailyText>Daily calorie intake</DailyText>
               </DailyWrapper>
-              <DailyNumber>{calorieNorm?.toFixed()}</DailyNumber>
+              <DailyNumber>{profileData.calorieNorm?.toFixed()}</DailyNumber>
             </DailyBox>
           </DailyItem>
           <DailyItem>
@@ -130,7 +130,7 @@ const UserCard = () => {
                 </DailySvg>
                 <DailyText>Daily norm of sports</DailyText>
               </DailyWrapper>
-              <DailyNumber>{sportTimeNorm} min</DailyNumber>
+              <DailyNumber>{profileData.sportTimeNorm} min</DailyNumber>
             </DailyBox>
           </DailyItem>
         </DailyList>
