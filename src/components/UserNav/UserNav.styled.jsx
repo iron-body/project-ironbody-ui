@@ -17,6 +17,10 @@ export const Link = styled(NavLink)`
   color: white;
   font-weight: 400;
 
+  transition:
+    color 200ms ease-out,
+    background-color 200ms ease-out;
+
   &.active {
     color: white;
     border: 0px;
