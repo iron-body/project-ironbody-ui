@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getProducts } from '../../redux/products/selectors';
+import { getInitial, getProducts } from '../../redux/products/selectors';
+
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { ToastContainer } from 'react-toastify';
 import {
   ProductList,
   ProductItem,
@@ -12,12 +14,13 @@ import {
 import Product from '../Product/Product';
 import BasicModalWindow from '../BasicModalWindow/BasicModalWindow';
 import AddProductForm from '../AddProductForm/AddProductForm';
+import Loader from '../../components/Loader/Loader';
 
 export default function ProductsList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const { isLoading } = useSelector(getProducts);
+  const { isLoading, error } = useSelector(getInitial);
   const [itemsToShow, setItemsToShow] = useState(10);
   const increment = 10;
 
@@ -34,7 +37,8 @@ export default function ProductsList() {
 
   return (
     <>
-      {isLoading && <h1 style={{ color: 'yellow' }}>Loading...</h1>}
+      <ToastContainer autoClose={1500} />
+      {isLoading && <Loader />}
 
       {visibleProducts.length > 0 ? (
         <InfiniteScroll
@@ -54,8 +58,7 @@ export default function ProductsList() {
             ))}
           </ProductList>
         </InfiniteScroll>
-      ) : (
-        <ErrorMessege>
+      ): (<ErrorMessege>
           <StartError>Sorry, no results were found</StartError> for the product
           filters you selected. You may want to consider other search options to
           find the product you want. Our range is wide and you have the
@@ -63,8 +66,10 @@ export default function ProductsList() {
           <BottomError>
             Try refreshing the page or check your internet connection.
           </BottomError>
-        </ErrorMessege>
-      )}
+        </ErrorMessege>)}
+      {/* {error || visibleProducts.length === 0 && (
+        
+      )} */}
 
       {isModalOpen && (
         <BasicModalWindow active={isModalOpen} setActive={setIsModalOpen}>

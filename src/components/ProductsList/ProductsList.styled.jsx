@@ -107,7 +107,7 @@ export const ErrorMessege = styled.p`
   line-height: 24px;
 `;
 
-export const BottomError = styled.p`
+export const BottomError = styled.span`
   color: #e6533c;
   margin-top: 16px;
 `;

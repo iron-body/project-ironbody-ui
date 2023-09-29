@@ -95,7 +95,6 @@ export default function ProductsFilters() {
           value: localSearchInput,
         }),
       );
-    console.log(recommended.value);
   };
 
   const eraseInputValue = () => {
@@ -166,7 +165,6 @@ export default function ProductsFilters() {
                     value={selectedCategory}
                     onChange={selectedOption => {
                       setSelectedCategory(selectedOption);
-                      console.log(selectedCategory);
                     }}
                   />
                 )}
