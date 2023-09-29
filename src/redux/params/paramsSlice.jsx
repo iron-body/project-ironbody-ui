@@ -20,7 +20,7 @@ export const paramsSlice = createSlice({
   initialState,
   reducers: {
     updateAll(state, action) {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.params = action.payload;
     },
   },
@@ -41,3 +41,4 @@ export const paramsReducer = paramsSlice.reducer;
 
 export const selectParamsValues = state => state.params.params;
 export const selectParamsValueHeight = state => state.params.params.height;
+export const selectParamsStatusUpdate = state => state.params.isUpdated;

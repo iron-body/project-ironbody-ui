@@ -9,6 +9,7 @@
 // StyledButton,
 // StyledDate,
 // } from './ParamsFormDaySwitch.styled';
+import moment from 'moment';
 
 import { forwardRef, useEffect, useState } from 'react';
 import { format } from 'date-fns';
@@ -25,7 +26,8 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 function ParamsFormDaySwitch({ onDateChange }) {
   const currentDate = new Date();
-  const [selectedDate, setSelectedDate] = useState(currentDate);
+  const date18yearsAgo = moment().subtract(18, 'years').toDate();
+  const [selectedDate, setSelectedDate] = useState(date18yearsAgo);
 
   useEffect(() => {
     onDateChange(selectedDate);
