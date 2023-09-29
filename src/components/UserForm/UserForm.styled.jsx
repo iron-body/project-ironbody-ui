@@ -32,23 +32,23 @@ export const FieldBasicStyled = styled.input`
   }
 `;
 
-export const FieldBigStyled = styled(Field)`
+export const FieldBigStyled = styled.div`
   font-family: Roboto;
   font-size: 16px;
   line-height: 1.5;
   box-sizing: border-box;
   margin-top: 4px;
-  width: 161px;
+  width: 140px;
   background: rgba(151, 151, 151, 0);
   border: 1px solid rgba(239, 237, 232, 0.3);
   border-radius: 12px;
   height: 46px;
   color: var(--white);
   align-items: center;
-  padding-left: 14px;
-  padding-right: 14px;
+  /* padding-left: 14px;
+  padding-right: 14px; */
   @media ${device.tablet} {
-    width: 100%;
+    width: 247px;
     height: 52px;
     margin-top: 8px;
   }

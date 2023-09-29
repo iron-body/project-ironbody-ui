@@ -22,6 +22,7 @@ import {
 import { selectProfileData, updateProfile } from '../../redux/profile/profileSlice';
 import { useEffect } from 'react';
 import { BtnSaveStyled, SaveStyled } from '../Buttons/BtnSave.styled';
+import ProfileDaySwitch from '../ProfileDaySwitch/ProfileDaySwitch';
 const UserForm = () => {
   const dispatch = useDispatch();
   const profileData = useSelector(selectProfileData);
@@ -126,12 +127,14 @@ const UserForm = () => {
                 />
               </ParamsWrapper>
               <FieldBigStyled
-                type="date"
-                name="birthday"
-                value={values?.birthday || ''}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              />
+              // type="date"
+              // name="birthday"
+              // value={values?.birthday || ''}
+              // onChange={handleChange}
+              // onBlur={handleBlur}
+              >
+                <ProfileDaySwitch />
+              </FieldBigStyled>
             </ParamsWrapperTwo>
           </InfoContainerTwo>
         </InfoWrapper>

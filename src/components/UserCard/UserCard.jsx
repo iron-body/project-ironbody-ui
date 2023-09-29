@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-// import { getUserName } from '../../redux/selectors';
+import { useDispatch } from 'react-redux';
 // import { useRef, useState } from 'react';
 import sprite from '../../../icons.svg';
 // import { profileOperations } from '../../redux/profile/profileOperations';
@@ -32,7 +32,8 @@ import {
 } from './UserCard.styled';
 
 import { selectProfileData } from '../../redux/profile/profileSlice';
-import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { authOperations } from '../../redux/auth/authOperations';
 // window.onload = () => {
 //   const uploadAvatar = document.getElementById('upload-avatar');
 //   const uploadBtn = document.getElementById('upload-btn');
@@ -81,6 +82,8 @@ const UserCard = () => {
   // useEffect(() => {const { name, calorieNorm, sportTimeNorm } = profileData; },[profileData])
 
   const profileData = useSelector(selectProfileData);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   // console.log('profileData UserCard :>> ', profileData);
 
   // const { name, calorieNorm, sportTimeNorm } = profileData;
@@ -148,9 +151,14 @@ const UserCard = () => {
           </WarningWrapper>
         </WarningContainer>
 
-        <LogoutWrapper>
+        <LogoutWrapper
+          onClick={() => {
+            navigate('/');
+            dispatch(authOperations.logout());
+          }}
+        >
           <Btn>
-            <LinkBtn to="/logout">Logout</LinkBtn>
+            <LinkBtn>Logout</LinkBtn>
             <LogoutBtnSvg>
               <use href={`${sprite}#log-out-01`} />
             </LogoutBtnSvg>
