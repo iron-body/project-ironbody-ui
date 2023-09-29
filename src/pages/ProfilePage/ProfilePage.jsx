@@ -9,11 +9,6 @@ import { getIsProfileLoading } from '../../redux/profile/profileSlice';
 import Loader from '../../components/Loader/Loader';
 
 const ProfilePage = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(profileOperations.profileData());
-  }, [dispatch]);
   const isLoading = useSelector(getIsProfileLoading);
 
   return (

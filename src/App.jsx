@@ -66,7 +66,7 @@ function App() {
 
         <Route
           path="products"
-          element={<PrivateRoute redirectTo="/products" component={<ProductsPage />} />}
+          element={<PrivateRoute redirectTo="/signin" component={<ProductsPage />} />}
         />
 
         <Route path="/exercises" element={<ExercisesPage />}>
