@@ -8,7 +8,6 @@ import {
 } from './ExercisesSubcategoriesList.styled';
 import { ExercisesSubcategoriesItem } from '../ExercisesSubcategoriesItem/ExercisesSubcategoriesItem';
 import { useEffect, useState } from 'react';
-import ReactPaginate from 'react-paginate';
 
 export const ExercisesSubcategoriesList = ({
   onSelectSubcategory,
@@ -66,21 +65,22 @@ export const ExercisesSubcategoriesList = ({
           ))}
         </Ul>
       </Container>
-      {/* <StyledReactPaginate> */}
-      <StyledReactPaginate
-        breakLabel="..."
-        nextLabel=" >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        pageCount={pageCount}
-        previousLabel="< "
-        renderOnZeroPageCount={null}
-        pageLinkClassName="page-num"
-        previousLinkClassName="page-num"
-        nextLinkClassName="page-num"
-        activeLinkClassName="active"
-      />
-      {/* </StyledReactPaginate> */}
+
+      {pageCount !== 1 && (
+        <StyledReactPaginate
+          breakLabel="..."
+          nextLabel=" >"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={3}
+          pageCount={pageCount}
+          previousLabel="< "
+          renderOnZeroPageCount={null}
+          pageLinkClassName="page-num"
+          previousLinkClassName="page-num"
+          nextLinkClassName="page-num"
+          activeLinkClassName="active"
+        />
+      )}
     </>
   );
 };

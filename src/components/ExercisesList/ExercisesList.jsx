@@ -1,20 +1,16 @@
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
-import{StyledLink, Container } from './ExercisesList.styled'
+import { StyledLink, Container } from './ExercisesList.styled';
 
-export const ExercisesList = ({subcategory, nameExercise}) => {
+export const ExercisesList = ({ subcategory, nameExercise }) => {
   const { name } = useParams();
 
-
- 
-
-   
   let exercise;
   const exercises = useSelector(state => state.exercises.items);
   if (typeof exercises !== 'object') {
     console.log('problem with data uploading');
-    return
+    return;
   }
   switch (subcategory) {
     case 'Body parts':
@@ -29,29 +25,26 @@ export const ExercisesList = ({subcategory, nameExercise}) => {
 
     default:
       break;
-      
   }
 
- 
   return (
-  <Container><StyledLink>
-    {exercise.map(item => (
-      
-      <ExercisesItem
-      onClick={() => active(item.name)}
-       key={item._id}
-        exerciseName={item.name}
-        exercImg={item.gifUrl}
-        calories={item.burnedCalories}
-        bodyPart={item.bodyPart}
-        muscles={item.target}
-        time={item.time}
-        equipment={item.equipment}
-        id={item._id}
-        />
-    ))}
-    </StyledLink></Container>
-  
-   
+    <Container>
+      <StyledLink>
+        {exercise.map(item => (
+          <ExercisesItem
+            onClick={() => active(item.name)}
+            key={item._id}
+            exerciseName={item.name}
+            exercImg={item.gifUrl}
+            calories={item.burnedCalories}
+            bodyPart={item.bodyPart}
+            muscles={item.target}
+            time={item.time}
+            equipment={item.equipment}
+            id={item._id}
+          />
+        ))}
+      </StyledLink>
+    </Container>
   );
 };
