@@ -14,8 +14,8 @@ import { useSelector } from 'react-redux';
 function ProfileDaySwitch() {
   const profileData = useSelector(selectProfileData);
 
-  const { birthday } = profileData;
-  const birthdayMoment = moment(birthday).toDate();
+  // const { birthday } = profileData;
+  const birthdayMoment = moment(profileData?.birthday).toDate();
   const [selectedDate, setSelectedDate] = useState(birthdayMoment);
   // const [minDate, setMinDate] = useState(null); // Дата реєстрації користувача
   const [showDatepicker, setShowDatepicker] = useState(false);
