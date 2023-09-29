@@ -160,6 +160,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="number"
+                min={150}
                 required
               />
               <LabelBox>
@@ -179,6 +180,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="number"
+                min={35}
                 required
               />
               <LabelBox>
@@ -198,6 +200,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="number"
+                min={35}
                 required
               />
               <LabelBox>
