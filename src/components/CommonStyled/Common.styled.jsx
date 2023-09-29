@@ -6,11 +6,12 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100vw;
 `;
 
 export const Root = styled.div`
   width: 100vw;
-  outline: 1px solid rgba(239, 237, 232, 0.3);
+  /* outline: 1px solid rgba(239, 237, 232, 0.3); */
   color: var(--white);
   font-family: var(--headline-style-mobile-h1);
   background-position: left 100% top 100%;
@@ -74,9 +75,8 @@ export const Root = styled.div`
   }
 `;
 
-
 export const NoOutlineRoot = styled.div`
-: 1;
+  :1;
   color: var(--white);
   font-family: var(--headline-style-mobile-h1);
   padding-top: 40px;
@@ -85,7 +85,7 @@ export const NoOutlineRoot = styled.div`
   @media ${device.mobile} {
     position: relative;
     width: var(--width-mobile);
-   
+
     overflow: hidden;
     background-position: left 100% top 100%;
     color: var(--white);
@@ -94,7 +94,7 @@ export const NoOutlineRoot = styled.div`
   @media ${device.tablet} {
     max-width: var(--width-tablet);
     width: var(--width-tablet);
-   
+
     overflow: hidden;
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);
@@ -103,7 +103,7 @@ export const NoOutlineRoot = styled.div`
   @media ${device.desktop} {
     max-width: var(--width-desktop);
     width: var(--width-desktop);
-    
+
     overflow: hidden;
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);

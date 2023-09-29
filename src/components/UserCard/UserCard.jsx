@@ -1,8 +1,8 @@
-
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { getUserName } from '../../redux/selectors';
 // import { useRef, useState } from 'react';
 import sprite from '../../../icons.svg';
+// import { profileOperations } from '../../redux/profile/profileOperations';
 import { Btn, LinkBtn } from '../LogOutBtn/LogOutBtn.styled';
 import {
   AvatarWrapper,
@@ -27,8 +27,12 @@ import {
   WarningText,
   LogoutWrapper,
   UserCardWrapper,
-  LogoutBtnSvg,Wrapper
+  LogoutBtnSvg,
+  Wrapper,
 } from './UserCard.styled';
+
+import { selectProfileData } from '../../redux/profile/profileSlice';
+import { useEffect } from 'react';
 // window.onload = () => {
 //   const uploadAvatar = document.getElementById('upload-avatar');
 //   const uploadBtn = document.getElementById('upload-btn');
@@ -69,6 +73,18 @@ const UserCard = () => {
   //     handleUpload()
   // }
   // const userName = useSelector(getUserName);
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(profileOperations.profileData());
+  // }, [dispatch]);
+  // useEffect(() => {const { name, calorieNorm, sportTimeNorm } = profileData; },[profileData])
+
+  const profileData = useSelector(selectProfileData);
+  // console.log('profileData UserCard :>> ', profileData);
+
+  // const { name, calorieNorm, sportTimeNorm } = profileData;
+  // console.log('profileData :>> ', profileData);
   return (
     <Wrapper>
       <UserCardWrapper>
@@ -92,7 +108,7 @@ const UserCard = () => {
           </AvatarCircle>
         </AvatarWrapper>
         <NameWrapper>
-          <Name>Anna Rybachok</Name>
+          <Name>{profileData?.name}</Name>
           <User>User</User>
         </NameWrapper>
 
@@ -105,7 +121,7 @@ const UserCard = () => {
                 </DailySvg>
                 <DailyText>Daily calorie intake</DailyText>
               </DailyWrapper>
-              <DailyNumber>2200</DailyNumber>
+              <DailyNumber>{profileData?.calorieNorm?.toFixed()}</DailyNumber>
             </DailyBox>
           </DailyItem>
           <DailyItem>
@@ -116,7 +132,7 @@ const UserCard = () => {
                 </DailySvg>
                 <DailyText>Daily norm of sports</DailyText>
               </DailyWrapper>
-              <DailyNumber>110 min</DailyNumber>
+              <DailyNumber>{profileData?.sportTimeNorm} min</DailyNumber>
             </DailyBox>
           </DailyItem>
         </DailyList>
@@ -126,9 +142,8 @@ const UserCard = () => {
               <use href={`${sprite}#tabler:exclamation-mark`} />
             </WarningSvg>
             <WarningText>
-              We understand that each individual is unique, so the entire
-              approach to diet is relative and tailored to your unique body and
-              goals.
+              We understand that each individual is unique, so the entire approach to diet is
+              relative and tailored to your unique body and goals.
             </WarningText>
           </WarningWrapper>
         </WarningContainer>
@@ -147,4 +162,3 @@ const UserCard = () => {
 };
 
 export default UserCard;
-

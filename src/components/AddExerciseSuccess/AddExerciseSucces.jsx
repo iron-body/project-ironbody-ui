@@ -5,16 +5,17 @@ import {
   Status,
   CalcContainer,
   CalcCalories,
+  CalcCaloriesOrang,
   CalcVelueCalories,
   AddProductBtn,
   SuccessModalContainer,
   ButtonLink,
   ButtonIcon,
-} from './AddProductSuccess.styled';
+} from './AddExerciseSucces.styled';
 
-export default function AddProductSuccess({ onClose, calories }) {
+export default function AddExercisesSucces({ active, calories, time }) {
   const handleClose = () => {
-    onClose();
+    active();
   };
 
   return (
@@ -31,18 +32,25 @@ export default function AddProductSuccess({ onClose, calories }) {
           alt=""
           src="/project-ironbody-ui/success-icon-prod.png"
         ></SeccessIcon>
-        <Status>Will done</Status>
+        <Status>Well done</Status>
 
         <CalcContainer>
-          <CalcCalories>Calories</CalcCalories>
+          <CalcCalories>Your time:</CalcCalories>
+          <CalcVelueCalories>{time}</CalcVelueCalories>
+          <CalcCaloriesOrang>minutes</CalcCaloriesOrang>
+        </CalcContainer>
+
+        <CalcContainer>
+          <CalcCalories>Burned calories:</CalcCalories>
           <CalcVelueCalories>{calories}</CalcVelueCalories>
         </CalcContainer>
-        <AddProductBtn onClick={handleClose}>Next product</AddProductBtn>
+
+        <AddProductBtn onClick={handleClose}>Next exercise</AddProductBtn>
         <ButtonLink to="/diary">
           To the diary
           <ButtonIcon
             alt=""
-            src="/project-ironbody-ui/arrow.svg"
+            src="/project-ironbody-ui/arrow-grey.svg"
             style={{ fill: 'grey' }}
           />
         </ButtonLink>

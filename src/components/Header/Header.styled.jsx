@@ -23,7 +23,7 @@ export const HeaderContainer = styled.div`
     /* justify-content: left; */
     /* width: ${375 - 20}px; */
     margin: 0;
-    width: 375px;
+    /* width: 375px; */
     /* padding: 0 20px; */
     padding: 0;
   }

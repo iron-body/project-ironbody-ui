@@ -1,17 +1,23 @@
 import TitlePage from 'components/TitlePage/TitlePage';
-import UserCard from 'components/UserCard/UserCard';
-import UserForm from 'components/UserForm/UserForm';
+import UserCard from '../../components/UserCard/UserCard';
+import UserForm from '../../components/UserForm/UserForm';
 import { Container, ProfileWrapper } from './ProfilePage.styled';
-
+import { useEffect } from 'react';
+import { profileOperations } from '../../redux/profile/profileOperations';
+import { useSelector, useDispatch } from 'react-redux';
+import { getIsProfileLoading } from '../../redux/profile/profileSlice';
+import Loader from '../../components/Loader/Loader';
 
 const ProfilePage = () => {
+  const isLoading = useSelector(getIsProfileLoading);
+
   return (
     <Container>
       <main>
         <TitlePage titleText={'Profile Settings'} />
         <ProfileWrapper>
-          <UserCard />
-          <UserForm />
+          {isLoading ? <Loader /> : <UserCard />}
+          {isLoading ? <Loader /> : <UserForm />}
         </ProfileWrapper>
       </main>
     </Container>
@@ -19,4 +25,3 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
-

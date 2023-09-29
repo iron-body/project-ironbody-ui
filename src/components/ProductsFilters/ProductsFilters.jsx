@@ -12,49 +12,45 @@ import {
   SearchFieldContainer,
   EraseInputButton,
   MobInpCont,
+  ErrMessage,
 } from './ProductsFilters.styled';
 
 import { Formik, Form, Field } from 'formik';
+import * as yup from 'yup';
 import Select from 'react-select';
 import { getCategoriesProducts } from '../../redux/products/selectors';
 import { useEffect } from 'react';
 import {
   getProductsThunk,
   getCategoriesProductsThunk,
-  getCategoryProductsThunk,
-  getAllFillterProductsThunk,
   getAllFillteredProductsThunk,
+  getFillterRecommendedProductsThunk,
 } from '../../redux/products/productsOperations';
 
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import {
-  getFilterValue,
-  getCategoryValue,
-  getRecommendedValue,
-} from '../../redux/selectors';
-import { selectParamsValues } from '../../redux/params/paramsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilterValue } from '../../redux/selectors';
 
 import { updateFilter } from '../../redux/filterSlice';
 
 const optionsRecomended = [
-  { value: 'all', label: 'All' },
+  { value: 'All', label: 'All' },
   { value: 'false', label: 'Recommended' },
   { value: 'true', label: 'No recommended' },
 ];
 
+const schema = yup.object().shape({
+  searchInput: yup.string().matches(/^[a-zA-Z\s'-]+$/, 'Not NAme'),
+});
+
 export default function ProductsFilters() {
   const dispatch = useDispatch();
   const filterValue = useSelector(getFilterValue);
-  const categoryValue = useSelector(getCategoryValue);
-  const recoemmdedValue = useSelector(getRecommendedValue);
 
   const [localSearchInput, setLocalSearchInput] = useState(filterValue);
-  const [selectedCategory, setSelectedCategory] = useState(categoryValue);
-  const [recommended, setRecommended] = useState(recoemmdedValue);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [recommended, setRecommended] = useState('');
 
   const categories = useSelector(getCategoriesProducts);
-  const clientBlood = useSelector(selectParamsValues);
 
   function convertCategoriesToOptions(categoriesData) {
     return categoriesData.map(category => ({
@@ -67,58 +63,62 @@ export default function ProductsFilters() {
 
   useEffect(() => {
     dispatch(getCategoriesProductsThunk());
+    dispatch(getProductsThunk());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(
-      getAllFillteredProductsThunk({
-        bloodType: clientBlood.blood,
-        recommendedQuery: recommended.value,
-        categoryQuery: categoryValue.value,
-        serchParams: filterValue,
-      }),
-    );
-  }, [categoryValue.value, filterValue, recommended.value, dispatch]);
+    if (recommended.value !== 'All' && recommended.value !== undefined) {
+      dispatch(
+        getFillterRecommendedProductsThunk({
+          categoryQuery: selectedCategory.value,
+          searchParams: filterValue,
+          recommendedQuery: recommended.value,
+        }),
+      );
+    } else if (recommended.value === 'All' || recommended.value === undefined) {
+      dispatch(
+        getAllFillteredProductsThunk({
+          categoryQuery: selectedCategory.value,
+          searchParams: filterValue,
+        }),
+      );
+    }
+  }, [selectedCategory.value, filterValue, recommended.value, dispatch]);
 
   const onSearchValue = () => {
-    dispatch(
-      updateFilter({
-        value: localSearchInput,
-        selectedCategory,
-        recommendedFilter: recoemmdedValue,
-      }),
-    );
-    console.log()
+    getAllFillteredProductsThunk({
+      categoryQuery: selectedCategory.value,
+      searchParams: filterValue,
+    }),
+      dispatch(
+        updateFilter({
+          value: localSearchInput,
+        }),
+      );
+    console.log(recommended.value);
   };
 
   const eraseInputValue = () => {
-    dispatch(updateFilter({ value: '', selectedCategory: '' }));
-    dispatch(getProductsThunk());
-
-    setLocalSearchInput('');
-    setSelectedCategory('');
-  };
-
-  const updateCategoryValue = value => {
-    setSelectedCategory(value);
-    dispatch(getCategoryProductsThunk(value.value));
-  };
-
-  const updateRecommendedValue = value => {
-    setRecommended(value);
     dispatch(
-      updateFilter({
-        value: localSearchInput,
-        selectedCategory,
-        recommendedValue: value,
+      getAllFillteredProductsThunk({
+        categoryQuery: selectedCategory.value,
+        searchParams: filterValue,
       }),
-    );
+    ),
+      dispatch(
+        updateFilter({
+          value: '',
+        }),
+      ),
+      setLocalSearchInput('');
+    setSelectedCategory('');
   };
 
   return (
     <Formik
-      initialValues={{ SerchInputValue: filterValue }}
+      initialValues={{ SerchInputValue: localSearchInput }}
       onSubmit={onSearchValue}
+      validationSchema={schema}
     >
       <Form>
         <FormTitle>Filter</FormTitle>
@@ -127,11 +127,12 @@ export default function ProductsFilters() {
             <SearchFieldContainer>
               <SearchField
                 type="text"
-                name="searchInputProduct"
+                name="searchInput"
                 placeholder="Search"
                 value={localSearchInput}
                 onChange={e => setLocalSearchInput(e.target.value)}
               />
+              <ErrMessage name="searchInput" render={msg => <p>{msg}</p>} />
 
               {localSearchInput.length > 0 && (
                 <EraseInputButton type="button" onClick={eraseInputValue}>
@@ -165,7 +166,7 @@ export default function ProductsFilters() {
                     value={selectedCategory}
                     onChange={selectedOption => {
                       setSelectedCategory(selectedOption);
-                      updateCategoryValue(selectedOption);
+                      console.log(selectedCategory);
                     }}
                   />
                 )}
@@ -182,9 +183,8 @@ export default function ProductsFilters() {
                     isSearchable={false}
                     styles={recomendedStyles}
                     value={recommended}
-                    onChange={recommendedOption => {
-                      setRecommended(recommendedOption);
-                      updateRecommendedValue(recommendedOption);
+                    onChange={recommendedValue => {
+                      setRecommended(recommendedValue);
                     }}
                   />
                 )}

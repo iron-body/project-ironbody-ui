@@ -24,7 +24,6 @@ export const ModalContent = styled.div`
 
   padding: 48px 32px;
   border-radius: 12px;
-  // background-color: black;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: #10100f;
   transform: scale(0.5);

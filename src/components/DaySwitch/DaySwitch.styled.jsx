@@ -8,7 +8,7 @@ export const DaySwitchContainer = styled.div`
   @media ${device.tablet} {
   }
   @media ${device.desktop} {
-    padding-top: 52px;
+    padding-top: 40px;
     gap: 8px;
   }
 `;

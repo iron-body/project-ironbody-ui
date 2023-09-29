@@ -1,8 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { useSearchParams } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import { ExercisesItem } from '../ExercisesItem/ExercisesItem';
-import{StyledLink} from './ExercisesList.styled'
+import{StyledLink, Container } from './ExercisesList.styled'
 
 export const ExercisesList = ({subcategory, nameExercise}) => {
   const { name } = useParams();
@@ -33,21 +32,14 @@ export const ExercisesList = ({subcategory, nameExercise}) => {
       
   }
 
-  const ex = ()=> {const [searchParams]=useSearchParams()
-    const name = searchParams.get("name");
-    console.log(name);
-  };
-  
-
-
-
+ 
   return (
-    <> <StyledLink>
+  <Container><StyledLink>
     {exercise.map(item => (
       
       <ExercisesItem
       onClick={() => active(item.name)}
-       key={item.id}
+       key={item._id}
         exerciseName={item.name}
         exercImg={item.gifUrl}
         calories={item.burnedCalories}
@@ -55,10 +47,11 @@ export const ExercisesList = ({subcategory, nameExercise}) => {
         muscles={item.target}
         time={item.time}
         equipment={item.equipment}
+        id={item._id}
         />
     ))}
-    </StyledLink>
-  </>
+    </StyledLink></Container>
+  
    
   );
 };

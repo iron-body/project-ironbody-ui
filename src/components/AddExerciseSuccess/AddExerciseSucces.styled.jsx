@@ -26,41 +26,36 @@ export const SeccessIcon = styled.img`
 `;
 
 export const Status = styled.p`
+margin-bottom:16px;
   text-transform: uppercase;
   color: #efede8;
   text-align: center;
   font-size: 24px;
   font-weight: 700;
   line-height: 1.33;
-
-  @media ${device.tablet} {
-    color: #efede8;
-    text-align: center;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.33;
-    margin-bottom: 16px;
-  }
 `;
 
 export const CalcContainer = styled.div`
-  display: block;
-  margin-bottom: 26px;
-
-  @media ${device.tablet} {
-    display: flex;
-    margin-bottom: 16px;
-  }
+  display: flex;
+  margin-bottom: 20px;
 `;
 
 export const CalcCalories = styled.p`
   color: rgba(239, 237, 232, 0.4);
   font-size: 12px;
   line-height: 1.5;
+  padding-right:4px;
+`;
+
+export const CalcCaloriesOrang = styled.p`
+  color: #E6533C;
+  font-size: 12px;
+  line-height: 1.5;
+  padding-right:4px;
 `;
 
 export const CalcVelueCalories = styled.span`
-  color: #fff;
+  color: #E6533C;
   font-size: 12px;
   line-height: 1.5;
 `;
@@ -143,3 +138,4 @@ export const ButtonIcon = styled.img`
   height: 16px;
   margin-left: 8px;
 `;
+

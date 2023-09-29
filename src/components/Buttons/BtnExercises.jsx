@@ -3,7 +3,7 @@ import { BtnStyled, Styled } from './BtnExercises.styled';
 export const BtnTamplate = ({onClick, name}) => {
   
   return (
-    <BtnStyled to="/signin" onClick={onClick}>
+    <BtnStyled  onClick={onClick}>
       <Styled>{name}</Styled>
     </BtnStyled>
   );

@@ -4,11 +4,11 @@ import {
   getProductsThunk,
   addProductThunk,
   deleteProductThunk,
-  // filterProductsThunk,
   getCategoriesProductsThunk,
-  getCategoryProductsThunk,
-  getAllFillterProductsThunk,
+  // getCategoryProductsThunk,
+  // getAllFillterProductsThunk,
   getAllFillteredProductsThunk,
+  getFillterRecommendedProductsThunk,
 } from './productsOperations';
 
 import { productsInitialState } from './initialProducts';
@@ -23,20 +23,20 @@ const thunksArr = [
   addProductThunk,
   getProductsThunk,
   deleteProductThunk,
-  // filterProductsThunk,
   getCategoriesProductsThunk,
-  getCategoryProductsThunk,
-  getAllFillterProductsThunk,
   getAllFillteredProductsThunk,
+  getFillterRecommendedProductsThunk,
 ];
 const helpFn = type => thunksArr.map(el => el[type]);
 const handleFulfilled = state => {
   state.isLoading = false;
   state.error = '';
+  // state.isSuccessPost = true;
 };
 
 const handlePending = state => {
   state.isLoading = true;
+  // state.isSuccessPost = false;
 };
 
 const handleFulfilledGet = (state, { payload }) => {
@@ -49,13 +49,16 @@ const handleFulfilledGetCategory = (state, { payload }) => {
 
 const handleFulfilledAdd = (state, { payload }) => {
   state.items.push(payload);
+  // state.isSuccessPost = true;
 };
+
 const handleFulfilledDel = (state, { payload }) => {
   state.items = state.items.filter(el => el.id !== payload.id);
 };
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
+  // state.isSuccessPost = false;
 };
 
 const productsSlice = createSlice({

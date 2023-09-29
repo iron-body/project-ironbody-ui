@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getProductsThunk } from '../../redux/products/productsOperations';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { getProducts } from '../../redux/products/selectors';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {
@@ -16,18 +15,13 @@ import AddProductForm from '../AddProductForm/AddProductForm';
 
 export default function ProductsList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const { isLoading, error } = useSelector(getProducts);
+  const { isLoading } = useSelector(getProducts);
   const [itemsToShow, setItemsToShow] = useState(10);
   const increment = 10;
 
-  const dispatch = useDispatch();
-
   const visibleProducts = useSelector(getProducts);
-
-  useEffect(() => {
-    dispatch(getProductsThunk());
-  }, [dispatch]);
 
   const openModal = product => {
     setSelectedProduct(product);
@@ -41,7 +35,8 @@ export default function ProductsList() {
   return (
     <>
       {isLoading && <h1 style={{ color: 'yellow' }}>Loading...</h1>}
-      {Array.isArray(visibleProducts) && (
+
+      {visibleProducts.length > 0 ? (
         <InfiniteScroll
           dataLength={itemsToShow}
           next={loadMore}
@@ -59,8 +54,7 @@ export default function ProductsList() {
             ))}
           </ProductList>
         </InfiniteScroll>
-      )}
-      {error && (
+      ) : (
         <ErrorMessege>
           <StartError>Sorry, no results were found</StartError> for the product
           filters you selected. You may want to consider other search options to
@@ -77,8 +71,11 @@ export default function ProductsList() {
           {selectedProduct && (
             <AddProductForm
               productCalc={{
-                foodName: selectedProduct.title,
+                title: selectedProduct.title,
                 calories: selectedProduct.calories,
+                category: selectedProduct.category,
+                recommended: selectedProduct.recommended,
+                _id: selectedProduct._id,
               }}
               onClose={() => setIsModalOpen(false)}
             />

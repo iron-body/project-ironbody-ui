@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { device } from '../../Constants';
 import { Link } from 'react-router-dom';
-export const BtnSaveStyled = styled(Link)`
+export const BtnSaveStyled = styled.button`
   text-decoration: none;
   border-radius: 12px;
   color: rgba(239, 237, 232, 0.6);
@@ -38,7 +38,7 @@ export const BtnSaveStyled = styled(Link)`
     justify-content: center;
   }
 `;
-export const SaveStyled = styled.div` 
+export const SaveStyled = styled.div`
   position: relative;
   line-height: 18px;
   font-weight: 500;

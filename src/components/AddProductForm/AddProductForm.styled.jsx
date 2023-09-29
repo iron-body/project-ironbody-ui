@@ -91,6 +91,25 @@ export const CaloriesValue = styled.input`
   }
 `;
 
+export const Unit = styled.p`
+
+  position: absolute;
+  color: rgba(239, 237, 232, 0.4);
+  font-size: 12px;
+  line-height: 1.5;
+  right: 48px;
+  top: 106px;
+
+  @media ${device.tablet} {
+    position: absolute;
+    color: rgba(239, 237, 232, 0.4);
+    font-size: 12px;
+    line-height: 1.5;
+    right: 48px;
+    top: 59px;
+  }
+`;
+
 export const CalcCalories = styled.p`
   color: rgba(239, 237, 232, 0.4);
   font-size: 12px;
