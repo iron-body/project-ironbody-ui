@@ -6,13 +6,17 @@ import Loader from '../Loader/Loader';
 import { profileOperations } from '../../redux/profile/profileOperations';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectProfileData } from '../../redux/profile/profileSlice';
+import { selectIsLoggedIn } from '../../redux/auth/authSlice';
 
 const SharedLayout = () => {
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
-    dispatch(profileOperations.profileData());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(profileOperations.profileData());
+    }
+  }, [dispatch, isLoggedIn]);
 
   return (
     <Container>
