@@ -15,6 +15,7 @@ const middleware = [
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
+
     // serializableCheck: false,
   }),
 ];

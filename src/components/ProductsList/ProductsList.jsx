@@ -40,7 +40,7 @@ export default function ProductsList() {
       <ToastContainer autoClose={1500} />
       {isLoading && <Loader />}
 
-      {visibleProducts.length > 0 ? (
+      {Array.isArray(visibleProducts) && (
         <InfiniteScroll
           dataLength={itemsToShow}
           next={loadMore}
@@ -58,7 +58,10 @@ export default function ProductsList() {
             ))}
           </ProductList>
         </InfiniteScroll>
-      ): (<ErrorMessege>
+      )}
+
+      {error && (
+        <ErrorMessege>
           <StartError>Sorry, no results were found</StartError> for the product
           filters you selected. You may want to consider other search options to
           find the product you want. Our range is wide and you have the
@@ -66,10 +69,8 @@ export default function ProductsList() {
           <BottomError>
             Try refreshing the page or check your internet connection.
           </BottomError>
-        </ErrorMessege>)}
-      {/* {error || visibleProducts.length === 0 && (
-        
-      )} */}
+        </ErrorMessege>
+      )}
 
       {isModalOpen && (
         <BasicModalWindow active={isModalOpen} setActive={setIsModalOpen}>
