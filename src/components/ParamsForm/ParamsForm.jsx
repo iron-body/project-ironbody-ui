@@ -50,12 +50,16 @@ const ParamsFormSchema = yup.object().shape({
     .required('Desired weight is required'),
   birthday: yup
     .date()
-    .test('is-over-18', 'You should be older then 18 years old', function (value) {
-      const currentDate = new Date();
-      const minDate = new Date();
-      minDate.setFullYear(currentDate.getFullYear() - 18);
-      return value <= minDate;
-    })
+    .test(
+      'is-over-18',
+      'You should be older then 18 years old',
+      function (value) {
+        const currentDate = new Date();
+        const minDate = new Date();
+        minDate.setFullYear(currentDate.getFullYear() - 18);
+        return value <= minDate;
+      },
+    )
     .required('Date is required'),
 });
 
@@ -67,15 +71,22 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
   const navigate = useNavigate();
   const isUpdated = useSelector(selectParamsStatusUpdate);
 
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } =
-    useFormik({
-      initialValues: paramsState,
+  const {
+    values,
+    errors,
+    touched,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    setFieldValue,
+  } = useFormik({
+    initialValues: paramsState,
 
-      validationSchema: ParamsFormSchema,
-      validateOnChange: false,
-      validateOnBlur: false,
-      // onSubmit: warnAboutErrors,
-    });
+    validationSchema: ParamsFormSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
+    // onSubmit: warnAboutErrors,
+  });
 
   const warnAboutErrors = () => {
     handleSubmit();
@@ -100,15 +111,14 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
   }, [dispatch, values]);
 
   useEffect(() => {
-
     console.log('paramsState :>> ', paramsState);
   }, [paramsState]);
 
+  useEffect(() => {
     if (isUpdated) {
       navigate('/diary', { replace: true });
     }
   }, [isUpdated, navigate]);
-
 
   const handleDateChange = date => {
     const newFormatedDate = moment(date).toISOString();
@@ -175,7 +185,11 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
             <Wrapper>
               <Input
                 name="currentWeight"
-                id={errors.currentWeight && touched.currentWeight ? 'error' : 'currentWeight'}
+                id={
+                  errors.currentWeight && touched.currentWeight
+                    ? 'error'
+                    : 'currentWeight'
+                }
                 value={values.currentWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -191,7 +205,11 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
             <Wrapper>
               <Input
                 name="desiredWeight"
-                id={errors.desiredWeight && touched.desiredWeight ? 'error' : 'desiredWeight'}
+                id={
+                  errors.desiredWeight && touched.desiredWeight
+                    ? 'error'
+                    : 'desiredWeight'
+                }
                 value={values.desiredWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -212,7 +230,10 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
             </Wrapper>
           </Form>
 
-          <NextBtn type="button" onClick={canClickNext ? handleNextSetStep : warnAboutErrors}>
+          <NextBtn
+            type="button"
+            onClick={canClickNext ? handleNextSetStep : warnAboutErrors}
+          >
             Next
           </NextBtn>
         </FormContainer>
@@ -331,7 +352,8 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
                   onChange={() => setFieldValue('levelActivity', 3)}
                 />
                 <RadioLabel htmlFor="level-activity-3">
-                  Moderately active (moderate exercises/sports 3-5 days per week)
+                  Moderately active (moderate exercises/sports 3-5 days per
+                  week)
                 </RadioLabel>
               </div>
 
@@ -356,7 +378,8 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
                 onChange={() => setFieldValue('levelActivity', 5)}
               />
               <RadioLabel htmlFor="level-activity-5">
-                Extremely active (very strenuous exercises/sports and physical work)
+                Extremely active (very strenuous exercises/sports and physical
+                work)
               </RadioLabel>
             </RadioContainer>
 
