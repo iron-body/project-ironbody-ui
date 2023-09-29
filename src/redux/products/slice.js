@@ -5,8 +5,6 @@ import {
   addProductThunk,
   deleteProductThunk,
   getCategoriesProductsThunk,
-  // getCategoryProductsThunk,
-  // getAllFillterProductsThunk,
   getAllFillteredProductsThunk,
   getFillterRecommendedProductsThunk,
 } from './productsOperations';
@@ -31,12 +29,10 @@ const helpFn = type => thunksArr.map(el => el[type]);
 const handleFulfilled = state => {
   state.isLoading = false;
   state.error = '';
-  // state.isSuccessPost = true;
 };
 
 const handlePending = state => {
   state.isLoading = true;
-  // state.isSuccessPost = false;
 };
 
 const handleFulfilledGet = (state, { payload }) => {
@@ -58,7 +54,6 @@ const handleFulfilledDel = (state, { payload }) => {
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
   state.error = payload;
-  // state.isSuccessPost = false;
 };
 
 const productsSlice = createSlice({
