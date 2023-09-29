@@ -227,6 +227,10 @@ Notiflix needs to be appended to the "<`+P+'>" element, but you called it before
   color: white;
   font-weight: 400;
 
+  transition:
+    color 200ms ease-out,
+    background-color 200ms ease-out;
+
   &.active {
     color: white;
     border: 0px;
@@ -1406,6 +1410,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   color: var(--white);
   border-radius: var(--br-12px);
   border: 1px solid var(--color-whitesmoke-200);
+
+  transition: border 200ms ease-out;
+
   &:hover,
   &:focus {
     border: 1px solid var(--orange);
@@ -1450,6 +1457,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   color: var(--white);
   border-radius: var(--br-12px);
   background-color: var(--orange);
+
+  transition: background-color 200ms ease-out;
+
   &:hover,
   &:focus {
     background-color: var(--color-lightsalmon);
@@ -2055,6 +2065,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   border-radius: var(--br-12px);
   background-color: var(--orange);
   width: 136px;
+
+  transition: background-color 200ms ease-out;
+
   &:hover,
   &:focus {
     background-color: var(--color-lightsalmon);
@@ -2209,6 +2222,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   align-items: center;
   background-color: inherit;
   border-radius: 12px;
+
+  transition: border 200ms ease-out;
   /* border: 1px solid rgba(239, 237, 232, 0.3); */
 
   border: ${t=>{var n,r,i,o,a,s;return t.errorname===void 0&&((n=t.touchedname)==null?void 0:n.name)===!0?"1px solid #3CBF61":t.errorname&&((r=t.touchedname)==null?void 0:r.name)===!0?"1px solid #D80027":t.erroremail===void 0&&((i=t.touchedemail)==null?void 0:i.email)===!0?"1px solid #3CBF61":t.erroremail&&((o=t.touchedemail)==null?void 0:o.email)===!0?"1px solid #D80027":t.errorpassword===void 0&&((a=t.touchedpassword)==null?void 0:a.password)===!0?"1px solid #3CBF61":t.errorpassword&&((s=t.touchedpassword)==null?void 0:s.password)===!0?"1px solid #D80027":"1px solid rgba(239, 237, 232, 0.3)"}};
@@ -2872,18 +2887,25 @@ xe.version="2.29.4";DK(bt);xe.fn=ce;xe.min=mJ;xe.max=gJ;xe.now=vJ;xe.utc=ki;xe.u
   }
 `,Lte=T.div`
   display: flex;
-  gap:8px;
+  gap: 8px;
   margin-top: 20px;
   color: #efede8;
   @media ${C.tablet} {
-    gap:20px;
+    gap: 20px;
   }
 `,i0=T(Ip)`
   display: flex;
   align-items: center;
   flex-direction: column;
-
   color: rgba(239, 237, 232, 0.4);
+
+  transition: color 200ms ease-out;
+
+  &:hover, 
+  &:focus {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
   &.active {
     // transition-property: color;
     // transition-duration: var(--transition-duration);
@@ -2896,6 +2918,8 @@ xe.version="2.29.4";DK(bt);xe.fn=ce;xe.min=mJ;xe.max=gJ;xe.now=vJ;xe.utc=ki;xe.u
       height: 3px;
       background-color: #ef8964;
       border-radius: 2px;
+    
+
   }
 
   @media screen and (${C.mobile}) {
@@ -2909,7 +2933,6 @@ xe.version="2.29.4";DK(bt);xe.fn=ce;xe.min=mJ;xe.max=gJ;xe.now=vJ;xe.utc=ki;xe.u
     // margin-top: 6px;
     // margin-left: 20px;
   }
-
 `,zte=({resetSubcategorySelect:t,subCategories:n})=>{const r=()=>{t()};return h.jsxs(Lte,{children:[h.jsx(i0,{onClick:()=>r(),to:"/exercises/Body parts",className:n==="Body parts"?"active":"",children:"Body parts"}),h.jsx(i0,{onClick:()=>r(),to:"/exercises/Muscles",className:n==="Muscles"?"active":"",children:"Muscles"}),h.jsx(i0,{onClick:()=>r(),to:"/exercises/Equipment",className:n==="Equipment"?"active":"",children:"Equipment"})]})};var z4={exports:{}};(function(t,n){(function(r,i){t.exports=i(k)})(lu,r=>(()=>{var i={703:(l,u,c)=>{var d=c(414);function f(){}function p(){}p.resetWarningCache=f,l.exports=function(){function m(b,y,x,w,S,E){if(E!==d){var O=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw O.name="Invariant Violation",O}}function v(){return m}m.isRequired=m;var g={array:m,bigint:m,bool:m,func:m,number:m,object:m,string:m,symbol:m,any:m,arrayOf:v,element:m,elementType:m,instanceOf:v,node:m,objectOf:v,oneOf:v,oneOfType:v,shape:v,exact:v,checkPropTypes:p,resetWarningCache:f};return g.PropTypes=g,g}},697:(l,u,c)=>{l.exports=c(703)()},414:l=>{l.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},98:l=>{l.exports=r}},o={};function a(l){var u=o[l];if(u!==void 0)return u.exports;var c=o[l]={exports:{}};return i[l](c,c.exports,a),c.exports}a.n=l=>{var u=l&&l.__esModule?()=>l.default:()=>l;return a.d(u,{a:u}),u},a.d=(l,u)=>{for(var c in u)a.o(u,c)&&!a.o(l,c)&&Object.defineProperty(l,c,{enumerable:!0,get:u[c]})},a.o=(l,u)=>Object.prototype.hasOwnProperty.call(l,u),a.r=l=>{typeof Symbol<"u"&&Symbol.toStringTag&&Object.defineProperty(l,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(l,"__esModule",{value:!0})};var s={};return(()=>{a.r(s),a.d(s,{default:()=>ie});var l=a(98),u=a.n(l),c=a(697),d=a.n(c);function f(){return f=Object.assign?Object.assign.bind():function(Z){for(var J=1;J<arguments.length;J++){var G=arguments[J];for(var B in G)Object.prototype.hasOwnProperty.call(G,B)&&(Z[B]=G[B])}return Z},f.apply(this,arguments)}var p=function(Z){var J=Z.pageClassName,G=Z.pageLinkClassName,B=Z.page,U=Z.selected,ee=Z.activeClassName,F=Z.activeLinkClassName,z=Z.getEventListener,R=Z.pageSelectedHandler,re=Z.href,A=Z.extraAriaContext,Y=Z.pageLabelBuilder,H=Z.rel,ne=Z.ariaLabel||"Page "+B+(A?" "+A:""),j=null;return U&&(j="page",ne=Z.ariaLabel||"Page "+B+" is your current page",J=J!==void 0?J+" "+ee:ee,G!==void 0?F!==void 0&&(G=G+" "+F):G=F),u().createElement("li",{className:J},u().createElement("a",f({rel:H,role:re?void 0:"button",className:G,href:re,tabIndex:U?"-1":"0","aria-label":ne,"aria-current":j,onKeyPress:R},z(R)),Y(B)))};p.propTypes={pageSelectedHandler:d().func.isRequired,selected:d().bool.isRequired,pageClassName:d().string,pageLinkClassName:d().string,activeClassName:d().string,activeLinkClassName:d().string,extraAriaContext:d().string,href:d().string,ariaLabel:d().string,page:d().number.isRequired,getEventListener:d().func.isRequired,pageLabelBuilder:d().func.isRequired,rel:d().string};const m=p;function v(){return v=Object.assign?Object.assign.bind():function(Z){for(var J=1;J<arguments.length;J++){var G=arguments[J];for(var B in G)Object.prototype.hasOwnProperty.call(G,B)&&(Z[B]=G[B])}return Z},v.apply(this,arguments)}var g=function(Z){var J=Z.breakLabel,G=Z.breakAriaLabel,B=Z.breakClassName,U=Z.breakLinkClassName,ee=Z.breakHandler,F=Z.getEventListener,z=B||"break";return u().createElement("li",{className:z},u().createElement("a",v({className:U,role:"button",tabIndex:"0","aria-label":G,onKeyPress:ee},F(ee)),J))};g.propTypes={breakLabel:d().oneOfType([d().string,d().node]),breakAriaLabel:d().string,breakClassName:d().string,breakLinkClassName:d().string,breakHandler:d().func.isRequired,getEventListener:d().func.isRequired};const b=g;function y(Z){var J=arguments.length>1&&arguments[1]!==void 0?arguments[1]:"";return Z??J}function x(Z){return x=typeof Symbol=="function"&&typeof Symbol.iterator=="symbol"?function(J){return typeof J}:function(J){return J&&typeof Symbol=="function"&&J.constructor===Symbol&&J!==Symbol.prototype?"symbol":typeof J},x(Z)}function w(){return w=Object.assign?Object.assign.bind():function(Z){for(var J=1;J<arguments.length;J++){var G=arguments[J];for(var B in G)Object.prototype.hasOwnProperty.call(G,B)&&(Z[B]=G[B])}return Z},w.apply(this,arguments)}function S(Z,J){for(var G=0;G<J.length;G++){var B=J[G];B.enumerable=B.enumerable||!1,B.configurable=!0,"value"in B&&(B.writable=!0),Object.defineProperty(Z,B.key,B)}}function E(Z,J){return E=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(G,B){return G.__proto__=B,G},E(Z,J)}function O(Z,J){if(J&&(x(J)==="object"||typeof J=="function"))return J;if(J!==void 0)throw new TypeError("Derived constructors may only return object or undefined");return _(Z)}function _(Z){if(Z===void 0)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return Z}function N(Z){return N=Object.setPrototypeOf?Object.getPrototypeOf.bind():function(J){return J.__proto__||Object.getPrototypeOf(J)},N(Z)}function q(Z,J,G){return J in Z?Object.defineProperty(Z,J,{value:G,enumerable:!0,configurable:!0,writable:!0}):Z[J]=G,Z}var W=function(Z){(function(z,R){if(typeof R!="function"&&R!==null)throw new TypeError("Super expression must either be null or a function");z.prototype=Object.create(R&&R.prototype,{constructor:{value:z,writable:!0,configurable:!0}}),Object.defineProperty(z,"prototype",{writable:!1}),R&&E(z,R)})(F,Z);var J,G,B,U,ee=(B=F,U=function(){if(typeof Reflect>"u"||!Reflect.construct||Reflect.construct.sham)return!1;if(typeof Proxy=="function")return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],function(){})),!0}catch{return!1}}(),function(){var z,R=N(B);if(U){var re=N(this).constructor;z=Reflect.construct(R,arguments,re)}else z=R.apply(this,arguments);return O(this,z)});function F(z){var R,re;return function(A,Y){if(!(A instanceof Y))throw new TypeError("Cannot call a class as a function")}(this,F),q(_(R=ee.call(this,z)),"handlePreviousPage",function(A){var Y=R.state.selected;R.handleClick(A,null,Y>0?Y-1:void 0,{isPrevious:!0})}),q(_(R),"handleNextPage",function(A){var Y=R.state.selected,H=R.props.pageCount;R.handleClick(A,null,Y<H-1?Y+1:void 0,{isNext:!0})}),q(_(R),"handlePageSelected",function(A,Y){if(R.state.selected===A)return R.callActiveCallback(A),void R.handleClick(Y,null,void 0,{isActive:!0});R.handleClick(Y,null,A)}),q(_(R),"handlePageChange",function(A){R.state.selected!==A&&(R.setState({selected:A}),R.callCallback(A))}),q(_(R),"getEventListener",function(A){return q({},R.props.eventListener,A)}),q(_(R),"handleClick",function(A,Y,H){var ne=arguments.length>3&&arguments[3]!==void 0?arguments[3]:{},j=ne.isPrevious,fe=j!==void 0&&j,Q=ne.isNext,he=Q!==void 0&&Q,pe=ne.isBreak,be=pe!==void 0&&pe,ve=ne.isActive,De=ve!==void 0&&ve;A.preventDefault?A.preventDefault():A.returnValue=!1;var P=R.state.selected,M=R.props.onClick,V=H;if(M){var ae=M({index:Y,selected:P,nextSelectedPage:H,event:A,isPrevious:fe,isNext:he,isBreak:be,isActive:De});if(ae===!1)return;Number.isInteger(ae)&&(V=ae)}V!==void 0&&R.handlePageChange(V)}),q(_(R),"handleBreakClick",function(A,Y){var H=R.state.selected;R.handleClick(Y,A,H<A?R.getForwardJump():R.getBackwardJump(),{isBreak:!0})}),q(_(R),"callCallback",function(A){R.props.onPageChange!==void 0&&typeof R.props.onPageChange=="function"&&R.props.onPageChange({selected:A})}),q(_(R),"callActiveCallback",function(A){R.props.onPageActive!==void 0&&typeof R.props.onPageActive=="function"&&R.props.onPageActive({selected:A})}),q(_(R),"getElementPageRel",function(A){var Y=R.state.selected,H=R.props,ne=H.nextPageRel,j=H.prevPageRel,fe=H.selectedPageRel;return Y-1===A?j:Y===A?fe:Y+1===A?ne:void 0}),q(_(R),"pagination",function(){var A=[],Y=R.props,H=Y.pageRangeDisplayed,ne=Y.pageCount,j=Y.marginPagesDisplayed,fe=Y.breakLabel,Q=Y.breakClassName,he=Y.breakLinkClassName,pe=Y.breakAriaLabels,be=R.state.selected;if(ne<=H)for(var ve=0;ve<ne;ve++)A.push(R.getPageElement(ve));else{var De=H/2,P=H-De;be>ne-H/2?De=H-(P=ne-be):be<H/2&&(P=H-(De=be));var M,V,ae=function(le){return R.getPageElement(le)},de=[];for(M=0;M<ne;M++){var Pe=M+1;if(Pe<=j)de.push({type:"page",index:M,display:ae(M)});else if(Pe>ne-j)de.push({type:"page",index:M,display:ae(M)});else if(M>=be-De&&M<=be+(be===0&&H>1?P-1:P))de.push({type:"page",index:M,display:ae(M)});else if(fe&&de.length>0&&de[de.length-1].display!==V&&(H>0||j>0)){var ye=M<be?pe.backward:pe.forward;V=u().createElement(b,{key:M,breakAriaLabel:ye,breakLabel:fe,breakClassName:Q,breakLinkClassName:he,breakHandler:R.handleBreakClick.bind(null,M),getEventListener:R.getEventListener}),de.push({type:"break",index:M,display:V})}}de.forEach(function(le,L){var X=le;le.type==="break"&&de[L-1]&&de[L-1].type==="page"&&de[L+1]&&de[L+1].type==="page"&&de[L+1].index-de[L-1].index<=2&&(X={type:"page",index:le.index,display:ae(le.index)}),A.push(X.display)})}return A}),z.initialPage!==void 0&&z.forcePage!==void 0&&console.warn("(react-paginate): Both initialPage (".concat(z.initialPage,") and forcePage (").concat(z.forcePage,") props are provided, which is discouraged.")+` Use exclusively forcePage prop for a controlled component.
 See https://reactjs.org/docs/forms.html#controlled-components`),re=z.initialPage?z.initialPage:z.forcePage?z.forcePage:0,R.state={selected:re},R}return J=F,(G=[{key:"componentDidMount",value:function(){var z=this.props,R=z.initialPage,re=z.disableInitialCallback,A=z.extraAriaContext,Y=z.pageCount,H=z.forcePage;R===void 0||re||this.callCallback(R),A&&console.warn("DEPRECATED (react-paginate): The extraAriaContext prop is deprecated. You should now use the ariaLabelBuilder instead."),Number.isInteger(Y)||console.warn("(react-paginate): The pageCount prop value provided is not an integer (".concat(Y,"). Did you forget a Math.ceil()?")),R!==void 0&&R>Y-1&&console.warn("(react-paginate): The initialPage prop provided is greater than the maximum page index from pageCount prop (".concat(R," > ").concat(Y-1,").")),H!==void 0&&H>Y-1&&console.warn("(react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (".concat(H," > ").concat(Y-1,")."))}},{key:"componentDidUpdate",value:function(z){this.props.forcePage!==void 0&&this.props.forcePage!==z.forcePage&&(this.props.forcePage>this.props.pageCount-1&&console.warn("(react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (".concat(this.props.forcePage," > ").concat(this.props.pageCount-1,").")),this.setState({selected:this.props.forcePage})),Number.isInteger(z.pageCount)&&!Number.isInteger(this.props.pageCount)&&console.warn("(react-paginate): The pageCount prop value provided is not an integer (".concat(this.props.pageCount,"). Did you forget a Math.ceil()?"))}},{key:"getForwardJump",value:function(){var z=this.state.selected,R=this.props,re=R.pageCount,A=z+R.pageRangeDisplayed;return A>=re?re-1:A}},{key:"getBackwardJump",value:function(){var z=this.state.selected-this.props.pageRangeDisplayed;return z<0?0:z}},{key:"getElementHref",value:function(z){var R=this.props,re=R.hrefBuilder,A=R.pageCount,Y=R.hrefAllControls;if(re)return Y||z>=0&&z<A?re(z+1,A,this.state.selected):void 0}},{key:"ariaLabelBuilder",value:function(z){var R=z===this.state.selected;if(this.props.ariaLabelBuilder&&z>=0&&z<this.props.pageCount){var re=this.props.ariaLabelBuilder(z+1,R);return this.props.extraAriaContext&&!R&&(re=re+" "+this.props.extraAriaContext),re}}},{key:"getPageElement",value:function(z){var R=this.state.selected,re=this.props,A=re.pageClassName,Y=re.pageLinkClassName,H=re.activeClassName,ne=re.activeLinkClassName,j=re.extraAriaContext,fe=re.pageLabelBuilder;return u().createElement(m,{key:z,pageSelectedHandler:this.handlePageSelected.bind(null,z),selected:R===z,rel:this.getElementPageRel(z),pageClassName:A,pageLinkClassName:Y,activeClassName:H,activeLinkClassName:ne,extraAriaContext:j,href:this.getElementHref(z),ariaLabel:this.ariaLabelBuilder(z),page:z+1,pageLabelBuilder:fe,getEventListener:this.getEventListener})}},{key:"render",value:function(){var z=this.props.renderOnZeroPageCount;if(this.props.pageCount===0&&z!==void 0)return z&&z(this.props);var R=this.props,re=R.disabledClassName,A=R.disabledLinkClassName,Y=R.pageCount,H=R.className,ne=R.containerClassName,j=R.previousLabel,fe=R.previousClassName,Q=R.previousLinkClassName,he=R.previousAriaLabel,pe=R.prevRel,be=R.nextLabel,ve=R.nextClassName,De=R.nextLinkClassName,P=R.nextAriaLabel,M=R.nextRel,V=this.state.selected,ae=V===0,de=V===Y-1,Pe="".concat(y(fe)).concat(ae?" ".concat(y(re)):""),ye="".concat(y(ve)).concat(de?" ".concat(y(re)):""),le="".concat(y(Q)).concat(ae?" ".concat(y(A)):""),L="".concat(y(De)).concat(de?" ".concat(y(A)):""),X=ae?"true":"false",K=de?"true":"false";return u().createElement("ul",{className:H||ne,role:"navigation","aria-label":"Pagination"},u().createElement("li",{className:Pe},u().createElement("a",w({className:le,href:this.getElementHref(V-1),tabIndex:ae?"-1":"0",role:"button",onKeyPress:this.handlePreviousPage,"aria-disabled":X,"aria-label":he,rel:pe},this.getEventListener(this.handlePreviousPage)),j)),this.pagination(),u().createElement("li",{className:ye},u().createElement("a",w({className:L,href:this.getElementHref(V+1),tabIndex:de?"-1":"0",role:"button",onKeyPress:this.handleNextPage,"aria-disabled":K,"aria-label":P,rel:M},this.getEventListener(this.handleNextPage)),be)))}}])&&S(J.prototype,G),Object.defineProperty(J,"prototype",{writable:!1}),F}(l.Component);q(W,"propTypes",{pageCount:d().number.isRequired,pageRangeDisplayed:d().number,marginPagesDisplayed:d().number,previousLabel:d().node,previousAriaLabel:d().string,prevPageRel:d().string,prevRel:d().string,nextLabel:d().node,nextAriaLabel:d().string,nextPageRel:d().string,nextRel:d().string,breakLabel:d().oneOfType([d().string,d().node]),breakAriaLabels:d().shape({forward:d().string,backward:d().string}),hrefBuilder:d().func,hrefAllControls:d().bool,onPageChange:d().func,onPageActive:d().func,onClick:d().func,initialPage:d().number,forcePage:d().number,disableInitialCallback:d().bool,containerClassName:d().string,className:d().string,pageClassName:d().string,pageLinkClassName:d().string,pageLabelBuilder:d().func,activeClassName:d().string,activeLinkClassName:d().string,previousClassName:d().string,nextClassName:d().string,previousLinkClassName:d().string,nextLinkClassName:d().string,disabledClassName:d().string,disabledLinkClassName:d().string,breakClassName:d().string,breakLinkClassName:d().string,extraAriaContext:d().string,ariaLabelBuilder:d().func,eventListener:d().string,renderOnZeroPageCount:d().func,selectedPageRel:d().string}),q(W,"defaultProps",{pageRangeDisplayed:2,marginPagesDisplayed:3,activeClassName:"selected",previousLabel:"Previous",previousClassName:"previous",previousAriaLabel:"Previous page",prevPageRel:"prev",prevRel:"prev",nextLabel:"Next",nextClassName:"next",nextAriaLabel:"Next page",nextPageRel:"next",nextRel:"next",breakLabel:"...",breakAriaLabels:{forward:"Jump forward",backward:"Jump backward"},disabledClassName:"disabled",disableInitialCallback:!1,pageLabelBuilder:function(Z){return Z},eventListener:"onClick",renderOnZeroPageCount:void 0,selectedPageRel:"canonical",hrefAllControls:!1});const ie=W})(),s})())})(z4);var Bte=z4.exports;const Vte=Kr(Bte),Wte=T.div`
   display: flex;
@@ -3614,6 +3637,8 @@ gap:20px;
   border-radius: 12px;
   /* border: 1px solid rgba(239, 237, 232, 0.3); */
 
+  transition: border 200ms ease-out;
+
   border: ${t=>{var n,r,i,o;return t.erroremail===void 0&&((n=t.touchedemail)==null?void 0:n.email)===!0?"1px solid #3CBF61":t.erroremail&&((r=t.touchedemail)==null?void 0:r.email)===!0?"1px solid #D80027":t.errorpassword===void 0&&((i=t.touchedpassword)==null?void 0:i.password)===!0?"1px solid #3CBF61":t.errorpassword&&((o=t.touchedpassword)==null?void 0:o.password)===!0?"1px solid #D80027":"1px solid rgba(239, 237, 232, 0.3)"}};
 
   color: var(--white);
@@ -3675,6 +3700,9 @@ gap:20px;
   border-radius: var(--br-12px);
   background-color: var(--orange);
   width: 136px;
+
+  transition: background-color 200ms ease-out;
+
   &:hover,
   &:focus {
     background-color: var(--color-lightsalmon);
