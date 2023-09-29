@@ -11,8 +11,7 @@ import {
   selectParamsValues,
   updateAll,
 } from '../../redux/params/paramsSlice';
-import { selectToken } from '../../redux/auth/authSlice';
-import axios from 'axios';
+// import { selectToken } from '../../redux/auth/authSlice';
 import { Notify } from 'notiflix';
 import {
   MainForm,
@@ -60,9 +59,10 @@ const ParamsFormSchema = yup.object().shape({
     .required('Date is required'),
 });
 
+// eslint-disable-next-line react/prop-types
 const ParamsForm = ({ currentStep, onStepChange }) => {
   const paramsState = useSelector(selectParamsValues); //fetch
-  const stateToken = useSelector(selectToken); //fetch
+  // const stateToken = useSelector(selectToken); //fetch
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isUpdated = useSelector(selectParamsStatusUpdate);

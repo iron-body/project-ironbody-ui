@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import sprite from '../../../icons.svg';
 import {
   CalendarIcon,
   DaySwitchContainer,
-  StyledButton,
+  // StyledButton,
   StyledDate,
 } from './ProfileDaySwitch.styled';
 import StyledDatepicker from '../StyledDatepicker/StyledDatepicker';

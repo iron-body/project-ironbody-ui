@@ -16,16 +16,16 @@ import { format } from 'date-fns';
 import DatePicker from 'react-datepicker';
 import {
   CalendarGlobalStyles,
-  TitleWrapper,
+  // TitleWrapper,
   CalendarIcon,
   DaySwitchContainer,
-  StyledButton,
+  // StyledButton,
   StyledDate,
 } from './ParamsFormDaySwitch.styled';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
 function ParamsFormDaySwitch({ onDateChange }) {
-  const currentDate = new Date();
+  // const currentDate = new Date();
   const date18yearsAgo = moment().subtract(18, 'years').toDate();
   const [selectedDate, setSelectedDate] = useState(date18yearsAgo);
 
@@ -33,7 +33,8 @@ function ParamsFormDaySwitch({ onDateChange }) {
     onDateChange(selectedDate);
   }, [selectedDate]);
 
-  const Btn = forwardRef(({ value, onClick }, ref) => {
+  // eslint-disable-next-line react/display-name
+  const Btn = forwardRef(({ onClick }, ref) => {
     return (
       <StyledDate onClick={onClick} ref={ref}>
         {format(selectedDate, 'dd.MM.yyyy')}

@@ -80,7 +80,6 @@ const UserForm = () => {
           <FieldBasicStyled
             type="email"
             name="email"
-            disabled="disabled"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values?.email || ''}
