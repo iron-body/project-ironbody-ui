@@ -34,60 +34,12 @@ import {
 import { selectProfileData } from '../../redux/profile/profileSlice';
 import { useNavigate } from 'react-router-dom';
 import { authOperations } from '../../redux/auth/authOperations';
-// window.onload = () => {
-//   const uploadAvatar = document.getElementById('upload-avatar');
-//   const uploadBtn = document.getElementById('upload-btn');
-//   uploadBtn.addEventListener('click', function () {
-//     uploadAvatar.click();
-//   });
-// };
-// const baseURL = 'https://connections-api.herokuapp.com/';
 
 const UserCard = () => {
-  // const filePicker = useRef(null);
-  // const [selectedFile, setSelectedFile] = useState(null);
-  // const [uploaded, setUploaded] = useState();
-
-  // const handleChange = event => {
-  //   console.log(event.target.files);
-  //   setSelectedFile(event.target.files[0]);
-  // };
-
-  // const handleUpload = async () => {
-  //   filePicker.current.click();
-  //   if (!selectedFile) {
-  //     alert('pleas select a file');
-  //     return;
-  //   }
-  //   const formData = new FormData();
-  //   formData.append('avatar', selectedFile);
-
-  //   const res = await fetch(baseURL, {
-  //     method: 'POST',
-  //   });
-  //   const data = await res.json();
-  //   setUploaded(data);
-  // };
-
-  //   const handlePick = () => {
-  //     filePicker.current.click();
-  //     handleUpload()
-  // }
-  // const userName = useSelector(getUserName);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(profileOperations.profileData());
-  // }, [dispatch]);
-  // useEffect(() => {const { name, calorieNorm, sportTimeNorm } = profileData; },[profileData])
-
   const profileData = useSelector(selectProfileData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // console.log('profileData UserCard :>> ', profileData);
 
-  // const { name, calorieNorm, sportTimeNorm } = profileData;
-  // console.log('profileData :>> ', profileData);
   return (
     <Wrapper>
       <UserCardWrapper>
@@ -99,7 +51,6 @@ const UserCard = () => {
             <FileInput
               type="file"
               // onChange={handleChange}
-              // ref={filePicker}
               id="upload-avatar"
               accept="image/*,.png,.jpg,.web"
             />
