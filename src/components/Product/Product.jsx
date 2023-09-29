@@ -13,9 +13,18 @@ import {
   FoodIcon,
   ProductWrapper,
 } from './Product.styled';
+import { useSelector } from 'react-redux';
 
 export default function Product({ product, openModal }) {
-  const { title, calories, category, weight } = product;
+  const {
+    title,
+    calories,
+    category,
+    weight,
+    groupBloodNotAllowed,
+    recommended,
+  } = product;
+
   const handleButtonClick = () => {
     openModal();
   };
@@ -26,8 +35,15 @@ export default function Product({ product, openModal }) {
         <NavCard>
           <TitleCard>DIET</TitleCard>
           <RecomendedInfo>
-            <RecomendedMarker />
-            <RecomendedTitle> Recomended </RecomendedTitle>
+            <RecomendedMarker
+              style={
+                recommended ? { background: 'green' } : { background: 'red' }
+              }
+            />
+            <RecomendedTitle>
+              {' '}
+              {recommended ? 'Recomended' : 'No recommended'}{' '}
+            </RecomendedTitle>
             <ButtonItem onClick={handleButtonClick}>
               Add
               <ButtonIcon alt="" src="/project-ironbody-ui/arrow.svg" />

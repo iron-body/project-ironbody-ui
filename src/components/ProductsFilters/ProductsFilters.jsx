@@ -12,34 +12,43 @@ import {
   SearchFieldContainer,
   EraseInputButton,
   MobInpCont,
+  ErrMessage,
 } from './ProductsFilters.styled';
 
 import { Formik, Form, Field } from 'formik';
+import * as yup from 'yup';
 import Select from 'react-select';
-// import {initialValue} from '../../redux/filterSlice'
 import { getCategoriesProducts } from '../../redux/products/selectors';
 import { useEffect } from 'react';
-import { getCategoriesProductsThunk, getCategoryProductsThunk } from '../../redux/products/productsOperations';
+import {
+  getProductsThunk,
+  getCategoriesProductsThunk,
+  getAllFillteredProductsThunk,
+  getFillterRecommendedProductsThunk,
+} from '../../redux/products/productsOperations';
 
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { getFilterValue, getCategoryValue } from '../../redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilterValue } from '../../redux/selectors';
 
 import { updateFilter } from '../../redux/filterSlice';
 
 const optionsRecomended = [
   { value: 'All', label: 'All' },
-  { value: 'Recommended', label: 'Recommended' },
-  { value: 'No recommended', label: 'No recommended' },
+  { value: 'false', label: 'Recommended' },
+  { value: 'true', label: 'No recommended' },
 ];
+
+const schema = yup.object().shape({
+  searchInput: yup.string().matches(/^[a-zA-Z\s'-]+$/, 'Not NAme'),
+});
 
 export default function ProductsFilters() {
   const dispatch = useDispatch();
   const filterValue = useSelector(getFilterValue);
-    const categoryValue = useSelector(getCategoryValue);
 
   const [localSearchInput, setLocalSearchInput] = useState(filterValue);
-  const [selectedCategory, setSelectedCategory] = useState(categoryValue);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [recommended, setRecommended] = useState('');
 
   const categories = useSelector(getCategoriesProducts);
 
@@ -54,32 +63,61 @@ export default function ProductsFilters() {
 
   useEffect(() => {
     dispatch(getCategoriesProductsThunk());
+    dispatch(getProductsThunk());
   }, [dispatch]);
 
-useEffect(() => {
-  if (selectedCategory.value !== null && selectedCategory.value !== undefined) {
-    dispatch(getCategoryProductsThunk(selectedCategory.value));
-  }
-}, [selectedCategory, dispatch]);
+  useEffect(() => {
+    if (recommended.value !== 'All' && recommended.value !== undefined) {
+      dispatch(
+        getFillterRecommendedProductsThunk({
+          categoryQuery: selectedCategory.value,
+          searchParams: filterValue,
+          recommendedQuery: recommended.value,
+        }),
+      );
+    } else if (recommended.value === 'All' || recommended.value === undefined) {
+      dispatch(
+        getAllFillteredProductsThunk({
+          categoryQuery: selectedCategory.value,
+          searchParams: filterValue,
+        }),
+      );
+    }
+  }, [selectedCategory.value, filterValue, recommended.value, dispatch]);
 
   const onSearchValue = () => {
-    dispatch(updateFilter({ value: localSearchInput, selectedCategory }));
+    getAllFillteredProductsThunk({
+      categoryQuery: selectedCategory.value,
+      searchParams: filterValue,
+    }),
+      dispatch(
+        updateFilter({
+          value: localSearchInput,
+        }),
+      );
   };
 
   const eraseInputValue = () => {
-    dispatch(updateFilter({ value: '', selectedCategory : '', }));
-    setLocalSearchInput('');
+    dispatch(
+      getAllFillteredProductsThunk({
+        categoryQuery: selectedCategory.value,
+        searchParams: filterValue,
+      }),
+    ),
+      dispatch(
+        updateFilter({
+          value: '',
+        }),
+      ),
+      setLocalSearchInput('');
+    setSelectedCategory('');
   };
-
-  const updateCategoryValue = (value) => {
-  setSelectedCategory(value);
-  dispatch(getCategoryProductsThunk(value));
-};
 
   return (
     <Formik
-      initialValues={{ SerchInputValue: filterValue }}
+      initialValues={{ SerchInputValue: localSearchInput }}
       onSubmit={onSearchValue}
+      validationSchema={schema}
     >
       <Form>
         <FormTitle>Filter</FormTitle>
@@ -88,11 +126,12 @@ useEffect(() => {
             <SearchFieldContainer>
               <SearchField
                 type="text"
-                name="searchInputProduct"
+                name="searchInput"
                 placeholder="Search"
                 value={localSearchInput}
                 onChange={e => setLocalSearchInput(e.target.value)}
               />
+              <ErrMessage name="searchInput" render={msg => <p>{msg}</p>} />
 
               {localSearchInput.length > 0 && (
                 <EraseInputButton type="button" onClick={eraseInputValue}>
@@ -123,9 +162,9 @@ useEffect(() => {
                     isSearchable={false}
                     styles={categoriesStyles}
                     placeholder="Categories"
+                    value={selectedCategory}
                     onChange={selectedOption => {
                       setSelectedCategory(selectedOption);
-                       updateCategoryValue(selectedOption.value);
                     }}
                   />
                 )}
@@ -141,6 +180,10 @@ useEffect(() => {
                     options={optionsRecomended}
                     isSearchable={false}
                     styles={recomendedStyles}
+                    value={recommended}
+                    onChange={recommendedValue => {
+                      setRecommended(recommendedValue);
+                    }}
                   />
                 )}
               />

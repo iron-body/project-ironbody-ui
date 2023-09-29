@@ -4,9 +4,9 @@ import {
   getProductsThunk,
   addProductThunk,
   deleteProductThunk,
-  filterProductsThunk,
   getCategoriesProductsThunk,
-  getCategoryProductsThunk,
+  getAllFillteredProductsThunk,
+  getFillterRecommendedProductsThunk,
 } from './productsOperations';
 
 import { productsInitialState } from './initialProducts';
@@ -21,9 +21,9 @@ const thunksArr = [
   addProductThunk,
   getProductsThunk,
   deleteProductThunk,
-  filterProductsThunk,
   getCategoriesProductsThunk,
-  getCategoryProductsThunk,
+  getAllFillteredProductsThunk,
+  getFillterRecommendedProductsThunk,
 ];
 const helpFn = type => thunksArr.map(el => el[type]);
 const handleFulfilled = state => {
@@ -45,7 +45,9 @@ const handleFulfilledGetCategory = (state, { payload }) => {
 
 const handleFulfilledAdd = (state, { payload }) => {
   state.items.push(payload);
+  // state.isSuccessPost = true;
 };
+
 const handleFulfilledDel = (state, { payload }) => {
   state.items = state.items.filter(el => el.id !== payload.id);
 };

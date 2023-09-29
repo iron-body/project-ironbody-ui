@@ -96,6 +96,12 @@ export const Input = styled.input`
   font-weight: 400;
   line-height: 1.3;
 
+  transition: border-color 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &[id='error'] {
+    border: 1px solid #d80027;
+  }
+
   &:focus ~ div > label,
   &:valid ~ div > label {
     font-size: 12px;
@@ -103,12 +109,9 @@ export const Input = styled.input`
   }
 
   &:focus,
-  &:valid {
+  &:valid,
+  &:hover {
     border-color: var(--orange);
-  }
-
-  &[id='error'] {
-    border: 1px solid #d80027;
   }
 `;
 
@@ -186,6 +189,8 @@ export const RadioContainer = styled.div`
   display: flex;
   flex-direction: column;
 
+  transition: color 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
   input[type='radio'] {
     position: absolute;
     opacity: 0;
@@ -222,7 +227,8 @@ export const RadioContainer = styled.div`
         }
       }
     }
-    &:focus {
+    &:focus,
+    &:hover {
       + label {
         &:before {
           outline: none;
@@ -299,6 +305,13 @@ export const SubmitBtn = styled.button`
   font-weight: 500;
   line-height: 1.1;
 
+  transition: background 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    background: #d74b35;
+  }
+
   @media ${device.tablet} {
     padding: 16px 75px;
     gap: 10px;
@@ -311,12 +324,19 @@ export const BackBtn = styled.button`
   margin-right: 16px;
   padding: 8px 0px 8px 26px;
   background-color: var(--black);
-  background: url('/back-array.svg') no-repeat left;
+  background: url('back-array.svg') no-repeat left;
   border-color: transparent;
   color: var(--color-whitesmoke-100);
   font-family: var(--headline-style-mobile-h1);
   font-size: var(--font-size-xm);
   line-height: 1.3;
+
+  transition: color 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: var(--color-whitesmoke-200);
+  }
 
   @media ${device.tablet} {
     font-size: var(--font-size-base);
@@ -326,12 +346,19 @@ export const BackBtn = styled.button`
 export const NextBtn = styled.button`
   padding: 8px 26px 8px 0px;
   background-color: var(--black);
-  background: url('/next-array.svg') no-repeat right;
+  background: url('next-array.svg') no-repeat right;
   border-color: transparent;
   color: var(--white);
   font-family: var(--headline-style-mobile-h1);
   font-size: var(--font-size-xm);
   line-height: 1.3;
+
+  transition: color 220ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    color: rgba(239, 237, 232, 0.493);
+  }
 
   @media ${device.tablet} {
     font-size: var(--font-size-base);

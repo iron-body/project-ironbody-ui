@@ -1,12 +1,17 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { device } from '../../Constants';
+import ReactPaginate from 'react-paginate';
 
 export const Container = styled.div`
-  /* padding: 40px; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: center; */
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 30px;
+
+  @media screen and (${device.tablet}) {
+    margin-top: 64px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -44,17 +49,51 @@ export const StyledLink = styled(Link)`
   color: #ffffff; /* White text color */
 
   transition:
-    color 0.3s,
-    text-shadow 0.3s;
+    color 400ms ease-out,
+    text-shadow 400ms ease-out;
+
   display: block;
   &:hover,
   &:focus {
-    color: #00baff; /* Blue text color on hover/focus */
+    /* color: var(--orange); Blue text color on hover/focus */
     text-shadow:
-      0 0 5px #00baff,
-      0 0 10px #00baff,
-      0 0 20px #00baff,
-      0 0 40px #00baff,
-      0 0 80px #00baff;
+      0 0 5px var(--orange),
+      0 0 10px var(--orange),
+      0 0 20px var(--orange),
+      0 0 40px var(--orange),
+      0 0 80px var(--orange);
+  }
+`;
+
+export const StyledReactPaginate = styled(ReactPaginate)`
+  /* background-color: white; */
+
+  width: 100%;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 40px;
+  font-size: 20px;
+  gap: 10px;
+
+  .page-num {
+    color: var(--color-whitesmoke-100);
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+
+    transition: color 240ms ease-out;
+  }
+
+  .page-num:hover,
+  .page-num:focus {
+    color: var(--orange);
+  }
+
+  .active {
+    color: var(--orange);
   }
 `;

@@ -7,17 +7,15 @@ import { Btns, LineIcon, TransformingYourBody } from './WelcomePage.styled';
 
 export const WelcomePage = () => {
   return (
-    <>
-      <Root>
-        <LineIcon alt="" src="/project-ironbody-ui/line.svg" />
-        <TransformingYourBody>Transforming your body shape with Power Pulse</TransformingYourBody>
-        <Btns>
-          <BtnSignUp />
-          <BtnSignIn />
-        </Btns>
-        <TutorialBlock />
-        <CaloriesBlock />
-      </Root>
-    </>
+    <Root>
+      <LineIcon alt="" src="/project-ironbody-ui/line.svg" />
+      <TransformingYourBody>Transforming your body shape with Power Pulse</TransformingYourBody>
+      <Btns>
+        <BtnSignUp />
+        <BtnSignIn />
+      </Btns>
+      <TutorialBlock />
+      <CaloriesBlock />
+    </Root>
   );
 };

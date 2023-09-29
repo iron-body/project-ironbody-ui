@@ -30,3 +30,24 @@ img {
 button {
   cursor: pointer;
 }
+html {
+    box-sizing: border-box;
+}
+input[type=date]::-webkit-calendar-picker-indicator {
+    
+    background:url("../public/calendar.svg") no-repeat 90% 50%;
+    width: 18px;
+    height: 18px;
+}
+
+
+
+input[type=number]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+    background:url("../public/calendar.svg") no-repeat 90% 50%;
+}
+
+

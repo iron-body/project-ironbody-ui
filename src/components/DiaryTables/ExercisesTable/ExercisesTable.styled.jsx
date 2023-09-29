@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import { device } from '../../Constants';
+import { device } from '../../../Constants';
 
 export const TableContainer = styled.div`
-  height: 100vh;
+  padding-top: 20px;
+  height: 500px;
   overflow-y: auto;
   ::-webkit-scrollbar-track {
     background-color: transparent;
@@ -19,17 +20,21 @@ export const TableContainer = styled.div`
   }
   @media ${device.tablet} {
     max-height: 165px;
+    padding-top: 0px;
   }
 `;
 
 export const StyledHeadingTable = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-left: 10px;
+  position: absolute;
+  top: -60%;
+
   color: rgba(239, 137, 100, 1);
   font-size: 12px;
   @media ${device.tablet} {
+    position: static;
+    display: flex;
     justify-content: flex-start;
+    padding-left: 10px;
   }
 `;
 export const StyledBodyPart = styled.p`
@@ -73,17 +78,18 @@ export const StyledTable = styled.table`
   border-collapse: separate;
   border-spacing: 8px;
 `;
-
 export const StyledTableRaw = styled.tr`
-  /* height: 40px; */
+  position: relative;
 `;
 export const StyledTableCell = styled.td`
   display: inline-block;
-  margin-bottom: 8px;
-  margin-right: 10px;
+  margin-bottom: 42px;
+  position: relative;
+  margin-right: 8px;
   border: 1px solid gray;
   &:last-child {
     border: none;
+    margin-right: 0px;
   }
   border-radius: 12px;
   font-size: 16px;

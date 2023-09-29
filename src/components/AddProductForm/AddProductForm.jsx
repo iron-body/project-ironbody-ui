@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Formik, Form } from 'formik';
+import { format } from 'date-fns';
 
 import {
   FoodName,
@@ -11,31 +14,96 @@ import {
   ExitBtn,
   IconExitBtn,
   CancelBtn,
+  Unit,
 } from './AddProductForm.styled';
+import AddProductSuccess from '../AddProductSuccess/AddProductSuccess';
+import { getProducts } from '../../redux/products/selectors';
+import { useSelector } from 'react-redux';
+
+import { addProductThunk } from '../../redux/products/productsOperations';
 
 export default function AddProductForm({ productCalc, onClose }) {
-  const { foodName, calories  } = productCalc;
+  const { title, calories, category, recommended, _id } = productCalc;
+  const [gramsInpValue, setGramsInpValue] = useState(100);
+  const [modalStatus, setIsModalOpenSuccess] = useState(true);
+  const { error } = useSelector(getProducts);
+
+  const date = new Date(2023, 8, 29);
+  const formattedDate = format(date, 'dd-MM-yyyy');
+
+  const dispatch = useDispatch();
+
+  const objSubmitProduct = {
+    amount: gramsInpValue,
+    productid: _id,
+    calories: calories,
+    category: category,
+    title: title,
+    recommended: recommended,
+
+    date: formattedDate,
+  };
+
+  const calcCalories = () => {
+    let result = (calories * gramsInpValue) / 100;
+
+    return result;
+  };
 
   const handleClose = () => {
-    onClose(); 
+    onClose();
+  };
+
+  const handleSubmitProduct = async () => {
+    try {
+      await dispatch(addProductThunk(objSubmitProduct));
+      dispatch(setIsModalOpenSuccess(false));
+    } catch (error) {
+      console.log(error.massage);
+    }
   };
 
   return (
     <>
       <ExitBtn onClick={handleClose}>
-        <IconExitBtn alt="" src="/project-ironbody-ui/ExitIcon.svg"></IconExitBtn>
+        <IconExitBtn
+          alt=""
+          src="/project-ironbody-ui/ExitIcon.svg"
+        ></IconExitBtn>
       </ExitBtn>
-      <CalcContainer>
-        <FoodName> {foodName}</FoodName>
-        <CaloriesValue />
-      </CalcContainer>
-      <CalcCalories>
-        Calories: <CalcVelueCalories>{calories}</CalcVelueCalories>{' '}
-      </CalcCalories>
-      <BtnFormContainer>
-        <AddProductBtn>Add to diary</AddProductBtn>
-        <CancelBtn onClick={handleClose}>Cancel</CancelBtn>
-      </BtnFormContainer>
+      {modalStatus ? (
+        <Formik initialValues={objSubmitProduct} onSubmit={handleSubmitProduct}>
+          <Form autoComplete="off">
+            <CalcContainer>
+              <FoodName>
+                {' '}
+                {title.length > 20 ? ` ${title.slice(0, 20)}... ` : title}
+              </FoodName>
+
+              <CaloriesValue
+                value={gramsInpValue}
+                onChange={e => setGramsInpValue(e.target.value)}
+              />
+              <Unit>grams</Unit>
+            </CalcContainer>
+            <CalcCalories>
+              Calories: <CalcVelueCalories>{calcCalories()}</CalcVelueCalories>{' '}
+            </CalcCalories>
+
+            <BtnFormContainer>
+              <AddProductBtn
+                onSubmit={handleSubmitProduct}
+                calories={calcCalories()}
+              >
+                Add to diary
+              </AddProductBtn>
+              <CancelBtn onClick={handleClose}>Cancel</CancelBtn>
+            </BtnFormContainer>
+          </Form>
+        </Formik>
+      ) : (
+        <AddProductSuccess onClose={onClose} />
+      )}
     </>
   );
 }

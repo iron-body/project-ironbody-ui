@@ -1,14 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { authOperations } from './authOperations';
-
+// import { updateOperations } from '../update/updateOperations';
 const initialState = {
   user: {
     name: null,
     email: null,
+    avatarURL: null,
   },
   accessToken: null,
   isLoggedIn: false,
-  isRefreshing: false,
+  isRefreshing: true,
   isLoading: false,
 };
 export const authSlice = createSlice({
@@ -27,6 +28,8 @@ export const authSlice = createSlice({
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
+      state.isLoading = false;
+      state.isRefreshing = true;
     },
     [authOperations.login.pending](state) {
       state.isLoading = true;
@@ -39,6 +42,7 @@ export const authSlice = createSlice({
       state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
       state.isLoading = false;
+      state.isRefreshing = true;
     },
 
     [authOperations.logout.fulfilled](state) {
@@ -48,15 +52,16 @@ export const authSlice = createSlice({
       };
       state.accessToken = null;
       state.isLoggedIn = false;
+      state.isRefreshing = false;
     },
     [authOperations.logout.rejected](state) {
       state.accessToken = null;
-      state.isLoggedIn = false;
+      state.isLoggedIn = true;
     },
     [authOperations.refreshCurrentUser.fulfilled](state, action) {
       state.user = action.payload;
       state.isLoggedIn = true;
-      state.isRefreshing = false;
+      state.isRefreshing = true;
     },
     [authOperations.refreshCurrentUser.pending](state) {
       state.isRefreshing = true;
@@ -67,12 +72,19 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.isLoggedIn = false;
     },
+
+    // [updateOperations.update.fulfilled](state, action) {
+    //   (state.user = Object.assign(state.user, action.meta.arg)), (state.isRefreshing = true);
+    //   // state.user = action.payload;
+    //   // state.isRefreshing = true;
+    // },
   },
 });
 
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 export const selectToken = state => state.auth.accessToken;
 export const selectUsername = state => state.auth.user.name;
+export const selectAvatarURL = state => state.auth.user.avatarURL;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 export const authReducer = authSlice.reducer;

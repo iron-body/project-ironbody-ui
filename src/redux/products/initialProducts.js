@@ -4,9 +4,3 @@ export const productsInitialState = {
   categories: [],
   error: null,
 };
-
-// export const initialState = {
-//   filter: '',
-//   categories: '',
-//   recommended: '',
-// };

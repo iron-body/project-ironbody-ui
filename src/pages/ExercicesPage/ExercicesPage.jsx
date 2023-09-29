@@ -1,48 +1,115 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, NavigateContainer, Title } from './ExercicesPage.styled';
+import {
+  Container,
+  NavigateContainer,
+  Title,
+  NameExercise,
+  ButtonIcon,
+  StyledNavLink,
+} from './ExercicesPage.styled';
 import ExercisesCategories from '../../components/ExercisesCategories/ExercisesCategories';
 import TitlePage from '../../components/TitlePage/TitlePage';
 import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
-import { fetchExercises, fetchFilteredExercises } from '../../redux/operations';
-import { getIsLoading } from '../../redux/selectors';
+import Loader from '../../components/Loader/Loader';
+import {
+  fetchFilteredExercises,
+  fetchExercises,
+} from '../../redux/exercises/operations';
+import { getLoading } from '../../redux/selectors';
 
 const ExercisesPage = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
+  const isLoading = useSelector(getLoading);
+  const location = useLocation();
 
-  // Додайте стан для відстеження обраного підкатегорії
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+  const [nameExercise, setNameExercise] = useState(null);
+
+  const [subCategories, setSubCategories] = useState('Body parts');
+  const { subCategories: routeSubCategories } = useParams();
 
   useEffect(() => {
-    dispatch(fetchFilteredExercises());
-    dispatch(fetchExercises());
-  }, [dispatch]);
+    if (routeSubCategories) {
+      setSubCategories(routeSubCategories);
+    }
+  }, [routeSubCategories]);
 
-  // Функція для зміни обраної підкатегорії
+  const dinamicFilter = { filter: subCategories };
+
+  useEffect(() => {
+    dispatch(fetchFilteredExercises(dinamicFilter))
+      .then(result => {
+        // Обработайте успешный результат запроса здесь
+        // console.log(result);
+      })
+      .catch(error => {
+        // Обработайте ошибку запроса здесь
+        console.error(error);
+      });
+    dispatch(fetchExercises());
+  }, [subCategories]);
+
   const handleSubcategorySelect = subcategory => {
     setSelectedSubcategory(subcategory);
   };
+
   const handleResetSubcategorySelect = () => {
     setSelectedSubcategory(null);
   };
 
+  const capitalizeFirstLetter = name => {
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  };
+
+  const handNameExercise = name => {
+    const capitalizedName = capitalizeFirstLetter(name);
+    setNameExercise(capitalizedName);
+  };
+
+  const clearSelectedSubcategory = () => {
+    setSelectedSubcategory(null);
+  };
+
   return (
-    <Container>
+    <Container selectedSubcategory={selectedSubcategory}>
+      <StyledNavLink
+        to={selectedSubcategory}
+        onClick={() => handleResetSubcategorySelect()}
+        activeClassName="
+            active"
+        selectedSubcategory={selectedSubcategory}
+      >
+        <ButtonIcon alt="" src="/back-array-grey.svg" /> Back
+      </StyledNavLink>
+
       <NavigateContainer>
-        {!selectedSubcategory && (
+        {!selectedSubcategory ? (
           <Title>
             <TitlePage titleText={'Exercices'} />
           </Title>
+        ) : (
+          <NameExercise>{nameExercise}</NameExercise>
         )}
-        <ExercisesCategories resetSubcategorySelect={handleResetSubcategorySelect} />
+        <ExercisesCategories
+          resetSubcategorySelect={handleResetSubcategorySelect}
+          subCategories={subCategories}
+        />
       </NavigateContainer>
-      {isLoading && 'Request in progress...'}
+      {isLoading && <Loader />}
       {!isLoading && !selectedSubcategory && (
-        <ExercisesSubcategoriesList onSelectSubcategory={handleSubcategorySelect} />
+        <ExercisesSubcategoriesList
+          onSelectSubcategory={handleSubcategorySelect}
+          nameExercise={handNameExercise}
+          subCategories={subCategories}
+        />
       )}
-      {selectedSubcategory && <ExercisesList subcategory={selectedSubcategory} />}
+      {selectedSubcategory && (
+        <ExercisesList subcategory={selectedSubcategory} />
+      )}
     </Container>
   );
 };

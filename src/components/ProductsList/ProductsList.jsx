@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getProductsThunk,
-  filterProductsThunk,
-} from '../../redux/products/productsOperations';
-import { getProducts } from '../../redux/products/selectors';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getInitial, getProducts } from '../../redux/products/selectors';
+
 import InfiniteScroll from 'react-infinite-scroll-component';
+import { ToastContainer } from 'react-toastify';
 import {
   ProductList,
   ProductItem,
@@ -16,32 +14,21 @@ import {
 import Product from '../Product/Product';
 import BasicModalWindow from '../BasicModalWindow/BasicModalWindow';
 import AddProductForm from '../AddProductForm/AddProductForm';
-import { getFilterValue  } from '../../redux/selectors';
+import Loader from '../../components/Loader/Loader';
 
 export default function ProductsList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const { isLoading, error } = useSelector(getProducts);
+  const { isLoading, error } = useSelector(getInitial);
   const [itemsToShow, setItemsToShow] = useState(10);
   const increment = 10;
 
-  const filterValue = useSelector(getFilterValue);
-  const dispatch = useDispatch();
-
   const visibleProducts = useSelector(getProducts);
-
-  useEffect(() => {
-    dispatch(getProductsThunk());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(filterProductsThunk(filterValue || ''));
-  }, [filterValue, dispatch]);
 
   const openModal = product => {
     setSelectedProduct(product);
     setIsModalOpen(true);
-    console.log(filterValue);
   };
 
   const loadMore = () => {
@@ -50,8 +37,10 @@ export default function ProductsList() {
 
   return (
     <>
-      {isLoading && <h1 style={{ color: 'yellow' }}>Loading...</h1>}
-      {Array.isArray(visibleProducts) && (
+      <ToastContainer autoClose={1500} />
+      {isLoading && <Loader />}
+
+      {visibleProducts.length > 0 ? (
         <InfiniteScroll
           dataLength={itemsToShow}
           next={loadMore}
@@ -69,9 +58,7 @@ export default function ProductsList() {
             ))}
           </ProductList>
         </InfiniteScroll>
-      )}
-      {error && (
-        <ErrorMessege>
+      ): (<ErrorMessege>
           <StartError>Sorry, no results were found</StartError> for the product
           filters you selected. You may want to consider other search options to
           find the product you want. Our range is wide and you have the
@@ -79,16 +66,21 @@ export default function ProductsList() {
           <BottomError>
             Try refreshing the page or check your internet connection.
           </BottomError>
-        </ErrorMessege>
-      )}
+        </ErrorMessege>)}
+      {/* {error || visibleProducts.length === 0 && (
+        
+      )} */}
 
       {isModalOpen && (
         <BasicModalWindow active={isModalOpen} setActive={setIsModalOpen}>
           {selectedProduct && (
             <AddProductForm
               productCalc={{
-                foodName: selectedProduct.title,
+                title: selectedProduct.title,
                 calories: selectedProduct.calories,
+                category: selectedProduct.category,
+                recommended: selectedProduct.recommended,
+                _id: selectedProduct._id,
               }}
               onClose={() => setIsModalOpen(false)}
             />

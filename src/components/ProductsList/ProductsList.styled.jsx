@@ -59,7 +59,7 @@ export const ProductList = styled.ul`
 export const ProductItem = styled.li`
   margin-bottom: 20px;
   width: 335px;
-  height: auto;
+  height: 141px;
   border-radius: 12px;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: rgba(239, 237, 232, 0.05);
@@ -67,7 +67,6 @@ export const ProductItem = styled.li`
   @media ${device.tablet} {
     margin-bottom: 0;
     width: 335px;
-    height: auto;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.2);
     background: rgba(239, 237, 232, 0.05);
@@ -75,7 +74,6 @@ export const ProductItem = styled.li`
 
   @media ${device.desktop} {
     width: 405px;
-    height: auto;
     border-radius: 12px;
     border: 1px solid rgba(239, 237, 232, 0.2);
     background: rgba(239, 237, 232, 0.05);
@@ -109,7 +107,7 @@ export const ErrorMessege = styled.p`
   line-height: 24px;
 `;
 
-export const BottomError = styled.p`
+export const BottomError = styled.span`
   color: #e6533c;
   margin-top: 16px;
 `;

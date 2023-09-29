@@ -13,15 +13,11 @@ const DayDashboard = () => {
     <aside>
       <StyledDashboardList>
         <StyledDashboardItem>
-          <StyledDashboardTitleText>
-            Daily calorie intake
-          </StyledDashboardTitleText>
+          <StyledDashboardTitleText>Daily calorie intake</StyledDashboardTitleText>
           <StyledDashboardICalcText>2200</StyledDashboardICalcText>
         </StyledDashboardItem>
         <StyledDashboardItem>
-          <StyledDashboardTitleText>
-            Daily norm of sports
-          </StyledDashboardTitleText>
+          <StyledDashboardTitleText>Daily norm of sports</StyledDashboardTitleText>
           <StyledDashboardICalcText>110 min</StyledDashboardICalcText>
         </StyledDashboardItem>
         <StyledDashboardItem>
@@ -33,28 +29,20 @@ const DayDashboard = () => {
           <StyledDashboardICalcText>855</StyledDashboardICalcText>
         </StyledDashboardItem>
         <StyledDashboardItem>
-          <StyledDashboardTitleText>
-            The rest of the calories
-          </StyledDashboardTitleText>
+          <StyledDashboardTitleText>The rest of the calories</StyledDashboardTitleText>
           <StyledDashboardICalcText>1493</StyledDashboardICalcText>
         </StyledDashboardItem>
         <StyledDashboardItem>
-          <StyledDashboardTitleText>
-            The rest of sports
-          </StyledDashboardTitleText>
+          <StyledDashboardTitleText>The rest of sports</StyledDashboardTitleText>
           <StyledDashboardICalcText>85 min</StyledDashboardICalcText>
         </StyledDashboardItem>
       </StyledDashboardList>
       <StyledNotificationText>
         <StyledExclamationIcon>
-          <use
-            xlinkHref="/svg-sprite/symbol-defs.svg#icon-Exclemation"
-            width="24"
-            height="24"
-          />
+          <use xlinkHref="svg-sprite/symbol-defs.svg#icon-Exclemation" width="24" height="24" />
         </StyledExclamationIcon>
-        Record all your meals in a calorie diary every day. This will help me be
-        aware of my nutrition and make me responsible for my choices.
+        Record all your meals in a calorie diary every day. This will help me be aware of my
+        nutrition and make me responsible for my choices.
       </StyledNotificationText>
     </aside>
   );

@@ -5,7 +5,7 @@ import { TutorialBlock } from '../../components/TutorialBlock/TutorialBlock';
 
 export const SignUpPage = () => {
   return (
-    <div style={{ outline: '1px solid rgba(239, 237, 232, 0.3)' }}>
+    <div>
       <Root>
         <SignupForm />
         <TutorialBlock />

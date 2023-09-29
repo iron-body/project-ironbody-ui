@@ -1,5 +1,5 @@
 import * as React from 'react';
-import sprite from '../../../icons.svg';
+import sprite from '../../../../icons.svg';
 
 import {
   createColumnHelper,
@@ -22,6 +22,7 @@ import {
   StyledWeight,
   TableContainer,
 } from './ExercisesTable.styled';
+import { useMediaQuery } from '@mui/material';
 
 const defaultData = [
   {
@@ -99,11 +100,12 @@ const columns = [
         <use href={`${sprite}#icon-trash-03`} />
       </StyledDel>
     ),
-    header: 'Delete',
+    header: '',
   }),
 ];
 
 const ExercisesTable = () => {
+  const isMobile = useMediaQuery('(max-width: 767px)');
   // eslint-disable-next-line no-unused-vars
   const [data, setData] = React.useState(() => [...defaultData]);
 
@@ -115,14 +117,17 @@ const ExercisesTable = () => {
 
   return (
     <>
-      <StyledHeadingTable>
-        <StyledBodyPart>Body Part</StyledBodyPart>
-        <StyledEquipment>Equipment</StyledEquipment>
-        <StyledName>Name</StyledName>
-        <StyledWeight>Target</StyledWeight>
-        <StyledTime>Burned Calories</StyledTime>
-        <p>Time</p>
-      </StyledHeadingTable>
+      {!isMobile && (
+        <StyledHeadingTable>
+          <StyledBodyPart>Body Part</StyledBodyPart>
+          <StyledEquipment>Equipment</StyledEquipment>
+          <StyledName>Name</StyledName>
+          <StyledWeight>Target</StyledWeight>
+          <StyledTime>Burned Calories</StyledTime>
+          <p>Time</p>
+        </StyledHeadingTable>
+      )}
+
       <TableContainer>
         <StyledTable>
           <tbody>
@@ -130,6 +135,11 @@ const ExercisesTable = () => {
               <StyledTableRaw key={row.id}>
                 {row.getVisibleCells().map(cell => (
                   <StyledTableCell key={cell.id}>
+                    {isMobile && (
+                      <StyledHeadingTable>
+                        {flexRender(cell.column.columnDef.header)}
+                      </StyledHeadingTable>
+                    )}
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </StyledTableCell>
                 ))}

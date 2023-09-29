@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export const ModalContainer = styled.div`
   height: 100vh;
   width: 100vw;
@@ -25,12 +24,11 @@ export const ModalContent = styled.div`
 
   padding: 48px 32px;
   border-radius: 12px;
-  // background-color: black;
   border: 1px solid rgba(239, 237, 232, 0.2);
   background: #10100f;
   transform: scale(0.5);
   transition: 0.4s all;
-  // width: 50vw;
+  /* width: 50vw; */
 
   &.active {
     transform: scale(1);

@@ -2,10 +2,12 @@ import { device } from '../../Constants';
 import styled from '@emotion/styled';
 
 export const Overlay = styled.div`
+  border-top: 1px solid rgba(239, 237, 232, 0.2);
   position: relative;
   width: var(--width-mobile);
   height: 812px;
   overflow: hidden;
+  margin-top: 30px;
 
   color: var(--white);
   font-family: var(--headline-style-mobile-h1);
@@ -13,20 +15,22 @@ export const Overlay = styled.div`
   @media ${device.tablet} {
     width: var(--width-tablet);
     height: 1024px;
+    margin-top: 60px;
     overflow: hidden;
-    color: var(--white);
-    font-family: var(--headline-style-mobile-h1);
+    color: var(-white);
+    font-family: var40(--headline-style-mobile-h1);
   }
   @media ${device.desktop} {
     width: var(--width-desktop);
+    margin-top: 64px;
     height: 800px;
     overflow: hidden;
     color: var(--white);
     font-family: var(--headline-style-mobile-h1);
     background-image: url('/project-ironbody-ui/side-view-people-training-gym-2x.png');
     background-repeat: no-repeat;
-    background-position: 981px 67px;
-    background-size: 438px;
+    background-position: 1000px 0px;
+    background-size: 440px;
   }
 `;
 
@@ -63,13 +67,21 @@ export const Title = styled.h1`
   font-weight: 700;
   line-height: 1.16;
   margin-bottom: 40px;
-  margin-top: 101px;
+  margin-top: 40px;
 
   @media ${device.tablet} {
     margin-bottom: 32px;
+    margin-top: 72px;
+    color: #efede8;
+    font-family: Roboto;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 44px; /* 137.5% */
   }
 
   @media ${device.desktop} {
+    margin-top: 0px;
     color: #efede8;
     font-family: Roboto;
     font-size: 32px;
@@ -84,14 +96,14 @@ export const HeaderProducts = styled.div`
   @media ${device.tablet} {
     display: block;
     margin-bottom: 32px;
-    margin-top: 156px;
+    margin-top: 42px;
   }
 
   @media ${device.desktop} {
     display: flex;
     justify-content: space-between;
     margin-bottom: 28px;
-    margin-top: 126px;
+
     align-items: center;
   }
 `;

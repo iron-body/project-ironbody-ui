@@ -5,7 +5,7 @@ export const Btn = styled.div`
   display: flex;
   align-items: center;
 `;
-export const LinkBtn = styled(Link)`
+export const LinkBtn = styled.div`
   text-decoration: none;
   color: white;
   /* margin-left: 16px; */

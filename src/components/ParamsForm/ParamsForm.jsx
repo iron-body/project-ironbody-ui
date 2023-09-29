@@ -1,14 +1,18 @@
-/* eslint-disable react/prop-types */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import moment from 'moment';
 
-// import StyledDatepicker from './../StyledDatepicker/StyledDatepicker';
-// import { CalendarIcon } from './../DaySwitch/DaySwitch.styled';
 import ParamsFormDaySwitch from './../ParamsFormDaySwitch/ParamsFormDaySwitch';
-
+import {
+  selectParamsStatusUpdate,
+  selectParamsValues,
+  updateAll,
+} from '../../redux/params/paramsSlice';
+// import { selectToken } from '../../redux/auth/authSlice';
+import { Notify } from 'notiflix';
 import {
   MainForm,
   Input,
@@ -29,33 +33,39 @@ import {
   BackBtn,
   NextBtn,
 } from './ParamsForm.styled';
-
-import { selectParamsValues, updateAll } from '../../redux/params/paramsSlice';
+import { paramsOperations } from '../../redux/params/paramsOperations';
 
 const ParamsFormSchema = yup.object().shape({
-  height: yup.number().min(150, 'Height should be higher than 150cm').required('Required'),
-  currentWeight: yup.number().min(35, 'Weight should be more than 35kg').required('Required'),
+  height: yup
+    .number()
+    .min(150, 'Height should be higher than 150cm')
+    .required('Height is required'),
+  currentWeight: yup
+    .number()
+    .min(35, 'Weight should be more than 35kg')
+    .required('Current weight is required'),
   desiredWeight: yup
     .number()
     .min(35, 'Desire weight should be more than 35kg')
-    .required('Required'),
-  birthday: yup.date().required('Date is required'),
-  // .test('is-over-18', 'Дата повинна бути старше 18 років', function (value) {
-  //   const currentDate = new Date();
-  //   const minDate = new Date();
-  //   minDate.setFullYear(currentDate.getFullYear() - 18);
-  //   return value <= minDate;
-  // }),
+    .required('Desired weight is required'),
+  birthday: yup
+    .date()
+    .test('is-over-18', 'You should be older then 18 years old', function (value) {
+      const currentDate = new Date();
+      const minDate = new Date();
+      minDate.setFullYear(currentDate.getFullYear() - 18);
+      return value <= minDate;
+    })
+    .required('Date is required'),
 });
 
-const ParamsForm = props => {
+// eslint-disable-next-line react/prop-types
+const ParamsForm = ({ currentStep, onStepChange }) => {
   const paramsState = useSelector(selectParamsValues);
+  // const stateToken = useSelector(selectToken);
   const dispatch = useDispatch();
-  const onStepChange = props.onStepChange;
-  const currentStep = props.currentStep;
-  // const [formattedDate, setFormattedDate] = useState('');
-
-  let savedValues = {};
+  const navigate = useNavigate();
+  const isUpdated = useSelector(selectParamsStatusUpdate);
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } =
     useFormik({
@@ -64,30 +74,19 @@ const ParamsForm = props => {
       validationSchema: ParamsFormSchema,
       validateOnChange: false,
       validateOnBlur: false,
-      // onSubmit: () => {
-      // alert('Fill all fields');
-      // },
+      // onSubmit: warnAboutErrors,
     });
 
-  const handleDateChange = date => {
-    const newFormatedDate = moment(date).format();
-    // setFormattedDate(newFormatedDate);
-    setFieldValue('birthday', newFormatedDate);
-    // console.log('newFormatedDate :>> ', newFormatedDate);
-    // console.log('values.birthday :>> ', values.birthday);
-  };
+  const warnAboutErrors = () => {
+    handleSubmit();
 
-  const handleNextSetStep = () => {
-    onStepChange(currentStep + 1);
+    if (Object.keys(errors).length === 0) {
+      return Notify.failure('Fill all the fields');
+    } else {
+      const arrayOfErrors = Object.values(errors);
 
-    console.log(values);
-    savedValues = values;
-
-    console.log(savedValues);
-  };
-
-  const handleBackSetStep = () => {
-    onStepChange(currentStep - 1);
+      return Notify.failure(`${arrayOfErrors[0]}`);
+    }
   };
 
   const canClickNext =
@@ -99,6 +98,57 @@ const ParamsForm = props => {
   useEffect(() => {
     dispatch(updateAll(values));
   }, [dispatch, values]);
+
+  useEffect(() => {
+    console.log('paramsState :>> ', paramsState);
+  }, [paramsState]);
+
+  useEffect(() => {
+    if (isUpdated) {
+      navigate('/diary', { replace: true });
+    }
+  }, [isUpdated, navigate]);
+
+  const handleDateChange = date => {
+    const newFormatedDate = moment(date).toISOString();
+    setFieldValue('birthday', newFormatedDate);
+    console.log(newFormatedDate);
+  };
+
+  const handleNextSetStep = () => {
+    onStepChange(currentStep + 1);
+    console.log(paramsState);
+  };
+
+  const handleBackSetStep = () => {
+    onStepChange(currentStep - 1);
+  };
+
+  const onSubmitForm = async e => {
+    e.preventDefault();
+    // try {
+    //   if (!stateToken) return Notify.failure('Not authorized');
+    //   const JSONParamsState = JSON.stringify(paramsState);
+
+    //   const response = await axios.post(
+    //     'calculateNorms/calculate',
+    //     JSONParamsState,
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${stateToken}`,
+    //       },
+    //     },
+    //   );
+
+    //   navigate('/products');
+    //   return response.data;
+    // } catch (error) {
+    //   console.log('error :>> ', error);
+    //   Notify.failure(error.message);
+    // }
+
+    dispatch(paramsOperations.updateParams(paramsState));
+  };
 
   return (
     <MainForm>
@@ -112,7 +162,8 @@ const ParamsForm = props => {
                 value={values.height || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="text"
+                type="number"
+                min={150}
                 required
               />
               <LabelBox>
@@ -127,7 +178,8 @@ const ParamsForm = props => {
                 value={values.currentWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="text"
+                type="number"
+                min={35}
                 required
               />
               <LabelBox>
@@ -142,7 +194,8 @@ const ParamsForm = props => {
                 value={values.desiredWeight || ''}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                type="text"
+                type="number"
+                min={35}
                 required
               />
               <LabelBox>
@@ -152,22 +205,13 @@ const ParamsForm = props => {
 
             <Wrapper>
               <LabelBox>
-                <BirthdayLabel
-                  value={values.birthday}
-                  // onChange={() => setFieldValue('birthday', formattedDate)}
-                >
-                  Birthday
-                </BirthdayLabel>
+                <BirthdayLabel value={values.birthday}>Birthday</BirthdayLabel>
               </LabelBox>
               <ParamsFormDaySwitch onDateChange={handleDateChange} />
             </Wrapper>
           </Form>
 
-          <NextBtn
-            type="button"
-            onClick={canClickNext ? handleNextSetStep : handleSubmit}
-            // onClick={errors === {} ? handleNextSetStep : handleSubmit}
-          >
+          <NextBtn type="button" onClick={canClickNext ? handleNextSetStep : warnAboutErrors}>
             Next
           </NextBtn>
         </FormContainer>
@@ -327,7 +371,13 @@ const ParamsForm = props => {
       ;
       {currentStep === 3 && (
         <>
-          <SubmitBtn type="submit">Go</SubmitBtn>
+          <SubmitBtn type="submit" onClick={onSubmitForm}>
+            Go
+          </SubmitBtn>
+
+          <BackBtn type="button" onClick={handleBackSetStep}>
+            Back
+          </BackBtn>
         </>
       )}
     </MainForm>

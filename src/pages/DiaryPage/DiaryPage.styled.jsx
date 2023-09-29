@@ -4,13 +4,16 @@ import { device } from '../../Constants';
 export const StyledTitleContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 60px;
-  padding-top: 45px;
+  margin-top: 40px;
+  padding-top: 20px;
   margin-bottom: 45px;
   border-top: 1px solid rgba(239, 237, 232, 0.2);
   @media ${device.tablet} {
   }
   @media ${device.desktop} {
+    display: block;
+    margin-top: 50px;
+    padding-top: 0px;
   }
 `;
 

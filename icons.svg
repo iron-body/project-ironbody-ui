@@ -143,7 +143,29 @@
 <symbol id="icon-cross" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M18 6L6 18M6 6L18 18" stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </symbol>
-
+<symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 103 102" id="gridicons_user">
+    <g id="gridicons:user">
+      <path id="Vector" d="M51.5 17C56.0087 17 60.3327 18.7911 63.5208 21.9792C66.709 25.1673 68.5 29.4913 68.5 34C68.5 38.5087 66.709 42.8327 63.5208 46.0208C60.3327 49.209 56.0087 51 51.5 51C46.9913 51 42.6673 49.209 39.4792 46.0208C36.2911 42.8327 34.5 38.5087 34.5 34C34.5 29.4913 36.2911 25.1673 39.4792 21.9792C42.6673 18.7911 46.9913 17 51.5 17ZM51.5 85C51.5 85 85.5 85 85.5 76.5C85.5 66.3 68.925 55.25 51.5 55.25C34.075 55.25 17.5 66.3 17.5 76.5C17.5 85 51.5 85 51.5 85Z" fill="#EFEDE8" fill-opacity="0.1"></path>
+    </g>
+  </symbol>
+  <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 32" id="check mark">
+    <g id="check mark">
+      <path id="Vector 5" d="M11.2382 0.427845L15.9284 1.78405C16.2674 1.88208 16.6272 1.88283 16.9666 1.78621L21.7966 0.411303C22.6418 0.170715 23.5409 0.546916 23.963 1.31768L26.4694 5.89504C26.6375 6.20214 26.888 6.45626 27.1927 6.62883L31.1787 8.88671C31.9497 9.32347 32.3117 10.2389 32.0479 11.0849L30.6672 15.513C30.554 15.876 30.5534 16.2648 30.6655 16.6282L32.06 21.1493C32.3177 21.9849 31.9661 22.8879 31.2113 23.3292L26.768 25.9266C26.4649 26.1039 26.2173 26.3624 26.0534 26.673L23.9399 30.6768C23.531 31.4515 22.6418 31.8417 21.7948 31.6181L16.9314 30.3344C16.6141 30.2507 16.2804 30.2513 15.9635 30.3363L11.2488 31.6004C10.3822 31.8328 9.47213 31.4213 9.07421 30.6172L6.96789 26.3608C6.79108 26.0035 6.50542 25.7116 6.15206 25.5271L1.84775 23.2796C1.06147 22.869 0.668508 21.9652 0.904481 21.1102L2.1597 16.562C2.24855 16.24 2.25014 15.9002 2.16431 15.5775L0.876636 10.735C0.655154 9.90215 1.02762 9.02522 1.7808 8.60629L6.20271 6.1468C6.52438 5.96789 6.78654 5.69859 6.95674 5.37222L9.04628 1.36568C9.4606 0.571256 10.3774 0.178965 11.2382 0.427845Z" fill="#E6533C"></path>
+      <path id="Vector" d="M16.5 10.75V21.25" stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path id="Vector_2" d="M11.25 16H21.75" stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+  </symbol>
+    <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="tabler_exclamation-mark">
+    <g id="tabler:exclamation-mark">
+      <path id="Vector" d="M12 19V19.01M12 15V5" stroke="#EFEDE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+  </symbol>
+   <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" id="log-out-01 (1)">
+    <g id="log-out-01">
+      <path id="Accent" d="M7.5 2.5H6.5C5.09987 2.5 4.3998 2.5 3.86502 2.77248C3.39462 3.01217 3.01217 3.39462 2.77248 3.86502C2.5 4.3998 2.5 5.09987 2.5 6.5V13.5C2.5 14.9001 2.5 15.6002 2.77248 16.135C3.01217 16.6054 3.39462 16.9878 3.86502 17.2275C4.3998 17.5 5.09987 17.5 6.5 17.5H7.5" stroke="#E6533C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path id="Icon" d="M13.3333 14.1667L17.5 10M17.5 10L13.3333 5.83337M17.5 10H7.5" stroke="#E6533C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </g>
+  </symbol>
 </s>
 </defs>
 </svg>
