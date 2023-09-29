@@ -61,8 +61,8 @@ const ParamsFormSchema = yup.object().shape({
 
 // eslint-disable-next-line react/prop-types
 const ParamsForm = ({ currentStep, onStepChange }) => {
-  const paramsState = useSelector(selectParamsValues); //fetch
-  // const stateToken = useSelector(selectToken); //fetch
+  const paramsState = useSelector(selectParamsValues);
+  const stateToken = useSelector(selectToken);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isUpdated = useSelector(selectParamsStatusUpdate);
@@ -100,16 +100,20 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
   }, [dispatch, values]);
 
   useEffect(() => {
+
+    console.log('paramsState :>> ', paramsState);
+  }, [paramsState]);
+
     if (isUpdated) {
       navigate('/diary', { replace: true });
     }
   }, [isUpdated, navigate]);
 
+
   const handleDateChange = date => {
     const newFormatedDate = moment(date).toISOString();
     setFieldValue('birthday', newFormatedDate);
     console.log(newFormatedDate);
-    console.log(paramsState);
   };
 
   const handleNextSetStep = () => {
@@ -160,6 +164,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="number"
+                min={150}
                 required
               />
               <LabelBox>
@@ -175,6 +180,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="number"
+                min={35}
                 required
               />
               <LabelBox>
@@ -190,6 +196,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 type="number"
+                min={35}
                 required
               />
               <LabelBox>
