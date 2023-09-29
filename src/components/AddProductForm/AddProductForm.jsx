@@ -82,7 +82,17 @@ export default function AddProductForm({ productCalc, onClose }) {
 
               <CaloriesValue
                 value={gramsInpValue}
-                onChange={e => setGramsInpValue(e.target.value)}
+                onChange={e => {
+                  const inputValue = e.target.value;
+                  if (/^\d*$/.test(inputValue)) {
+                    setGramsInpValue(inputValue);
+                  }
+                }}
+                onKeyPress={e => {
+                  if (isNaN(Number(e.key))) {
+                    e.preventDefault();
+                  }
+                }}
               />
               <Unit>grams</Unit>
             </CalcContainer>
