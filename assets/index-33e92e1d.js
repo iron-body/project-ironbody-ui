@@ -2929,18 +2929,19 @@ See https://reactjs.org/docs/forms.html#controlled-components`),re=z.initialPage
   color: #ffffff; /* White text color */
 
   transition:
-    color 0.3s,
-    text-shadow 0.3s;
+    color 400ms ease-out,
+    text-shadow 400ms ease-out;
+
   display: block;
   &:hover,
   &:focus {
-    color: #00baff; /* Blue text color on hover/focus */
+    /* color: var(--orange); Blue text color on hover/focus */
     text-shadow:
-      0 0 5px #00baff,
-      0 0 10px #00baff,
-      0 0 20px #00baff,
-      0 0 40px #00baff,
-      0 0 80px #00baff;
+      0 0 5px var(--orange),
+      0 0 10px var(--orange),
+      0 0 20px var(--orange),
+      0 0 40px var(--orange),
+      0 0 80px var(--orange);
   }
 `,Wte=T(Lte)`
   /* background-color: white; */
@@ -3011,7 +3012,7 @@ See https://reactjs.org/docs/forms.html#controlled-components`),re=z.initialPage
   color: #efede8;
   font-size: 18px;
   opacity: 0.4;
-`,Gte=({name:t,img:n,nameCategorie:r})=>h.jsxs(Yte,{img:n,children:[h.jsx(Ute,{children:`${t}`}),h.jsx(Hte,{children:`${r}`})]},`${t}`),V4=({onSelectSubcategory:t,nameExercise:n,subCategories:r})=>{const i=eo(),a=ft(g=>g.exercises.filtered).filter(g=>g.filter===r),[s,l]=k.useState([]),[u,c]=k.useState(0),[d,f]=k.useState(0),p=10;k.useEffect(()=>{const g=d+p;l(a.slice(d,g)),c(Math.ceil(a.length/p))},[d,p]);const m=g=>{const b=g.selected*p%a.length;f(b)},v=g=>{t(r),n(g)};return h.jsxs(h.Fragment,{children:[h.jsx(zte,{children:h.jsx(Bte,{children:s.map(g=>h.jsx(Vte,{onClick:()=>v(g.name),to:`${r}/${g.name}`,state:{from:i},children:h.jsx(Gte,{name:g.name.charAt(0).toUpperCase()+g.name.slice(1),nameCategorie:r,img:g.imgURL})},g.name))})}),h.jsx(Wte,{breakLabel:"...",nextLabel:" >",onPageChange:m,pageRangeDisplayed:3,pageCount:u,previousLabel:"< ",renderOnZeroPageCount:null,pageLinkClassName:"page-num",previousLinkClassName:"page-num",nextLinkClassName:"page-num",activeLinkClassName:"active"})]})},qte=ae.div`
+`,Gte=({name:t,img:n,nameCategorie:r})=>h.jsxs(Yte,{img:n,children:[h.jsx(Ute,{children:`${t}`}),h.jsx(Hte,{children:`${r}`})]},`${t}`),V4=({onSelectSubcategory:t,nameExercise:n,subCategories:r})=>{const i=eo(),a=ft(g=>g.exercises.filtered).filter(g=>g.filter===r),[s,l]=k.useState([]),[u,c]=k.useState(0),[d,f]=k.useState(0),p=10;k.useEffect(()=>{const g=d+p;l(a.slice(d,g)),c(Math.ceil(a.length/p))},[d,p]);const m=g=>{const b=g.selected*p%a.length;f(b)},v=g=>{t(r),n(g)};return h.jsxs(h.Fragment,{children:[h.jsx(zte,{children:h.jsx(Bte,{children:s.map(g=>h.jsx(Vte,{onClick:()=>v(g.name),to:`${r}/${g.name}`,state:{from:i},children:h.jsx(Gte,{name:g.name.charAt(0).toUpperCase()+g.name.slice(1),nameCategorie:r,img:g.imgURL})},g.name))})}),u!==1&&h.jsx(Wte,{breakLabel:"...",nextLabel:" >",onPageChange:m,pageRangeDisplayed:3,pageCount:u,previousLabel:"< ",renderOnZeroPageCount:null,pageLinkClassName:"page-num",previousLinkClassName:"page-num",nextLinkClassName:"page-num",activeLinkClassName:"active"})]})},qte=ae.div`
   height: 100vh;
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.4);
