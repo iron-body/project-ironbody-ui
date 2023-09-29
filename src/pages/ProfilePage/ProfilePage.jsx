@@ -1,4 +1,4 @@
-import TitlePage from 'components/TitlePage/TitlePage';
+import TitlePage from '../../components/TitlePage/TitlePage';
 import UserCard from '../../components/UserCard/UserCard';
 import UserForm from '../../components/UserForm/UserForm';
 import { Container, ProfileWrapper } from './ProfilePage.styled';

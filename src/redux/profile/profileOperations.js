@@ -11,6 +11,7 @@ const profileData = createAsyncThunk('profile/userdata', async (profileData, thu
         Authorization: `Bearer ${persistedToken}`,
       },
     });
+
     return response.data[0];
   } catch (error) {
     console.log('error :>> ', error);
@@ -30,13 +31,39 @@ const profileData = createAsyncThunk('profile/userdata', async (profileData, thu
 const profileDataUpdate = createAsyncThunk('profile/update', async (_, thunkAPI) => {
   try {
     const state = thunkAPI.getState();
+
+    // console.log('state :>> ', state);
     const persistedToken = state.auth.accessToken;
-    const profileData = state.profile;
-    const response = await axios.post('users/userData', profileData, {
+    const profileData = state.profile.profile;
+    console.log('profileData :>> ', profileData);
+
+    const modifiedProfileData = {
+      birthday: profileData?.birthday,
+      blood: profileData?.blood,
+      currentWeight: profileData?.currentWeight,
+      desiredWeight: profileData?.desiredWeight,
+      height: profileData?.height,
+      levelActivity: profileData?.levelActivity,
+      sex: profileData?.sex,
+    };
+    console.log('modifiedProfileData :>> ', modifiedProfileData);
+
+    const response = await axios.patch('users/updateParamsUser', modifiedProfileData, {
       headers: {
         Authorization: `Bearer ${persistedToken}`,
       },
     });
+
+    const modifiedProfileName = {
+      name: profileData?.name,
+    };
+
+    const response2 = await axios.patch('users/updateProfile', modifiedProfileName, {
+      headers: {
+        Authorization: `Bearer ${persistedToken}`,
+      },
+    });
+
     return response.data[0];
   } catch (error) {
     if (error.response) {
@@ -51,4 +78,4 @@ const profileDataUpdate = createAsyncThunk('profile/update', async (_, thunkAPI)
   }
 });
 
-export const profileOperations = { profileData };
+export const profileOperations = { profileData, profileDataUpdate };

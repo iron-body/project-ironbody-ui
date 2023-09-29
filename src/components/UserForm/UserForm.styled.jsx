@@ -32,7 +32,7 @@ export const FieldBasicStyled = styled.input`
   }
 `;
 
-export const FieldBigStyled = styled.div`
+export const FieldBigStyled = styled.input`
   font-family: Roboto;
   font-size: 16px;
   line-height: 1.5;
@@ -45,16 +45,16 @@ export const FieldBigStyled = styled.div`
   height: 46px;
   color: var(--white);
   align-items: center;
-  /* padding-left: 14px;
-  padding-right: 14px; */
+  padding-left: 14px;
+  padding-right: 14px;
   @media ${device.tablet} {
-    width: 247px;
+    width: 159px;
     height: 52px;
     margin-top: 8px;
   }
 `;
 
-export const FieldSmallStyled = styled(Field)`
+export const FieldSmallStyled = styled.input`
   font-family: Roboto;
   font-size: 16px;
   line-height: 1.5;
@@ -71,6 +71,29 @@ export const FieldSmallStyled = styled(Field)`
   padding-right: 14px;
   @media ${device.tablet} {
     width: 100%;
+    height: 52px;
+    margin-top: 8px;
+  }
+`;
+
+export const FieldBigStyledDate = styled.div`
+  font-family: Roboto;
+  font-size: 16px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  margin-top: 4px;
+  width: 160px;
+  background: rgba(151, 151, 151, 0);
+  border: 1px solid rgba(239, 237, 232, 0.3);
+  border-radius: 12px;
+  height: 46px;
+  color: var(--white);
+  align-items: center;
+  /* padding-left: 14px;
+  padding-right: 14px; */
+  /* padding: 12px; */
+  @media ${device.tablet} {
+    width: 247px;
     height: 52px;
     margin-top: 8px;
   }
@@ -137,7 +160,7 @@ export const FormStyled = styled.form`
   @media ${device.tablet} {
     padding-bottom: 54px;
   }
-  @media screen and (min-width: 1248px) {
+  @media ${device.desktop} {
     padding-bottom: 44px;
     width: 700px;
     padding-right: 64px;

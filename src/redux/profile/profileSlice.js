@@ -3,9 +3,6 @@ import { profileOperations } from '../../redux/profile/profileOperations';
 
 const initialState = {
   profile: {
-    name: null,
-    email: null,
-    _id: null,
     height: null,
     currentWeight: null,
     desiredWeight: null,
@@ -13,11 +10,6 @@ const initialState = {
     blood: null,
     sex: null,
     levelActivity: null,
-    owner: {
-      _id: null,
-      name: null,
-      email: null,
-    },
   },
   isLoading: false,
 };
@@ -27,8 +19,34 @@ export const profileSlice = createSlice({
   initialState,
   reducers: {
     updateProfile(state, action) {
-      //   console.log(action.payload);
-      state.profile = { ...state.profile, ...action.payload };
+      const {
+        birthday,
+        blood,
+        currentWeight,
+        desiredWeight,
+        levelActivity,
+        sex,
+        height,
+        email,
+        name,
+        calorieNorm,
+        sportTimeNorm,
+      } = action.payload;
+      // state.profile = { ...state.profile, ...action.payload };
+      state.profile = {
+        ...state.profile,
+        birthday,
+        blood,
+        currentWeight,
+        desiredWeight,
+        levelActivity,
+        sex,
+        height,
+        email,
+        name,
+        calorieNorm,
+        sportTimeNorm,
+      };
     },
   },
   extraReducers: {
@@ -40,7 +58,42 @@ export const profileSlice = createSlice({
     },
     // [profileOperations.profileData.rejected](state) {},
     [profileOperations.profileData.fulfilled](state, action) {
-      state.profile = action.payload;
+      const {
+        birthday,
+        blood,
+        currentWeight,
+        desiredWeight,
+        levelActivity,
+        sex,
+        height,
+        email,
+        name,
+        calorieNorm,
+        sportTimeNorm,
+      } = action.payload;
+      state.profile = {
+        ...state.profile,
+        birthday,
+        blood,
+        currentWeight,
+        desiredWeight,
+        levelActivity,
+        sex,
+        height,
+        email,
+        name,
+        calorieNorm,
+        sportTimeNorm,
+      };
+      state.isLoading = false;
+    },
+    [profileOperations.profileDataUpdate.pending](state, action) {
+      state.isLoading = true;
+    },
+    [profileOperations.profileDataUpdate.rejected](state, action) {
+      state.isLoading = false;
+    },
+    [profileOperations.profileDataUpdate.fulfilled](state, action) {
       state.isLoading = false;
     },
   },
