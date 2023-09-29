@@ -5,6 +5,7 @@ const initialState = {
   user: {
     name: null,
     email: null,
+    avatarURL: null,
   },
   accessToken: null,
   isLoggedIn: false,
@@ -83,6 +84,7 @@ export const authSlice = createSlice({
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 export const selectToken = state => state.auth.accessToken;
 export const selectUsername = state => state.auth.user.name;
+export const selectAvatarURL = state => state.auth.user.avatarURL;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 
 export const authReducer = authSlice.reducer;

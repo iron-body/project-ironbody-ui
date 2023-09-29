@@ -38,13 +38,13 @@ export const AvatarSvg = styled.svg`
 `;
 
 export const FileInput = styled.input`
-  opacity: 0;
+  /* opacity: 0;
   height: 0;
   width: 0;
   line-height: 0;
   overflow: hidden;
   padding: 0;
-  margin: 0;
+  margin: 0; */
 `;
 
 export const AvatarBtn = styled.button`
@@ -226,6 +226,6 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   @media screen and (min-width: 1248px) {
-    padding-left: 49px;
+    /* padding-left: 49px; */
   }
 `;
