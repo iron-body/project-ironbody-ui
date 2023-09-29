@@ -9,14 +9,16 @@ import {
   NameExercise,
   ButtonIcon,
   StyledNavLink,
-  
-  } from './ExercicesPage.styled';
+} from './ExercicesPage.styled';
 import ExercisesCategories from '../../components/ExercisesCategories/ExercisesCategories';
 import TitlePage from '../../components/TitlePage/TitlePage';
 import { ExercisesSubcategoriesList } from '../../components/ExercisesSubcategoriesList/ExercisesSubcategoriesList';
 import { ExercisesList } from '../../components/ExercisesList/ExercisesList';
 import Loader from '../../components/Loader/Loader';
-import { fetchFilteredExercises, fetchExercises } from '../../redux/exercises/operations';
+import {
+  fetchFilteredExercises,
+  fetchExercises,
+} from '../../redux/exercises/operations';
 import { getLoading } from '../../redux/selectors';
 
 const ExercisesPage = () => {
@@ -24,11 +26,10 @@ const ExercisesPage = () => {
   const isLoading = useSelector(getLoading);
   const location = useLocation();
 
-  // Додайте стан для відстеження обраного підкатегорії
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
   const [nameExercise, setNameExercise] = useState(null);
 
-  const [subCategories, setSubCategories] = useState('Body parts'); // Початкове значення "Body parts"
+  const [subCategories, setSubCategories] = useState('Body parts');
   const { subCategories: routeSubCategories } = useParams();
 
   useEffect(() => {
@@ -52,7 +53,6 @@ const ExercisesPage = () => {
     dispatch(fetchExercises());
   }, [subCategories]);
 
-  // Функція для зміни обраної підкатегорії
   const handleSubcategorySelect = subcategory => {
     setSelectedSubcategory(subcategory);
   };
@@ -65,7 +65,6 @@ const ExercisesPage = () => {
     return name.charAt(0).toUpperCase() + name.slice(1);
   };
 
-  // Функція для передавання назви  обраної підкатегорії
   const handNameExercise = name => {
     const capitalizedName = capitalizeFirstLetter(name);
     setNameExercise(capitalizedName);
@@ -77,19 +76,15 @@ const ExercisesPage = () => {
 
   return (
     <Container selectedSubcategory={selectedSubcategory}>
-    
-        <StyledNavLink
-            to={selectedSubcategory}
-            onClick={() => handleResetSubcategorySelect()}
-            activeClassName="
+      <StyledNavLink
+        to={selectedSubcategory}
+        onClick={() => handleResetSubcategorySelect()}
+        activeClassName="
             active"
-            selectedSubcategory={selectedSubcategory}
-          >
-            <ButtonIcon alt="" src="/back-array-grey.svg" /> Back
-          </StyledNavLink>
-          
-       
-      
+        selectedSubcategory={selectedSubcategory}
+      >
+        <ButtonIcon alt="" src="/back-array-grey.svg" /> Back
+      </StyledNavLink>
 
       <NavigateContainer>
         {!selectedSubcategory ? (

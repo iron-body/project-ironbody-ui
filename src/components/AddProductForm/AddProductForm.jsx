@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
+import { format } from 'date-fns';
 
 import {
   FoodName,
@@ -16,6 +17,8 @@ import {
   Unit,
 } from './AddProductForm.styled';
 import AddProductSuccess from '../AddProductSuccess/AddProductSuccess';
+import { getProducts } from '../../redux/products/selectors';
+import { useSelector } from 'react-redux';
 
 import { addProductThunk } from '../../redux/products/productsOperations';
 
@@ -23,23 +26,27 @@ export default function AddProductForm({ productCalc, onClose }) {
   const { title, calories, category, recommended, _id } = productCalc;
   const [gramsInpValue, setGramsInpValue] = useState(100);
   const [modalStatus, setIsModalOpenSuccess] = useState(true);
+  const { error } = useSelector(getProducts);
 
-  const formattedDate = new Date().toISOString();
+  const date = new Date(2023, 8, 29);
+  const formattedDate = format(date, 'dd-MM-yyyy');
 
   const dispatch = useDispatch();
 
   const objSubmitProduct = {
-    title: title,
-    category: category,
-    calories: calories,
     amount: gramsInpValue,
-    date: formattedDate,
-    recommended: recommended,
     productid: _id,
+    calories: calories,
+    category: category,
+    title: title,
+    recommended: recommended,
+
+    date: formattedDate,
   };
 
   const calcCalories = () => {
     let result = (calories * gramsInpValue) / 100;
+
     return result;
   };
 
@@ -52,7 +59,7 @@ export default function AddProductForm({ productCalc, onClose }) {
       await dispatch(addProductThunk(objSubmitProduct));
       dispatch(setIsModalOpenSuccess(false));
     } catch (error) {
-      setIsModalOpenSuccess(false);
+      console.log(error.massage);
     }
   };
 

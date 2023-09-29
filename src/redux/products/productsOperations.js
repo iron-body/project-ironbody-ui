@@ -18,7 +18,7 @@ export const getCategoriesProductsThunk = createAsyncThunk(
   'category/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(`${baseURL}api/categories`);
+      const response = await axios.get(`${baseURL}api/products/categories`);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -72,13 +72,12 @@ export const getFillterRecommendedProductsThunk = createAsyncThunk(
 );
 
 export const addProductThunk = createAsyncThunk(
-  'product/addProduct',
+  'products/addProduct',
   async (product, thunkAPI) => {
     try {
-      const response = await axios.post(`${baseURL}api/userproducts/`, {
+      const response = await axios.post(`${baseURL}api/products/userproducts`, {
         ...product,
       });
-      console.log(response.data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
