@@ -20,7 +20,7 @@ export default function ProductsList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const { isLoading, error } = useSelector(getInitial);
+  const { isLoading } = useSelector(getInitial);
   const [itemsToShow, setItemsToShow] = useState(10);
   const increment = 10;
 
@@ -40,7 +40,7 @@ export default function ProductsList() {
       <ToastContainer autoClose={1500} />
       {isLoading && <Loader />}
 
-      {Array.isArray(visibleProducts) && (
+      {visibleProducts.length > 0 ? (
         <InfiniteScroll
           dataLength={itemsToShow}
           next={loadMore}
@@ -58,9 +58,7 @@ export default function ProductsList() {
             ))}
           </ProductList>
         </InfiniteScroll>
-      )}
-
-      {error && (
+      ) : (
         <ErrorMessege>
           <StartError>Sorry, no results were found</StartError> for the product
           filters you selected. You may want to consider other search options to
