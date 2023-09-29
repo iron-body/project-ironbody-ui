@@ -111,6 +111,8 @@ export const FieldSignUpStyled = styled(Field)`
   align-items: center;
   background-color: inherit;
   border-radius: 12px;
+
+  transition: border 200ms ease-out;
   /* border: 1px solid rgba(239, 237, 232, 0.3); */
 
   border: ${props => {
@@ -126,7 +128,10 @@ export const FieldSignUpStyled = styled(Field)`
     if (props.erroremail && props.touchedemail?.email === true) {
       return '1px solid #D80027';
     }
-    if (props.errorpassword === undefined && props.touchedpassword?.password === true) {
+    if (
+      props.errorpassword === undefined &&
+      props.touchedpassword?.password === true
+    ) {
       return '1px solid #3CBF61';
     }
 

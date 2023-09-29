@@ -8,6 +8,9 @@ export const BtnSignUpFormStyled = styled.button`
   border-radius: var(--br-12px);
   background-color: var(--orange);
   width: 136px;
+
+  transition: background-color 200ms ease-out;
+
   &:hover,
   &:focus {
     background-color: var(--color-lightsalmon);

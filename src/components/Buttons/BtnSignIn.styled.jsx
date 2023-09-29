@@ -6,6 +6,9 @@ export const BtnSignInStyled = styled(Link)`
   color: var(--white);
   border-radius: var(--br-12px);
   border: 1px solid var(--color-whitesmoke-200);
+
+  transition: border 200ms ease-out;
+
   &:hover,
   &:focus {
     border: 1px solid var(--orange);

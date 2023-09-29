@@ -4,11 +4,11 @@ import { device } from '../../Constants';
 
 export const Container = styled.div`
   display: flex;
-  gap:8px;
+  gap: 8px;
   margin-top: 20px;
   color: #efede8;
   @media ${device.tablet} {
-    gap:20px;
+    gap: 20px;
   }
 `;
 
@@ -16,8 +16,15 @@ export const StyledLink = styled(NavLink)`
   display: flex;
   align-items: center;
   flex-direction: column;
-
   color: rgba(239, 237, 232, 0.4);
+
+  transition: color 200ms ease-out;
+
+  &:hover, 
+  &:focus {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
   &.active {
     // transition-property: color;
     // transition-duration: var(--transition-duration);
@@ -30,6 +37,8 @@ export const StyledLink = styled(NavLink)`
       height: 3px;
       background-color: #ef8964;
       border-radius: 2px;
+    
+
   }
 
   @media screen and (${device.mobile}) {
@@ -43,5 +52,4 @@ export const StyledLink = styled(NavLink)`
     // margin-top: 6px;
     // margin-left: 20px;
   }
-
 `;
