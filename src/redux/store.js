@@ -1,4 +1,3 @@
-
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import persistReducer from 'redux-persist/es/persistReducer';
 import storage from 'redux-persist/lib/storage';
@@ -24,6 +23,7 @@ const middleware = [
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
+
     // serializableCheck: false,
   }),
 ];
