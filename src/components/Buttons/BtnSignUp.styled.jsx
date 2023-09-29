@@ -6,6 +6,9 @@ export const BtnSignUpStyled = styled(Link)`
   color: var(--white);
   border-radius: var(--br-12px);
   background-color: var(--orange);
+
+  transition: background-color 200ms ease-out;
+
   &:hover,
   &:focus {
     background-color: var(--color-lightsalmon);

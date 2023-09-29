@@ -113,6 +113,8 @@ export const FieldSignInStyled = styled(Field)`
   border-radius: 12px;
   /* border: 1px solid rgba(239, 237, 232, 0.3); */
 
+  transition: border 200ms ease-out;
+
   border: ${props => {
     if (props.erroremail === undefined && props.touchedemail?.email === true) {
       return `1px solid #3CBF61`;
@@ -120,7 +122,10 @@ export const FieldSignInStyled = styled(Field)`
     if (props.erroremail && props.touchedemail?.email === true) {
       return '1px solid #D80027';
     }
-    if (props.errorpassword === undefined && props.touchedpassword?.password === true) {
+    if (
+      props.errorpassword === undefined &&
+      props.touchedpassword?.password === true
+    ) {
       return '1px solid #3CBF61';
     }
     if (props.errorpassword && props.touchedpassword?.password === true) {
