@@ -7,17 +7,21 @@ import LogOutBtn from '../LogOutBtn/LogOutBtn';
 import { selectIsLoggedIn } from '../../redux/auth/authSlice';
 import { useSelector } from 'react-redux';
 import { selectParamsValues } from '../../redux/params/paramsSlice';
+import { selectProfileData } from '../../redux/profile/profileSlice';
+import { useLocation } from 'react-router-dom';
 
 export const Header = () => {
   const isTabletOrMobile = useMediaQuery('(max-width: 1439px)');
   const isLoggedIn = useSelector(selectIsLoggedIn);
   // const filledParams = useSelector(selectParamsValues);
   // console.log('filledParams :>> ', filledParams);
+  // const profileData = useSelector(selectProfileData);
+  const { pathname } = useLocation();
 
   return (
     <HeaderContainer>
       <Logo />
-      {!isLoggedIn ? null : (
+      {!isLoggedIn || pathname === '/params' ? null : (
         <NavContainer>
           {isTabletOrMobile ? null : <UserNav />}
           <UserBar />
