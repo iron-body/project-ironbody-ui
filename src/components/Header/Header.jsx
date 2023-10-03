@@ -7,7 +7,7 @@ import LogOutBtn from '../LogOutBtn/LogOutBtn';
 import { selectIsLoggedIn } from '../../redux/auth/authSlice';
 import { useSelector } from 'react-redux';
 import { selectParamsValues } from '../../redux/params/paramsSlice';
-import { selectProfileData } from '../../redux/profile/profileSlice';
+import { selectProfileData, selectProfileFilled } from '../../redux/profile/profileSlice';
 import { useLocation } from 'react-router-dom';
 
 export const Header = () => {
@@ -17,11 +17,12 @@ export const Header = () => {
   // console.log('filledParams :>> ', filledParams);
   // const profileData = useSelector(selectProfileData);
   const { pathname } = useLocation();
+  const isProfileFilledIn = useSelector(selectProfileFilled);
 
   return (
     <HeaderContainer>
       <Logo />
-      {!isLoggedIn || pathname === '/params' ? null : (
+      {!isLoggedIn || !isProfileFilledIn ? null : (
         <NavContainer>
           {isTabletOrMobile ? null : <UserNav />}
           <UserBar />

@@ -19,12 +19,11 @@ import { authOperations } from './redux/auth/authOperations';
 import PrivateRoute from './components/PrivateRoute';
 import { RestrictedRoute } from './components/RestrictedRoute';
 
-const test = import.meta.env.VITE_API_TEST;
-
 import ParamsPage from './pages/ParamsPage/ParamsPage';
 import ProductsPage from './pages/ProductsPage/ProductsPage';
 import axios from 'axios';
 import { selectIsLoggedIn, selectIsRefreshing } from './redux/auth/authSlice';
+import { selectProfileFilled } from './redux/profile/profileSlice';
 
 // const DairyPage = lazy(() => import('./pages/DiaryPage/DiaryPage'));
 // axios.defaults.baseURL = 'http://localhost:3030/api/';
@@ -40,13 +39,17 @@ function App() {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const isRefreshing = useSelector(selectIsRefreshing);
   const shouldRedirect = !isLoggedIn && !isRefreshing;
+  const isProfileFilledIn = useSelector(selectProfileFilled);
 
-  console.log(test);
   return (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         {!shouldRedirect ? (
-          <Route index element={<DiaryPage />} />
+          isProfileFilledIn ? (
+            <Route index element={<DiaryPage />} />
+          ) : (
+            <Route index element={<ParamsPage />} />
+          )
         ) : (
           <Route index element={<WelcomePage />} />
         )}
@@ -69,7 +72,15 @@ function App() {
           element={<PrivateRoute redirectTo="/signin" component={<ProductsPage />} />}
         />
 
-        <Route path="/exercises" element={<ExercisesPage />}>
+        <Route
+          path="/profile"
+          element={<PrivateRoute redirectTo="/signin" component={<ProfilePage />} />}
+        />
+
+        <Route
+          path="/exercises"
+          element={<PrivateRoute redirectTo="/signin" component={<ExercisesPage />} />}
+        >
           <Route path="/exercises/:subCategories" element={<ExercisesSubcategoriesList />}>
             <Route path="/exercises/:subCategories/:name" element={<ExercisesList />} />
           </Route>
@@ -87,7 +98,7 @@ function App() {
           path="signin"
           element={<RestrictedRoute redirectTo="/diary" component={<SignInPage />} />}
         />
-        <Route path="/profile" element={<ProfilePage />} />
+
         <Route path="*" element={<ErrorPage />} />
       </Route>
     </Routes>
