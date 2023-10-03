@@ -12,6 +12,7 @@ const initialState = {
     levelActivity: null,
   },
   isLoading: false,
+  profileIsFilledIn: false,
 };
 
 export const profileSlice = createSlice({
@@ -58,6 +59,13 @@ export const profileSlice = createSlice({
     },
     // [profileOperations.profileData.rejected](state) {},
     [profileOperations.profileData.fulfilled](state, action) {
+      // console.log('action.payload :>> ', action.payload);
+      state.isLoading = false;
+      if (!action.payload) {
+        state.profile = initialState;
+        state.profileIsFilledIn = false;
+        return;
+      }
       const {
         birthday,
         blood,
@@ -85,7 +93,7 @@ export const profileSlice = createSlice({
         calorieNorm,
         sportTimeNorm,
       };
-      state.isLoading = false;
+      state.profileIsFilledIn = true;
     },
     [profileOperations.profileDataUpdate.pending](state, action) {
       state.isLoading = true;
@@ -104,3 +112,4 @@ export const profileReducer = profileSlice.reducer;
 
 export const selectProfileData = state => state.profile.profile;
 export const getIsProfileLoading = state => state.profile.isLoading;
+export const selectProfileFilled = state => state.profile.profileIsFilledIn;

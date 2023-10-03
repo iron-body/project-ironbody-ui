@@ -100,7 +100,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
   }, [dispatch, values]);
 
   useEffect(() => {
-    console.log('paramsState :>> ', paramsState);
+    // console.log('paramsState :>> ', paramsState);
   }, [paramsState]);
 
   useEffect(() => {
