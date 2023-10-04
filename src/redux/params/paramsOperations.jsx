@@ -4,7 +4,7 @@ import { Notify } from 'notiflix';
 
 const updateParams = createAsyncThunk('users/calculate', async (paramsData, thunkAPI) => {
   try {
-    console.log('paramsData :>> ', paramsData);
+    // console.log('paramsData :>> ', paramsData);
     // const state = thunkAPI.getState();
     // const persistedToken = state.auth.accessToken;
     // console.log('persistedToken :>> ', persistedToken);

@@ -9,6 +9,10 @@ import Loader from '../../components/Loader/Loader';
 const ProfilePage = () => {
   const isLoading = useSelector(getIsProfileLoading);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
     <Container>
       <main>

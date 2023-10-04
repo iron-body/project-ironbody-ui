@@ -11,7 +11,7 @@ const initialState = {
     sex: null,
     levelActivity: null,
   },
-  isLoading: false,
+  isLoading: true,
   profileIsFilledIn: false,
 };
 
@@ -59,7 +59,6 @@ export const profileSlice = createSlice({
     },
     // [profileOperations.profileData.rejected](state) {},
     [profileOperations.profileData.fulfilled](state, action) {
-      // console.log('action.payload :>> ', action.payload);
       state.isLoading = false;
       if (!action.payload) {
         state.profile = initialState;

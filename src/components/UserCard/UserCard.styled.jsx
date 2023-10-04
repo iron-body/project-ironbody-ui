@@ -226,7 +226,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media screen and (min-width: 1248px) {
-    /* padding-left: 49px; */
+  @media ${device.desktop} {
+    padding-left: 67px;
   }
 `;

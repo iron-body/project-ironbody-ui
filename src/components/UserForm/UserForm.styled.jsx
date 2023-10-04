@@ -27,18 +27,22 @@ export const FieldBasicStyled = styled.input`
   @media ${device.tablet} {
     font-size: 16px;
     line-height: 1.5;
-    width: 345px;
+    width: 341px;
     height: 52px;
   }
 `;
 
 export const FieldBigStyled = styled.input`
+  color: #efede8;
   font-family: Roboto;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+
   box-sizing: border-box;
   margin-top: 4px;
-  width: 140px;
+  width: 156px;
   background: rgba(151, 151, 151, 0);
   border: 1px solid rgba(239, 237, 232, 0.3);
   border-radius: 12px;
@@ -51,13 +55,22 @@ export const FieldBigStyled = styled.input`
     width: 159px;
     height: 52px;
     margin-top: 8px;
+
+    font-size: 16px;
+    line-height: 1.5;
   }
 `;
 
 export const FieldSmallStyled = styled.input`
+  color: #efede8;
   font-family: Roboto;
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 128.571% */
+
+  font-family: Roboto;
+
   box-sizing: border-box;
   margin-top: 4px;
   width: 160px;
@@ -70,6 +83,8 @@ export const FieldSmallStyled = styled.input`
   padding-left: 14px;
   padding-right: 14px;
   @media ${device.tablet} {
+    font-size: 16px;
+    line-height: 1.5;
     width: 100%;
     height: 52px;
     margin-top: 8px;
@@ -82,7 +97,7 @@ export const FieldBigStyledDate = styled.div`
   line-height: 1.5;
   box-sizing: border-box;
   margin-top: 4px;
-  width: 160px;
+  width: 156px;
   background: rgba(151, 151, 151, 0);
   border: 1px solid rgba(239, 237, 232, 0.3);
   border-radius: 12px;
@@ -93,7 +108,7 @@ export const FieldBigStyledDate = styled.div`
   padding-right: 14px; */
   /* padding: 12px; */
   @media ${device.tablet} {
-    width: 247px;
+    width: 187px;
     height: 52px;
     margin-top: 8px;
   }
@@ -117,10 +132,20 @@ export const ParamsWrapper = styled.div`
   @media ${device.tablet} {
     display: flex;
     flex-direction: column;
+    width: 168px;
+  }
+`;
+export const ParamsWrapperDesiredWeight = styled.div`
+  padding-right: 14px;
+  @media ${device.tablet} {
+    display: flex;
+    flex-direction: column;
+    width: 140px;
   }
 `;
 
 export const CurrentWeightWrapper = styled.div`
+  width: 100%;
   @media ${device.tablet} {
     display: flex;
     flex-direction: column;
@@ -162,8 +187,8 @@ export const FormStyled = styled.form`
   }
   @media ${device.desktop} {
     padding-bottom: 44px;
-    width: 700px;
     padding-right: 64px;
     border-right: 1px rgba(239, 237, 232, 0.2) solid;
+    width: 696px;
   }
 `;
