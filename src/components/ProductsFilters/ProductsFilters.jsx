@@ -15,6 +15,13 @@ import {
   ErrMessage,
 } from './ProductsFilters.styled';
 
+import {
+  ErrorValidateSvgStyled,
+  SuccessValidateSvgStyled,
+  ValidateStatusErrorTextStyled,
+  ValidateStatusSuccessTextStyled,
+} from '../Forms/commonSignInForm.styled';
+
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import Select from 'react-select';
@@ -119,78 +126,80 @@ export default function ProductsFilters() {
       onSubmit={onSearchValue}
       validationSchema={schema}
     >
-      <Form>
-        <FormTitle>Filter</FormTitle>
-        <FilterContainer>
-          <FormGroup>
-            <SearchFieldContainer>
-              <SearchField
-                type="text"
-                name="searchInput"
-                placeholder="Search"
-                value={localSearchInput}
-                onChange={e => setLocalSearchInput(e.target.value)}
-              />
-              <ErrMessage name="searchInput" render={msg => <p>{msg}</p>} />
+      {({ errors, touched }) => (
+        <Form>
+          <FormTitle>Filter</FormTitle>
+          <FilterContainer>
+            <FormGroup>
+              <SearchFieldContainer>
+                <SearchField
+                  type="text"
+                  name="searchInput"
+                  placeholder="Search"
+                  value={localSearchInput}
+                  onChange={e => setLocalSearchInput(e.target.value)}
+                />
+                <ErrMessage name="searchInput" render={<p style={{color: "red"}}>{errors.msg}</p>} />
 
-              {localSearchInput.length > 0 && (
-                <EraseInputButton type="button" onClick={eraseInputValue}>
+                {localSearchInput.length > 0 && (
+                  <EraseInputButton type="button" onClick={eraseInputValue}>
+                    <SearchIconButton
+                      alt=""
+                      src="/project-ironbody-ui/Erase.svg"
+                    ></SearchIconButton>
+                  </EraseInputButton>
+                )}
+
+                <SearchInputButton type="submit" onSubmit={onSearchValue}>
                   <SearchIconButton
                     alt=""
-                    src="/project-ironbody-ui/Erase.svg"
+                    src="/project-ironbody-ui/search.svg"
                   ></SearchIconButton>
-                </EraseInputButton>
-              )}
-
-              <SearchInputButton type="submit" onSubmit={onSearchValue}>
-                <SearchIconButton
-                  alt=""
-                  src="/project-ironbody-ui/search.svg"
-                ></SearchIconButton>
-              </SearchInputButton>
-            </SearchFieldContainer>
-          </FormGroup>
-
-          <MobInpCont>
-            <FormGroup>
-              <Field
-                name="categories"
-                render={({ field }) => (
-                  <Select
-                    {...field}
-                    options={optionsCategories}
-                    isSearchable={false}
-                    styles={categoriesStyles}
-                    placeholder="Categories"
-                    value={selectedCategory}
-                    onChange={selectedOption => {
-                      setSelectedCategory(selectedOption);
-                    }}
-                  />
-                )}
-              />
+                </SearchInputButton>
+              </SearchFieldContainer>
             </FormGroup>
 
-            <FormGroup>
-              <Field
-                name="recomended"
-                render={({ field }) => (
-                  <Select
-                    {...field}
-                    options={optionsRecomended}
-                    isSearchable={false}
-                    styles={recomendedStyles}
-                    value={recommended}
-                    onChange={recommendedValue => {
-                      setRecommended(recommendedValue);
-                    }}
-                  />
-                )}
-              />
-            </FormGroup>
-          </MobInpCont>
-        </FilterContainer>
-      </Form>
+            <MobInpCont>
+              <FormGroup>
+                <Field
+                  name="categories"
+                  render={({ field }) => (
+                    <Select
+                      {...field}
+                      options={optionsCategories}
+                      isSearchable={false}
+                      styles={categoriesStyles}
+                      placeholder="Categories"
+                      value={selectedCategory}
+                      onChange={selectedOption => {
+                        setSelectedCategory(selectedOption);
+                      }}
+                    />
+                  )}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Field
+                  name="recomended"
+                  render={({ field }) => (
+                    <Select
+                      {...field}
+                      options={optionsRecomended}
+                      isSearchable={false}
+                      styles={recomendedStyles}
+                      value={recommended}
+                      onChange={recommendedValue => {
+                        setRecommended(recommendedValue);
+                      }}
+                    />
+                  )}
+                />
+              </FormGroup>
+            </MobInpCont>
+          </FilterContainer>
+        </Form>
+      )}
     </Formik>
   );
 }

@@ -20,7 +20,7 @@ export default function ProductsList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const { isLoading, error } = useSelector(getInitial);
+  const { isLoading } = useSelector(getInitial);
   const [itemsToShow, setItemsToShow] = useState(10);
   const increment = 10;
 
@@ -58,7 +58,8 @@ export default function ProductsList() {
             ))}
           </ProductList>
         </InfiniteScroll>
-      ): (<ErrorMessege>
+      ) : (
+        <ErrorMessege>
           <StartError>Sorry, no results were found</StartError> for the product
           filters you selected. You may want to consider other search options to
           find the product you want. Our range is wide and you have the
@@ -66,10 +67,8 @@ export default function ProductsList() {
           <BottomError>
             Try refreshing the page or check your internet connection.
           </BottomError>
-        </ErrorMessege>)}
-      {/* {error || visibleProducts.length === 0 && (
-        
-      )} */}
+        </ErrorMessege>
+      )}
 
       {isModalOpen && (
         <BasicModalWindow active={isModalOpen} setActive={setIsModalOpen}>
