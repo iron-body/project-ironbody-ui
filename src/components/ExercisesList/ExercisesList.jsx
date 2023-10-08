@@ -8,11 +8,11 @@ export const ExercisesList = ({ subcategory, nameExercise }) => {
 
   let exercise;
   const exercises = useSelector(state => state.exercises.items);
-  if (typeof exercises !== 'object') {
+  if (typeof exercises !== 'object' || Object.keys(exercises).length === 0) {
     console.log('problem with data uploading');
     return;
   }
-  switch (subcategory) {
+   switch (subcategory) {
     case 'Body parts':
       exercise = exercises.dataList.filter(item => item.bodyPart === name);
       break;
