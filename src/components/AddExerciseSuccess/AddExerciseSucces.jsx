@@ -30,7 +30,7 @@ export default function AddExercisesSucces({ active, calories, time }) {
 
         <SeccessIcon
           alt=""
-          src="/project-ironbody-ui/success-icon-prod.png"
+          src="/project-ironbody-ui/thumb_up.svg"
         ></SeccessIcon>
         <Status>Well done</Status>
 

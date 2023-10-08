@@ -1,6 +1,7 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUserExercise } from '../../redux/exercises/operations';
+import CircleTimer from '../Timer/Timer'
 import {
   Container,
   Img,
@@ -9,7 +10,6 @@ import {
   Name,
   Info,
   Btn,
-  Tmr,
   ExitBtn,
 } from './AddExerciseForm.styled';
 import { BtnTamplate } from '../Buttons/BtnExercises';
@@ -25,8 +25,11 @@ export const AddExerciseForm = ({
   id,
   calories,
   setActive,
+  setTimeCalories
 }) => {
   const dispatch = useDispatch();
+  const [timeExercise, setTimeExercise] = useState();
+  const [burnedCalories, setBurnedCalories] = useState();
   const { loading, error } = useSelector(state => state.exercises);
 
   const handleAddToDiaryClick = () => {
@@ -34,32 +37,33 @@ export const AddExerciseForm = ({
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0'); // +1, оскільки місяці в JavaScript індексуються з 0
     const day = String(today.getDate()).padStart(2, '0');
-    const formattedDate = `${year}-${month}-${day}`;
+    const formattedDate = `${day}-${month}-${year}`;
 
-    const parsedTime = parseInt(time, 10);
+    const parsedTime = ((time * 60 - timeExercise) / 60).toFixed(1);
+
+    setTimeCalories(timeExercise, burnedCalories);
 
     const requestData = {
       exercise: `${id}`, // ID вправи
       date: `${formattedDate}`, // Дата
       time: parsedTime, // Час
-      calories: calories, // Калорії
+      calories: burnedCalories, // Калорії
     };
 
-    console.log(requestData);
-
-    dispatch(fetchUserExercise(requestData))
+        dispatch(fetchUserExercise(requestData))
       .unwrap()
       .then(response => {
         // Handle successful response
-        console.log('Success:', response);
+        // console.log('Success:', response);
+        active();
       })
       .catch(err => {
         // Handle error
-        console.error('Error:', err);
+        // console.error('Error:', err);
         return;
       });
-
-    active();
+    
+    
   };
 
   // Функція для закриття модального вікна AddExerciseForm
@@ -67,13 +71,19 @@ export const AddExerciseForm = ({
     setActive(false);
   };
 
+  const onStop=(timeExercise, burnedCalories)=>{
+   
+    setTimeExercise(timeExercise);
+    setBurnedCalories(burnedCalories);
+  }
+
   return (
     <Container>
       <Img src={`${exercImg}`} alt="" width={270} height={226} />
       <ExitBtn onClick={() => closeAddExerciseForm()}>
         <Btn src="/project-ironbody-ui/ExitIcon.svg" />
       </ExitBtn>
-      <Tmr> Timer </Tmr>
+     < CircleTimer initialTime={time} calories={calories} onStop={onStop}/>
       <ExercseBoxInf
         name={exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
         bodyPart={bodyPart.charAt(0).toUpperCase() + bodyPart.slice(1)}
