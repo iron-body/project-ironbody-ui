@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import moment from 'moment';
 import { Notify } from 'notiflix';
 
 const profileData = createAsyncThunk('profile/userdata', async (profileData, thunkAPI) => {
@@ -14,15 +15,15 @@ const profileData = createAsyncThunk('profile/userdata', async (profileData, thu
 
     return response.data[0];
   } catch (error) {
-    console.log('error :>> ', error);
+    // console.log('error :>> ', error);
 
-    if (error.response) {
-      Notify.failure(`Get profile data failure with message "${error.response.data.message}"`);
-    }
+    // if (error.response) {
+    //   Notify.failure(`Get profile data failure with message "${error.response.data.message}"`);
+    // }
 
-    if (!error.response) {
-      Notify.failure(`Get profile data failure with message "${error.message}"`);
-    }
+    // if (!error.response) {
+    //   Notify.failure(`Get profile data failure with message "${error.message}"`);
+    // }
 
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -37,8 +38,11 @@ const profileDataUpdate = createAsyncThunk('profile/update', async (_, thunkAPI)
     const profileData = state.profile.profile;
     console.log('profileData :>> ', profileData);
 
+    const modifiedBirthdayFormat = moment(profileData?.birthday).toDate();
+    console.log('modifiedBirthdayFormat :>> ', modifiedBirthdayFormat);
+
     const modifiedProfileData = {
-      birthday: profileData?.birthday,
+      birthday: modifiedBirthdayFormat,
       blood: profileData?.blood,
       currentWeight: profileData?.currentWeight,
       desiredWeight: profileData?.desiredWeight,

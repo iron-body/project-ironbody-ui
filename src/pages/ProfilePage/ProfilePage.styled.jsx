@@ -3,7 +3,7 @@ import { device } from '../../Constants';
 
 export const Container = styled.div`
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   margin-top: 40px;
   border-top: 1px solid rgba(239, 237, 232, 0.2);
   padding-left: 20px;
@@ -20,13 +20,20 @@ export const Container = styled.div`
     padding-right: 36px;
   }
   @media ${device.desktop} {
-    width: 1248px;
+    width: 1268px;
     padding-left: 96px;
     padding-right: 96px;
   }
 `;
 
 export const ProfileWrapper = styled.div`
+  @media ${device.tablet} {
+    display: flex;
+    /* flex-direction: row-reverse;
+    align-items: flex-end; */
+    flex-direction: column;
+    align-items: center;
+  }
   @media ${device.desktop} {
     display: flex;
     flex-direction: row-reverse;

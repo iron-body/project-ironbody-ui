@@ -19,12 +19,14 @@ import {
   InfoWrapper,
   FormStyled,
   FieldBigStyledDate,
+  ParamsWrapperDesiredWeight,
 } from './UserForm.styled';
 import { selectProfileData, updateProfile } from '../../redux/profile/profileSlice';
 import { useEffect } from 'react';
 import { BtnSaveStyled, SaveStyled } from '../Buttons/BtnSave.styled';
 import ProfileDaySwitch from '../ProfileDaySwitch/ProfileDaySwitch';
 import { profileOperations } from '../../redux/profile/profileOperations';
+import moment from 'moment';
 const UserForm = () => {
   const dispatch = useDispatch();
   const profileData = useSelector(selectProfileData);
@@ -114,7 +116,7 @@ const UserForm = () => {
         <InfoContainerTwo>
           <Label htmlFor="desiredWeight">Desired Weight</Label>
           <ParamsWrapperTwo>
-            <ParamsWrapper>
+            <ParamsWrapperDesiredWeight>
               <FieldSmallStyled
                 min="35"
                 type="number"
@@ -123,9 +125,14 @@ const UserForm = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-            </ParamsWrapper>
+            </ParamsWrapperDesiredWeight>
             <FieldBigStyledDate>
-              <ProfileDaySwitch />
+              <ProfileDaySwitch
+                // value={values.birthday}
+                onDateChange={date => {
+                  setFieldValue('birthday', moment(date).toISOString());
+                }}
+              />
             </FieldBigStyledDate>
           </ParamsWrapperTwo>
         </InfoContainerTwo>
