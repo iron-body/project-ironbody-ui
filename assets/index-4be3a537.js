@@ -3047,7 +3047,7 @@ letter-spacing: -0.28px;
    
     padding: 0px;
     ${t=>t.selectedSubcategory&&Oc`
-      background-image: url('/side-view-people-training-gym-desktop@1x.jpg');
+      background-image: url('/project-ironbody-ui/side-view-people-training-gym-desktop@1x.jpg');
       background-repeat: no-repeat;
       background-position: 981px 37px;
       background-size: 638px;
@@ -3339,9 +3339,9 @@ margin-right:auto;
 font-size: 10px;
 justify-content: center;
 color: rgba(239, 237, 232, 0.4);
-margin-bottom:10px;
+margin-bottom:7px;
 `,xne=P.div`
-margin-top:10px;
+margin-top:7px;
 border: none;
   background: #10100f;
 
@@ -3354,7 +3354,7 @@ border: none;
   background: #10100f;
 
 `,bne=P.div`
-margin-top:10px;
+margin-top:7px;
 margin-bottom:10px;
 display:flex;
 `,wne=P.div`
@@ -3366,7 +3366,7 @@ color:rgba(239, 237, 232, 0.4);
 
 color: #E6533C;
 
-`,kne=({initialTime:t,onStop:n,calories:r})=>{const i=parseInt(t,10)*60,[o,a]=S.useState(i),[s,l]=S.useState(!1),[u,c]=S.useState(0);S.useEffect(()=>{let p;return s?p=setInterval(()=>{if(o===0)l(!1),n(0);else{a(o-1);const m=i-o,v=Math.floor(m/i*r);c(v)}},1e3):clearInterval(p),()=>clearInterval(p)},[s,o,n,r]),S.useEffect(()=>{const p=setInterval(()=>{const m=i-o,v=Math.floor(m/i*r);c(v)},4e3);return()=>clearInterval(p)},[o,i,r]);const d=()=>{l(!0)},f=()=>{l(!1),n(o,u)};return h.jsxs(vne,{children:[h.jsx(yne,{className:"time",children:"Time"}),h.jsx(Q4,{rotation:"counterclockwise",size:124,isPlaying:s,duration:t*60,colors:"#E6533C",colorsTime:"#E6533C",strokeWidth:4,trailColor:"rgba(239, 237, 232, 0.1)",children:({remainingTime:p})=>{const m=Math.floor(p/60),v=p%60,g=String(m).padStart(2,"0"),b=String(v).padStart(2,"0"),y={fontSize:"16px",color:"#EFEDE8"};return h.jsxs("div",{style:y,children:[" ",g,":",b]})}}),h.jsx(xne,{className:"controls",children:s?h.jsx(SE,{onClick:f,children:h.jsx(kE,{src:"/project-ironbody-ui/pause-square.svg"})}):h.jsx(SE,{onClick:d,children:h.jsx(kE,{src:"/project-ironbody-ui/play.svg"})})}),h.jsxs(bne,{children:[h.jsx(wne,{children:"Burned calories:"}),h.jsx(Sne,{children:u})]})]})},Cne=P.div`
+`,kne=({initialTime:t,onStop:n,calories:r})=>{const i=parseInt(t,10)*60,[o,a]=S.useState(i),[s,l]=S.useState(!1),[u,c]=S.useState(0);S.useEffect(()=>{let p;return s?p=setInterval(()=>{if(o===0)l(!1),n(0);else{a(o-1);const m=i-o,v=Math.floor(m/i*r);c(v)}},1e3):clearInterval(p),()=>clearInterval(p)},[s,o,n,r]),S.useEffect(()=>{const p=setInterval(()=>{const m=i-o,v=Math.floor(m/i*r);c(v)},4e3);return()=>clearInterval(p)},[o,i,r]);const d=()=>{l(!0)},f=()=>{l(!1),n(o,u)};return h.jsxs(vne,{children:[h.jsx(yne,{className:"time",children:"Time"}),h.jsx(Q4,{rotation:"counterclockwise",size:111,isPlaying:s,duration:t*60,colors:"#E6533C",colorsTime:"#E6533C",strokeWidth:4,trailColor:"rgba(239, 237, 232, 0.1)",children:({remainingTime:p})=>{const m=Math.floor(p/60),v=p%60,g=String(m).padStart(2,"0"),b=String(v).padStart(2,"0"),y={fontSize:"16px",color:"#EFEDE8"};return h.jsxs("div",{style:y,children:[" ",g,":",b]})}}),h.jsx(xne,{className:"controls",children:s?h.jsx(SE,{onClick:f,children:h.jsx(kE,{src:"/project-ironbody-ui/pause-square.svg"})}):h.jsx(SE,{onClick:d,children:h.jsx(kE,{src:"/project-ironbody-ui/play.svg"})})}),h.jsxs(bne,{children:[h.jsx(wne,{children:"Burned calories:"}),h.jsx(Sne,{children:u})]})]})},Cne=P.div`
 
 
 display: flex;
@@ -3761,7 +3761,7 @@ margin-bottom:16px;
   width: 16px;
   height: 16px;
   margin-left: 8px;
-`;function Zne({active:t,calories:n,time:r}){const i=()=>{t()};return h.jsx(h.Fragment,{children:h.jsxs(Qne,{children:[h.jsx(Wne,{onClick:i,children:h.jsx(Yne,{alt:"",src:"/project-ironbody-ui/ExitIcon.svg"})}),h.jsx(Une,{alt:"",src:"/project-ironbody-ui/thumb_up.svg"}),h.jsx(Hne,{children:"Well done"}),h.jsxs(CE,{children:[h.jsx(EE,{children:"Your time:"}),h.jsx(_E,{children:r}),h.jsx(Gne,{children:"minutes"})]}),h.jsxs(CE,{children:[h.jsx(EE,{children:"Burned calories:"}),h.jsx(_E,{children:n})]}),h.jsx(qne,{onClick:i,children:"Next exercise"}),h.jsxs(Xne,{to:"/diary",children:["To the diary",h.jsx(Kne,{alt:"",src:"/project-ironbody-ui/arrow-grey.svg",style:{fill:"grey"}})]})]})})}const Jne=({exerciseName:t,exercImg:n,calories:r,bodyPart:i,muscles:o,time:a,equipment:s,id:l})=>{const[u,c]=S.useState(!1),[d,f]=S.useState(!1),[p,m]=S.useState(),[v,g]=S.useState(),b=()=>{c(!0)},y=()=>{c(!1),f(!0)},x=()=>{c(!1)},w=()=>{f(!1)},k=(C,D)=>{m(((a*60-C)/60).toFixed(1)),g(D)};return h.jsxs(Nne,{children:[h.jsxs(jne,{children:[h.jsx(Ine,{children:"WORKOUT"}),h.jsx(Ane,{children:h.jsxs(Fne,{onClick:b,children:["Start",h.jsx(Lne,{alt:"",src:"/next-array.svg"})]})})]}),h.jsx(Iy,{active:u,setActive:x,children:h.jsx(Mne,{exercImg:`${n}`,exerciseName:`${t}`,bodyPart:`${i}`,muscles:`${o}`,time:`${a}`,equipment:`${s}`,active:y,id:`${l}`,calories:r,setActive:x,setTimeCalories:k})}),h.jsx(Iy,{active:d,setActive:w,children:h.jsx(Zne,{time:p,calories:v,active:w})}),h.jsxs(Bne,{children:[h.jsx(zne,{alt:"",src:"/product-icon.svg"})," ",t.charAt(0).toUpperCase()+t.slice(1)]}),h.jsxs(Vne,{children:[h.jsxs(s0,{children:["Burned calories: ",h.jsx(l0,{children:r})]}),h.jsxs(s0,{children:["Body part: ",h.jsx(l0,{children:i})]}),h.jsxs(s0,{children:["Target: ",h.jsx(l0,{children:o})," "]})]})]},t)},ere=P.div`
+`;function Zne({active:t,calories:n,time:r}){const i=()=>{t()};return h.jsx(h.Fragment,{children:h.jsxs(Qne,{children:[h.jsx(Wne,{onClick:i,children:h.jsx(Yne,{alt:"",src:"/project-ironbody-ui/ExitIcon.svg"})}),h.jsx(Une,{alt:"",src:"/project-ironbody-ui/thumb_up.svg"}),h.jsx(Hne,{children:"Well done"}),h.jsxs(CE,{children:[h.jsx(EE,{children:"Your time:"}),h.jsx(_E,{children:r}),h.jsx(Gne,{children:"minutes"})]}),h.jsxs(CE,{children:[h.jsx(EE,{children:"Burned calories:"}),h.jsx(_E,{children:n})]}),h.jsx(qne,{onClick:i,children:"Next exercise"}),h.jsxs(Xne,{to:"/diary",children:["To the diary",h.jsx(Kne,{alt:"",src:"/project-ironbody-ui/arrow-grey.svg",style:{fill:"grey"}})]})]})})}const Jne=({exerciseName:t,exercImg:n,calories:r,bodyPart:i,muscles:o,time:a,equipment:s,id:l})=>{const[u,c]=S.useState(!1),[d,f]=S.useState(!1),[p,m]=S.useState(),[v,g]=S.useState(),b=()=>{c(!0)},y=()=>{c(!1),f(!0)},x=()=>{c(!1)},w=()=>{f(!1)},k=(C,D)=>{m(((a*60-C)/60).toFixed(1)),g(D)};return h.jsxs(Nne,{children:[h.jsxs(jne,{children:[h.jsx(Ine,{children:"WORKOUT"}),h.jsx(Ane,{children:h.jsxs(Fne,{onClick:b,children:["Start",h.jsx(Lne,{alt:"",src:"/project-ironbody-ui/next-array.svg"})]})})]}),h.jsx(Iy,{active:u,setActive:x,children:h.jsx(Mne,{exercImg:`${n}`,exerciseName:`${t}`,bodyPart:`${i}`,muscles:`${o}`,time:`${a}`,equipment:`${s}`,active:y,id:`${l}`,calories:r,setActive:x,setTimeCalories:k})}),h.jsx(Iy,{active:d,setActive:w,children:h.jsx(Zne,{time:p,calories:v,active:w})}),h.jsxs(Bne,{children:[h.jsx(zne,{alt:"",src:"/project-ironbody-ui/product-icon.svg"})," ",t.charAt(0).toUpperCase()+t.slice(1)]}),h.jsxs(Vne,{children:[h.jsxs(s0,{children:["Burned calories: ",h.jsx(l0,{children:r})]}),h.jsxs(s0,{children:["Body part: ",h.jsx(l0,{children:i})]}),h.jsxs(s0,{children:["Target: ",h.jsx(l0,{children:o})," "]})]})]},t)},ere=P.div`
   display: flex;
   justify-content: center;
   @media screen and (${E.tablet}) {
