@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
+import { Notify } from 'notiflix';
 
 import {
   Container,
@@ -52,21 +53,20 @@ const CircleTimer = ({ initialTime, onStop, calories }) => {
       setBurnedCalories(caloriesBurned);
     }, 4000);
 
-    return () => clearInterval(caloriesInterval); // Clear the interval on unmount
+    return () => clearInterval(caloriesInterval); 
   }, [time, initialTimeNumber, calories]);
 
-  // function setInfoBurned(){
-  //   const caloriesInterval = setInterval(() => {
-  //     console.log(burnedCalories);
-
-  //       }, 4000);
-  // }
-
+ 
   const startTimer = () => {
     setIsRunning(true);
   };
 
   const stopTimer = () => {
+    const minTime = (initialTime*60-time)/60;
+    if(minTime<1){
+      Notify.failure(`Come on! Don't be lazy! Work a little harder!`);
+    }
+
     setIsRunning(false);
     onStop(time, burnedCalories);
   };

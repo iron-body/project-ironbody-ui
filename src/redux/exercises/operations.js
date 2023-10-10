@@ -55,10 +55,10 @@ export const fetchUserExercise = createAsyncThunk(
         Authorization: `Bearer ${persistedToken}`,
       },   
      });
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       if (error.response) {
         Notify.failure(`${error.response.data.message}`);
       }

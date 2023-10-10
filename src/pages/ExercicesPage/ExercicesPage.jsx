@@ -20,6 +20,8 @@ import {
   fetchExercises,
 } from '../../redux/exercises/operations';
 import { getLoading } from '../../redux/selectors';
+import Icon from '/back-array-grey.svg';
+
 
 const ExercisesPage = () => {
   const dispatch = useDispatch();
@@ -83,7 +85,7 @@ const ExercisesPage = () => {
             active"
         selectedSubcategory={selectedSubcategory}
       >
-        <ButtonIcon alt="" src="/back-array-grey.svg" /> Back
+        <ButtonIcon alt="" src={Icon} /> Back
       </StyledNavLink>
 
       <NavigateContainer>
