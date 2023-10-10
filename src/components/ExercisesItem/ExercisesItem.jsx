@@ -74,7 +74,7 @@ const setTimeCalories=(timeExercise, burnedCalories )=>{
         <RecomendedInfo>
           <ButtonItem onClick={openAddExerciseForm} >
             Start
-            <ButtonIcon alt="" src="/next-array.svg" />
+            <ButtonIcon alt="" src="/project-ironbody-ui/next-array.svg" />
           </ButtonItem>
         </RecomendedInfo>
       </NavCard>
@@ -102,7 +102,7 @@ const setTimeCalories=(timeExercise, burnedCalories )=>{
       
       
       <ExerciseName>
-      <ExerciseIcon alt="" src="/product-icon.svg"/> {exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
+      <ExerciseIcon alt="" src="/project-ironbody-ui/product-icon.svg"/> {exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
       </ExerciseName>
       <ExerciseParams>
         <NameParams>

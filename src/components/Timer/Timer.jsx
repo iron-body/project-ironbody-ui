@@ -76,7 +76,7 @@ const CircleTimer = ({ initialTime, onStop, calories }) => {
       <Name className="time">Time</Name>
       <CountdownCircleTimer
         rotation="counterclockwise"
-        size={124}
+        size={111}
         isPlaying={isRunning}
         duration={initialTime * 60}
         colors={'#E6533C'}
