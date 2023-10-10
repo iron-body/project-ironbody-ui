@@ -16,13 +16,13 @@ margin-right:auto;
 font-size: 10px;
 justify-content: center;
 color: rgba(239, 237, 232, 0.4);
-margin-bottom:10px;
+margin-bottom:7px;
 `;
 
 
 
 export const ButtonBlock = styled.div`
-margin-top:10px;
+margin-top:7px;
 border: none;
   background: #10100f;
 
@@ -43,7 +43,7 @@ export const BtnImg = styled.img`
 
 
 export const BurnedBlock = styled.div`
-margin-top:10px;
+margin-top:7px;
 margin-bottom:10px;
 display:flex;
 `;
