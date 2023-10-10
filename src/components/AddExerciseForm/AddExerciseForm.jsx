@@ -1,5 +1,6 @@
 import React ,{useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Notify } from 'notiflix';
 import { fetchUserExercise } from '../../redux/exercises/operations';
 import CircleTimer from '../Timer/Timer'
 import {
@@ -33,46 +34,48 @@ export const AddExerciseForm = ({
   const { loading, error } = useSelector(state => state.exercises);
 
   const handleAddToDiaryClick = () => {
+
+    const parsedTime = Number(((time * 60 - timeExercise) / 60).toFixed(1));
+if(!parsedTime || parsedTime<1){
+  Notify.failure(`Sorry, you've done too little work to add an exercise`);
+  return
+}
+
     const today = new Date();
     const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // +1, оскільки місяці в JavaScript індексуються з 0
+    const month = String(today.getMonth() + 1).padStart(2, '0'); 
     const day = String(today.getDate()).padStart(2, '0');
     const formattedDate = `${day}-${month}-${year}`;
 
-    const parsedTime = ((time * 60 - timeExercise) / 60).toFixed(1);
+   
 
     setTimeCalories(timeExercise, burnedCalories);
 
     const requestData = {
-      exercise: `${id}`, // ID вправи
-      date: `${formattedDate}`, // Дата
-      time: parsedTime, // Час
-      calories: burnedCalories, // Калорії
+      exercise: `${id}`, 
+      date: `${formattedDate}`, 
+      time: parsedTime, 
+      calories: burnedCalories,
     };
-
         dispatch(fetchUserExercise(requestData))
       .unwrap()
       .then(response => {
-        // Handle successful response
         // console.log('Success:', response);
         active();
       })
       .catch(err => {
-        // Handle error
-        // console.error('Error:', err);
+        //  console.error('Error:', err);
         return;
       });
     
     
   };
 
-  // Функція для закриття модального вікна AddExerciseForm
   const closeAddExerciseForm = () => {
     setActive(false);
   };
 
   const onStop=(timeExercise, burnedCalories)=>{
-   
     setTimeExercise(timeExercise);
     setBurnedCalories(burnedCalories);
   }
