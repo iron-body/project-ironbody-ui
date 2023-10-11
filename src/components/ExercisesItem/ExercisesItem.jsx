@@ -33,30 +33,36 @@ export const ExercisesItem = ({
 }) => {
   const [addExerciseFormOpen, setAddExerciseFormOpen] = useState(false);
   const [addExerciseSuccessOpen, setAddExerciseSuccessOpen] = useState(false);
+  const [timeExercise, setTimeExercise] = useState();
+  const [burnedCalories, setBurnedCalories] = useState();
 
-  // Функція для відкриття модального вікна AddExerciseForm
+
   const openAddExerciseForm = () => {
     setAddExerciseFormOpen(true);
   };
 
-  // Функція для закриття модального вікна AddExerciseForm та відкриття AddExerciseSuccess
+
   const closeAddExerciseFormAndOpenSuccess = () => {
     setAddExerciseFormOpen(false);
     setAddExerciseSuccessOpen(true);
   };
 
-  // Функція для закриття модального вікна AddExerciseForm 
+
   const closeAddExerciseForm = () => {
     setAddExerciseFormOpen(false);
     
   };
 
-  // Функція для закриття модального вікна AddExerciseSuccess
+
   const closeAddExerciseSuccess = () => {
     setAddExerciseSuccessOpen(false);
   };
 
+const setTimeCalories=(timeExercise, burnedCalories )=>{
+  setTimeExercise(((time*60-(timeExercise))/60).toFixed(1));
+  setBurnedCalories(burnedCalories);
 
+  }
 
   return (
     
@@ -68,7 +74,7 @@ export const ExercisesItem = ({
         <RecomendedInfo>
           <ButtonItem onClick={openAddExerciseForm} >
             Start
-            <ButtonIcon alt="" src="/next-array.svg" />
+            <ButtonIcon alt="" src="/project-ironbody-ui/next-array.svg" />
           </ButtonItem>
         </RecomendedInfo>
       </NavCard>
@@ -85,17 +91,18 @@ export const ExercisesItem = ({
           id={`${id}`}
           calories={calories}
           setActive={closeAddExerciseForm}
+          setTimeCalories={setTimeCalories}
         />
       </BasicModalWindow>
       
       <BasicModalWindow active={addExerciseSuccessOpen} setActive={closeAddExerciseSuccess}>
-        <AddExerciseSucces time={time} calories={calories} active={closeAddExerciseSuccess} />
+        <AddExerciseSucces time={timeExercise} calories={burnedCalories} active={closeAddExerciseSuccess} />
       </BasicModalWindow>
       
       
       
       <ExerciseName>
-      <ExerciseIcon alt="" src="/product-icon.svg"/> {exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
+      <ExerciseIcon alt="" src="/project-ironbody-ui/product-icon.svg"/> {exerciseName.charAt(0).toUpperCase() + exerciseName.slice(1)}
       </ExerciseName>
       <ExerciseParams>
         <NameParams>
