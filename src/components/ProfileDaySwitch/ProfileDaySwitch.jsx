@@ -1,68 +1,55 @@
-import { useState } from 'react';
-import sprite from '../../../icons.svg';
-import {
-  CalendarIcon,
-  DaySwitchContainer,
-  // StyledButton,
-  StyledDate,
-} from './ProfileDaySwitch.styled';
-import StyledDatepicker from '../StyledDatepicker/StyledDatepicker';
 import moment from 'moment';
-import { selectProfileData } from '../../redux/profile/profileSlice';
+import { forwardRef, useState } from 'react';
+import { format } from 'date-fns';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+// import { CalendarIcon } from '@mui/x-date-pickers';
+import {
+  CalendarGlobalStyles,
+  CalendarIcon,
+  DatePickerStyled,
+  DaySwitchContainer,
+  StyledDate,
+  StyledDateContainer,
+} from './ProfileDaySwitch.styled';
 import { useSelector } from 'react-redux';
+import { selectProfileData } from '../../redux/profile/profileSlice';
+import sprite from '../../../icons.svg';
 
-function ProfileDaySwitch() {
+// eslint-disable-next-line react/prop-types
+function ProfileDaySwitch({ onDateChange }) {
   const profileData = useSelector(selectProfileData);
-
-  // const { birthday } = profileData;
   const birthdayMoment = moment(profileData?.birthday).toDate();
+  const date18yearsAgo = moment().subtract(18, 'years').toDate();
   const [selectedDate, setSelectedDate] = useState(birthdayMoment);
-  // const [minDate, setMinDate] = useState(null); // Дата реєстрації користувача
-  const [showDatepicker, setShowDatepicker] = useState(false);
 
-  // useEffect(() => {
-  //   // Можливо, ви отримуєте дату реєстрації користувача з API або іншим способом
-  //   // Наприклад, розкоментуйте цей рядок і встановіть правильну дату реєстрації
-
-  //   setMinDate(new Date());
-  // }, []);
-
-  const handleFormattedDateClick = () => {
-    console.log('click!');
-    setShowDatepicker(!showDatepicker);
-  };
-  // const handlePreviousDay = () => {
-  //   const previousDate = new Date(selectedDate);
-  //   previousDate.setDate(previousDate.getDate() - 1);
-  //   setSelectedDate(previousDate);
-  // };
-
-  // const handleNextDay = () => {
-  //   const nextDate = new Date(selectedDate);
-  //   nextDate.setDate(nextDate.getDate() + 1);
-
-  //   setSelectedDate(nextDate);
-  // };
-  const handleDateChange = date => {
-    setSelectedDate(date);
-  };
-  // Форматуємо обрану дату в формат dd/mm/YYYY
-  const formattedDate = selectedDate.toLocaleDateString('de-DE', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  });
-  return (
-    <DaySwitchContainer>
-      <StyledDate onClick={handleFormattedDateClick}>
-        {formattedDate}
+  // eslint-disable-next-line react/display-name, react/prop-types
+  const CustomInput = forwardRef(({ onClick }, ref) => {
+    return (
+      <StyledDateContainer onClick={onClick}>
+        <StyledDate ref={ref}>{format(selectedDate, 'dd.MM.yyyy')}</StyledDate>
         <CalendarIcon width="16" height="16">
           <use href={`${sprite}#icon-calendar`}></use>
         </CalendarIcon>
-        {showDatepicker && <StyledDatepicker date={selectedDate} onChange={handleDateChange} />}
-      </StyledDate>
-      {/* <StyledButton onClick={handlePreviousDay}>{'<'}</StyledButton>
-      <StyledButton onClick={handleNextDay}>{'>'}</StyledButton> */}
+      </StyledDateContainer>
+    );
+  });
+
+  return (
+    <DaySwitchContainer>
+      <DatePickerStyled
+        selected={selectedDate}
+        onChange={date => {
+          setSelectedDate(date);
+          onDateChange(date);
+        }}
+        customInput={<CustomInput />}
+        dateFormat={'dd MM yyyy'}
+        calendarStartDay={1}
+        formatWeekDay={day => day.substr(0, 1)}
+        maxDate={date18yearsAgo}
+      />
+      <CalendarGlobalStyles />
     </DaySwitchContainer>
   );
 }

@@ -100,7 +100,7 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
   }, [dispatch, values]);
 
   useEffect(() => {
-    console.log('paramsState :>> ', paramsState);
+    // console.log('paramsState :>> ', paramsState);
   }, [paramsState]);
 
   useEffect(() => {
@@ -112,12 +112,12 @@ const ParamsForm = ({ currentStep, onStepChange }) => {
   const handleDateChange = date => {
     const newFormatedDate = moment(date).toISOString();
     setFieldValue('birthday', newFormatedDate);
-    console.log(newFormatedDate);
+    // console.log(newFormatedDate);
   };
 
   const handleNextSetStep = () => {
     onStepChange(currentStep + 1);
-    console.log(paramsState);
+    // console.log(paramsState);
   };
 
   const handleBackSetStep = () => {

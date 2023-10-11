@@ -10,8 +10,9 @@ export const UserCardWrapper = styled.div`
 `;
 
 export const AvatarCircle = styled.div`
+  background-image: url('params-page-2-tablet-2x.jpg');
   position: relative;
-  background-color: rgba(239, 237, 232, 0.1);
+  /* background-color: rgba(239, 237, 232, 0.1); */
   border: 1px solid rgba(230, 83, 60, 1);
   border-radius: 50%;
   display: flex;
@@ -225,7 +226,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media screen and (min-width: 1248px) {
-    /* padding-left: 49px; */
+  @media ${device.desktop} {
+    padding-left: 67px;
   }
 `;

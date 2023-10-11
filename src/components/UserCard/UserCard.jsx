@@ -35,11 +35,11 @@ import { selectProfileData } from '../../redux/profile/profileSlice';
 import { useNavigate } from 'react-router-dom';
 import { authOperations } from '../../redux/auth/authOperations';
 import { selectUsername } from '../../redux/auth/authSlice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const UserCard = () => {
   const profileData = useSelector(selectProfileData);
-  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const currentUserName = useSelector(selectUsername);
 
@@ -65,9 +65,10 @@ const UserCard = () => {
       <UserCardWrapper>
         <AvatarWrapper>
           <AvatarCircle>
-            <AvatarSvg>
+            {/* <AvatarSvg>
               <use href={`${sprite}#gridicons_user`} />
-            </AvatarSvg>
+            </AvatarSvg> */}
+            <label htmlFor="upload-avatar">Avatar</label>
             <FileInput
               type="file"
               // onChange={handleChange}

@@ -6,6 +6,7 @@ import Loader from '../Loader/Loader';
 import { profileOperations } from '../../redux/profile/profileOperations';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectIsLoggedIn } from '../../redux/auth/authSlice';
+import { authOperations } from '../../redux/auth/authOperations';
 
 const SharedLayout = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const SharedLayout = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
+      dispatch(authOperations.refreshCurrentUser());
       dispatch(profileOperations.profileData());
     }
   }, [dispatch, isLoggedIn]);

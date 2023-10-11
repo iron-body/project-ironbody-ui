@@ -5,10 +5,12 @@ import UserBar from '../UserBar/UserBar';
 import { useMediaQuery } from '@mui/material';
 import LogOutBtn from '../LogOutBtn/LogOutBtn';
 import { selectIsLoggedIn } from '../../redux/auth/authSlice';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectParamsValues } from '../../redux/params/paramsSlice';
-import { selectProfileData } from '../../redux/profile/profileSlice';
+import { selectProfileData, selectProfileFilled } from '../../redux/profile/profileSlice';
 import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { profileOperations } from '../../redux/profile/profileOperations';
 
 export const Header = () => {
   const isTabletOrMobile = useMediaQuery('(max-width: 1439px)');
@@ -17,11 +19,16 @@ export const Header = () => {
   // console.log('filledParams :>> ', filledParams);
   // const profileData = useSelector(selectProfileData);
   const { pathname } = useLocation();
+  const isProfileFilledIn = useSelector(selectProfileFilled);
+
+  useEffect(() => {
+    // console.log('isProfileFilledIn :>> ', isProfileFilledIn);
+  }, [isProfileFilledIn]);
 
   return (
     <HeaderContainer>
       <Logo />
-      {!isLoggedIn || pathname === '/params' ? null : (
+      {!isLoggedIn || !isProfileFilledIn ? null : (
         <NavContainer>
           {isTabletOrMobile ? null : <UserNav />}
           <UserBar />
