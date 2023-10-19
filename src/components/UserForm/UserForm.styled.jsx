@@ -82,6 +82,9 @@ export const FieldSmallStyled = styled.input`
   align-items: center;
   padding-left: 14px;
   padding-right: 14px;
+  ::-webkit-calendar-picker-indicator {
+    display: none;
+  }
   @media ${device.tablet} {
     font-size: 16px;
     line-height: 1.5;

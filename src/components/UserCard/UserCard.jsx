@@ -9,7 +9,6 @@ import {
   AvatarBtnSvg,
   AvatarBtn,
   FileInput,
-  AvatarSvg,
   AvatarCircle,
   NameWrapper,
   Name,
@@ -29,6 +28,7 @@ import {
   UserCardWrapper,
   LogoutBtnSvg,
   Wrapper,
+  AvatarImg,
 } from './UserCard.styled';
 
 import { selectProfileData } from '../../redux/profile/profileSlice';
@@ -38,6 +38,7 @@ import { selectUsername } from '../../redux/auth/authSlice';
 import { useEffect, useState } from 'react';
 
 const UserCard = () => {
+  const dispatch = useDispatch();
   const profileData = useSelector(selectProfileData);
 
   const navigate = useNavigate();
@@ -65,10 +66,9 @@ const UserCard = () => {
       <UserCardWrapper>
         <AvatarWrapper>
           <AvatarCircle>
-            {/* <AvatarSvg>
-              <use href={`${sprite}#gridicons_user`} />
-            </AvatarSvg> */}
-            <label htmlFor="upload-avatar">Avatar</label>
+            <AvatarImg src="https://www.gravatar.com/avatar/93de4ec2d879ffb6d5d2c27518c2cc8c">
+              {/* <use href={`${sprite}#gridicons_user`} /> */}
+            </AvatarImg>
             <FileInput
               type="file"
               // onChange={handleChange}
@@ -76,7 +76,12 @@ const UserCard = () => {
               accept="image/*,.png,.jpg,.web"
               onChange={handleFileChange}
             />
-            <AvatarBtn onClick={handleUploadClick}>
+            <AvatarBtn
+              htmlFor="upload-avatar"
+              onClick={() => {
+                console.log('click label avatar');
+              }}
+            >
               <AvatarBtnSvg>
                 <use href={`${sprite}#check mark`} />
               </AvatarBtnSvg>

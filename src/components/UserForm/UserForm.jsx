@@ -99,7 +99,13 @@ const UserForm = () => {
               value={values?.height || ''}
               onChange={handleChange}
               onBlur={handleBlur}
+              list="numbers"
             />
+            <datalist id="numbers">
+              <option value={100} />
+              <option value={101} />
+              <option value={102} />
+            </datalist>
           </ParamsWrapper>
           <CurrentWeightWrapper>
             <Label htmlFor="currentWeight">Current Weight</Label>
