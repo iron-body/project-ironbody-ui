@@ -45,11 +45,9 @@ const ExercisesPage = () => {
   useEffect(() => {
     dispatch(fetchFilteredExercises(dinamicFilter))
       .then(result => {
-        // Обработайте успешный результат запроса здесь
         // console.log(result);
       })
       .catch(error => {
-        // Обработайте ошибку запроса здесь
         console.error(error);
       });
     dispatch(fetchExercises());
