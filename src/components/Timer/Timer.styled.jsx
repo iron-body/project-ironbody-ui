@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+// import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 
 
@@ -19,10 +20,19 @@ color: rgba(239, 237, 232, 0.4);
 margin-bottom:7px;
 `;
 
+export const CountdownCircleTimer = styled.div`
+margin-left:auto;
+margin-right:auto;
+
+
+`;
+
 
 
 export const ButtonBlock = styled.div`
 margin-top:7px;
+margin-left:auto;
+margin-right:auto;
 border: none;
   background: #10100f;
 

@@ -2,12 +2,11 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { device } from '../../Constants';
 
-import img from '../../../public/side-view-people-training-gym-desktop@2x.jpg'
+
 
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-
   flex-direction: column;
   margin-top: 64px;
 
@@ -47,6 +46,8 @@ export const NameExercise = styled.div`
   margin-bottom: 20px;
   @media ${device.tablet} {
     margin-bottom: 0;
+    margin-top: 15px;
+    font-size: 32px;
   }
 `;
 
