@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 export const Btn = styled.div`
   display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 export const LinkBtn = styled.div`
   text-decoration: none;

@@ -27,36 +27,39 @@ export const AvatarCircle = styled.div`
   }
 `;
 
-export const AvatarSvg = styled.svg`
-  fill: transparent;
-  stroke: rgba(48, 48, 48, 0.3);
-  width: 61px;
-  height: 62px;
+export const AvatarImg = styled.img`
+  /* fill: transparent;
+  stroke: rgba(48, 48, 48, 0.3); */
+  object-fit: cover;
+  /* width: 61px;
+  height: 62px; */
+  width: 100%;
+  height: 100%;
   @media ${device.tablet} {
-    width: 102px;
-    height: 102px;
+    /* width: 102px;
+    height: 102px; */
   }
 `;
 
 export const FileInput = styled.input`
-  /* opacity: 0;
+  opacity: 0;
   height: 0;
   width: 0;
   line-height: 0;
   overflow: hidden;
   padding: 0;
-  margin: 0; */
+  margin: 0;
 `;
 
-export const AvatarBtn = styled.button`
+export const AvatarBtn = styled.label`
   position: absolute;
   top: 76px;
   left: 28px;
   background: rgba(151, 151, 151, 0);
   border: none;
   @media ${device.tablet} {
-    top: 131px;
-    left: 53.4px;
+    top: 134px;
+    left: 58.4px;
   }
 `;
 

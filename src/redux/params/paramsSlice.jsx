@@ -29,8 +29,7 @@ export const paramsSlice = createSlice({
     [paramsOperations.updateParams.rejected](state) {
       state.isUpdated = false;
     },
-    [paramsOperations.updateParams.fulfilled](state, action) {
-      state.params = action.payload;
+    [paramsOperations.updateParams.fulfilled](state) {
       state.isUpdated = true;
     },
   },

@@ -27,9 +27,11 @@ import { BtnSaveStyled, SaveStyled } from '../Buttons/BtnSave.styled';
 import ProfileDaySwitch from '../ProfileDaySwitch/ProfileDaySwitch';
 import { profileOperations } from '../../redux/profile/profileOperations';
 import moment from 'moment';
+// import { selectIsLoggedIn } from '../../redux/auth/authSlice';
 const UserForm = () => {
   const dispatch = useDispatch();
   const profileData = useSelector(selectProfileData);
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
   // const userEmail = useSelector(getUserEmail);
 
   const eighteenYearsAgo = dayjs().subtract(18, 'year').format('YYYY-MM-DD');
@@ -44,17 +46,16 @@ const UserForm = () => {
     sex: Yup.string().required('Reqired'),
     levelActivity: Yup.number().required('Reqired'),
   });
-  const { values, errors, touched, handleBlur, handleChange, handleSubmit, setFieldValue } =
-    useFormik({
-      initialValues: profileData,
+  const { values, errors, touched, handleBlur, handleChange, setFieldValue } = useFormik({
+    initialValues: profileData,
 
-      validationSchema: validationSchema,
-      validateOnChange: false,
-      validateOnBlur: false,
-      onSubmit: () => {
-        alert('Fill all fields');
-      },
-    });
+    validationSchema: validationSchema,
+    validateOnChange: false,
+    validateOnBlur: false,
+    onSubmit: () => {
+      alert('Fill all fields');
+    },
+  });
 
   useEffect(() => {
     dispatch(updateProfile(values));
@@ -99,7 +100,13 @@ const UserForm = () => {
               value={values?.height || ''}
               onChange={handleChange}
               onBlur={handleBlur}
+              list="numbers"
             />
+            <datalist id="numbers">
+              <option value={100} />
+              <option value={101} />
+              <option value={102} />
+            </datalist>
           </ParamsWrapper>
           <CurrentWeightWrapper>
             <Label htmlFor="currentWeight">Current Weight</Label>

@@ -2,12 +2,22 @@ import TitlePage from '../../components/TitlePage/TitlePage';
 import UserCard from '../../components/UserCard/UserCard';
 import UserForm from '../../components/UserForm/UserForm';
 import { Container, ProfileWrapper } from './ProfilePage.styled';
-import { useSelector } from 'react-redux';
-import { getIsProfileLoading } from '../../redux/profile/profileSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { getIsProfileLoading, selectProfileFilled } from '../../redux/profile/profileSlice';
 import Loader from '../../components/Loader/Loader';
+import { useEffect } from 'react';
+import { profileOperations } from '../../redux/profile/profileOperations';
 
 const ProfilePage = () => {
   const isLoading = useSelector(getIsProfileLoading);
+  const profileFilled = useSelector(selectProfileFilled);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!profileFilled) {
+      dispatch(profileOperations.profileData());
+    }
+  }, [dispatch, profileFilled]);
 
   if (isLoading) {
     return <Loader />;

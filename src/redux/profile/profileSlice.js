@@ -51,10 +51,10 @@ export const profileSlice = createSlice({
     },
   },
   extraReducers: {
-    [profileOperations.profileData.pending](state, action) {
+    [profileOperations.profileData.pending](state) {
       state.isLoading = true;
     },
-    [profileOperations.profileData.rejected](state, action) {
+    [profileOperations.profileData.rejected](state) {
       state.isLoading = false;
     },
     // [profileOperations.profileData.rejected](state) {},
@@ -94,13 +94,13 @@ export const profileSlice = createSlice({
       };
       state.profileIsFilledIn = true;
     },
-    [profileOperations.profileDataUpdate.pending](state, action) {
+    [profileOperations.profileDataUpdate.pending](state) {
       state.isLoading = true;
     },
-    [profileOperations.profileDataUpdate.rejected](state, action) {
+    [profileOperations.profileDataUpdate.rejected](state) {
       state.isLoading = false;
     },
-    [profileOperations.profileDataUpdate.fulfilled](state, action) {
+    [profileOperations.profileDataUpdate.fulfilled](state) {
       state.isLoading = false;
     },
   },
