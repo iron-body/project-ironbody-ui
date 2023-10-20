@@ -1,8 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-// import { useRef, useState } from 'react';
 import sprite from '../../../icons.svg';
-// import { profileOperations } from '../../redux/profile/profileOperations';
 import { Btn, LinkBtn } from '../LogOutBtn/LogOutBtn.styled';
 import {
   AvatarWrapper,
@@ -35,7 +33,7 @@ import { selectProfileData } from '../../redux/profile/profileSlice';
 import { useNavigate } from 'react-router-dom';
 import { authOperations } from '../../redux/auth/authOperations';
 import { selectUsername } from '../../redux/auth/authSlice';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const UserCard = () => {
   const dispatch = useDispatch();
