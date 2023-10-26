@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import sprite from '../../../icons.svg';
 import { CalendarIcon, DaySwitchContainer, StyledButton, StyledDate } from './DaySwitch.styled';
 import StyledDatepicker from '../StyledDatepicker/StyledDatepicker';
+import { useDispatch, useSelector } from 'react-redux';
+import { getSelectedDate } from '../../redux/selectedDate/dateSelector';
+import { changeDate } from '../../redux/selectedDate/dateAction';
 
 function DaySwitch() {
   const [selectedDate, setSelectedDate] = useState(() => {
@@ -41,9 +44,22 @@ function DaySwitch() {
 
     setSelectedDate(nextDate);
   };
+  // Old function for change date picked in DayPicker
+  // const handleDateChange = date => {
+  //   setSelectedDate(date);
+  // };
+
+  // Creating the new logic for work with time in redux store
+  const dateInStore = useSelector(getSelectedDate);
+  // console.log(dateInStore);
+  const dispatch = useDispatch();
+  // New function for change date in ReduxStore
   const handleDateChange = date => {
-    setSelectedDate(date);
+    console.log(date);
+    dispatch(changeDate(date));
   };
+  // dispatch(changeDate(date));
+
   // Форматуємо обрану дату в формат dd/mm/YYYY
   const formattedDate = selectedDate.toLocaleDateString('en-GB', {
     day: '2-digit',
@@ -54,6 +70,7 @@ function DaySwitch() {
   return (
     <DaySwitchContainer>
       <StyledDate onClick={handleFormattedDateClick}>
+        {/* <StyledDate> */}
         {formattedDate}
         <CalendarIcon width="16" height="16">
           <use href={`${sprite}#icon-calendar`}></use>

@@ -46,7 +46,7 @@ const StyledDatepicker = ({ date, onChange, minDate }) => {
         popperPlacement="top-end"
         selected={date}
         minDate={minDate}
-        onChange={onChange}
+        onChange={date => onChange(date)}
         popperModifiers={{
           preventOverflow: {
             enabled: true,
