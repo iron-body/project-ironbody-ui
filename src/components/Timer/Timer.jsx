@@ -11,6 +11,7 @@ import {
   BtnImg,
   BurnedBlock,
   BurnedQuantity,
+ 
 } from './Timer.styled';
 
 const CircleTimer = ({ initialTime, onStop, calories }) => {
@@ -73,8 +74,8 @@ const CircleTimer = ({ initialTime, onStop, calories }) => {
 
   return (
     <Container>
-      <Name className="time">Time</Name>
-      <CountdownCircleTimer
+      <Name >Time</Name>
+      <CountdownCircleTimer className="timer"
         rotation="counterclockwise"
         size={111}
         isPlaying={isRunning}

@@ -13,7 +13,7 @@ const StyledTitlePage = styled.div`
   line-height: 28px; /* 116.667% */
 
   @media ${device.tablet} {
-    margin-top: 72px;
+    margin-top: 15px;
     color: #efede8;
     font-size: 32px;
     font-style: normal;
