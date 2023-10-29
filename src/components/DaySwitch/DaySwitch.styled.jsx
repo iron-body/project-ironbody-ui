@@ -9,7 +9,7 @@ export const DaySwitchContainer = styled.div`
   }
   @media ${device.desktop} {
     padding-top: 40px;
-    gap: 8px;
+    gap: 40px;
   }
 `;
 export const StyledDate = styled.span`
@@ -21,7 +21,6 @@ export const StyledDate = styled.span`
 `;
 
 export const CalendarIcon = styled.svg`
-  margin-left: 8px;
   fill: transparent;
   stroke: rgba(239, 137, 100, 1);
   width: 24px;
@@ -35,4 +34,9 @@ export const StyledButton = styled.button`
   font-size: 20px;
   cursor: pointer;
   padding: 0;
+`;
+
+export const ButtonsDiv = styled.div`
+  display: flex;
+  gap: 6px;
 `;

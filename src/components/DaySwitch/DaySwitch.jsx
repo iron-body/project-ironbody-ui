@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 import sprite from '../../../icons.svg';
-import { CalendarIcon, DaySwitchContainer, StyledButton, StyledDate } from './DaySwitch.styled';
+import {
+  ButtonsDiv,
+  CalendarIcon,
+  DaySwitchContainer,
+  StyledButton,
+  StyledDate,
+} from './DaySwitch.styled';
 import StyledDatepicker from '../StyledDatepicker/StyledDatepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSelectedDate } from '../../redux/selectedDate/dateSelector';
@@ -45,19 +51,19 @@ function DaySwitch() {
     setSelectedDate(nextDate);
   };
   // Old function for change date picked in DayPicker
-  // const handleDateChange = date => {
-  //   setSelectedDate(date);
-  // };
+  const handleDateChange = date => {
+    setSelectedDate(date);
+  };
 
   // Creating the new logic for work with time in redux store
   const dateInStore = useSelector(getSelectedDate);
   // console.log(dateInStore);
   const dispatch = useDispatch();
   // New function for change date in ReduxStore
-  const handleDateChange = date => {
-    console.log(date);
-    dispatch(changeDate(date));
-  };
+  // const handleDateChange = date => {
+  //   console.log(date);
+  //   dispatch(changeDate(date));
+  // };
   // dispatch(changeDate(date));
 
   // Форматуємо обрану дату в формат dd/mm/YYYY
@@ -69,20 +75,20 @@ function DaySwitch() {
 
   return (
     <DaySwitchContainer>
-      <StyledDate onClick={handleFormattedDateClick}>
-        {/* <StyledDate> */}
-        {formattedDate}
-        <CalendarIcon width="16" height="16">
+      {/* <StyledDate onClick={handleFormattedDateClick}> */}
+      <StyledDate>
+        {/* {formattedDate} */}
+        {/* <CalendarIcon width="16" height="16">
           <use href={`${sprite}#icon-calendar`}></use>
-        </CalendarIcon>
-        {showDatepicker && (
-          <StyledDatepicker date={selectedDate} minDate={minDate} onChange={handleDateChange} />
-        )}
+        </CalendarIcon> */}
+        {<StyledDatepicker date={selectedDate} minDate={minDate} onChange={handleDateChange} />}
       </StyledDate>
-      <StyledButton onClick={handlePreviousDay} disabled={minDate && selectedDate <= minDate}>
-        {'<'}
-      </StyledButton>
-      <StyledButton onClick={handleNextDay}>{'>'}</StyledButton>
+      <ButtonsDiv>
+        <StyledButton onClick={handlePreviousDay} disabled={minDate && selectedDate <= minDate}>
+          {'<'}
+        </StyledButton>
+        <StyledButton onClick={handleNextDay}>{'>'}</StyledButton>
+      </ButtonsDiv>
     </DaySwitchContainer>
   );
 }

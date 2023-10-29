@@ -16,6 +16,19 @@ export const DataBtn = styled.div`
     font-size: 16px;
   }
 `;
+
+export const DatePickerBtn = styled.button`
+  padding: 2px 8px;
+  appearance: none;
+  border-style: none;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  &:active {
+    border-style: none;
+  }
+`;
+
 export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker__wrapper {
     position: relative;
@@ -163,6 +176,17 @@ export const CalendarGlobalStyles = createGlobalStyle`
   .react-datepicker__triangle {
     visibility: hidden;
   }
+  .react-datepicker__input-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;  
+    
+  }
+  .react-datepicker__input-container .react-datepicker__calendar-icon {
+      position: relative;
+      padding: 0;
+    }
+  
 `;
 
 export const TitleWrapper = styled.button`
