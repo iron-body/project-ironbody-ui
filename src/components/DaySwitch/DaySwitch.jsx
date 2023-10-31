@@ -1,12 +1,5 @@
 import { useState, useEffect } from 'react';
-import sprite from '../../../icons.svg';
-import {
-  ButtonsDiv,
-  CalendarIcon,
-  DaySwitchContainer,
-  StyledButton,
-  StyledDate,
-} from './DaySwitch.styled';
+import { ButtonsDiv, DaySwitchContainer, StyledButton, StyledDate } from './DaySwitch.styled';
 import StyledDatepicker from '../StyledDatepicker/StyledDatepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSelectedDate } from '../../redux/selectedDate/dateSelector';
@@ -15,8 +8,8 @@ import { changeDate } from '../../redux/selectedDate/dateAction';
 function DaySwitch() {
   // Creating the new logic for work with time in redux store
   const dateInStore = useSelector(getSelectedDate);
-  console.log('dateInStore', dateInStore);
-  // console.log(dateInStore);
+  // console.log('dateInStore', dateInStore);
+
   const dispatch = useDispatch();
   // New function for change date in ReduxStore
   const handleDateChange = date => {
@@ -50,7 +43,7 @@ function DaySwitch() {
   useEffect(() => {
     // Save the selectedDate to redux store whenever it changes
     dispatch(changeDate(selectedDate.toUTCString()));
-    console.log('storing selectedDate to Redux Store');
+    // console.log('storing selectedDate to Redux Store');
   }, [selectedDate, dispatch]);
 
   // Old function for show/hide datepicker - hide, because datepicker has native functionality

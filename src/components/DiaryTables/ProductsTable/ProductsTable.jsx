@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import sprite from '../../../../icons.svg';
 
 import {
@@ -24,6 +24,9 @@ import {
   TableContainer,
 } from './ProductsTable.styled';
 import { useMediaQuery } from '@mui/material';
+import { useSelector } from 'react-redux';
+import { getSelectedDate } from '../../../redux/selectedDate/dateSelector';
+import axios from 'axios';
 
 const defaultData = [
   {
@@ -119,8 +122,23 @@ const columns = [
 
 const ProductsTable = () => {
   const isMobile = useMediaQuery('(max-width: 767px)');
+  const dateInStore = useSelector(getSelectedDate);
   // eslint-disable-next-line no-unused-vars
-  const [data, setData] = React.useState(() => [...defaultData]);
+  // const [data, setData] = React.useState(() => [...defaultData]);
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getUserProductsArray = async () => {
+      const userProductsArray = await axios('/products/userproducts');
+      const {
+        data: { dataList },
+      } = userProductsArray;
+      // console.log('userProductsArray', userProductsArray);
+      // console.log(dataList);
+      setData([...dataList]);
+    };
+    getUserProductsArray();
+  }, [dateInStore]);
 
   const table = useReactTable({
     data,

@@ -1,10 +1,9 @@
 /* eslint-disable react/prop-types */
 import DatePicker from 'react-datepicker';
-import { CalendarGlobalStyles } from './StyledDatepicker.styled';
+import { CalendarGlobalStyles, DatePickerBtn } from './StyledDatepicker.styled';
 import 'react-datepicker/dist/react-datepicker.css';
 import sprite from '../../../icons.svg';
 import { CalendarIcon } from '../DaySwitch/DaySwitch.styled';
-import { DatePickerBtn } from './StyledDatepicker.styled';
 
 // const StyledDatepicker = ({
 //   isOpen,
