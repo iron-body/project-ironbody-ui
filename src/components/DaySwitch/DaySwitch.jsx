@@ -13,31 +13,52 @@ import { getSelectedDate } from '../../redux/selectedDate/dateSelector';
 import { changeDate } from '../../redux/selectedDate/dateAction';
 
 function DaySwitch() {
-  const [selectedDate, setSelectedDate] = useState(() => {
-    // Attempt to retrieve the selectedDate from local storage
-    const storedDate = localStorage.getItem('selectedDate');
-    return storedDate ? new Date(storedDate) : new Date();
-  });
+  // Creating the new logic for work with time in redux store
+  const dateInStore = useSelector(getSelectedDate);
+  console.log('dateInStore', dateInStore);
+  // console.log(dateInStore);
+  const dispatch = useDispatch();
+  // New function for change date in ReduxStore
+  const handleDateChange = date => {
+    // console.log(date);
+    setSelectedDate(date);
+  };
+
+  // ------ Old code
+  // const [selectedDate, setSelectedDate] = useState(() => {
+  // Attempt to retrieve the selectedDate from local storage
+  // const storedDate = localStorage.getItem('selectedDate');
+  // return storedDate ? new Date(storedDate) : new Date();
+  // });
+  const [selectedDate, setSelectedDate] = useState(new Date(dateInStore));
   const [minDate, setMinDate] = useState(null); // Дата реєстрації користувача
-  const [showDatepicker, setShowDatepicker] = useState(false);
+
+  // const [showDatepicker, setShowDatepicker] = useState(false);
 
   useEffect(() => {
     // Можливо, ви отримуєте дату реєстрації користувача з API або іншим способом
     // Наприклад, розкоментуйте цей рядок і встановіть правильну дату реєстрації
-
+    // registrationDate;
     setMinDate(new Date());
   }, []);
 
+  // useEffect(() => {
+  //   // Save the selectedDate to local storage whenever it changes
+  //   localStorage.setItem('selectedDate', selectedDate.toISOString());
+  //   console.log('storing selectedDate to local');
+  // }, [selectedDate]);
   useEffect(() => {
-    // Save the selectedDate to local storage whenever it changes
-    localStorage.setItem('selectedDate', selectedDate.toISOString());
-    console.log('storing selectedDate to local');
-  }, [selectedDate]);
+    // Save the selectedDate to redux store whenever it changes
+    dispatch(changeDate(selectedDate.toUTCString()));
+    console.log('storing selectedDate to Redux Store');
+  }, [selectedDate, dispatch]);
 
-  const handleFormattedDateClick = () => {
-    console.log('click!');
-    setShowDatepicker(!showDatepicker);
-  };
+  // Old function for show/hide datepicker - hide, because datepicker has native functionality
+  // const handleFormattedDateClick = () => {
+  //   console.log('click!');
+  //   setShowDatepicker(!showDatepicker);
+  // };
+
   const handlePreviousDay = () => {
     const previousDate = new Date(selectedDate);
     previousDate.setDate(previousDate.getDate() - 1);
@@ -51,27 +72,16 @@ function DaySwitch() {
     setSelectedDate(nextDate);
   };
   // Old function for change date picked in DayPicker
-  const handleDateChange = date => {
-    setSelectedDate(date);
-  };
-
-  // Creating the new logic for work with time in redux store
-  const dateInStore = useSelector(getSelectedDate);
-  // console.log(dateInStore);
-  const dispatch = useDispatch();
-  // New function for change date in ReduxStore
-  // const handleDateChange = date => {
-  //   console.log(date);
-  //   dispatch(changeDate(date));
+  // const handleDateChange = dateValue => {
+  //   setSelectedDate(dateValue);
   // };
-  // dispatch(changeDate(date));
 
   // Форматуємо обрану дату в формат dd/mm/YYYY
-  const formattedDate = selectedDate.toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  });
+  // const formattedDate = selectedDate.toLocaleDateString('en-GB', {
+  //   day: '2-digit',
+  //   month: '2-digit',
+  //   year: 'numeric',
+  // });
 
   return (
     <DaySwitchContainer>

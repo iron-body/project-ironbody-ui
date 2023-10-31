@@ -46,7 +46,6 @@ const StyledDatepicker = ({ date, onChange, minDate }) => {
   return (
     <>
       <DatePicker
-        // popperPlacement="top-end"
         showIcon={true}
         icon={
           <CalendarIcon width="16" height="16">
@@ -56,6 +55,7 @@ const StyledDatepicker = ({ date, onChange, minDate }) => {
         selected={date}
         minDate={minDate}
         onChange={date => onChange(date)}
+        // popperPlacement="top-end"
         // popperModifiers={{
         //   preventOverflow: {
         //     enabled: true,

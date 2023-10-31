@@ -5,11 +5,12 @@ export const DaySwitchContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 20px;
   @media ${device.tablet} {
+    gap: 40px;
   }
   @media ${device.desktop} {
     padding-top: 40px;
-    gap: 40px;
   }
 `;
 export const StyledDate = styled.span`
