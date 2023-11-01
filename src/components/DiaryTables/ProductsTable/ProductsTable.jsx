@@ -90,24 +90,24 @@ const defaultData = [
 const columnHelper = createColumnHelper();
 
 const columns = [
-  columnHelper.accessor('Title', {
+  columnHelper.accessor('title', {
     cell: info => <StyledCell100>{info.getValue()}</StyledCell100>,
     header: 'Title',
   }),
-  columnHelper.accessor('Category', {
+  columnHelper.accessor('category', {
     cell: info => <StyledCell100>{info.getValue()}</StyledCell100>,
     header: 'Category',
   }),
-  columnHelper.accessor('Calories', {
+  columnHelper.accessor('calories', {
     cell: info => <StyledCell30>{info.getValue()}</StyledCell30>,
     header: 'Calories',
   }),
-  columnHelper.accessor('Weight', {
+  columnHelper.accessor('amount', {
     cell: info => <StyledCell30>{info.getValue()}</StyledCell30>,
     header: 'Weight',
   }),
-  columnHelper.accessor('Recommended', {
-    cell: info => <StyledRec>{info.getValue()}</StyledRec>,
+  columnHelper.accessor('recommended', {
+    cell: info => <StyledRec>{info.getValue() === true ? 'Yes' : 'No'}</StyledRec>,
     header: 'Recommended',
   }),
   columnHelper.accessor('Delete', {
