@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
-import { format } from 'date-fns';
 
 import {
   FoodName,
@@ -21,6 +20,7 @@ import { getProducts } from '../../redux/products/selectors';
 import { useSelector } from 'react-redux';
 
 import { addProductThunk } from '../../redux/products/productsOperations';
+import { getSelectedDate } from '../../redux/selectedDate/dateSelector';
 
 export default function AddProductForm({ productCalc, onClose }) {
   const { title, calories, category, recommended, _id } = productCalc;
@@ -28,8 +28,9 @@ export default function AddProductForm({ productCalc, onClose }) {
   const [modalStatus, setIsModalOpenSuccess] = useState(true);
   const { error } = useSelector(getProducts);
 
-  const date = new Date(2023, 8, 29);
-  const formattedDate = format(date, 'dd-MM-yyyy');
+  const dateInStore = useSelector(getSelectedDate);
+
+  const date = new Date(dateInStore);
 
   const dispatch = useDispatch();
 
@@ -41,7 +42,8 @@ export default function AddProductForm({ productCalc, onClose }) {
     title: title,
     recommended: recommended,
 
-    date: formattedDate,
+    // date: formattedDate,
+    date,
   };
 
   const calcCalories = () => {
@@ -66,19 +68,13 @@ export default function AddProductForm({ productCalc, onClose }) {
   return (
     <>
       <ExitBtn onClick={handleClose}>
-        <IconExitBtn
-          alt=""
-          src="/project-ironbody-ui/ExitIcon.svg"
-        ></IconExitBtn>
+        <IconExitBtn alt="" src="/project-ironbody-ui/ExitIcon.svg"></IconExitBtn>
       </ExitBtn>
       {modalStatus ? (
         <Formik initialValues={objSubmitProduct} onSubmit={handleSubmitProduct}>
           <Form autoComplete="off">
             <CalcContainer>
-              <FoodName>
-                {' '}
-                {title.length > 20 ? ` ${title.slice(0, 20)}... ` : title}
-              </FoodName>
+              <FoodName> {title.length > 20 ? ` ${title.slice(0, 20)}... ` : title}</FoodName>
 
               <CaloriesValue
                 value={gramsInpValue}
@@ -101,10 +97,7 @@ export default function AddProductForm({ productCalc, onClose }) {
             </CalcCalories>
 
             <BtnFormContainer>
-              <AddProductBtn
-                onSubmit={handleSubmitProduct}
-                calories={calcCalories()}
-              >
+              <AddProductBtn onSubmit={handleSubmitProduct} calories={calcCalories()}>
                 Add to diary
               </AddProductBtn>
               <CancelBtn onClick={handleClose}>Cancel</CancelBtn>
