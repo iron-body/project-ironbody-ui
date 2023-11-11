@@ -5,6 +5,7 @@ export const TableContainer = styled.div`
   padding-top: 20px;
   height: 500px;
   overflow-y: auto;
+
   ::-webkit-scrollbar-track {
     background-color: transparent;
   }
@@ -37,36 +38,124 @@ export const StyledHeadingTable = styled.div`
     padding-left: 10px;
   }
 `;
-export const StyledTitle = styled.p`
+// export const StyledTitle = styled.p`
+//   @media ${device.tablet} {
+//     margin-right: 280px;
+//   }
+//   @media ${device.desktop} {
+//     margin-right: 315px;
+//   }
+// `;
+// export const StyledCategory = styled.p`
+//   @media ${device.tablet} {
+//     margin-right: 45px;
+//   }
+//   @media ${device.desktop} {
+//     margin-right: 60px;
+//   }
+// `;
+// export const StyledCalories = styled.p`
+//   @media ${device.tablet} {
+//     margin-right: 35px;
+//   }
+//   @media ${device.desktop} {
+//     margin-right: 45px;
+//   }
+// `;
+// export const StyledWeight = styled.p`
+// @media ${device.tablet} {
+//   margin-right: 40px;
+// }
+// @media ${device.desktop} {
+//   margin-right: 50px;
+// }
+// `;
+
+export const StyledTitle = styled.div`
+  box-sizing: border-box;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+  border-radius: 12px;
+  padding: 10px 14px;
+  width: 297px;
   @media ${device.tablet} {
-    margin-right: 280px;
+    padding: 8px 14px;
+    width: 204px;
   }
   @media ${device.desktop} {
-    margin-right: 315px;
+    width: 212px;
   }
 `;
-export const StyledCategory = styled.p`
+
+export const StyledCategory = styled.div`
+  box-sizing: border-box;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+  border-radius: 12px;
+  padding: 10px 14px;
+  width: 297px;
   @media ${device.tablet} {
-    margin-right: 45px;
+    padding: 8px 14px;
+    width: 128px;
   }
   @media ${device.desktop} {
-    margin-right: 60px;
+    width: 166px;
   }
 `;
-export const StyledCalories = styled.p`
+
+export const StyledCalories = styled.div`
+  box-sizing: border-box;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+  border-radius: 12px;
+  padding: 10px 14px;
+  width: 81px;
   @media ${device.tablet} {
-    margin-right: 35px;
+    padding: 8px 14px;
+    width: 90px;
   }
   @media ${device.desktop} {
-    margin-right: 45px;
+    width: 105px;
   }
 `;
-export const StyledWeight = styled.p`
+
+export const StyledWeight = styled.div`
+  box-sizing: border-box;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+  border-radius: 12px;
+  padding: 10px 14px;
+  width: 80px;
   @media ${device.tablet} {
-    margin-right: 40px;
+    padding: 8px 14px;
+    width: 90px;
   }
   @media ${device.desktop} {
-    margin-right: 50px;
+    width: 105px;
+  }
+`;
+
+export const StyledRecommended = styled.div`
+  box-sizing: border-box;
+  border: 1px solid rgba(239, 237, 232, 0.3);
+  border-radius: 12px;
+  padding: 10px 14px;
+  width: 76px;
+
+  &::before {
+    content: ''; /* Create an empty pseudo-element */
+    display: inline-block;
+    width: 14px; /* Adjust the width of the circle */
+    height: 14px; /* Adjust the height of the circle */
+    /* width: ${props => props.width || '212px'}; */
+    background-color: ${props =>
+      props.recommended ? 'green' : 'red'}; /* Set the background color to green */
+    border-radius: 50%; /* Make it a circle */
+    margin-right: 5px; /* Adjust the space between text and circle */
+    vertical-align: middle;
+  }
+  @media ${device.tablet} {
+    padding: 8px 14px;
+    width: 80px;
+  }
+  @media ${device.desktop} {
+    width: 110px;
   }
 `;
 
@@ -76,7 +165,7 @@ export const StyledTable = styled.table`
   border-collapse: separate;
   border-spacing: 8px;
 `;
-export const StyledThead = styled.thead`
+export const StyledThead = styled.th`
   text-align: left;
   color: rgba(239, 137, 100, 1);
   font-size: 12px;
@@ -86,22 +175,25 @@ export const StyledTableRaw = styled.tr`
   position: relative;
 `;
 
+// export const StyledTableCell = styled.div`
 export const StyledTableCell = styled.td`
+  width: ${props => props.width || '212px'};
   display: inline-block;
   margin-bottom: 42px;
   margin-right: 8px;
   position: relative;
-  border: 1px solid gray;
+
   &:last-child {
     border: none;
     margin-right: 0px;
   }
-  border-radius: 12px;
+
   font-size: 16px;
-  padding: 12px 0px 12px 8px;
+
   @media ${device.tablet} {
     display: table-cell;
     margin-bottom: 0px;
+    /* padding: 8px 14px; */
   }
 `;
 
