@@ -103,8 +103,17 @@ const ProductsTable = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const getUserProductsArray = async () => {
-      const userProductsArray = await axios('/products/userproducts');
+    const getUserProductsArray = async date => {
+      const userProductsArray = await axios(
+        `/products/userproducts${
+          date &&
+          `?date=${new Date(date).toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+          })}`
+        }`
+      );
       const {
         data: { dataList },
       } = userProductsArray;
@@ -112,7 +121,7 @@ const ProductsTable = () => {
       // console.log(dataList);
       setData([...dataList]);
     };
-    getUserProductsArray();
+    getUserProductsArray(dateInStore);
   }, [dateInStore]);
 
   const columnHelper = createColumnHelper();
