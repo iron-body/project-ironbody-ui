@@ -8,6 +8,7 @@ const initialState = {
     avatarURL: null,
   },
   accessToken: null,
+  registrationDate: null,
   isLoggedIn: false,
   isRefreshing: true,
   isLoading: false,
@@ -27,6 +28,7 @@ export const authSlice = createSlice({
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
+      state.registrationDate = action.payload.registrationDate;
       state.isLoggedIn = true;
       state.isLoading = false;
       state.isRefreshing = true;
@@ -39,6 +41,7 @@ export const authSlice = createSlice({
     },
     [authOperations.login.fulfilled](state, action) {
       state.user = action.payload.user;
+      state.registrationDate = action.payload.createdAt;
       state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
       state.isLoading = false;
@@ -50,6 +53,7 @@ export const authSlice = createSlice({
         name: null,
         email: null,
       };
+      registrationDate = null;
       state.accessToken = null;
       state.isLoggedIn = false;
       state.isRefreshing = false;

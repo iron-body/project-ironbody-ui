@@ -45,6 +45,7 @@ const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     token.set(data.accessToken);
 
     Notify.success('Login Success');
+
     return data;
   } catch (error) {
     console.log('error :>> ', error.response);
