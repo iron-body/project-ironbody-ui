@@ -9,7 +9,7 @@ function DaySwitch() {
   // Creating the new logic for work with time in redux store
   const dateInStore = useSelector(getSelectedDate);
   const registrationDate = useSelector(getRegistrationDate);
-  // console.log('dateInStore', dateInStore);
+  // console.log('registrationDate', registrationDate);
 
   const dispatch = useDispatch();
   // New function for change date in ReduxStore
@@ -26,15 +26,15 @@ function DaySwitch() {
   // });
   const [selectedDate, setSelectedDate] = useState(new Date(dateInStore));
   // const [minDate, setMinDate] = useState(new Date(registrationDate)); // Дата реєстрації користувача
-
+  const [minDate, setMinDate] = useState(null);
   // const [showDatepicker, setShowDatepicker] = useState(false);
 
-  // useEffect(() => {
-  //   // Можливо, ви отримуєте дату реєстрації користувача з API або іншим способом
-  //   // Наприклад, розкоментуйте цей рядок і встановіть правильну дату реєстрації
-  //   // registrationDate;
-  //   setMinDate(new Date());
-  // }, []);
+  useEffect(() => {
+    // Можливо, ви отримуєте дату реєстрації користувача з API або іншим способом
+    // Наприклад, розкоментуйте цей рядок і встановіть правильну дату реєстрації
+    // registrationDate;
+    setMinDate(new Date(registrationDate));
+  }, []);
 
   // useEffect(() => {
   //   // Save the selectedDate to local storage whenever it changes
@@ -85,19 +85,10 @@ function DaySwitch() {
         {/* <CalendarIcon width="16" height="16">
           <use href={`${sprite}#icon-calendar`}></use>
         </CalendarIcon> */}
-        {
-          <StyledDatepicker
-            date={selectedDate}
-            minDate={new Date(registrationDate)}
-            onChange={handleDateChange}
-          />
-        }
+        {<StyledDatepicker date={selectedDate} minDate={minDate} onChange={handleDateChange} />}
       </StyledDate>
       <ButtonsDiv>
-        <StyledButton
-          onClick={handlePreviousDay}
-          disabled={registrationDate && selectedDate <= minDate}
-        >
+        <StyledButton onClick={handlePreviousDay} disabled={minDate && selectedDate <= minDate}>
           {'<'}
         </StyledButton>
         <StyledButton onClick={handleNextDay}>{'>'}</StyledButton>

@@ -24,6 +24,7 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.accessToken = null;
       state.isLoggedIn = false;
+      state.registrationDate = null;
     },
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
@@ -53,7 +54,7 @@ export const authSlice = createSlice({
         name: null,
         email: null,
       };
-      registrationDate = null;
+      state.registrationDate = null;
       state.accessToken = null;
       state.isLoggedIn = false;
       state.isRefreshing = false;
@@ -66,6 +67,7 @@ export const authSlice = createSlice({
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isRefreshing = true;
+      state.registrationDate = action.payload.createdAt;
     },
     [authOperations.refreshCurrentUser.pending](state) {
       state.isRefreshing = true;
@@ -75,6 +77,7 @@ export const authSlice = createSlice({
       state.accessToken = null;
       state.isLoading = false;
       state.isLoggedIn = false;
+      state.registrationDate = null;
     },
 
     // [updateOperations.update.fulfilled](state, action) {
