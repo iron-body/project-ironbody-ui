@@ -52,7 +52,7 @@ const StyledDatepicker = ({ date, onChange, minDate }) => {
           </CalendarIcon>
         }
         selected={date}
-        minDate={minDate}
+        // minDate={minDate}
         onChange={date => onChange(date)}
         // popperPlacement="top-end"
         // popperModifiers={{

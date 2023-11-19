@@ -4,6 +4,7 @@ import StyledDatepicker from '../StyledDatepicker/StyledDatepicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRegistrationDate, getSelectedDate } from '../../redux/selectedDate/dateSelector';
 import { changeDate } from '../../redux/selectedDate/dateAction';
+import Notiflix from 'notiflix';
 
 function DaySwitch() {
   // Creating the new logic for work with time in redux store
@@ -14,7 +15,22 @@ function DaySwitch() {
   const dispatch = useDispatch();
   // New function for change date in ReduxStore
   const handleDateChange = date => {
-    // console.log(date);
+    const tempDate = new Date(
+      `${date.getUTCFullYear()},${date.getUTCMonth() + 1},${date.getUTCDate()}`
+    );
+    // console.log(tempDate);
+    const tempRegistrationDate = new Date(
+      `${new Date(registrationDate).getUTCFullYear()},${
+        new Date(registrationDate).getUTCMonth() + 1
+      },${new Date(registrationDate).getUTCDate()}`
+    );
+
+    if (tempDate - tempRegistrationDate < 0) {
+      setSelectedDate(new Date(dateInStore));
+      Notiflix.Notify.info('Selected date must be more than registration date!');
+      return;
+    }
+
     setSelectedDate(date);
   };
 
