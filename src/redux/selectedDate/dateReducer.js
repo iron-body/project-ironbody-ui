@@ -11,7 +11,8 @@ const dateReducer = (state = initialState, action) => {
     case 'date/changeDate':
       return { ...state, currentDate: action.payload };
     default:
-      return { ...state, currentDate: new Date().toUTCString() };
+      // return { ...state, currentDate: new Date().toUTCString() };
+      return { ...state };
   }
 };
 

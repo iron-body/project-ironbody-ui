@@ -16,14 +16,18 @@ function DaySwitch() {
   // New function for change date in ReduxStore
   const handleDateChange = date => {
     const tempDate = new Date(
-      `${date.getUTCFullYear()},${date.getUTCMonth() + 1},${date.getUTCDate()}`
+      `${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}T00:00:00.000`
     );
+    // const tempDate = Date.parse(
+    //   `${date.getUTCFullYear()},${date.getUTCMonth() + 1},${date.getUTCDate()},00:00:00:000 GMT`
+    // );
     // console.log(tempDate);
     const tempRegistrationDate = new Date(
-      `${new Date(registrationDate).getUTCFullYear()},${
+      `${new Date(registrationDate).getUTCFullYear()}-${
         new Date(registrationDate).getUTCMonth() + 1
-      },${new Date(registrationDate).getUTCDate()}`
+      }-${new Date(registrationDate).getUTCDate()}`
     );
+    // console.log(tempRegistrationDate);
 
     if (tempDate - tempRegistrationDate < 0) {
       setSelectedDate(new Date(dateInStore));

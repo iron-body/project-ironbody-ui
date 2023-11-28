@@ -159,6 +159,24 @@ export const StyledRecommended = styled.div`
   }
 `;
 
+export const StyledDelete = styled.div`
+  box-sizing: border-box;
+  width: 30px;
+  /* padding: 10px 14px; */
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid rgba(239, 237, 232, 0.3); */
+  border-radius: 12px;
+
+  @media ${device.tablet} {
+    /* padding: 8px 14px; */
+    width: 25px;
+  }
+  @media ${device.desktop} {
+    width: 30px;
+  }
+`;
+
 export const StyledTable = styled.table`
   color: white;
   width: 100%;

@@ -67,8 +67,8 @@ export const addProductThunk = createAsyncThunk(
   'products/addProduct',
   async (product, thunkAPI) => {
     try {
-      const response = await axios.post(`${baseURL}api/products/userproducts`, {
-        // const response = await axios.post(`htto://localhost:3000/api/products/userproducts`, {
+      // const response = await axios.post(`${baseURL}api/products/userproducts`, {
+      const response = await axios.post(`http://localhost:3000/api/products/userproducts`, {
         ...product,
       });
       return response.data;

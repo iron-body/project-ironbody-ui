@@ -14,6 +14,7 @@ import {
   // StyledCell100,
   // StyledCell30,
   StyledDel,
+  StyledDelete,
   StyledRecommended,
   // StyledHeadingTable,
   // StyledRec,
@@ -156,11 +157,13 @@ const ProductsTable = () => {
       ),
     }),
     columnHelper.accessor('delete', {
-      header: 'Delete',
+      header: '',
       cell: () => (
-        <StyledDel>
-          <use href={`${sprite}#icon-trash-03`} />
-        </StyledDel>
+        <StyledDelete>
+          <StyledDel>
+            <use href={`${sprite}#icon-trash-03`} />
+          </StyledDel>
+        </StyledDelete>
       ),
     }),
   ];
