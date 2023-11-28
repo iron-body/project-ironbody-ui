@@ -33,74 +33,11 @@ import { useSelector } from 'react-redux';
 import { getSelectedDate } from '../../../redux/selectedDate/dateSelector';
 import axios from 'axios';
 
-// const defaultData = [
-//   {
-//     firstName: 'tanner',
-//     lastName: 'linsley',
-//     age: 24,
-//     visits: 100,
-//     status: 'In Relationship',
-//     progress: 50,
-//   },
-//   {
-//     firstName: 'tandy',
-//     lastName: 'miller',
-//     age: 40,
-//     visits: 40,
-//     status: 'Single',
-//     progress: 80,
-//   },
-//   {
-//     firstName: 'joe',
-//     lastName: 'dirte',
-//     age: 45,
-//     visits: 20,
-//     status: 'Complicated',
-//     progress: 10,
-//   },
-// ];
-
-// Old code
-
-// const columnHelper = createColumnHelper();
-
-// const columns = [
-//   columnHelper.accessor('title', {
-//     cell: info => <StyledCell100>{info.getValue()}</StyledCell100>,
-//     header: 'Title',
-//   }),
-//   columnHelper.accessor('category', {
-//     cell: info => <StyledCell100>{info.getValue()}</StyledCell100>,
-//     header: 'Category',
-//   }),
-//   columnHelper.accessor('calories', {
-//     cell: info => <StyledCell30>{info.getValue()}</StyledCell30>,
-//     header: 'Calories',
-//   }),
-//   columnHelper.accessor('amount', {
-//     cell: info => <StyledCell30>{info.getValue()}</StyledCell30>,
-//     header: 'Weight',
-//   }),
-//   columnHelper.accessor('recommended', {
-//     cell: info => <StyledRec>{info.getValue() === true ? 'Yes' : 'No'}</StyledRec>,
-//     // header: 'Recommended',
-//   }),
-//   columnHelper.accessor('Delete', {
-//     cell: () => (
-//       <StyledDel>
-//         <use href={`${sprite}#icon-trash-03`} />
-//       </StyledDel>
-//     ),
-//     header: '',
-//   }),
-// ];
-
 const ProductsTable = () => {
   const isMobile = useMediaQuery('(max-width: 375px)');
   const isTablet = useMediaQuery('(max-width: 768px)');
   const dateInStore = useSelector(getSelectedDate);
-  // eslint-disable-next-line no-unused-vars
-  // const [data, setData] = React.useState(() => [...defaultData]);
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -138,7 +75,11 @@ const ProductsTable = () => {
     }),
     columnHelper.accessor('category', {
       header: 'Category',
-      cell: info => <StyledCategory>{info.getValue()}</StyledCategory>,
+      cell: info => (
+        <StyledCategory>
+          {info.getValue().length >= 20 ? `${info.getValue().slice(0, 15)}...` : info.getValue()}
+        </StyledCategory>
+      ),
     }),
     columnHelper.accessor('calories', {
       header: 'Calories',

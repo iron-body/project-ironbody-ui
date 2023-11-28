@@ -1,10 +1,4 @@
-const initialState = { currentDate: new Date().toUTCString() }; // Convert Date to ISO string format
-// const initialState = { currentDate: null }; // Convert Date to ISO string format
-
-// export const setSelectedDate = date => ({
-//   type: 'date/changeDate',
-//   payload: date.toISOString(), // Convert Date to ISO string format
-// });
+const initialState = { currentDate: new Date().toUTCString() };
 
 const dateReducer = (state = initialState, action) => {
   switch (action.type) {
