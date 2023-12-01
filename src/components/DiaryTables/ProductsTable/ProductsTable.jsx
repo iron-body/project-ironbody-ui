@@ -8,6 +8,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import {
+  NotFoundProductContainer,
   StyledCalories,
   // StyledCalories,
   StyledCategory,
@@ -15,6 +16,7 @@ import {
   // StyledCell30,
   StyledDel,
   StyledDelete,
+  StyledNotFoundProduct,
   StyledRecommended,
   // StyledHeadingTable,
   // StyledRec,
@@ -29,38 +31,36 @@ import {
   TableContainer,
 } from './ProductsTable.styled';
 import { useMediaQuery } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getSelectedDate } from '../../../redux/selectedDate/dateSelector';
-import axios from 'axios';
+import {
+  getProductsTableArray,
+  deleteProductTableArray,
+} from '../../../redux/productsTable/productsTableOperations';
+import {
+  selectIsError,
+  selectIsLoading,
+  selectProductsTableArray,
+} from '../../../redux/productsTable/productsTableSelectors';
 
 const ProductsTable = () => {
   const isMobile = useMediaQuery('(max-width: 375px)');
   const isTablet = useMediaQuery('(max-width: 768px)');
   const dateInStore = useSelector(getSelectedDate);
 
-  const [data, setData] = useState([]);
+  const dispatch = useDispatch();
+
+  const data = useSelector(selectProductsTableArray);
+  const isLoading = useSelector(selectIsLoading);
+  const isError = useSelector(selectIsError);
 
   useEffect(() => {
-    const getUserProductsArray = async date => {
-      const userProductsArray = await axios(
-        `/products/userproducts${
-          date &&
-          `?date=${new Date(date).toLocaleDateString('en-GB', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric',
-          })}`
-        }`
-      );
-      const {
-        data: { dataList },
-      } = userProductsArray;
-      // console.log('userProductsArray', userProductsArray);
-      // console.log(dataList);
-      setData([...dataList]);
-    };
-    getUserProductsArray(dateInStore);
-  }, [dateInStore]);
+    dispatch(getProductsTableArray(dateInStore));
+  }, [dispatch, dateInStore]);
+
+  const deleteItem = delId => {
+    dispatch(deleteProductTableArray({ delId, dateInStore }));
+  };
 
   const columnHelper = createColumnHelper();
 
@@ -97,10 +97,10 @@ const ProductsTable = () => {
         </StyledRecommended>
       ),
     }),
-    columnHelper.accessor('delete', {
+    columnHelper.accessor('_id', {
       header: '',
-      cell: () => (
-        <StyledDelete>
+      cell: info => (
+        <StyledDelete onClick={() => deleteItem(info.getValue())} key={info.getValue()}>
           <StyledDel>
             <use href={`${sprite}#icon-trash-03`} />
           </StyledDel>
@@ -118,32 +118,38 @@ const ProductsTable = () => {
   return (
     <>
       <TableContainer>
-        <StyledTable>
-          <thead>
-            {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map(header => (
-                  <StyledThead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
-                  </StyledThead>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map(row => (
-              <tr key={row.id}>
-                {row.getVisibleCells().map(cell => (
-                  <StyledTableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </StyledTableCell>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </StyledTable>
+        {data.length > 0 ? (
+          <StyledTable>
+            <thead>
+              {table.getHeaderGroups().map(headerGroup => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map(header => (
+                    <StyledThead key={header.id}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(header.column.columnDef.header, header.getContext())}
+                    </StyledThead>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {table.getRowModel().rows.map(row => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map(cell => (
+                    <StyledTableCell key={cell.id}>
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </StyledTableCell>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </StyledTable>
+        ) : (
+          <NotFoundProductContainer>
+            <StyledNotFoundProduct>Not found products</StyledNotFoundProduct>
+          </NotFoundProductContainer>
+        )}
       </TableContainer>
     </>
     // <>

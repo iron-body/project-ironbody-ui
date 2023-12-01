@@ -177,6 +177,19 @@ export const StyledDelete = styled.div`
   }
 `;
 
+export const NotFoundProductContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+
+export const StyledNotFoundProduct = styled.p`
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(239, 237, 232, 0.3);
+`;
+
 export const StyledTable = styled.table`
   color: white;
   width: 100%;
