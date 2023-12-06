@@ -119,7 +119,7 @@ const ProductsTable = () => {
   return (
     <>
       <TableContainer>
-        {isLoading && (
+        {isLoading && data.length <= 0 && (
           <NotFoundProductContainer>
             <Puff
               height="90"
