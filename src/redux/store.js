@@ -11,6 +11,7 @@ import { paramsReducer } from './params/paramsSlice';
 import { profileReducer } from './profile/profileSlice';
 import dateReducer from './selectedDate/dateReducer';
 import { productsTableReducer } from './productsTable/productsTableSlice';
+import { exercisesTableReducer } from './exercisesTable/exercisesTableSlice';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -41,6 +42,7 @@ export const store = configureStore({
     profile: profileReducer,
     date: dateReducer,
     productsTable: productsTableReducer,
+    exercisesTable: exercisesTableReducer,
   },
   middleware,
 });
