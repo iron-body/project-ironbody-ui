@@ -42,6 +42,7 @@ import {
   selectIsLoading,
   selectProductsTableArray,
 } from '../../../redux/productsTable/productsTableSelectors';
+import { Puff } from 'react-loader-spinner';
 
 const ProductsTable = () => {
   const isMobile = useMediaQuery('(max-width: 375px)');
@@ -118,6 +119,20 @@ const ProductsTable = () => {
   return (
     <>
       <TableContainer>
+        {isLoading && (
+          <NotFoundProductContainer>
+            <Puff
+              height="90"
+              width="90"
+              radius={1}
+              color="#e6533c"
+              ariaLabel="products-table-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+            />
+          </NotFoundProductContainer>
+        )}
         {data.length > 0 ? (
           <StyledTable>
             <thead>
