@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import sprite from '../../../../icons.svg';
 
 import {
@@ -8,7 +8,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import {
-  NotFoundProductContainer,
+  TableErrorWrapper,
   StyledCalories,
   // StyledCalories,
   StyledCategory,
@@ -120,7 +120,7 @@ const ProductsTable = () => {
     <>
       <TableContainer>
         {isLoading && data.length <= 0 && (
-          <NotFoundProductContainer>
+          <TableErrorWrapper>
             <Puff
               height="90"
               width="90"
@@ -131,7 +131,7 @@ const ProductsTable = () => {
               wrapperClass=""
               visible={true}
             />
-          </NotFoundProductContainer>
+          </TableErrorWrapper>
         )}
         {data.length > 0 ? (
           <StyledTable>
@@ -161,9 +161,9 @@ const ProductsTable = () => {
             </tbody>
           </StyledTable>
         ) : (
-          <NotFoundProductContainer>
+          <TableErrorWrapper>
             <StyledNotFoundProduct>Not found products</StyledNotFoundProduct>
-          </NotFoundProductContainer>
+          </TableErrorWrapper>
         )}
       </TableContainer>
     </>

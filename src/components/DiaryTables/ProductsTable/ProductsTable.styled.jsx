@@ -177,7 +177,7 @@ export const StyledDelete = styled.div`
   }
 `;
 
-export const NotFoundProductContainer = styled.div`
+export const TableErrorWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

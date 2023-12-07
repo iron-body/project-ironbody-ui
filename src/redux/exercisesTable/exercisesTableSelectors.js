@@ -1,5 +1,5 @@
-export const selectExercisesTableArray = state => state.exercisesTable.exercisesTableArray;
+export const selectExercisesTableArray = state => state.exercisesTable.exercisesTableItems;
 
-export const selectExercisesIsLoading = state => state.exercisesTable.isLoading;
+export const selectExercisesTableIsLoading = state => state.exercisesTable.isLoading;
 
-export const selectExercisesIsError = state => state.exercisesTable.isError;
+export const selectExercisesTableIsError = state => state.exercisesTable.isError;
