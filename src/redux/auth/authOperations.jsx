@@ -45,6 +45,7 @@ const login = createAsyncThunk('auth/login', async (credentials, thunkAPI) => {
     token.set(data.accessToken);
 
     Notify.success('Login Success');
+
     return data;
   } catch (error) {
     console.log('error :>> ', error.response);
@@ -88,6 +89,7 @@ const refreshCurrentUser = createAsyncThunk('auth/refresh', async (_, thunkAPI) 
 
     if (!persistedToken) return thunkAPI.rejectWithValue();
     token.set(persistedToken);
+
     const response = await axios.get('/users/current');
     return response.data;
   } catch (error) {

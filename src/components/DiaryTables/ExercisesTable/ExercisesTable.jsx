@@ -1,5 +1,6 @@
 import * as React from 'react';
 import sprite from '../../../../icons.svg';
+import { useSelector } from 'react-redux';
 
 import {
   createColumnHelper,
@@ -23,6 +24,7 @@ import {
   TableContainer,
 } from './ExercisesTable.styled';
 import { useMediaQuery } from '@mui/material';
+// import useLocalStorage from '../../../lib/useLocalStorage';
 
 const defaultData = [
   {
@@ -105,15 +107,75 @@ const columns = [
 ];
 
 const ExercisesTable = () => {
+  // const [selectedDate, setSelectedDate] = useLocalStorage('selectedDate', new Date());
+  const [selectedDate, setSelectedDate] = React.useState(() => {
+    const storedDate = localStorage.getItem('selectedDate');
+    return storedDate ? new Date(storedDate) : new Date();
+  });
   const isMobile = useMediaQuery('(max-width: 767px)');
-  // eslint-disable-next-line no-unused-vars
   const [data, setData] = React.useState(() => [...defaultData]);
+  const [loading, setLoading] = React.useState(true);
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  const accessToken = useSelector(state => state.auth.accessToken);
+
+  // Function to handle changes in local storage
+  const handleStorageChange = React.useCallback(
+    e => {
+      if (e.key === 'selectedDate') {
+        setSelectedDate(new Date(e.newValue));
+      }
+    },
+    [setSelectedDate],
+  );
+
+  React.useEffect(() => {
+    window.addEventListener('storage', handleStorageChange);
+    console.log('storage changed');
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, [handleStorageChange]);
+
+  React.useEffect(() => {
+    console.log(`selected date is ${selectedDate}`);
+    fetch(
+      `https://iron-body-project-backend.onrender.com/api/exercises/byDate?date=${selectedDate}`,
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    )
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(apiData => {
+        if (Array.isArray(apiData) && apiData.length > 0) {
+          setData(apiData);
+        } else {
+          setData(defaultData);
+        }
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      });
+  }, [selectedDate, accessToken]);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <>

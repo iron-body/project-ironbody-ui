@@ -50,23 +50,17 @@ export default function ProductsList() {
           <ProductList id="productList">
             {visibleProducts.slice(0, itemsToShow).map(product => (
               <ProductItem key={product._id}>
-                <Product
-                  product={product}
-                  openModal={() => openModal(product)}
-                />
+                <Product key={product._id} product={product} openModal={() => openModal(product)} />
               </ProductItem>
             ))}
           </ProductList>
         </InfiniteScroll>
       ) : (
         <ErrorMessege>
-          <StartError>Sorry, no results were found</StartError> for the product
-          filters you selected. You may want to consider other search options to
-          find the product you want. Our range is wide and you have the
-          opportunity to find more options that suit your needs.
-          <BottomError>
-            Try refreshing the page or check your internet connection.
-          </BottomError>
+          <StartError>Sorry, no results were found</StartError> for the product filters you
+          selected. You may want to consider other search options to find the product you want. Our
+          range is wide and you have the opportunity to find more options that suit your needs.
+          <BottomError>Try refreshing the page or check your internet connection.</BottomError>
         </ErrorMessege>
       )}
 

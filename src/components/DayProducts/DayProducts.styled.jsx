@@ -23,6 +23,7 @@ export const StyledWrapper = styled.div`
 export const StyledTitleWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 12px;
   /* margin-bottom: 32px; */
 `;

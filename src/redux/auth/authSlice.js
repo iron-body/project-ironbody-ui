@@ -8,6 +8,7 @@ const initialState = {
     avatarURL: null,
   },
   accessToken: null,
+  registrationDate: null,
   isLoggedIn: false,
   isRefreshing: true,
   isLoading: false,
@@ -23,10 +24,12 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.accessToken = null;
       state.isLoggedIn = false;
+      state.registrationDate = null;
     },
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.accessToken = action.payload.accessToken;
+      state.registrationDate = action.payload.registrationDate;
       state.isLoggedIn = true;
       state.isLoading = false;
       state.isRefreshing = true;
@@ -39,6 +42,7 @@ export const authSlice = createSlice({
     },
     [authOperations.login.fulfilled](state, action) {
       state.user = action.payload.user;
+      state.registrationDate = action.payload.createdAt;
       state.accessToken = action.payload.accessToken;
       state.isLoggedIn = true;
       state.isLoading = false;
@@ -50,6 +54,7 @@ export const authSlice = createSlice({
         name: null,
         email: null,
       };
+      state.registrationDate = null;
       state.accessToken = null;
       state.isLoggedIn = false;
       state.isRefreshing = false;
@@ -62,6 +67,7 @@ export const authSlice = createSlice({
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isRefreshing = true;
+      state.registrationDate = action.payload.createdAt;
     },
     [authOperations.refreshCurrentUser.pending](state) {
       state.isRefreshing = true;
@@ -71,6 +77,7 @@ export const authSlice = createSlice({
       state.accessToken = null;
       state.isLoading = false;
       state.isLoggedIn = false;
+      state.registrationDate = null;
     },
 
     // [updateOperations.update.fulfilled](state, action) {
